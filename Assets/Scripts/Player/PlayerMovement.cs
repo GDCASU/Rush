@@ -10,11 +10,11 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed;
-    public Rigidbody rb;
+    private Rigidbody2D rb;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     /// <summary>
@@ -28,9 +28,9 @@ public class PlayerMovement : MonoBehaviour
 
     void CheckMovementInput()
     {
-        Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+        Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0);
         Vector3 direction = input.normalized;
-        Vector3 velocity = direction * speed;
+        Vector2 velocity = direction * speed;
         // Update location of the player checking collisions
         rb.MovePosition(rb.position+velocity);
     }
