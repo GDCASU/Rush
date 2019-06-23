@@ -14,7 +14,7 @@ public class BulletSpawner : MonoBehaviour {
 	public float wave;
 	private float counter;
 	public Sprite bulletSprite;
-	public Color bulletTint;
+	public Color bulletTint = Color.white;
 	public Quaternion rotation = Quaternion.AngleAxis(0, Vector3.forward);
 	public Vector3 scale = new Vector3(0.05F,0.05F,0.05F);
 
