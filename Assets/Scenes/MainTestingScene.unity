@@ -242,6 +242,8 @@ GameObject:
   - component: {fileID: 601149355}
   - component: {fileID: 601149357}
   - component: {fileID: 601149358}
+  - component: {fileID: 601149359}
+  - component: {fileID: 601149360}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -340,6 +342,34 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &601149359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 601149354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9e1b4b7097c9c54c997a7444e5d1d28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lives: 4
+  inv: 0
+--- !u!58 &601149360
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 601149354}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.099999994
 --- !u!1 &1982962701
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,7 +382,7 @@ GameObject:
   - component: {fileID: 1982962702}
   m_Layer: 0
   m_Name: TestSpawnEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -372,13 +402,13 @@ MonoBehaviour:
   bulletAmount: 4
   bulletArc: 6.2831855
   ArcOffset: 0
-  bulletfrequency: 0
+  bulletfrequency: 0.5
   spin: 0.1
   wave: 0
   bulletSprite: {fileID: 21300000, guid: b52bb69bbca3ad945b1e17586e3444dc, type: 3}
   bulletTint: {r: 1, g: 1, b: 1, a: 1}
   rotation: {x: 0, y: 0, z: 0, w: 1}
-  scale: {x: 1, y: 1, z: 1}
+  scale: {x: 0.5, y: 0.5, z: 0.5}
   moveFunc: 0
 --- !u!212 &1982962703
 SpriteRenderer:
