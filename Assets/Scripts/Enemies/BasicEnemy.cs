@@ -6,11 +6,11 @@ public class BasicEnemy : MonoBehaviour
 {
     public Transform targetTransform;
     public float speed;
-    public Rigidbody rb;
+    public Rigidbody2D rb;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void FixedUpdate ()
@@ -28,5 +28,9 @@ public class BasicEnemy : MonoBehaviour
         {
             rb.velocity = velocity;
         }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        print("wtf");
     }
 }
