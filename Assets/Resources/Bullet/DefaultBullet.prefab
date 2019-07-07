@@ -70,6 +70,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveVector: {x: 0, y: 0}
   hostile: 0
+  solid: 1
 --- !u!212 &212682534164387644
 SpriteRenderer:
   m_ObjectHideFlags: 1

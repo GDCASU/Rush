@@ -29,8 +29,4 @@ public class BasicEnemy : MonoBehaviour
             rb.velocity = velocity;
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        print("wtf");
-    }
 }

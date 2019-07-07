@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour {
 	float Rotation;
 	Action MoveFunc; 
 	public bool hostile; //0=hurts enemys 1=hurts player
-
+    public bool solid; //collides with enviroment walls
 	public void Init(Vector2 dir, float rot, float spd, MoveFunctions act, Sprite spr, Color color, bool enemy) {
 		SpriteRenderer sp = GetComponent<SpriteRenderer>();
 		MoveVector = dir.normalized * spd; 
