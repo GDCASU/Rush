@@ -6,11 +6,11 @@ public class BasicEnemy : MonoBehaviour
 {
     public Transform targetTransform;
     public float speed;
-    public Rigidbody rb;
+    public Rigidbody2D rb;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void FixedUpdate ()
