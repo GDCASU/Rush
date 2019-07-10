@@ -32,10 +32,10 @@ public class BulletSpawner : MonoBehaviour {
 	IEnumerator SpawnLoop() { while(true) {
         if(offsetFacesPlayer) {
             Vector2 VectorToPlayer = PlayerHealth.singleton.transform.position - transform.position;
-            ArcOffset = (float) (Vector2.SignedAngle(Vector2.down, VectorToPlayer)* Math.PI/180.0);
+            ArcOffset = (float) (Vector2.SignedAngle(Vector2.right, VectorToPlayer)* Math.PI/180.0);
         }
 		for (int i = 1; i <= bulletAmount; i++) {
-			float angle = ArcOffset + (bulletArc/bulletAmount)*((float)(i-1)-bulletAmount/(float)2.0) + currentOffset;
+			float angle = ArcOffset + (bulletArc/bulletAmount)*((float)(i-1)-(bulletAmount-1)/(float)2.0) + currentOffset;
 			Vector2 direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
             
 			var sp = BulletPool.rent();
