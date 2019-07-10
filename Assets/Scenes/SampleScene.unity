@@ -454,6 +454,7 @@ MonoBehaviour:
   bulletAmount: 4
   bulletArc: 6.2831855
   ArcOffset: 0
+  offsetFacesPlayer: 0
   bulletfrequency: 0
   spin: 0.1
   wave: 0
@@ -462,6 +463,7 @@ MonoBehaviour:
   rotation: {x: 0, y: 0, z: 0, w: 1}
   scale: {x: 1, y: 1, z: 1}
   moveFunc: 0
+  bulletsFaceOutward: 1
 --- !u!212 &497901608
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -773,10 +775,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 5.56
-  bulletAmount: 3
-  bulletArc: 3.14
-  ArcOffset: 3.14
-  bulletfrequency: 0.7
+  bulletAmount: 1
+  bulletArc: 3.1415
+  ArcOffset: 0
+  offsetFacesPlayer: 1
+  bulletfrequency: 0.5
   spin: 0
   wave: 0
   bulletSprite: {fileID: 21300000, guid: f6947010665eab842a46c6ff9da8bcbf, type: 3}
@@ -784,6 +787,7 @@ MonoBehaviour:
   rotation: {x: 0, y: 0, z: 0, w: 1}
   scale: {x: 1, y: 1, z: 1}
   moveFunc: 0
+  bulletsFaceOutward: 1
 --- !u!212 &546469783
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -837,7 +841,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 546469778}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -57.7, y: -22, z: -1.5}
+  m_LocalPosition: {x: -25.7, y: -22, z: -1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 747712348}

@@ -14,6 +14,8 @@ public class Bullet : MonoBehaviour {
 		SpriteRenderer sp = GetComponent<SpriteRenderer>();
 		MoveVector = dir.normalized * spd; 
 		Rotation = rot; 
+        transform.rotation = Quaternion.identity;
+        transform.Rotate(new Vector3(0,0,rot));
 		MoveFunc = getMoveFunction(act); sp.sprite = spr;
 		sp.color = color; hostile = enemy;
 	}
