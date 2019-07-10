@@ -21,6 +21,7 @@ public class PlayerHealth : MonoBehaviour {
     private void Start()
     {
         sp = GetComponent<SpriteRenderer>();
+        HUDManager.singleton.setLiveCount(lives);
     }
 
     void OnTriggerEnter2D (Collider2D other) {
@@ -30,7 +31,7 @@ public class PlayerHealth : MonoBehaviour {
             StartCoroutine(flashingSprite());
             lives--;
             // Hurt the player
-            if (lives > 0) Debug.Log("Update the player health in the UI here"); //example: HUDManager.singleton.setLiveCount(lives);
+            if (lives > 0) HUDManager.singleton.setLiveCount(lives);
             else Debug.Log("Go to gameover"); //example: SceneManager.LoadScene("GameOver"); 
 
             if(other.gameObject.CompareTag("Bullet")) other.GetComponent<Bullet>().BulletDestroy ();

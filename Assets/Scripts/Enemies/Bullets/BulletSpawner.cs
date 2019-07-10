@@ -21,6 +21,7 @@ public class BulletSpawner : MonoBehaviour {
 
     public Bullet.MoveFunctions moveFunc;
     public bool bulletsFaceOutward = true;
+    public float colliderRadius = 0.5f;
 	void Awake () => bulletTemplate = Resources.Load("bullet") as GameObject;
 	void Update () {
 		counter += wave;
@@ -40,7 +41,7 @@ public class BulletSpawner : MonoBehaviour {
             
 			var sp = BulletPool.rent();
 			sp.transform.position = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
-			sp.GetComponent<Bullet>().Init(direction, (bulletsFaceOutward) ? angle * (float)180.0 / Mathf.PI : 0, bulletSpeed, moveFunc,bulletSprite, bulletTint, true);
+			sp.GetComponent<Bullet>().Init(direction, (bulletsFaceOutward) ? angle * (float)180.0 / Mathf.PI : 0, bulletSpeed, moveFunc,bulletSprite, bulletTint, true, colliderRadius);
 		    
         	sp.transform.localScale = scale;
 		}
