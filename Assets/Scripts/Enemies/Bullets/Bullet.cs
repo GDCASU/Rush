@@ -10,12 +10,15 @@ public class Bullet : MonoBehaviour {
 	Action MoveFunc; 
 	public bool hostile; //0=hurts enemys 1=hurts player
     public bool solid; //collides with enviroment walls
-	public void Init(Vector2 dir, float rot, float spd, MoveFunctions act, Sprite spr, Color color, bool enemy) {
+	public void Init(Vector2 dir, float rot, float spd, MoveFunctions act, Sprite spr, Color color, bool enemy, float colliderRadius = 0.5f) {
 		SpriteRenderer sp = GetComponent<SpriteRenderer>();
 		MoveVector = dir.normalized * spd; 
 		Rotation = rot; 
+        transform.rotation = Quaternion.identity;
+        transform.Rotate(new Vector3(0,0,rot));
 		MoveFunc = getMoveFunction(act); sp.sprite = spr;
 		sp.color = color; hostile = enemy;
+        GetComponent<CircleCollider2D>().radius = colliderRadius;
 	}
 
 	void Update () {
