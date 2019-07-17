@@ -26,10 +26,14 @@ public class PlayerMovement : MonoBehaviour
         CheckMovementInput();
 	}
 
+    public Vector2 facing = Vector2.up;
+
     void CheckMovementInput()
     {
         Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0);
         Vector3 direction = input.normalized;
+        if(direction != Vector3.zero) facing = direction;
+        
         Vector2 velocity = direction * speed;
         // Update location of the player checking collisions
         rb.MovePosition(rb.position+velocity);
