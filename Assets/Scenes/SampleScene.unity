@@ -2228,6 +2228,8 @@ GameObject:
   - component: {fileID: 1538410300}
   - component: {fileID: 1538410302}
   - component: {fileID: 1538410301}
+  - component: {fileID: 1538410304}
+  - component: {fileID: 1538410303}
   m_Layer: 0
   m_Name: Help Text Env
   m_TagString: Untagged
@@ -2241,13 +2243,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1538410299}
-  m_LocalRotation: {x: 0, y: 0, z: -0.014529424, w: 0.99989444}
-  m_LocalPosition: {x: -1.122, y: -0.315, z: -1.4999998}
-  m_LocalScale: {x: 0.0006985551, y: 0.0006831061, z: 0.05319893}
+  m_LocalRotation: {x: -0.43540898, y: -0.0050157392, z: -0.010369477, w: 0.90015906}
+  m_LocalPosition: {x: -1.022, y: -0.335, z: -2.75}
+  m_LocalScale: {x: 0.00063568517, y: 0.00062162656, z: 0.048411027}
   m_Children: []
   m_Father: {fileID: 630650178}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -1.6650001}
+  m_LocalEulerAnglesHint: {x: -51.626003, y: 0, z: -1.32}
 --- !u!102 &1538410301
 TextMesh:
   serializedVersion: 3
@@ -2255,12 +2257,12 @@ TextMesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1538410299}
-  m_Text: Space to shoot
+  m_Text: Press 'Space' to shoot
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
-  m_Anchor: 0
-  m_Alignment: 0
+  m_Anchor: 4
+  m_Alignment: 1
   m_TabSize: 4
   m_FontSize: 448
   m_FontStyle: 0
@@ -2304,6 +2306,37 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &1538410303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1538410299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 851f50e035a4bec4d8bb3282cc8713f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedX: 1
+  speedY: 1
+  speedZ: 1
+  maximumX: 60
+  maximumY: 180
+  maximumZ: 10
+--- !u!114 &1538410304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1538410299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27d591a70004e8747adf0deb29d0ccad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  axis: {x: 0.0005, y: 0.0005, z: 0.0005}
+  offset: {x: 0.0005, y: 0.0005, z: 0.0005}
 --- !u!1 &1877200941
 GameObject:
   m_ObjectHideFlags: 0
