@@ -10,15 +10,19 @@ public class Bullet : MonoBehaviour {
 	Action MoveFunc; 
 	public bool hostile; //0=hurts enemys 1=hurts player
     public bool solid; //collides with enviroment walls
-	public void Init(Vector2 dir, float rot, float spd, MoveFunctions act, Sprite spr, Color color, bool enemy, float colliderRadius = 0.5f) {
+    public float speed;
+	public void Init(Vector2 dir, float rot, float spd, MoveFunctions act, SpawnFunctions spwn, Sprite spr, Color color, bool enemy, float colliderRadius = 0.5f, List<int> SpawnFunctionParams = null) {
 		SpriteRenderer sp = GetComponent<SpriteRenderer>();
 		MoveVector = dir.normalized * spd; 
+        speed = spd;
 		Rotation = rot; 
         transform.rotation = Quaternion.identity;
         transform.Rotate(new Vector3(0,0,rot));
 		MoveFunc = getMoveFunction(act); sp.sprite = spr;
 		sp.color = color; hostile = enemy;
         GetComponent<CircleCollider2D>().radius = colliderRadius;
+
+        getSpawnFunction(spwn)?.Invoke(SpawnFunctionParams.ToArray());
 	}
 
 	void Update () {
@@ -29,14 +33,15 @@ public class Bullet : MonoBehaviour {
         MoveFunc?.Invoke();
     }
 
-    public void BulletDestroy () => BulletPool.recall(this.gameObject);
+    public void BulletDestroy () => BulletPool.recall(this.gameObject);  
     
+
     /// <summary>
     /// To add to the move functions write an Action (void method takes no params)
     /// and then add the name to the list here 
     /// that way you can set it from the editor
     /// </summary>
-    public enum MoveFunctions: int {
+    public enum MoveFunctions: byte {
         None,
         LeftSine,
         RightSine,
@@ -56,4 +61,38 @@ public class Bullet : MonoBehaviour {
     public void LeftSine () => MoveVector = MoveVector * -Mathf.Sin(transform.localPosition.y * 25F) * 0.85F;
     public void RightSine () => MoveVector = MoveVector * Mathf.Sin(transform.localPosition.y * 25F) * 0.85F;
     public void Spin () => transform.Rotate(new Vector3(0,0,5f)); 
+
+    // Spawn functions 
+    /// <summary>
+    /// These are ment to happen when the bullet spawns but they can be used for delayed effects
+    /// such as timed direction change or bullet self destruction
+    /// </summary>
+    public delegate void SpawnFunction (params int [] spawnParameters);
+    public enum SpawnFunctions: byte {
+        None,
+        ChangeDirectionToPlayer,
+        ChangeDirection,
+    }
+
+    
+    public SpawnFunction getSpawnFunction (SpawnFunctions f){
+        switch (f) {
+            case SpawnFunctions.ChangeDirectionToPlayer: return ChangeDirectionToPlayer;
+           
+            default: return null;
+        }
+    }
+
+    //Move functions 
+    public void ChangeDirectionToPlayer (int [] p) => StartCoroutine(playerDir(p[0])); // not safe
+
+    public IEnumerator playerDir (int t) { 
+        yield return new WaitForSeconds (t); 
+        var VectorToPlayer = (Vector2) (PlayerHealth.singleton.transform.position - transform.position).normalized;
+        MoveVector = VectorToPlayer * speed; 
+        transform.rotation = Quaternion.identity;
+        transform.Rotate(new Vector3(0,0, Vector2.SignedAngle(Vector2.right, VectorToPlayer) ));
+        GetComponent<SpriteRenderer>().color = Color.red; //optional
+    }
+
 }
