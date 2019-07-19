@@ -10,15 +10,16 @@ public class CameraMovement : MonoBehaviour
 	void Start ()
     {
         camera.transform.rotation.Set(45, 0, 0, 0);
+        //camera.transform.position=
     }
 	
 	// Update is called once per frame
-	void FixedUpdate ()
+	void Update ()
     {
         moveCamera();
     }
     void moveCamera()
     {
-        camera.transform.localPosition = new Vector3(0,0, -2.5f);
+        camera.transform.localPosition = new Vector3(player.transform.position.x,player.transform.position.y, -10f);
     }
 }
