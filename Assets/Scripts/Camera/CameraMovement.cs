@@ -20,6 +20,7 @@ public class CameraMovement : MonoBehaviour
     }
     void moveCamera()
     {
-        camera.transform.localPosition = new Vector3(player.transform.position.x,player.transform.position.y, -10f);
+        //camera.transform.localPosition = new Vector3(player.transform.position.x,player.transform.position.y, -10f);
+        camera.transform.localPosition = new Vector3(0,0, -10f);
     }
 }

@@ -22,8 +22,11 @@ public class GameManager : MonoBehaviour
     public static int latestUnlocked;
     const string saveName = "Rush.dat";
     public const int totalLevels = 12; // This needs to be updated with total levels (not scenes) in build 
+
+    public bool disableSaves = false;
     void Awake()
     {
+        if(disableSaves)return;
         if (singleton == null)
             singleton = this;
 
