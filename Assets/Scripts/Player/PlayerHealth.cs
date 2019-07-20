@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class PlayerHealth : MonoBehaviour {
     public static PlayerHealth singleton;
     public int lives;
+    private IInputPlayer player;
 
     public bool inv = false;
 
@@ -20,8 +21,18 @@ public class PlayerHealth : MonoBehaviour {
 
     private void Start()
     {
+        player = GetComponent<IInputPlayer>();
         sp = GetComponent<SpriteRenderer>();
         HUDManager.singleton.setLiveCount(lives);
+    }
+     void Update()
+    {
+        if (InputManager.GetButtonDown(PlayerInput.PlayerButton.Potion, player))
+        {
+            lives++;
+        }
+        if (lives > 0) HUDManager.singleton.setLiveCount(lives);
+        else Debug.Log("Go to gameover"); //example: SceneManager.LoadScene("GameOver"); 
     }
 
     void OnTriggerEnter2D (Collider2D other) {
@@ -31,8 +42,7 @@ public class PlayerHealth : MonoBehaviour {
             StartCoroutine(flashingSprite());
             lives--;
             // Hurt the player
-            if (lives > 0) HUDManager.singleton.setLiveCount(lives);
-            else Debug.Log("Go to gameover"); //example: SceneManager.LoadScene("GameOver"); 
+            
 
             if(other.gameObject.CompareTag("Bullet")) other.GetComponent<Bullet>().BulletDestroy ();
         }

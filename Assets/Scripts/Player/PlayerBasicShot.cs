@@ -20,6 +20,7 @@ public class PlayerBasicShot : MonoBehaviour {
     public void Update () {
         if (InputManager.GetButton(PlayerInput.PlayerButton.Shoot, player) && timer < 0)
         {
+            //Vector2 direction = transform.up;
             Vector2 direction = pMovement.facing;
 
             var sp = BulletPool.rent();

@@ -10,12 +10,13 @@ public class EnemyHealth : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Bullet") && other.GetComponent<Bullet>()?.hostile == false) // note that the ?. returns a bool? so we need an explicit truth check
         {
-            health--;
-            
-            // Die
-            if (health <= 0) Destroy(gameObject);
-            
+            takeDamage(1);
             other.GetComponent<Bullet>().BulletDestroy ();
         }
+    }
+    public void takeDamage(int damage)
+    {
+        health-=damage;
+        if (health <= 0) Destroy(gameObject);
     }
 }
