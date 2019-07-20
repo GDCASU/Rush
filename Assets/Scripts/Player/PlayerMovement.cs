@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PlayerInput;
 
 /// <summary>
 /// Holds basic player movement functions
@@ -11,10 +12,14 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed;
     private Rigidbody2D rb;
+    private IInputPlayer player;
+    private SpriteRenderer sp;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        player = GetComponent<IInputPlayer>();
+        sp = GetComponent<SpriteRenderer>();
     }
 
     /// <summary>
@@ -24,14 +29,32 @@ public class PlayerMovement : MonoBehaviour
     void Update ()
     {
         CheckMovementInput();
+        //faceMouse();
+        flipSprite();
 	}
+
+    public Vector2 facing = Vector2.up;
 
     void CheckMovementInput()
     {
-        Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0);
+        Vector3 input = new Vector3(InputManager.GetAxis(PlayerAxis.MoveHorizontal,player), InputManager.GetAxis(PlayerAxis.MoveVertical, player), 0);
         Vector3 direction = input.normalized;
+        if(direction != Vector3.zero) facing = direction;
+
         Vector2 velocity = direction * speed;
         // Update location of the player checking collisions
         rb.MovePosition(rb.position+velocity);
+    }
+    void faceMouse()
+    {
+        
+        Vector3 position = Input.mousePosition;
+        position.z = -10f;
+        position = Camera.main.ScreenToWorldPoint(position);
+        Vector2 direction = new Vector2((position.x - transform.position.x), (position.y - transform.position.y));
+        transform.up = -direction;
+    }
+    void flipSprite () {
+       sp.flipX = (facing.x < 0);
     }
 }

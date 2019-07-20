@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using System;
 public class BulletSpawner : MonoBehaviour {
@@ -20,6 +21,8 @@ public class BulletSpawner : MonoBehaviour {
 	public Vector3 scale = new Vector3(0.05F,0.05F,0.05F);
 
     public Bullet.MoveFunctions moveFunc;
+    public Bullet.SpawnFunctions spawnFunc;
+    public List<float> SpawnFunctionParams = new List<float>();
     public bool bulletsFaceOutward = true;
     public float colliderRadius = 0.5f;
 	void Awake () => bulletTemplate = Resources.Load("bullet") as GameObject;
@@ -41,8 +44,8 @@ public class BulletSpawner : MonoBehaviour {
             
 			var sp = BulletPool.rent();
 			sp.transform.position = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
-			sp.GetComponent<Bullet>().Init(direction, (bulletsFaceOutward) ? angle * (float)180.0 / Mathf.PI : 0, bulletSpeed, moveFunc,bulletSprite, bulletTint, true, colliderRadius);
-		    
+			sp.GetComponent<Bullet>().Init(direction, (bulletsFaceOutward) ? angle * (float)180.0 / Mathf.PI : 0, bulletSpeed, moveFunc, spawnFunc, bulletSprite, bulletTint, true, colliderRadius,SpawnFunctionParams);
+    
         	sp.transform.localScale = scale;
 		}
 		yield return new WaitForSeconds(bulletfrequency);
