@@ -26,8 +26,8 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     void Update ()
     {
-        CheckMovementInput();
         faceMouse();
+        CheckMovementInput();
 
     }
 
