@@ -5,22 +5,20 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     public GameObject player;
-    public GameObject camera;
+    public float tilt = 25;
 	// Use this for initialization
 	void Start ()
     {
-        camera.transform.rotation.Set(45, 0, 0, 0);
-        //camera.transform.position=
+        transform.rotation = Quaternion.Euler(-tilt, 0,0);
     }
 	
-	// Update is called once per frame
-	void Update ()
+	// Always handle rendering and camera movement in late updates to avoid visual errors
+	void LateUpdate ()
     {
         moveCamera();
     }
     void moveCamera()
     {
-        //camera.transform.localPosition = new Vector3(player.transform.position.x,player.transform.position.y, -10f);
-        camera.transform.localPosition = new Vector3(0,0, -10f);
+        transform.position = new Vector3(player.transform.position.x,player.transform.position.y - tilt/10, -10f);
     }
 }
