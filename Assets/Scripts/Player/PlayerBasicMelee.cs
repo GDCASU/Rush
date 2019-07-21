@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Melee : MonoBehaviour
+public class PlayerBasicMelee : MonoBehaviour
 {
     public GameObject plyr;
     private IInputPlayer player;
