@@ -21,10 +21,12 @@ public class EnemyHealthBar : MonoBehaviour {
     }
     public void setCurrentEnemy(NamedEnemy e) {
         // unsub current enemy 
+        if(currentEnemy != null) currentEnemy.enemyHealth.OnDeath -= BossDeath;
 
         currentEnemy = e;
+        e.enemyHealth.OnDeath += BossDeath;
         gameObject.SetActive(true);
-        nameText.name = e.name;
+        nameText.text = e.enemyName;
     }
 	
     public void LateUpdate() {

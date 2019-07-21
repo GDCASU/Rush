@@ -649,7 +649,7 @@ PlayerSettings:
   cloudServicesEnabled:
     UNet: 1
   facebookSdkVersion: 7.9.4
-  apiCompatibilityLevel: 2
+  apiCompatibilityLevel: 3
   cloudProjectId: bb12bf9e-31d3-4e8e-8d30-237e7a27723f
   projectName: Movement
   organizationId: propredator23

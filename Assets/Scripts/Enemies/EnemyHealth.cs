@@ -13,7 +13,7 @@ public class EnemyHealth : MonoBehaviour
     public void Awake() => health = maxHealth;
 
     public float healthPercent {
-        get => health / maxHealth;
+        get => (float)100 * (health / maxHealth);
     }
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -26,9 +26,9 @@ public class EnemyHealth : MonoBehaviour
     public void takeDamage(float damage)
     {
         health-=damage;
-        onEnemyDamage(damage,health);
+        onEnemyDamage?.Invoke(damage,health);
         if (health <= 0) {
-            OnDeath();
+            OnDeath?.Invoke();
             Destroy(gameObject);
         }
     }

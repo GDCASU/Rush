@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class NamedEnemy : MonoBehaviour {
 
-    string enemyName = "";
+    public string enemyName = "";
+    [HideInInspector]
     public EnemyHealth enemyHealth;
 	void Start () {
         enemyHealth = GetComponent<EnemyHealth>();
