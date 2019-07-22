@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 using UnityEngine;
 
 public class PlayerBasicMelee : MonoBehaviour
@@ -12,18 +13,16 @@ public class PlayerBasicMelee : MonoBehaviour
     public List<int> attackRadius = new List<int>(); 
     public List<int> attackDamage = new List<int>(); 
     private int combo;
-    private Animator anim;
+    private AnimationController anim;
     private PlayerMovement mov;    
     void Start ()
     {
-        combo = 1;
         col=GetComponent<BoxCollider2D>();
-        anim=GetComponent<Animator>();
+        anim=GetComponent<AnimationController>();
         mov=GetComponent<PlayerMovement>();
-        col.enabled=false;
 	}
     public bool inAttackStun {
-        get=>(attackStunFrames[combo] > framesSinceAttack);
+        get=>(combo > 0 && attackStunFrames[combo-1] > framesSinceAttack);
     }
 	private int framesSinceAttack=9999;
 	void Update ()
@@ -31,18 +30,15 @@ public class PlayerBasicMelee : MonoBehaviour
         framesSinceAttack++;
         if (InputManager.GetButtonDown(PlayerInput.PlayerButton.Melee, player) && !inAttackStun)
         {
+            if(combo >= comboFrames.Count || framesSinceAttack > comboFrames[combo]) combo = 0;
             framesSinceAttack = 0;
-            if(combo != 0 && framesSinceAttack < comboFrames[combo]) combo++;
-            else combo = 0;
-            if (combo > comboFrames.Count) combo = 0;
-
-            anim.Play("PlayerMeleeAttack");
-
-            var hits=Physics2D.CircleCastAll(transform.position, attackRadius[combo],mov.facing,0f).Where(x => x.transform.tag == "Enemy").Select(e => e.transform.GetComponent<EnemyHealth>());
+            
+            anim.tryNewAnimation("PlayerMeleeAttack", false, attackStunFrames[combo], false, ()=> {anim.tryNewAnimation("PlayerIdle", true);} );
+            var hits=Physics2D.CircleCastAll(transform.position, attackRadius[combo], mov.facing, 0f)?.Where(x => x.transform.tag == "Enemy")?.Select(e => e.transform.GetComponent<EnemyHealth>());
             foreach(EnemyHealth enemy in hits){
-                enemy.takeDamage(attackDamage[combo]);
+                 enemy.takeDamage(attackDamage[combo]);
             }
-            if(combo==0)combo++;
+            combo++;
         }
 	}
     void LateUpdate () {

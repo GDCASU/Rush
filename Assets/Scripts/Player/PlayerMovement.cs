@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using PlayerInput;
+using System.Linq;
 
 /// <summary>
 /// Holds basic player movement functions
@@ -14,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private IInputPlayer player;
     private SpriteRenderer sp;
+    private AnimationController anim;
     public int dashFrames;
 
     private void Start()
@@ -21,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         player = GetComponent<IInputPlayer>();
         sp = GetComponent<SpriteRenderer>();
+        anim = GetComponent<AnimationController>();
     }
 
     /// <summary>
@@ -35,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
 	}
 
     public Vector2 facing = Vector2.up;
-
+    private Vector2 lastVel;
     void CheckMovementInput()
     {
         Vector3 input = new Vector3(InputManager.GetAxis(PlayerAxis.MoveHorizontal,player), InputManager.GetAxis(PlayerAxis.MoveVertical, player), 0);
@@ -45,6 +48,8 @@ public class PlayerMovement : MonoBehaviour
         Vector2 velocity = direction * speed;
         // Update location of the player checking collisions
         rb.MovePosition(rb.position+velocity);
+
+        lastVel = velocity;
     }
     void faceMouse()
     {
@@ -57,5 +62,14 @@ public class PlayerMovement : MonoBehaviour
     }
     void flipSprite () {
        sp.flipX = (facing.x < 0);
+    }
+
+    void LateUpdate () {
+        // Update animations
+        if(lastVel.magnitude > 0)
+            anim.tryNewAnimation("PlayerRun", true);
+        else
+            anim.tryNewAnimation("PlayerIdle", true);
+            
     }
 }

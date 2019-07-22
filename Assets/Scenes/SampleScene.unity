@@ -3641,6 +3641,7 @@ GameObject:
   - component: {fileID: 1521196776}
   - component: {fileID: 1521196777}
   - component: {fileID: 1521196778}
+  - component: {fileID: 1521196779}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -3840,6 +3841,18 @@ MonoBehaviour:
   comboFrames: 0a0000000a0000000a000000
   attackRadius: 010000000100000002000000
   attackDamage: 020000000300000005000000
+--- !u!114 &1521196779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1521196768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aa6fdb1294c2d544a196bec761b92b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationLocked: 0
 --- !u!1 &1529545495
 GameObject:
   m_ObjectHideFlags: 0
