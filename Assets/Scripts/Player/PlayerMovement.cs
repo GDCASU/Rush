@@ -38,11 +38,6 @@ public class PlayerMovement : MonoBehaviour
 
     void CheckMovementInput()
     {
-        if (InputManager.GetButtonDown(PlayerButton.Dash, player))
-        {
-            speed = speed * 2;
-            StartCoroutine("dash");
-        }
         Vector3 input = new Vector3(InputManager.GetAxis(PlayerAxis.MoveHorizontal,player), InputManager.GetAxis(PlayerAxis.MoveVertical, player), 0);
         Vector3 direction = input.normalized;
         if(direction != Vector3.zero) facing = direction;
@@ -62,18 +57,5 @@ public class PlayerMovement : MonoBehaviour
     }
     void flipSprite () {
        sp.flipX = (facing.x < 0);
-    }
-    public IEnumerator  dash()
-    {
-        sp.color = new Color(0.5f, 0.5f, 0.5f, 1);
-        GetComponent<PlayerHealth>().inv = true;
-        for (int i = dashFrames; i > 0; i--)
-        {
-            yield return new WaitForEndOfFrame();
-        }
-        sp.color = new Color(1,1, 1, 1);
-        speed = speed / 2;
-        GetComponent<PlayerHealth>().inv = false;
-        
     }
 }
