@@ -10,7 +10,7 @@ public class PlayerBasicMelee : MonoBehaviour
     public int swordSwingFrames;
     private int combo;
     private bool window;
-    // Use this for initialization
+    
     void Start ()
     {
         combo = 1;
@@ -18,26 +18,18 @@ public class PlayerBasicMelee : MonoBehaviour
         col.enabled=false;
 	}
 	
-	// Update is called once per frame
 	void Update ()
     {
-        //print(combo);
-        //print(window+"w");
-        followPlayer();
         if (InputManager.GetButtonDown(PlayerInput.PlayerButton.Melee, player))
         {
             col.enabled = true;
             window = true;
-            StartCoroutine("swing");
+            StartCoroutine(swing1());
             
         }
         if (!window) combo = 1;
 	}
-    void followPlayer()
-    {
-        transform.localPosition = new Vector3(plyr.transform.position.x+.75f, plyr.transform.position.y+.33f, plyr.transform.position.z);
-    }
-    public IEnumerator swing()
+    public IEnumerator swing1()
     {
         for (int i = swordSwingFrames; i > 0; i--)
         {

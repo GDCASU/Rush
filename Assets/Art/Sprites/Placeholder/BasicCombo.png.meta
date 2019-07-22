@@ -1,11 +1,7 @@
 fileFormatVersion: 2
-guid: e9bde7478c7ef7446ac46c1f4eb9db0d
+guid: a3fcbd07f16c56041b4f74b9ea5d86d1
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: lilfuckinknifedude_0
-    21300002: lilfuckinknifedude_1
-    21300004: lilfuckinknifedude_2
-    21300006: lilfuckinknifedude_3
+  fileIDToRecycleName: {}
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -97,91 +93,11 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: lilfuckinknifedude_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 327
-        width: 120
-        height: 109
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: afb5baec03d404743afcf59ee81d182b
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lilfuckinknifedude_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 218
-        width: 120
-        height: 109
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6d60e9570618ee748af180fc7bc446bf
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lilfuckinknifedude_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 109
-        width: 120
-        height: 109
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 853871c53db21e544a79abd42bdfcda1
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lilfuckinknifedude_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 120
-        height: 109
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 56fbb13513680a141a59a01b1b2fa8d5
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5880c4995c5177f46882b79ace7ca559
+    spriteID: af8dfbc2c9705d84ca4f56381b86967c
     vertices: []
     indices: 
     edges: []
