@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private IInputPlayer player;
     private SpriteRenderer sp;
     private AnimationController anim;
+    public Vector2 velocity;
     public int dashFrames;
 
     private void Start()
@@ -32,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     void Update ()
     {
+        if(!GetComponent<PlayerDash>().inDash)
         CheckMovementInput();
         //faceMouse();
         flipSprite();
@@ -45,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 direction = input.normalized;
         if(direction != Vector3.zero) facing = direction;
 
-        Vector2 velocity = direction * speed;
+        velocity = direction * speed;
         // Update location of the player checking collisions
         rb.MovePosition(rb.position+velocity);
 
