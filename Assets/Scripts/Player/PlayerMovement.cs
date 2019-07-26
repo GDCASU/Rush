@@ -19,8 +19,12 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 velocity;
     public int dashFrames;
 
+    public bool inControl=true; // player has direct control over movement
+    public bool freezeInPlace; // player cannot move at all
+
     private void Start()
     {
+        inControl=true;
         rb = GetComponent<Rigidbody2D>();
         player = GetComponent<IInputPlayer>();
         sp = GetComponent<SpriteRenderer>();
@@ -33,7 +37,6 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     void Update ()
     {
-        if(!GetComponent<PlayerDash>().inDash)
         CheckMovementInput();
         //faceMouse();
         flipSprite();
@@ -47,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 direction = input.normalized;
         if(direction != Vector3.zero) facing = direction;
 
-        velocity = direction * speed;
+        if(inControl) velocity = direction * speed;
         // Update location of the player checking collisions
         rb.MovePosition(rb.position+velocity);
 

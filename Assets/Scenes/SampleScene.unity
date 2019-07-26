@@ -3567,6 +3567,8 @@ MonoBehaviour:
   speed: 0.25
   velocity: {x: 0, y: 0}
   dashFrames: 45
+  inControl: 0
+  freezeInPlace: 0
   facing: {x: 0, y: 1}
 --- !u!212 &1521196771
 SpriteRenderer:
@@ -3749,9 +3751,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 872f780178f79ae46a0b4bc94c8e7cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashFrames: 30
+  dashFrames: 10
   inDash: 0
-  rb: {fileID: 0}
 --- !u!1 &1529545495
 GameObject:
   m_ObjectHideFlags: 0

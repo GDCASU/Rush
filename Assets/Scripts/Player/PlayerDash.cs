@@ -10,7 +10,7 @@ public class PlayerDash : MonoBehaviour {
     private PlayerMovement mov;
     private SpriteRenderer sp;
     public bool inDash = false;
-    public Rigidbody2D rb;
+    private Rigidbody2D rb;
 
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
@@ -22,7 +22,7 @@ public class PlayerDash : MonoBehaviour {
 		if (!inDash && InputManager.GetButtonDown(PlayerButton.Dash, player))
         {
             inDash = true;
-            rb.velocity = mov.velocity*100;
+            mov.inControl = false;
             StartCoroutine(dash());
         }
 	}
@@ -31,13 +31,19 @@ public class PlayerDash : MonoBehaviour {
     {
         sp.color = new Color(0.5f, 0.5f, 0.5f, 1);
         GetComponent<PlayerHealth>().inv = true;
+        mov.velocity = Vector2.zero;
+        var dashVel = mov.facing.normalized * mov.speed * 2;
+        var orgRot = transform.rotation;
         for (int i = dashFrames; i > 0; i--)
         {
-            
+            rb.MovePosition(rb.position+dashVel);
+            transform.Rotate(new Vector3(0,0,25));
             yield return new WaitForEndOfFrame();
         }
+        transform.rotation = orgRot;
         sp.color = new Color(1,1, 1, 1);
         GetComponent<PlayerHealth>().inv = false;
         inDash = false;
+        mov.inControl=true;
     }
 }
