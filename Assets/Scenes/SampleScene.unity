@@ -3729,17 +3729,20 @@ MonoBehaviour:
     windowFrames: 15
     radius: 1
     damage: 2
+    pushMultiplier: 0.5
     animationName: PlayerMeleeAttack
-  - stunFrames: 10
-    windowFrames: 15
+  - stunFrames: 15
+    windowFrames: 25
     radius: 1
     damage: 2
-    animationName: PlayerMeleeAttack
+    pushMultiplier: 1
+    animationName: PlayerCombo2
   - stunFrames: 25
     windowFrames: 30
     radius: 2
     damage: 4
-    animationName: PlayerMeleeAttack
+    pushMultiplier: 2
+    animationName: PlayerCombo3
 --- !u!114 &1521196779
 MonoBehaviour:
   m_ObjectHideFlags: 0

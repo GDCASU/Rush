@@ -20,7 +20,7 @@ public class AnimationController : MonoBehaviour {
 
     public IEnumerator animationEnd (float wait, Action onComplete){
         for(int i = 0; i < wait; i++) yield return new WaitForEndOfFrame();
-        onComplete?.Invoke();
         animationLocked = false;
+        onComplete?.Invoke();
     }
 }

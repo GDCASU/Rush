@@ -14,17 +14,20 @@ public class PlayerBasicMelee : MonoBehaviour
         public int windowFrames;// the frames before leaving the combo
         public float radius;
         public float damage;
+        public float pushMultiplier; // percent of run speed
         public string animationName;
     }
     public List<attackData> comboData;
     private int combo;
     private AnimationController anim;
     private PlayerMovement mov;    
+    private Rigidbody2D rb;
     void Start ()
     {
         col=GetComponent<BoxCollider2D>();
         anim=GetComponent<AnimationController>();
         mov=GetComponent<PlayerMovement>();
+        rb=GetComponent<Rigidbody2D>();
 	}
     public bool inAttackStun {
         get=>(combo > 0 && comboData[combo-1].stunFrames > framesSinceAttack);
@@ -43,9 +46,16 @@ public class PlayerBasicMelee : MonoBehaviour
             foreach(EnemyHealth enemy in hits){
                  enemy.takeDamage(comboData[combo].damage);
             }
+            curVel = mov.facing.normalized * mov.speed * comboData[combo].pushMultiplier;
             combo++;
         }
+        else if(inAttackStun) applyMovement();
 	}
+    private Vector2 curVel;
+    void applyMovement () {
+        rb.MovePosition(rb.position+curVel);
+        curVel/=1.5f;
+    }
     void LateUpdate () {
         // put code here for drawing hitboxes
     }
