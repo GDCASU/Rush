@@ -9,7 +9,9 @@ public class PlayerDash : MonoBehaviour {
     public int dashFrames;
     private PlayerMovement mov;
     private SpriteRenderer sp;
+    public float dashSpeedMultiplier = 1.5f;
     public bool inDash = false;
+    
     private Rigidbody2D rb;
 
 	void Start () {
@@ -32,7 +34,7 @@ public class PlayerDash : MonoBehaviour {
         sp.color = new Color(0.5f, 0.5f, 0.5f, 1);
         GetComponent<PlayerHealth>().inv = true;
         mov.velocity = Vector2.zero;
-        var dashVel = mov.facing.normalized * mov.speed * 2;
+        var dashVel = mov.facing.normalized * mov.speed * dashSpeedMultiplier;
         var orgRot = transform.rotation;
         for (int i = dashFrames; i > 0; i--)
         {

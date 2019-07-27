@@ -2721,6 +2721,7 @@ GameObject:
   - component: {fileID: 1003804387}
   - component: {fileID: 1003804386}
   - component: {fileID: 1003804394}
+  - component: {fileID: 1003804395}
   m_Layer: 0
   m_Name: TestBoss (2)
   m_TagString: Enemy
@@ -2942,6 +2943,33 @@ MonoBehaviour:
   - 0.75
   bulletsFaceOutward: 1
   colliderRadius: 0.05
+--- !u!114 &1003804395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1003804385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 097da67cb82ef0a4ca352774b96197e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controlledBehaviours:
+  - controlledBehaviour: {fileID: 1003804387}
+    activeHealthRangeMin: 0
+    activeHealthRangeMax: 0
+    disableAfterTime: 0
+    activeFramesBeforeDisable: 0
+  - controlledBehaviour: {fileID: 0}
+    activeHealthRangeMin: 0
+    activeHealthRangeMax: 0
+    disableAfterTime: 0
+    activeFramesBeforeDisable: 0
+  - controlledBehaviour: {fileID: 0}
+    activeHealthRangeMin: 0
+    activeHealthRangeMax: 0
+    disableAfterTime: 0
+    activeFramesBeforeDisable: 0
 --- !u!1 &1056662472
 GameObject:
   m_ObjectHideFlags: 0
@@ -4560,7 +4588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 872f780178f79ae46a0b4bc94c8e7cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashFrames: 10
+  dashFrames: 15
   inDash: 0
 --- !u!1 &1529545495
 GameObject:

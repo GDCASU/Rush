@@ -19,9 +19,15 @@ public class BossBehaviorController : MonoBehaviour {
     public void Awake() {
         foreach(subBehaviour b in controlledBehaviours){
             b.controlledBehaviour.enabled = false;
+            inactiveBehaviours.Add(b);
         }
     }
 	void Update () {
-		
+		foreach(subBehaviour a in activeBehaviours) {
+            
+        }
+        foreach(subBehaviour b in inactiveBehaviours) {
+
+        }
 	}
 }

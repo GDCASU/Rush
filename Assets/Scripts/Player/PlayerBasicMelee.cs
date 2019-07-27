@@ -42,7 +42,7 @@ public class PlayerBasicMelee : MonoBehaviour
             framesSinceAttack = 0;
             
             anim.tryNewAnimation(comboData[combo].animationName, false, comboData[combo].stunFrames, false, ()=> {anim.tryNewAnimation("PlayerIdle", true);} );
-            var hits=Physics2D.CircleCastAll(transform.position, comboData[combo].radius, mov.facing, 0f)?.Where(x => x.transform.tag == "Enemy")?.Select(e => e.transform.GetComponent<EnemyHealth>());
+            var hits=Physics2D.CircleCastAll((Vector2)transform.position+mov.facing*comboData[combo].radius, comboData[combo].radius, mov.facing, 0f)?.Where(x => x.transform.tag == "Enemy")?.Select(e => e.transform.GetComponent<EnemyHealth>());
             foreach(EnemyHealth enemy in hits){
                  enemy.takeDamage(comboData[combo].damage);
             }
@@ -56,7 +56,8 @@ public class PlayerBasicMelee : MonoBehaviour
         rb.MovePosition(rb.position+curVel);
         curVel/=1.5f;
     }
-    void LateUpdate () {
+    void OnDrawGizmos () {
         // put code here for drawing hitboxes
+        Gizmos.DrawWireSphere((Vector2)transform.position+mov.facing*comboData[(combo>0) ? combo-1 : combo].radius,comboData[(combo>0)?combo-1 : combo].radius);  
     }
 }
