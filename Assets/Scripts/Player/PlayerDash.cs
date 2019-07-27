@@ -7,6 +7,7 @@ public class PlayerDash : MonoBehaviour {
 
     private IInputPlayer player;
     public int dashFrames;
+    public int extraInvFrames;
     private PlayerMovement mov;
     private SpriteRenderer sp;
     public float dashSpeedMultiplier = 1.5f;
@@ -45,9 +46,15 @@ public class PlayerDash : MonoBehaviour {
             yield return new WaitForEndOfFrame();
         }
         transform.rotation = orgRot;
+        mov.inControl=true;
+        StartCoroutine(endInv());
+    }
+
+    public IEnumerator endInv()
+    {
+        for (int i = dashFrames; i > 0; i--) yield return new WaitForEndOfFrame();
         sp.color = new Color(1,1, 1, 1);
         GetComponent<PlayerHealth>().inv = false;
         inDash = false;
-        mov.inControl=true;
     }
 }

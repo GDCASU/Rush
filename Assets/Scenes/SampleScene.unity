@@ -4363,6 +4363,7 @@ MonoBehaviour:
   velocity: {x: 0, y: 0}
   inControl: 0
   freezeInPlace: 0
+  overRideFacing: {x: 0, y: 0}
   facing: {x: 0, y: 1}
 --- !u!212 &1521196771
 SpriteRenderer:
@@ -4561,6 +4562,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashFrames: 15
+  extraInvFrames: 5
   dashSpeedMultiplier: 1.5
   inDash: 0
 --- !u!1 &1529545495
