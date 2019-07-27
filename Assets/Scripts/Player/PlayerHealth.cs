@@ -48,10 +48,10 @@ public class PlayerHealth : MonoBehaviour {
         }
     }
     // changes the amount of frames the player is flashing for
-    const int iframes = 20;
+    const int iframes = 40;
     public IEnumerator flashingSprite () {
         for(int i = iframes; i>0; i--){
-            sp.enabled = i%2 == 0;
+            sp.enabled = i%2 == 0 ? !sp.enabled : sp.enabled;
             yield return new WaitForEndOfFrame();
         }
         sp.enabled = true;

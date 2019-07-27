@@ -17,8 +17,6 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer sp;
     private AnimationController anim;
     public Vector2 velocity;
-    public int dashFrames;
-
     public bool inControl=true; // player has direct control over movement
     public bool freezeInPlace; // player cannot move at all
 
