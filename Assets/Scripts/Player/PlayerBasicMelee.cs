@@ -58,6 +58,6 @@ public class PlayerBasicMelee : MonoBehaviour
     }
     void OnDrawGizmos () {
         // put code here for drawing hitboxes
-        if( Application.isPlayer ) Gizmos.DrawWireSphere((Vector2)transform.position+mov.facing*comboData[(combo>0) ? combo-1 : combo].radius,comboData[(combo>0)?combo-1 : combo].radius);  
+        if( Application.isPlaying ) Gizmos.DrawWireSphere((Vector2)transform.position+mov.facing*comboData[(combo>0) ? combo-1 : combo].radius,comboData[(combo>0)?combo-1 : combo].radius);  
     }
 }

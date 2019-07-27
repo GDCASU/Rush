@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 position = Input.mousePosition;
         position.z = 10;
         position = Camera.main.ScreenToWorldPoint(position);
-        overRideFacing = position - transform.position;
+        overRideFacing = (position - transform.position).normalized;
     }
     public void checkFaceMouse() {
         if(overRideFacing != Vector2.zero){
