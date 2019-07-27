@@ -40,13 +40,13 @@ public class PlayerBasicMelee : MonoBehaviour
         {
             if(combo >= comboData.Count || framesSinceAttack > comboData[combo].windowFrames) combo = 0;
             framesSinceAttack = 0;
-            
+            mov.faceMouse();
             anim.tryNewAnimation(comboData[combo].animationName, false, comboData[combo].stunFrames, false, ()=> {anim.tryNewAnimation("PlayerIdle", true);} );
-            var hits=Physics2D.CircleCastAll((Vector2)transform.position+mov.facing*comboData[combo].radius, comboData[combo].radius, mov.facing, 0f)?.Where(x => x.transform.tag == "Enemy")?.Select(e => e.transform.GetComponent<EnemyHealth>());
+            var hits=Physics2D.CircleCastAll((Vector2)transform.position+mov.overRideFacing*comboData[combo].radius, comboData[combo].radius, mov.overRideFacing, 0f)?.Where(x => x.transform.tag == "Enemy")?.Select(e => e.transform.GetComponent<EnemyHealth>());
             foreach(EnemyHealth enemy in hits){
                  enemy.takeDamage(comboData[combo].damage);
             }
-            curVel = mov.facing.normalized * mov.speed * comboData[combo].pushMultiplier;
+            curVel = mov.overRideFacing.normalized * mov.speed * comboData[combo].pushMultiplier;
             combo++;
         }
         else if(inAttackStun) applyMovement();
@@ -58,6 +58,6 @@ public class PlayerBasicMelee : MonoBehaviour
     }
     void OnDrawGizmos () {
         // put code here for drawing hitboxes
-        if( !Application.isEditor ) Gizmos.DrawWireSphere((Vector2)transform.position+mov.facing*comboData[(combo>0) ? combo-1 : combo].radius,comboData[(combo>0)?combo-1 : combo].radius);  
+        if( Application.isPlayer ) Gizmos.DrawWireSphere((Vector2)transform.position+mov.facing*comboData[(combo>0) ? combo-1 : combo].radius,comboData[(combo>0)?combo-1 : combo].radius);  
     }
 }

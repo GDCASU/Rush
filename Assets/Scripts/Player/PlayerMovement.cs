@@ -36,10 +36,10 @@ public class PlayerMovement : MonoBehaviour
     void Update ()
     {
         CheckMovementInput();
-        //faceMouse();
+        checkFaceMouse();
         flipSprite();
 	}
-
+    public Vector2 overRideFacing = Vector2.zero;
     public Vector2 facing = Vector2.up;
     private Vector2 lastVel;
     void CheckMovementInput()
@@ -54,14 +54,18 @@ public class PlayerMovement : MonoBehaviour
 
         lastVel = velocity;
     }
-    void faceMouse()
+    public void faceMouse()
     {
-        
         Vector3 position = Input.mousePosition;
-        position.z = -10f;
+        position.z = 10;
         position = Camera.main.ScreenToWorldPoint(position);
-        Vector2 direction = new Vector2((position.x - transform.position.x), (position.y - transform.position.y));
-        transform.up = -direction;
+        overRideFacing = position - transform.position;
+    }
+    public void checkFaceMouse() {
+        if(overRideFacing != Vector2.zero){
+            facing = overRideFacing;
+            overRideFacing = Vector2.zero;
+        }
     }
     void flipSprite () {
        sp.flipX = (facing.x < 0);
