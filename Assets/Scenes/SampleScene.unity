@@ -3724,10 +3724,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3264a413d1c12ba4584ed44efc605d77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackStunFrames: 060000000600000006000000
-  comboFrames: 0a0000000a0000000a000000
-  attackRadius: 010000000100000002000000
-  attackDamage: 020000000300000005000000
+  comboData:
+  - stunFrames: 10
+    windowFrames: 15
+    radius: 1
+    damage: 2
+    animationName: PlayerMeleeAttack
+  - stunFrames: 10
+    windowFrames: 15
+    radius: 1
+    damage: 2
+    animationName: PlayerMeleeAttack
+  - stunFrames: 25
+    windowFrames: 30
+    radius: 2
+    damage: 4
+    animationName: PlayerMeleeAttack
 --- !u!114 &1521196779
 MonoBehaviour:
   m_ObjectHideFlags: 0

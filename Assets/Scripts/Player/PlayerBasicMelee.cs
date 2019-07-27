@@ -8,10 +8,15 @@ public class PlayerBasicMelee : MonoBehaviour
 {
     private IInputPlayer player;
     private BoxCollider2D col;
-    public List<int> attackStunFrames = new List<int>(); //the frames for each swing
-    public List<int> comboFrames = new List<int>(); // the frames before leaving the combo
-    public List<int> attackRadius = new List<int>(); 
-    public List<int> attackDamage = new List<int>(); 
+    [Serializable]
+    public struct attackData {
+        public int stunFrames; //the frames for each swing
+        public int windowFrames;// the frames before leaving the combo
+        public float radius;
+        public float damage;
+        public string animationName;
+    }
+    public List<attackData> comboData;
     private int combo;
     private AnimationController anim;
     private PlayerMovement mov;    
@@ -22,7 +27,7 @@ public class PlayerBasicMelee : MonoBehaviour
         mov=GetComponent<PlayerMovement>();
 	}
     public bool inAttackStun {
-        get=>(combo > 0 && attackStunFrames[combo-1] > framesSinceAttack);
+        get=>(combo > 0 && comboData[combo-1].stunFrames > framesSinceAttack);
     }
 	private int framesSinceAttack=9999;
 	void Update ()
@@ -30,13 +35,13 @@ public class PlayerBasicMelee : MonoBehaviour
         framesSinceAttack++;
         if (InputManager.GetButtonDown(PlayerInput.PlayerButton.Melee, player) && !inAttackStun)
         {
-            if(combo >= comboFrames.Count || framesSinceAttack > comboFrames[combo]) combo = 0;
+            if(combo >= comboData.Count || framesSinceAttack > comboData[combo].windowFrames) combo = 0;
             framesSinceAttack = 0;
             
-            anim.tryNewAnimation("PlayerMeleeAttack", false, attackStunFrames[combo], false, ()=> {anim.tryNewAnimation("PlayerIdle", true);} );
-            var hits=Physics2D.CircleCastAll(transform.position, attackRadius[combo], mov.facing, 0f)?.Where(x => x.transform.tag == "Enemy")?.Select(e => e.transform.GetComponent<EnemyHealth>());
+            anim.tryNewAnimation(comboData[combo].animationName, false, comboData[combo].stunFrames, false, ()=> {anim.tryNewAnimation("PlayerIdle", true);} );
+            var hits=Physics2D.CircleCastAll(transform.position, comboData[combo].radius, mov.facing, 0f)?.Where(x => x.transform.tag == "Enemy")?.Select(e => e.transform.GetComponent<EnemyHealth>());
             foreach(EnemyHealth enemy in hits){
-                 enemy.takeDamage(attackDamage[combo]);
+                 enemy.takeDamage(comboData[combo].damage);
             }
             combo++;
         }
