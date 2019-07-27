@@ -14,8 +14,8 @@ public class BossBehaviorController : MonoBehaviour {
         public int activeFramesBeforeDisable;
     }
     public List<subBehaviour> controlledBehaviours;
-    private List<subBehaviour> activeBehaviours;
-    private List<subBehaviour> inactiveBehaviours;
+    private List<subBehaviour> activeBehaviours = new List<subBehaviour>();
+    private List<subBehaviour> inactiveBehaviours = new List<subBehaviour>();
     public void Awake() {
         foreach(subBehaviour b in controlledBehaviours){
             b.controlledBehaviour.enabled = false;
@@ -24,7 +24,7 @@ public class BossBehaviorController : MonoBehaviour {
     }
 	void Update () {
 		foreach(subBehaviour a in activeBehaviours) {
-            
+
         }
         foreach(subBehaviour b in inactiveBehaviours) {
 
