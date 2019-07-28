@@ -10,7 +10,7 @@ public class EnemyHealth : MonoBehaviour
     public delegate void damageFunction(float damageDealt, float healthAfterDamage);
     public event damageFunction onEnemyDamage;
     public event Action OnDeath;
-    public void Awake() => health = maxHealth;
+    public void Start() => health = maxHealth;
 
     public float healthPercent {
         get => (float)100 * (health / maxHealth);
