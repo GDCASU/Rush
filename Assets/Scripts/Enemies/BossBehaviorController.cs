@@ -41,7 +41,7 @@ public class BossBehaviorController : MonoBehaviour {
     private PhaseAction currentAction;
     private System.Random rand = new System.Random();
     public void checkHealth (float damageDealt, float healthAfterDamage) {
-        while(damageDealt > 0) {
+        while(damageDealt > 0 && phaseHealth > 0) {
             float temp = damageDealt;
             damageDealt -= phaseHealth;
             phaseHealth -= temp;
@@ -54,6 +54,7 @@ public class BossBehaviorController : MonoBehaviour {
         if( bossPhases[currentPhase].endBehaviour != null) bossPhases[currentPhase].endBehaviour.enabled = true;
         foreach(PhaseAction p in bossPhases[currentPhase].backgroundActions) p.behavior.enabled = false;
         if(currentAction.behavior != null) currentAction.behavior.enabled = false;
+        Debug.Log("current Phase" + currentPhase);
         // if there are phases left
         if(currentPhase<bossPhases.Count-1) {
             currentPhase++;

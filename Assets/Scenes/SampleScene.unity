@@ -2721,6 +2721,8 @@ GameObject:
   - component: {fileID: 1003804387}
   - component: {fileID: 1003804386}
   - component: {fileID: 1003804394}
+  - component: {fileID: 1003804396}
+  - component: {fileID: 1003804395}
   m_Layer: 0
   m_Name: TestBoss (2)
   m_TagString: Enemy
@@ -2942,6 +2944,76 @@ MonoBehaviour:
   - 0.75
   bulletsFaceOutward: 1
   colliderRadius: 0.05
+--- !u!114 &1003804395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1003804385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb16419c509c2f94982de5d5e8fa0091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSpeed: 7
+  bulletAmount: 8
+  bulletArc: 6.2831855
+  ArcOffset: 0
+  offsetFacesPlayer: 0
+  bulletfrequency: 0.05
+  spin: 0.05
+  wave: 0
+  bulletSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  bulletTint: {r: 1, g: 1, b: 1, a: 1}
+  rotation: {x: 0, y: 0, z: 0, w: 1}
+  scale: {x: 2, y: 2, z: 2}
+  moveFunc: 0
+  spawnFunc: 0
+  SpawnFunctionParams: []
+  bulletsFaceOutward: 1
+  colliderRadius: 0.1
+--- !u!114 &1003804396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1003804385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 097da67cb82ef0a4ca352774b96197e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossPhases:
+  - health: 20
+    startBehaviour: {fileID: 0}
+    endBehaviour: {fileID: 0}
+    backgroundActions:
+    - selectionChance: 0
+      runFrames: 600
+      cooldownFrames: 100
+      behavior: {fileID: 1003804387}
+    - selectionChance: 0
+      runFrames: 600
+      cooldownFrames: 100
+      behavior: {fileID: 1003804386}
+    - selectionChance: 0
+      runFrames: 600
+      cooldownFrames: 100
+      behavior: {fileID: 1003804394}
+    PossibleActions: []
+  - health: 20
+    startBehaviour: {fileID: 0}
+    endBehaviour: {fileID: 0}
+    backgroundActions: []
+    PossibleActions:
+    - selectionChance: 0
+      runFrames: 100
+      cooldownFrames: 100
+      behavior: {fileID: 1003804395}
+    - selectionChance: 0
+      runFrames: 300
+      cooldownFrames: 50
+      behavior: {fileID: 1003804386}
 --- !u!1 &1056662472
 GameObject:
   m_ObjectHideFlags: 0
