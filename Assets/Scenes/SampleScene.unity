@@ -2724,7 +2724,7 @@ GameObject:
   - component: {fileID: 1003804396}
   - component: {fileID: 1003804395}
   m_Layer: 0
-  m_Name: TestBoss (2)
+  m_Name: TestBossPhaseController
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2892,7 +2892,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 81b92f2d915dacd4e8d334e378276997, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.3018868, g: 0.14382343, b: 0.14382343, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2990,15 +2990,15 @@ MonoBehaviour:
     backgroundActions:
     - selectionChance: 0
       runFrames: 600
-      cooldownFrames: 100
+      cooldownFrames: 200
       behavior: {fileID: 1003804387}
     - selectionChance: 0
       runFrames: 600
-      cooldownFrames: 100
+      cooldownFrames: 200
       behavior: {fileID: 1003804386}
     - selectionChance: 0
       runFrames: 600
-      cooldownFrames: 100
+      cooldownFrames: 200
       behavior: {fileID: 1003804394}
     PossibleActions: []
   - health: 20

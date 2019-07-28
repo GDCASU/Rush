@@ -54,7 +54,6 @@ public class BossBehaviorController : MonoBehaviour {
         if( bossPhases[currentPhase].endBehaviour != null) bossPhases[currentPhase].endBehaviour.enabled = true;
         foreach(PhaseAction p in bossPhases[currentPhase].backgroundActions) p.behavior.enabled = false;
         if(currentAction.behavior != null) currentAction.behavior.enabled = false;
-        Debug.Log("current Phase" + currentPhase);
         // if there are phases left
         if(currentPhase<bossPhases.Count-1) {
             currentPhase++;
@@ -65,7 +64,7 @@ public class BossBehaviorController : MonoBehaviour {
     public void StartPhase () {
         phaseHealth = bossPhases[currentPhase].health;
         if( bossPhases[currentPhase].startBehaviour != null) bossPhases[currentPhase].startBehaviour.enabled = true;
-        foreach(PhaseAction p in bossPhases[currentPhase].backgroundActions) p.behavior.enabled = true;
+        foreach(PhaseAction p in bossPhases[currentPhase].backgroundActions) StartCoroutine( startActionBackground(p) );
         ChangeAction();
     }
     public void ChangeAction () {
@@ -97,7 +96,8 @@ public class BossBehaviorController : MonoBehaviour {
     public IEnumerator startActionBackground (PhaseAction action) {
         int startedPhase = currentPhase;
         while(currentPhase == startedPhase) {
-            if(action.cooldownFrames > 0) startAction(action, false);
+            action.behavior.enabled = true;
+            if(action.cooldownFrames > 0) yield return StartCoroutine( startAction(action, false) );
             else yield return new WaitForEndOfFrame();
         }
     }
