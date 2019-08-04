@@ -11,6 +11,7 @@ public class PlayerBasicMelee : MonoBehaviour
     [Serializable]
     public struct attackData {
         public int stunFrames; //the frames for each swing
+        public int startupFrames; // frames between hitting the button and actually having the attack come out
         public int windowFrames;// the frames before leaving the combo
         public float radius;
         public float damage;
@@ -29,8 +30,8 @@ public class PlayerBasicMelee : MonoBehaviour
         mov=GetComponent<PlayerMovement>();
         rb=GetComponent<Rigidbody2D>();
 	}
-    public bool inAttackStun {
-        get=>(combo > 0 && comboData[combo-1].stunFrames > framesSinceAttack);
+    public bool inAttackStun { // time before attack animations end
+        get=>(combo > 0 && (comboData[combo-1].startupFrames + comboData[combo-1].stunFrames) > framesSinceAttack);
     }
 	private int framesSinceAttack=9999;
 	void Update ()
@@ -41,20 +42,23 @@ public class PlayerBasicMelee : MonoBehaviour
             if(combo >= comboData.Count || framesSinceAttack > comboData[combo].windowFrames) combo = 0;
             framesSinceAttack = 0;
             mov.faceMouse();
-            anim.tryNewAnimation(comboData[combo].animationName, false, comboData[combo].stunFrames, false, ()=> {anim.tryNewAnimation("PlayerIdle", true);} );
-            var hits=Physics2D.CircleCastAll((Vector2)transform.position+mov.overRideFacing*comboData[combo].radius, comboData[combo].radius, mov.overRideFacing, 0f)?.Where(x => x.transform.tag == "Enemy")?.Select(e => e.transform.GetComponent<EnemyHealth>());
-            foreach(EnemyHealth enemy in hits){
-                 enemy.takeDamage(comboData[combo].damage);
-            }
+            anim.tryNewAnimation("PlayerCharge", false, comboData[combo].startupFrames, false, ()=> {applyAttack();} );
             curVel = mov.overRideFacing.normalized * mov.speed * comboData[combo].pushMultiplier;
+            mov.inControl=false;
             combo++;
         }
-        else if(inAttackStun) applyMovement();
+        else if(combo > 0 && framesSinceAttack > comboData[combo-1].startupFrames && inAttackStun ) applyMovement();
 	}
     private Vector2 curVel;
     void applyMovement () {
         rb.MovePosition(rb.position+curVel);
         curVel/=1.5f;
+    }
+
+    void applyAttack() {
+        anim.tryNewAnimation(comboData[combo-1].animationName, false, comboData[combo-1].stunFrames, false, ()=> {anim.tryNewAnimation("PlayerIdle", true); mov.inControl=true;} );
+        var hits=Physics2D.CircleCastAll((Vector2)transform.position+mov.overRideFacing*comboData[combo-1].radius, comboData[combo-1].radius, mov.overRideFacing, 0f)?.Where(x => x.transform.tag == "Enemy")?.Select(e => e.transform.GetComponent<EnemyHealth>());
+        foreach(EnemyHealth enemy in hits) enemy.takeDamage(comboData[combo-1].damage);
     }
     void OnDrawGizmos () {
         // put code here for drawing hitboxes

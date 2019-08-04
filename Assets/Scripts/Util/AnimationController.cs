@@ -9,8 +9,10 @@ public class AnimationController : MonoBehaviour {
     public void Start() {
         anim = GetComponent<Animator>();
     }
+    private bool breakCallback;
     public void tryNewAnimation (string animationName, bool loop, float frames = 0, bool force = false, Action onComplete = null){
         if(animationLocked && !force)return;
+        if(force)breakCallback = true;
         animationLocked = !loop;
         anim.Play(animationName);
         if(!loop) {
@@ -19,7 +21,10 @@ public class AnimationController : MonoBehaviour {
     }
 
     public IEnumerator animationEnd (float wait, Action onComplete){
-        for(int i = 0; i < wait; i++) yield return new WaitForEndOfFrame();
+        for(int i = 0; i < wait; i++) {
+                if(breakCallback) { breakCallback = false; yield break;} 
+                else yield return new WaitForEndOfFrame(); 
+            }
         animationLocked = false;
         onComplete?.Invoke();
     }

@@ -10,6 +10,8 @@ TextureImporter:
     21300010: lilfuckinknifedude_5
     21300012: lilfuckinknifedude_6
     21300014: lilfuckinknifedude_7
+    21300016: lilfuckinknifedude_8
+    21300018: lilfuckinknifedude_9
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -107,6 +109,46 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
+        y: 981
+        width: 120
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f476d1ab546e631488507f42a3e8cb79
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lilfuckinknifedude_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 872
+        width: 120
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f89a9d3405f320945b3ef55669ed5d68
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lilfuckinknifedude_2
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 763
         width: 120
         height: 109
@@ -117,13 +159,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4bd75696ac71cf469a6baa2e420e585
+      spriteID: 3504b57949a2f664c9d3b34dd1279ec3
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lilfuckinknifedude_1
+      name: lilfuckinknifedude_3
       rect:
         serializedVersion: 2
         x: 0
@@ -137,13 +179,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61e4558c3cf2f114f84a61d36e1fc062
+      spriteID: 8bb8fbc824e055441bbad3e51588b7cf
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lilfuckinknifedude_2
+      name: lilfuckinknifedude_4
       rect:
         serializedVersion: 2
         x: 0
@@ -157,13 +199,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5d2f4b88fc5d25845889d35136759406
+      spriteID: fd0b521cc60c9ae4cb4bd8053127708b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lilfuckinknifedude_3
+      name: lilfuckinknifedude_5
       rect:
         serializedVersion: 2
         x: 0
@@ -177,13 +219,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5c9cc69c6f0d0854fb1b5f62ea64da90
+      spriteID: 6f7fcd0e7dee0dc4491d782ec58462d1
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lilfuckinknifedude_4
+      name: lilfuckinknifedude_6
       rect:
         serializedVersion: 2
         x: 0
@@ -197,13 +239,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5abe487d9947b104f843305112b26b15
+      spriteID: faa028ce2922474408d66da66bc2a46b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lilfuckinknifedude_5
+      name: lilfuckinknifedude_7
       rect:
         serializedVersion: 2
         x: 0
@@ -217,13 +259,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43126df3db85ea44191d478260bb7902
+      spriteID: f27fcd6fcbe515146a9cc40fe65a9386
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lilfuckinknifedude_6
+      name: lilfuckinknifedude_8
       rect:
         serializedVersion: 2
         x: 0
@@ -237,13 +279,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 779ae2de34baa7d46abf97900f017450
+      spriteID: 8ec078e0ff52bb24d925192722d0768c
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lilfuckinknifedude_7
+      name: lilfuckinknifedude_9
       rect:
         serializedVersion: 2
         x: 0
@@ -257,7 +299,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e01ccde572cc08c4f82645361b0b32be
+      spriteID: c45e4151a17b3044bad800cec168aa4a
       vertices: []
       indices: 
       edges: []
