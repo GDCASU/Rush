@@ -17,6 +17,7 @@ public class PlayerBasicMelee : MonoBehaviour
         public float damage;
         public float pushMultiplier; // percent of run speed
         public string animationName;
+        public Sprite effectSprite;
     }
     public List<attackData> comboData;
     private int combo;
@@ -54,11 +55,12 @@ public class PlayerBasicMelee : MonoBehaviour
         rb.MovePosition(rb.position+curVel);
         curVel/=1.5f;
     }
-
+    public SlashLazy slashEffect;
     void applyAttack() {
         anim.tryNewAnimation(comboData[combo-1].animationName, false, comboData[combo-1].stunFrames, false, ()=> {anim.tryNewAnimation("PlayerIdle", true); mov.inControl=true;} );
         var hits=Physics2D.CircleCastAll((Vector2)transform.position+mov.overRideFacing*comboData[combo-1].radius, comboData[combo-1].radius, mov.overRideFacing, 0f)?.Where(x => x.transform.tag == "Enemy")?.Select(e => e.transform.GetComponent<EnemyHealth>());
         foreach(EnemyHealth enemy in hits) enemy.takeDamage(comboData[combo-1].damage);
+        slashEffect.Enable(comboData[combo-1].effectSprite, this.transform.position, mov.facing);
     }
     void OnDrawGizmos () {
         // put code here for drawing hitboxes
