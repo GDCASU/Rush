@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     void Update ()
     {
-        CheckMovementInput();
+        if(!freezeInPlace) CheckMovementInput();
         checkFaceMouse();
         flipSprite();
 	}

@@ -4701,7 +4701,7 @@ MonoBehaviour:
     windowFrames: 30
     radius: 2
     damage: 4
-    pushMultiplier: 2
+    pushMultiplier: 3
     animationName: PlayerCombo3
     effectSprite: {fileID: 21300004, guid: a3fcbd07f16c56041b4f74b9ea5d86d1, type: 3}
   slashEffect: {fileID: 1332433608}

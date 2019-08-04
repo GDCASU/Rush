@@ -42,13 +42,16 @@ public class PlayerBasicMelee : MonoBehaviour
         if ( attackBuffered || InputManager.GetButtonDown(PlayerInput.PlayerButton.Melee, player) )
         {
             if(!inAttackStun) {
+                if(combo >= comboData.Count || framesSinceAttack > comboData[combo].windowFrames) { // reset combo counter
+                    combo = 0; 
+                    if(attackBuffered) {attackBuffered = false; return;} //prevent buffering past one combo
+                }
                 attackBuffered = false;
-                if(combo >= comboData.Count || framesSinceAttack > comboData[combo].windowFrames) combo = 0;
                 framesSinceAttack = 0;
                 mov.faceMouse();
                 anim.tryNewAnimation("PlayerCharge", false, comboData[combo].startupFrames, false, ()=> {applyAttack();} );
                 curVel = mov.overRideFacing.normalized * mov.speed * comboData[combo].pushMultiplier;
-                mov.inControl=false;
+                mov.freezeInPlace=true;
                 combo++;
             }
             else {
@@ -64,7 +67,7 @@ public class PlayerBasicMelee : MonoBehaviour
     }
     public SlashLazy slashEffect;
     void applyAttack() {
-        anim.tryNewAnimation(comboData[combo-1].animationName, false, comboData[combo-1].stunFrames, false, ()=> {anim.tryNewAnimation("PlayerIdle", true); mov.inControl=true;} );
+        anim.tryNewAnimation(comboData[combo-1].animationName, false, comboData[combo-1].stunFrames, false, ()=> {anim.tryNewAnimation("PlayerIdle", true); mov.freezeInPlace=false;} );
         var hits=Physics2D.CircleCastAll((Vector2)transform.position+mov.overRideFacing*comboData[combo-1].radius, comboData[combo-1].radius, mov.overRideFacing, 0f)?.Where(x => x.transform.tag == "Enemy")?.Select(e => e.transform.GetComponent<EnemyHealth>());
         foreach(EnemyHealth enemy in hits) enemy.takeDamage(comboData[combo-1].damage);
         slashEffect.Enable(comboData[combo-1].effectSprite, this.transform.position, mov.facing);
