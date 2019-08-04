@@ -42,10 +42,7 @@ public class PlayerBasicMelee : MonoBehaviour
         if ( attackBuffered || InputManager.GetButtonDown(PlayerInput.PlayerButton.Melee, player) )
         {
             if(!inAttackStun) {
-                if(combo >= comboData.Count || framesSinceAttack > comboData[combo].windowFrames) { // reset combo counter
-                    combo = 0; 
-                    if(attackBuffered) {attackBuffered = false; return;} //prevent buffering past one combo
-                }
+                if(combo >= comboData.Count || framesSinceAttack > comboData[combo].windowFrames) combo = 0; // reset combo counter
                 attackBuffered = false;
                 framesSinceAttack = 0;
                 mov.faceMouse();
@@ -55,7 +52,7 @@ public class PlayerBasicMelee : MonoBehaviour
                 combo++;
             }
             else {
-                attackBuffered = true;
+                if(combo < 3) attackBuffered = true;
             }
         }
         else if(combo > 0 && framesSinceAttack > comboData[combo-1].startupFrames && inAttackStun ) applyMovement();
