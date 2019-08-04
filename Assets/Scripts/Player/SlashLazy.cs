@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SlashLazy : MonoBehaviour {
     SpriteRenderer rend;
-    public void Start()=> rend = GetComponent<SpriteRenderer>();
+    public void Awake()=> rend = GetComponent<SpriteRenderer>();
 	public void Enable (Sprite s, Vector3 pos, Vector2 dir) {
         this.enabled = true;
         rend.enabled = true;

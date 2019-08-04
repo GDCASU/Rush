@@ -35,18 +35,25 @@ public class PlayerBasicMelee : MonoBehaviour
         get=>(combo > 0 && (comboData[combo-1].startupFrames + comboData[combo-1].stunFrames) > framesSinceAttack);
     }
 	private int framesSinceAttack=9999;
+    private bool attackBuffered=false;
 	void Update ()
     {
         framesSinceAttack++;
-        if (InputManager.GetButtonDown(PlayerInput.PlayerButton.Melee, player) && !inAttackStun)
+        if ( attackBuffered || InputManager.GetButtonDown(PlayerInput.PlayerButton.Melee, player) )
         {
-            if(combo >= comboData.Count || framesSinceAttack > comboData[combo].windowFrames) combo = 0;
-            framesSinceAttack = 0;
-            mov.faceMouse();
-            anim.tryNewAnimation("PlayerCharge", false, comboData[combo].startupFrames, false, ()=> {applyAttack();} );
-            curVel = mov.overRideFacing.normalized * mov.speed * comboData[combo].pushMultiplier;
-            mov.inControl=false;
-            combo++;
+            if(!inAttackStun) {
+                attackBuffered = false;
+                if(combo >= comboData.Count || framesSinceAttack > comboData[combo].windowFrames) combo = 0;
+                framesSinceAttack = 0;
+                mov.faceMouse();
+                anim.tryNewAnimation("PlayerCharge", false, comboData[combo].startupFrames, false, ()=> {applyAttack();} );
+                curVel = mov.overRideFacing.normalized * mov.speed * comboData[combo].pushMultiplier;
+                mov.inControl=false;
+                combo++;
+            }
+            else {
+                attackBuffered = true;
+            }
         }
         else if(combo > 0 && framesSinceAttack > comboData[combo-1].startupFrames && inAttackStun ) applyMovement();
 	}
