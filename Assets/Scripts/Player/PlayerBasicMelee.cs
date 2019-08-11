@@ -46,7 +46,7 @@ public class PlayerBasicMelee : MonoBehaviour
                 attackBuffered = false;
                 framesSinceAttack = 0;
                 mov.faceMouse();
-                anim.tryNewAnimation("PlayerCharge", false, comboData[combo].startupFrames, false, ()=> {applyAttack();} );
+                anim.tryNewAnimation("PlayerCharge", false, comboData[combo].startupFrames, false, () => applyAttack() );
                 curVel = mov.overRideFacing.normalized * mov.speed * comboData[combo].pushMultiplier;
                 mov.freezeInPlace=true;
                 combo++;
@@ -62,15 +62,33 @@ public class PlayerBasicMelee : MonoBehaviour
         rb.MovePosition(rb.position+curVel);
         curVel/=1.5f;
     }
+    public float overlapRange = 0.8f; // 1 means the player is on the edge of the hitbox, 0 means the center
     public SlashLazy slashEffect;
     void applyAttack() {
         anim.tryNewAnimation(comboData[combo-1].animationName, false, comboData[combo-1].stunFrames, false, ()=> {anim.tryNewAnimation("PlayerIdle", true); mov.freezeInPlace=false;} );
-        var hits=Physics2D.CircleCastAll((Vector2)transform.position+mov.overRideFacing*comboData[combo-1].radius, comboData[combo-1].radius, mov.overRideFacing, 0f)?.Where(x => x.transform.tag == "Enemy")?.Select(e => e.transform.GetComponent<EnemyHealth>());
-        foreach(EnemyHealth enemy in hits) enemy.takeDamage(comboData[combo-1].damage);
+        
+        // Get the list of game objects in our hitbox
+        var hits=Physics2D.CircleCastAll((Vector2)transform.position+mov.overRideFacing*comboData[combo-1].radius*overlapRange, comboData[combo-1].radius, mov.overRideFacing, 0f);
+
+        // Damage all hit enemies
+        var enemies = hits?.Where(x => x.transform.tag == "Enemy")?.Select(e => e.transform.GetComponent<EnemyHealth>());
+        foreach(EnemyHealth enemy in enemies) enemy.takeDamage(comboData[combo-1].damage);
+
+        // If we want we can reflect all the bullets
+        var bullets = hits?.Where(x => x.transform.tag == "Bullet")?.Select(b => b.transform.GetComponent<Bullet>());
+        foreach(Bullet bullet in bullets) reflectBulletFromPlayer(bullet);
+
         slashEffect.Enable(comboData[combo-1].effectSprite, this.transform.position, mov.facing);
     }
     void OnDrawGizmos () {
         // put code here for drawing hitboxes
-        if( Application.isPlaying ) Gizmos.DrawWireSphere((Vector2)transform.position+mov.facing*comboData[(combo>0) ? combo-1 : combo].radius,comboData[(combo>0)?combo-1 : combo].radius);  
+        if( Application.isPlaying ) Gizmos.DrawWireSphere((Vector2)transform.position+mov.facing*comboData[(combo>0) ? combo-1 : combo].radius*overlapRange,comboData[(combo>0)?combo-1 : combo].radius);  
+    }
+
+    private void reflectBulletFromPlayer(Bullet bullet){
+        bullet.speed*=1.5f; 
+        bullet.MoveVector = (bullet.transform.position - transform.position).normalized * bullet.speed; 
+        bullet.setFacingToVector(bullet.MoveVector); 
+        bullet.hostile = false;
     }
 }
