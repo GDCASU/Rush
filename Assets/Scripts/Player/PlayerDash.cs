@@ -35,9 +35,8 @@ public class PlayerDash : MonoBehaviour {
         sp.color = new Color(0.5f, 0.5f, 0.5f, 1);
         GetComponent<PlayerHealth>().inv = true;
         mov.velocity = Vector2.zero;
-        mov.faceMouse();
 
-        var dashVel = mov.overRideFacing.normalized * mov.speed * dashSpeedMultiplier;
+        var dashVel = mov.facing.normalized * mov.speed * dashSpeedMultiplier;
         var orgRot = transform.rotation;
         for (int i = dashFrames; i > 0; i--)
         {
