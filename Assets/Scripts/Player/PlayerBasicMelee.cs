@@ -20,6 +20,7 @@ public class PlayerBasicMelee : MonoBehaviour
         public Sprite effectSprite;
     }
     public List<attackData> comboData;
+    public bool reflectBullets = true;
     private int combo;
     private AnimationController anim;
     private PlayerMovement mov;    
@@ -75,8 +76,10 @@ public class PlayerBasicMelee : MonoBehaviour
         foreach(EnemyHealth enemy in enemies) enemy.takeDamage(comboData[combo-1].damage);
 
         // If we want we can reflect all the bullets
-        var bullets = hits?.Where(x => x.transform.tag == "Bullet")?.Select(b => b.transform.GetComponent<Bullet>());
-        foreach(Bullet bullet in bullets) reflectBulletFromPlayer(bullet);
+        if(reflectBullets){
+            var bullets = hits?.Where(x => x.transform.tag == "Bullet")?.Select(b => b.transform.GetComponent<Bullet>());
+            foreach(Bullet bullet in bullets) reflectBulletFromPlayer(bullet);
+        }
 
         slashEffect.Enable(comboData[combo-1].effectSprite, this.transform.position, mov.facing);
     }
