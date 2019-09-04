@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class RatbossInfo : MonoBehaviour
 {
-    public Transform currentLocation;
+    public GameObject currentLocation;
 }

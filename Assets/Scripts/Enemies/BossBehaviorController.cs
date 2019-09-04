@@ -36,7 +36,7 @@ public class BossBehaviorController : MonoBehaviour {
         health.onEnemyDamage+=checkHealth;
     }
     public void Start () => StartPhase ();
-    private int currentPhase;
+    public int currentPhase;
     private float phaseHealth;
     private PhaseAction currentAction;
     private System.Random rand = new System.Random();

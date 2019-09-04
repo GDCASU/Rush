@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class RatbossA0 : MonoBehaviour
 {
-    public Transform location_1;
-    public Transform location_2;
-    public Transform location_3;
-    public int frames;
-    private Transform location;
-    private List<Transform> posLocations;
+    public GameObject location_1;
+    public GameObject location_2;
+    public GameObject location_3;
+    public int speed;
+    public int openingframes;
+    private GameObject location;
+    private List<GameObject> posLocations;
+    private List<GameObject> activeDoors;
     private int NumofPhases;
+    private int currentPhase;
     private System.Random ran = new System.Random();
 
     // Use this for initialization
@@ -25,50 +28,83 @@ public class RatbossA0 : MonoBehaviour
     {
         location = pick_door(2);
         GetComponent<RatbossInfo>().currentLocation = location;
-        rumble_doors(NumofPhases);
-        for (int i = 0; i < frames; i++)
+        rumble_doors(currentPhase);
+
+        for (int i = 0; i < openingframes+60; i++)
         {
 
             yield return new WaitForEndOfFrame();
         }
+
+        location.GetComponentInChildren<SpriteRenderer>().enabled = true;
+        
+        
+
+
         yield return new WaitForEndOfFrame();
     }
-    private Transform pick_door(int num)
+    void moveRatForward()
     {
-        Transform curLocation = posLocations[ran.Next(num)];
+        string name = location.name;
+        switch (name)
+        {
+            case "Ratboss Location Left":
+                {
+                    location.transform.position = Vector3.MoveTowards(location.transform.position, location.transform.position + new Vector3(2, 0, 0), speed); 
+                }break;
+            case "Ratboss Location Right":
+                {
+                    location.transform.position = Vector3.MoveTowards(location.transform.position, location.transform.position + new Vector3(-2, 0, 0), speed);
+                }
+                break;
+            default:
+                {
+                    location.transform.position = Vector3.MoveTowards(location.transform.position, location.transform.position + new Vector3(0, -2, 0), speed);
+                }
+                break;
+        }
+    }
+    private GameObject pick_door(int num)
+    {
+        GameObject curLocation = posLocations[ran.Next(num)];
         posLocations.Remove(curLocation);
+        activeDoors.Add(location);
         return curLocation;
     }
-    public void rumble_doors(int phases)
+    public void rumble_doors(int phase)
     {
-        switch (phases)
+        GameObject other_location;
+        switch (phase)
         {
             case 2:
                 {
-                    StartCoroutine(rumble(posLocations[ran.Next(0)]));
-                    StartCoroutine(rumble(location));
+                    other_location= posLocations[ran.Next(0)];
+                    activeDoors.Add(other_location);
                 }
                 break;
             case 3:
                 {
-                    StartCoroutine(rumble(posLocations[0]));
-                    StartCoroutine(rumble(posLocations[1]));
-                    StartCoroutine(rumble(location));
+                    other_location = posLocations[0];
+                    activeDoors.Add(other_location);
+                    other_location = posLocations[1];
+                    activeDoors.Add(location);
                 } break;
             default:
                 {
-                    StartCoroutine(rumble(location));
+
                 } break;
-        }   
+        }
+        foreach (GameObject loc in activeDoors)
+        {
+            //do rumbling and opening animation for all the doors in activeDoors
+        }
     }
-    IEnumerator rumble(Transform location)
+    public void close_doors()
     {
-        //add locgic to rumble doors
-        yield return new WaitForEndOfFrame();
+        foreach (GameObject loc in activeDoors)
+        {
+            //if(loc!=location)//do closing door animation for all the doors in activeDoors that arent the selected one
+        }
     }
-
-
-
-	
 }
     
