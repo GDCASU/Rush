@@ -128,7 +128,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &16234620
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -182,11 +182,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 16234619}
   m_LocalRotation: {x: -0.49491256, y: -0, z: -0, w: 0.8689428}
-  m_LocalPosition: {x: -52.65, y: 6.2, z: -1.52}
+  m_LocalPosition: {x: -9.778011, y: 6.3291945, z: -396.83432}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_Father: {fileID: 1358319885}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -59.328003, y: 0, z: 0}
 --- !u!1 &90764511
 GameObject:
@@ -4155,7 +4155,7 @@ GameObject:
   - component: {fileID: 1210766904}
   - component: {fileID: 1210766903}
   m_Layer: 0
-  m_Name: rat_king
+  m_Name: Ratboss Location 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4214,11 +4214,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1210766902}
   m_LocalRotation: {x: -0.62051517, y: -0, z: -0, w: 0.78419447}
-  m_LocalPosition: {x: -52.37, y: 16.1, z: -2.15}
+  m_LocalPosition: {x: -9.498009, y: 16.229195, z: -397.46432}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_Father: {fileID: 1358319885}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -76.708, y: 0, z: 0}
 --- !u!1 &1242633157
 GameObject:
@@ -4650,6 +4650,98 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79cb7c8c78702342a8e0dab38c3889b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1358319884
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1358319885}
+  - component: {fileID: 1358319889}
+  - component: {fileID: 1358319888}
+  - component: {fileID: 1358319887}
+  - component: {fileID: 1358319886}
+  m_Layer: 0
+  m_Name: Ratboss
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1358319885
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1358319884}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -42.87199, y: -0.12919456, z: 395.31433}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2011392804}
+  - {fileID: 1210766904}
+  - {fileID: 1745582298}
+  - {fileID: 16234621}
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1358319886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1358319884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 097da67cb82ef0a4ca352774b96197e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossPhases:
+  - health: 0
+    startBehaviour: {fileID: 0}
+    endBehaviour: {fileID: 0}
+    backgroundActions: []
+    PossibleActions: []
+--- !u!114 &1358319887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1358319884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c00e79e4f2ee7714f829792cbdbf6157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+--- !u!114 &1358319888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1358319884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa4f14bbe8a055443b3c6582b5234fca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  location_1: {fileID: 2011392804}
+  location_2: {fileID: 1210766904}
+  location_3: {fileID: 1745582298}
+  frames: 0
+--- !u!114 &1358319889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1358319884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57624ca9a8f8d5640ba3b9b36f394674, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLocation: {fileID: 0}
 --- !u!1 &1362872080
 GameObject:
   m_ObjectHideFlags: 0
@@ -5248,6 +5340,8 @@ MonoBehaviour:
     pushMultiplier: 3
     animationName: PlayerCombo3
     effectSprite: {fileID: 21300004, guid: a3fcbd07f16c56041b4f74b9ea5d86d1, type: 3}
+  reflectBullets: 1
+  overlapRange: 0.8
   slashEffect: {fileID: 1332433608}
 --- !u!114 &1521196779
 MonoBehaviour:
@@ -5605,7 +5699,7 @@ GameObject:
   - component: {fileID: 1745582298}
   - component: {fileID: 1745582297}
   m_Layer: 0
-  m_Name: rat_king_sprites_left
+  m_Name: Ratboss Location 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5664,11 +5758,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1745582296}
   m_LocalRotation: {x: -0.45386255, y: -0, z: -0, w: 0.89107174}
-  m_LocalPosition: {x: -44.83, y: 11.3, z: -1.66}
+  m_LocalPosition: {x: -1.9580116, y: 11.429194, z: -396.97433}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_Father: {fileID: 1358319885}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -53.984, y: 0, z: 0}
 --- !u!1 &1757297060
 GameObject:
@@ -6456,7 +6550,7 @@ GameObject:
   - component: {fileID: 2011392804}
   - component: {fileID: 2011392803}
   m_Layer: 0
-  m_Name: rat_king_sprites_right
+  m_Name: Ratboss Location 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6515,11 +6609,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2011392802}
   m_LocalRotation: {x: -0.49928847, y: -0, z: -0, w: 0.8664358}
-  m_LocalPosition: {x: -59.38, y: 11, z: -2.16}
+  m_LocalPosition: {x: -16.50801, y: 11.129194, z: -397.47433}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_Father: {fileID: 1358319885}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -59.906002, y: 0, z: 0}
 --- !u!1 &2019772940
 GameObject:
