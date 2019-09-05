@@ -30,7 +30,7 @@ public class PlayerDash : MonoBehaviour {
         }
 	}
     
-    public IEnumerator  dash()
+    public IEnumerator dash()
     {
         sp.color = new Color(0.5f, 0.5f, 0.5f, 1);
         GetComponent<PlayerHealth>().inv = true;

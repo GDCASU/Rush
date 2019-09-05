@@ -1,116 +1,110 @@
-﻿using System.Collections;
+﻿using System;
+using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class RatbossA0 : MonoBehaviour
 {
-    public GameObject location_1;
-    public GameObject location_2;
-    public GameObject location_3;
+
+   
+    [Serializable]
+    private class RatLocation {
+        public GameObject door;
+        public GameObject rat;
+    }
     public int speed;
     public int openingframes;
     public int closeFrames;
+    public int cooldownFrames; // frames before the boss bursts out 
     private GameObject location;
-    private List<GameObject> posLocations;
-    private List<GameObject> activeDoors;
-    private int NumofPhases;
-    private int currentPhase;
+    private GameObject correctDoor;
+    [SerializeField]
+    private List<RatLocation> posLocations;
     private System.Random ran = new System.Random();
-
-    // Use this for initialization
-    void OnAwake()
-    {
-        posLocations.Add(location_1);
-        posLocations.Add(location_2);
-        posLocations.Add(location_3);
-        NumofPhases = GetComponent<BossBehaviorController>().bossPhases.Count;
-
-        StartCoroutine(shakedoors());
-	}
+    private BossBehaviorController bbc;
+    private List<int> activeDoors = new List<activeDoors>();
+    // Use this for initialization'
+    void OnAwake() => StartCoroutine(shakedoors());
+    public void Start () => bbc = GetComponent<BossBehaviorController>();
     IEnumerator shakedoors()
     {
-        location = pick_door(2);
-        GetComponent<RatbossInfo>().currentLocation = location;
-        rumble_doors(currentPhase);
-
-        for (int i = 0; i < openingframes+60; i++)
+        var r = pick_door(bbc.currentPhase);
+        location = r.rat;
+        correctDoor = r.door;
+        
+        // rumble doors
+        const int shakingFrames = 120;
+        for (int i = 0; i < shakingFrames; i++)
         {
-
+            foreach (var loc in activeDoors)
+            {
+                var door = posLocations[loc].door;
+                // SHAKE
+            }
             yield return new WaitForEndOfFrame();
         }
 
+        // open wrong doors
+        if(bbc.currentPhase>1) {
+            for (int i = 0; i < openingframes+60; i++)
+            {
+                yield return new WaitForEndOfFrame();
+                foreach (var loc in activeDoors)
+                {
+                    if(posLocations[loc].rat == location) continue;
+                    var door = posLocations[loc].door;
+                    swingDoorInterp( (float) i / (float) (openingframes + 60));
+                }
+            }
+
+            for (int i = 0; i < closeFrames; i++)
+            {
+                yield return new WaitForEndOfFrame();
+                foreach (var loc in activeDoors)
+                {
+                    if(posLocations[loc].rat == location) continue;
+                    var door = posLocations[loc].door;
+                    swingDoorInterp( 1.0f - (float) i / (float) (openingframes + 60));
+                }
+            }
+        }
+
+        // wait for a second before the boss bursts out
+        for (int i = 0; i < cooldownFrames; i++) yield return new WaitForEndOfFrame();
+
+        // After the wait the boss is enabled and starts moving out
         location.GetComponentInChildren<SpriteRenderer>().enabled = true;
-        close_doors();
-        for (int i = 0; i < closeFrames; i++)
-        {
-
+        
+        const int burstFrames = 10; // time for the boss to burst out of the door
+        for (int i = 0; i < burstFrames; i++){
+            location.transform.position = Vector3.MoveTowards(location.transform.position, location.transform.position + location.transform.forward, speed);
             yield return new WaitForEndOfFrame();
         }
-        moveRatForward();
 
     }
-    void moveRatForward()
+    private RatLocation pick_door(int num)
     {
-        string name = location.name;
-        switch (name)
-        {
-            case "Ratboss Location Left":
-                {
-                    location.transform.position = Vector3.MoveTowards(location.transform.position, location.transform.position + new Vector3(2, 0, 0), speed); 
-                }break;
-            case "Ratboss Location Right":
-                {
-                    location.transform.position = Vector3.MoveTowards(location.transform.position, location.transform.position + new Vector3(-2, 0, 0), speed);
-                }
-                break;
-            default:
-                {
-                    location.transform.position = Vector3.MoveTowards(location.transform.position, location.transform.position + new Vector3(0, -2, 0), speed);
-                }
-                break;
-        }
-    }
-    private GameObject pick_door(int num)
-    {
-        GameObject curLocation = posLocations[ran.Next(num)];
-        posLocations.Remove(curLocation);
-        activeDoors.Add(location);
-        return curLocation;
-    }
-    public void rumble_doors(int phase)
-    {
-        GameObject other_location;
-        switch (phase)
-        {
-            case 2:
-                {
-                    other_location= posLocations[ran.Next(0)];
-                    activeDoors.Add(other_location);
-                }
-                break;
-            case 3:
-                {
-                    other_location = posLocations[0];
-                    activeDoors.Add(other_location);
-                    other_location = posLocations[1];
-                    activeDoors.Add(location);
-                } break;
-            default:
-                {
+        activeDoors = new List<int>();
+        /* var correct = ran.Next(num-1); //oh my god this is fucking stupid we can do better than this why do you let jacob commit anything
+        HashSet<int> otherDoors = new HashSet<int>{correct};
+        while(otherDoors.Count < num) otherDoors.Add(ran.Next(num-1)); 
+        GameObject curLocation = posLocations[correct].rat; */
 
-                } break;
-        }
-        foreach (GameObject loc in activeDoors)
-        {
-            //do rumbling and opening animation for all the doors in activeDoors
-        }
+        while(activeDoors.Count < num) {
+            var r = ran.Next(num-1);
+            if(!activeDoors.Contains(r)) activeDoors.Add(r);
+        } 
+        return posLocations[activeDoors.LastOrDefault()];
     }
-    public void close_doors()
+
+    /// <summary>
+    /// use the interpolation value f to find the current position of the door at the swing
+    /// </summary>
+    /// <param name="f">a value between zero and one</param>
+    public void swingDoorInterp(float f)
     {
-        foreach (GameObject loc in activeDoors)
-        {
-            //if(loc!=location)//do closing door animation for all the doors in activeDoors that arent the selected one
-        }
+        throw new NotImplementedException();
     }
 }
     

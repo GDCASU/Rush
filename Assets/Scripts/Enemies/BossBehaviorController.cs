@@ -40,6 +40,7 @@ public class BossBehaviorController : MonoBehaviour {
     private float phaseHealth;
     private PhaseAction currentAction;
     private System.Random rand = new System.Random();
+    public Queue<PhaseAction> actionQueue = new Queue<PhaseAction>();
     public void checkHealth (float damageDealt, float healthAfterDamage) {
         while(damageDealt > 0 && phaseHealth > 0) {
             float temp = damageDealt;
@@ -69,12 +70,13 @@ public class BossBehaviorController : MonoBehaviour {
     }
     public void ChangeAction () {
         if(currentAction.behavior != null) currentAction.behavior.enabled = false;
-        if(bossPhases[currentPhase].PossibleActions.Any()) {
+        if(actionQueue.Any()) 
+            currentAction = actionQueue.Dequeue();
+        else if(bossPhases[currentPhase].PossibleActions.Any()) 
             currentAction = bossPhases[currentPhase].PossibleActions.Where(x=> !x.Equals(currentAction)).ElementAt( rand.Next(bossPhases[currentPhase].PossibleActions.Count-2) );
-            StartCoroutine(startAction(currentAction, true));
-        }
         else
             currentAction = new PhaseAction();
+        StartCoroutine(startAction(currentAction, true));
     }
     public IEnumerator startAction (PhaseAction action, bool startNewOnFinish) {
         action.behavior.enabled = true;
