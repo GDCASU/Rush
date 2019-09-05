@@ -23,15 +23,16 @@ public class RatbossA2 : MonoBehaviour
     private float distance;
     private Vector2 origin;
 
+    private RatbossA0 A0;
 
 
-    private void Start()
+    private void Awake()
     {
         player = GameObject.Find("Player").GetComponent<Transform>();
-        location = GetComponent<RatbossA0>().location;
-        StartCoroutine(TailStab());
-        
+        A0 = GetComponent<RatbossA0>();
     }
+
+    private void OnEnable() => StartCoroutine(TailStab());
 
     IEnumerator TailStab()
     {
@@ -44,9 +45,7 @@ public class RatbossA2 : MonoBehaviour
         tail.transform.localPosition= (srBoss.sprite.name != "rat_king_sprites_front"? new Vector3(0,0,1f): new Vector3(0, 0, 2f));
         while (attacksPerformed < 3)
         {
-            
-            srTail.sprite = extendedTail;
-            Vector3 midVector = Vector3.Lerp(player.transform.position, location.transform.position, 0.5f);
+
 
             for (int i = 0; i < lookingFrames; i++)
             {
@@ -61,7 +60,8 @@ public class RatbossA2 : MonoBehaviour
             srTail.sprite = extendedTail;
 
 
-            
+
+            Vector3 midVector = Vector3.Lerp(player.transform.position, A0.location.transform.position, 0.5f);
             distance = Vector2.Distance(player.transform.position, location.transform.position);
             origin = new Vector2(midVector.x, midVector.y);
 
@@ -77,6 +77,7 @@ public class RatbossA2 : MonoBehaviour
 
             attacksPerformed++;
         }
+        yield return A0.returnIntoDoor();
     }
     void OnDrawGizmos()
     {
