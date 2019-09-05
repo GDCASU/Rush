@@ -10,12 +10,14 @@ public class RatbossA0 : MonoBehaviour
     private class RatLocation {
         public GameObject door;
         public GameObject rat;
+        public Collider2D collider;
     }
     public float speed;
     public int openingframes;
     public int closeFrames;
     public int cooldownFrames; // frames before the boss bursts out 
     public GameObject location;
+    public Collider2D currentCollider;
     private GameObject correctDoor;
     [SerializeField]
     private List<RatLocation> posLocations;
@@ -34,6 +36,7 @@ public class RatbossA0 : MonoBehaviour
         var r = pick_door(bbc.currentPhase+1);
         location = r.rat;
         correctDoor = r.door;
+        currentCollider = r.collider;
         
         // rumble doors
         const int shakingFrames = 120;
@@ -80,6 +83,7 @@ public class RatbossA0 : MonoBehaviour
 
         // After the wait the boss is enabled and starts moving out
         location.GetComponentInChildren<SpriteRenderer>().enabled = true;
+        currentCollider.enabled = true;
         
         const int burstFrames = 20; // time for the boss to burst out of the door
         for (int i = 0; i < burstFrames; i++){
@@ -97,6 +101,7 @@ public class RatbossA0 : MonoBehaviour
         }
         
         location.GetComponentInChildren<SpriteRenderer>().enabled = false;
+        currentCollider.enabled = false;
     }
     private RatLocation pick_door(int num)
     {
@@ -120,6 +125,10 @@ public class RatbossA0 : MonoBehaviour
     public void swingDoorInterp(float f)
     {
         throw new NotImplementedException();
+    }
+
+    public void Update () {
+        foreach(var loc in posLocations) loc.collider.offset = transform.InverseTransformPoint( loc.rat.transform.position );
     }
 }
     

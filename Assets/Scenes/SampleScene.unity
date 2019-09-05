@@ -5234,9 +5234,12 @@ GameObject:
   - component: {fileID: 1358319890}
   - component: {fileID: 1358319887}
   - component: {fileID: 1358319886}
+  - component: {fileID: 1358319893}
+  - component: {fileID: 1358319891}
+  - component: {fileID: 1358319889}
   m_Layer: 0
   m_Name: Ratboss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5323,13 +5326,42 @@ MonoBehaviour:
   closeFrames: 60
   cooldownFrames: 0
   location: {fileID: 0}
+  currentCollider: {fileID: 0}
   posLocations:
   - door: {fileID: 929387049}
     rat: {fileID: 2011392802}
+    collider: {fileID: 1358319893}
   - door: {fileID: 1916895763}
     rat: {fileID: 1210766902}
+    collider: {fileID: 1358319891}
   - door: {fileID: 1272679059}
     rat: {fileID: 1745582296}
+    collider: {fileID: 1358319889}
+--- !u!61 &1358319889
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1358319884}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 12.213004, y: 0.0028953552}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.0797787, y: 2.7270584}
+  m_EdgeRadius: 0
 --- !u!114 &1358319890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5349,6 +5381,31 @@ MonoBehaviour:
   lookingFrames: 60
   curlFrames: 20
   coolDownFrames: 20
+--- !u!61 &1358319891
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1358319884}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.12262344, y: 8.849395}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.552784, y: 3.1138783}
+  m_EdgeRadius: 0
 --- !u!114 &1358319892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5362,6 +5419,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: THE RAT KING ETERNAL
   enemyHealth: {fileID: 0}
+--- !u!61 &1358319893
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1358319884}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -11.97988, y: 0.075491905}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.6099377, y: 2.960413}
+  m_EdgeRadius: 0
 --- !u!1 &1362872080
 GameObject:
   m_ObjectHideFlags: 0
@@ -5833,7 +5915,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1521196768}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -47.5, y: -22.7, z: -2}
+  m_LocalPosition: {x: -11.2, y: -17.9, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1332433607}
