@@ -11,11 +11,11 @@ public class RatbossA0 : MonoBehaviour
         public GameObject door;
         public GameObject rat;
     }
-    public int speed;
+    public float speed;
     public int openingframes;
     public int closeFrames;
     public int cooldownFrames; // frames before the boss bursts out 
-    private GameObject location;
+    public GameObject location;
     private GameObject correctDoor;
     [SerializeField]
     private List<RatLocation> posLocations;
@@ -84,7 +84,7 @@ public class RatbossA0 : MonoBehaviour
     private RatLocation pick_door(int num)
     {
         /* activeDoors = new List<int>();
-         var correct = ran.Next(num-1); //oh my god this is fucking stupid we can do better than this why do you let jacob commit anything// wait wut?
+         var correct = ran.Next(num-1); //oh my god this is fucking stupid we can do better than this why do you let jacob commit anything// wait wut, u ok jacob?
         HashSet<int> otherDoors = new HashSet<int>{correct};
         while(otherDoors.Count < num) otherDoors.Add(ran.Next(num-1)); 
         GameObject curLocation = posLocations[correct].rat; */

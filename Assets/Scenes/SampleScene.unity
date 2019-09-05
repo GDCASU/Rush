@@ -5230,6 +5230,7 @@ GameObject:
   - component: {fileID: 1358319885}
   - component: {fileID: 1358319889}
   - component: {fileID: 1358319888}
+  - component: {fileID: 1358319890}
   - component: {fileID: 1358319887}
   - component: {fileID: 1358319886}
   m_Layer: 0
@@ -5277,6 +5278,19 @@ MonoBehaviour:
     startBehaviour: {fileID: 0}
     endBehaviour: {fileID: 0}
     backgroundActions: []
+    PossibleActions:
+    - selectionChance: 0
+      runFrames: 0
+      cooldownFrames: 0
+      behavior: {fileID: 1358319887}
+    - selectionChance: 0
+      runFrames: 0
+      cooldownFrames: 0
+      behavior: {fileID: 1358319889}
+  - health: 30
+    startBehaviour: {fileID: 0}
+    endBehaviour: {fileID: 0}
+    backgroundActions: []
     PossibleActions: []
   currentPhase: 0
 --- !u!114 &1358319887
@@ -5302,10 +5316,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa4f14bbe8a055443b3c6582b5234fca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 1
   openingframes: 150
   closeFrames: 60
   cooldownFrames: 0
+  location: {fileID: 0}
   posLocations:
   - door: {fileID: 929387049}
     rat: {fileID: 2011392802}
@@ -5325,6 +5340,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLocation: {fileID: 0}
+--- !u!114 &1358319890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1358319884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cc824ccb06588a4ba744b68c31bac97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1362872080
 GameObject:
   m_ObjectHideFlags: 0
@@ -5701,7 +5727,7 @@ GameObject:
   - component: {fileID: 1521196779}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
