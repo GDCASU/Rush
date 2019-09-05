@@ -77,8 +77,8 @@ public class RatbossA0 : MonoBehaviour
         // After the wait the boss is enabled and starts moving out
         location.GetComponentInChildren<SpriteRenderer>().enabled = true;
         
-        const int retractFrames = 20; // time for the boss to return into the door
-        for (int i = 0; i < retractFrames; i++){
+        const int burstFrames = 20; // time for the boss to burst out of the door
+        for (int i = 0; i < burstFrames; i++){
             location.transform.position = Vector3.MoveTowards(location.transform.position, location.transform.position + location.transform.forward, speed);
             yield return new WaitForEndOfFrame();
         }
@@ -86,13 +86,13 @@ public class RatbossA0 : MonoBehaviour
     }
     public IEnumerator returnIntoDoor() {
         
-        const int burstFrames = 10; // time for the boss to burst out of the door
+        const int burstFrames = 20; 
         for (int i = 0; i < burstFrames; i++){
             location.transform.position = Vector3.MoveTowards(location.transform.position, location.transform.position - location.transform.forward, speed);
             yield return new WaitForEndOfFrame();
         }
         
-        location.GetComponentInChildren<SpriteRenderer>().enabled = true;
+        location.GetComponentInChildren<SpriteRenderer>().enabled = false;
     }
     private RatLocation pick_door(int num)
     {

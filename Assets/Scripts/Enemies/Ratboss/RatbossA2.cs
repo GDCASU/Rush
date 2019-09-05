@@ -73,6 +73,9 @@ public class RatbossA2 : MonoBehaviour
 
             attacksPerformed++;
         }
+        srBoss.flipX = false;
+        GetComponent<BossBehaviorController>().ChangeAction ();
+        
         yield return A0.returnIntoDoor();
     }
 

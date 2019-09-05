@@ -267,6 +267,7 @@ GameObject:
   m_Component:
   - component: {fileID: 67371646}
   - component: {fileID: 67371647}
+  - component: {fileID: 67371648}
   m_Layer: 0
   m_Name: RatbossSpr
   m_TagString: Untagged
@@ -333,6 +334,31 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &67371648
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 67371645}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.69, y: 3.25}
+    newSize: {x: 3.04, y: 2.51}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.69, y: 3.25}
+  m_EdgeRadius: 0
 --- !u!1 &90764511
 GameObject:
   m_ObjectHideFlags: 0
@@ -3978,6 +4004,7 @@ MonoBehaviour:
       cooldownFrames: 50
       behavior: {fileID: 1003804386}
   currentPhase: 0
+  actionQueue: []
 --- !u!1 &1017498755
 GameObject:
   m_ObjectHideFlags: 0
@@ -4023,6 +4050,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1049692760}
   - component: {fileID: 1049692761}
+  - component: {fileID: 1049692762}
   m_Layer: 0
   m_Name: RatbossSpr
   m_TagString: Untagged
@@ -4089,6 +4117,31 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1049692762
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1049692759}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4.14, y: 3.15}
+    newSize: {x: 4.11, y: 3.27}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4.14, y: 3.15}
+  m_EdgeRadius: 0
 --- !u!1 &1056662472
 GameObject:
   m_ObjectHideFlags: 0
@@ -5233,9 +5286,10 @@ GameObject:
   - component: {fileID: 1358319890}
   - component: {fileID: 1358319887}
   - component: {fileID: 1358319886}
+  - component: {fileID: 1358319891}
   m_Layer: 0
   m_Name: Ratboss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5280,19 +5334,20 @@ MonoBehaviour:
     backgroundActions: []
     PossibleActions:
     - selectionChance: 0
-      runFrames: 0
+      runFrames: 10000
       cooldownFrames: 0
-      behavior: {fileID: 1358319887}
-    - selectionChance: 0
-      runFrames: 0
-      cooldownFrames: 0
-      behavior: {fileID: 1358319889}
+      behavior: {fileID: 1358319890}
   - health: 30
     startBehaviour: {fileID: 0}
     endBehaviour: {fileID: 0}
     backgroundActions: []
-    PossibleActions: []
+    PossibleActions:
+    - selectionChance: 0
+      runFrames: 10000
+      cooldownFrames: 0
+      behavior: {fileID: 1358319890}
   currentPhase: 0
+  actionQueue: []
 --- !u!114 &1358319887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5358,6 +5413,19 @@ MonoBehaviour:
   lookingFrames: 300
   curlFrames: 10
   coolDownFrames: 60
+--- !u!114 &1358319891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1358319884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc3d4bafa666894480e382a47892bfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyName: THE RAT KING ETERNAL
+  enemyHealth: {fileID: 0}
 --- !u!1 &1362872080
 GameObject:
   m_ObjectHideFlags: 0
@@ -5829,7 +5897,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1521196768}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -47.5, y: -22.7, z: -1.5}
+  m_LocalPosition: {x: -46.13, y: -22.7, z: -1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1332433607}
@@ -6155,6 +6223,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1600641487}
   - component: {fileID: 1600641488}
+  - component: {fileID: 1600641489}
   m_Layer: 0
   m_Name: RatbossSpr
   m_TagString: Untagged
@@ -6221,6 +6290,31 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1600641489
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1600641486}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4.11, y: 3.27}
+    newSize: {x: 4.11, y: 3.27}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4.11, y: 3.27}
+  m_EdgeRadius: 0
 --- !u!1 &1604589476
 GameObject:
   m_ObjectHideFlags: 0
