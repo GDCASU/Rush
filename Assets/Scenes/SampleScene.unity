@@ -5351,6 +5351,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cc824ccb06588a4ba744b68c31bac97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tailPrefab: {fileID: 1450805088487582, guid: aa054950630515d41a5d001a2e9539ab, type: 2}
+  chargedTail: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  extendedTail: {fileID: 21300000, guid: ccb87e0419b20794cb73315fcfe92453, type: 3}
+  currentSprite: {fileID: 0}
+  lookingFrames: 300
+  curlFrames: 10
+  coolDownFrames: 60
 --- !u!1 &1362872080
 GameObject:
   m_ObjectHideFlags: 0
