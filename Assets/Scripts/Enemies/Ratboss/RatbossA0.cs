@@ -5,9 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RatbossA0 : MonoBehaviour
-{
-
-   
+{ 
     [Serializable]
     private class RatLocation {
         public GameObject door;
@@ -23,7 +21,7 @@ public class RatbossA0 : MonoBehaviour
     private List<RatLocation> posLocations;
     private System.Random ran = new System.Random();
     private BossBehaviorController bbc;
-    private List<int> activeDoors = new List<activeDoors>();
+    private List<int> activeDoors = new List<int>();
     // Use this for initialization'
     void OnAwake() => StartCoroutine(shakedoors());
     public void Start () => bbc = GetComponent<BossBehaviorController>();
@@ -85,8 +83,8 @@ public class RatbossA0 : MonoBehaviour
     }
     private RatLocation pick_door(int num)
     {
-        activeDoors = new List<int>();
-        /* var correct = ran.Next(num-1); //oh my god this is fucking stupid we can do better than this why do you let jacob commit anything
+        /* activeDoors = new List<int>();
+         var correct = ran.Next(num-1); //oh my god this is fucking stupid we can do better than this why do you let jacob commit anything// wait wut?
         HashSet<int> otherDoors = new HashSet<int>{correct};
         while(otherDoors.Count < num) otherDoors.Add(ran.Next(num-1)); 
         GameObject curLocation = posLocations[correct].rat; */
