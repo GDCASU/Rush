@@ -1966,6 +1966,8 @@ MonoBehaviour:
   SpawnFunctionParams: []
   bulletsFaceOutward: 1
   colliderRadius: 0.5
+  useOtherSpawnPoint: 0
+  alternateSpawnLocation: {fileID: 0}
 --- !u!212 &497901608
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2294,6 +2296,8 @@ MonoBehaviour:
   SpawnFunctionParams: []
   bulletsFaceOutward: 1
   colliderRadius: 0.25
+  useOtherSpawnPoint: 0
+  alternateSpawnLocation: {fileID: 0}
 --- !u!212 &546469783
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3721,6 +3725,8 @@ MonoBehaviour:
   SpawnFunctionParams: []
   bulletsFaceOutward: 1
   colliderRadius: 0.1
+  useOtherSpawnPoint: 0
+  alternateSpawnLocation: {fileID: 0}
 --- !u!114 &1003804387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3749,6 +3755,8 @@ MonoBehaviour:
   SpawnFunctionParams: []
   bulletsFaceOutward: 1
   colliderRadius: 0.15
+  useOtherSpawnPoint: 0
+  alternateSpawnLocation: {fileID: 0}
 --- !u!114 &1003804388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3907,6 +3915,8 @@ MonoBehaviour:
   - 0.75
   bulletsFaceOutward: 1
   colliderRadius: 0.05
+  useOtherSpawnPoint: 0
+  alternateSpawnLocation: {fileID: 0}
 --- !u!114 &1003804395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3935,6 +3945,8 @@ MonoBehaviour:
   SpawnFunctionParams: []
   bulletsFaceOutward: 1
   colliderRadius: 0.1
+  useOtherSpawnPoint: 0
+  alternateSpawnLocation: {fileID: 0}
 --- !u!114 &1003804396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4888,6 +4900,8 @@ MonoBehaviour:
   - 0.3
   bulletsFaceOutward: 1
   colliderRadius: 0.2
+  useOtherSpawnPoint: 0
+  alternateSpawnLocation: {fileID: 0}
 --- !u!212 &1242633162
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5237,6 +5251,8 @@ GameObject:
   - component: {fileID: 1358319893}
   - component: {fileID: 1358319891}
   - component: {fileID: 1358319889}
+  - component: {fileID: 1358319895}
+  - component: {fileID: 1358319894}
   m_Layer: 0
   m_Name: Ratboss
   m_TagString: Enemy
@@ -5287,6 +5303,10 @@ MonoBehaviour:
       runFrames: 100000
       cooldownFrames: 20
       behavior: {fileID: 1358319890}
+    - selectionChance: 0
+      runFrames: 300
+      cooldownFrames: 20
+      behavior: {fileID: 1358319895}
   - health: 30
     startBehaviour: {fileID: 0}
     endBehaviour: {fileID: 0}
@@ -5294,8 +5314,12 @@ MonoBehaviour:
     PossibleActions:
     - selectionChance: 0
       runFrames: 100000
-      cooldownFrames: 20
+      cooldownFrames: 30
       behavior: {fileID: 1358319890}
+    - selectionChance: 0
+      runFrames: 400
+      cooldownFrames: 30
+      behavior: {fileID: 1358319895}
   currentPhase: 0
   actionQueue: []
 --- !u!114 &1358319887
@@ -5444,6 +5468,47 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.6099377, y: 2.960413}
   m_EdgeRadius: 0
+--- !u!114 &1358319894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1358319884}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb16419c509c2f94982de5d5e8fa0091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSpeed: 4
+  bulletAmount: 3
+  bulletArc: 3
+  ArcOffset: 0
+  offsetFacesPlayer: 1
+  bulletfrequency: 2
+  spin: 0
+  wave: 0
+  bulletSprite: {fileID: 21300008, guid: ff67127591109a1419156d7eac963eb9, type: 3}
+  bulletTint: {r: 1, g: 1, b: 1, a: 1}
+  rotation: {x: 0, y: 0, z: 0, w: 1}
+  scale: {x: 1, y: 1, z: 1}
+  moveFunc: 3
+  spawnFunc: 0
+  SpawnFunctionParams: []
+  bulletsFaceOutward: 1
+  colliderRadius: 0.5
+  useOtherSpawnPoint: 1
+  alternateSpawnLocation: {fileID: 1600641487}
+--- !u!114 &1358319895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1358319884}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09ba1622907ad804586f104d5b852be6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1362872080
 GameObject:
   m_ObjectHideFlags: 0

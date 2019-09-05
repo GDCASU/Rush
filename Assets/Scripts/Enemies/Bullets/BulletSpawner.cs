@@ -25,6 +25,8 @@ public class BulletSpawner : MonoBehaviour {
     public List<float> SpawnFunctionParams = new List<float>();
     public bool bulletsFaceOutward = true;
     public float colliderRadius = 0.5f;
+    public bool useOtherSpawnPoint;
+    public Transform alternateSpawnLocation;
 	void Awake () => bulletTemplate = Resources.Load("bullet") as GameObject;
 	void Update () {
 		counter += wave;
@@ -38,7 +40,7 @@ public class BulletSpawner : MonoBehaviour {
         SpawnOn = true;
         while(SpawnOn) {
             if(offsetFacesPlayer) {
-                Vector2 VectorToPlayer = PlayerHealth.singleton.transform.position - transform.position;
+                Vector2 VectorToPlayer = PlayerHealth.singleton.transform.position - (useOtherSpawnPoint ? alternateSpawnLocation : transform).position;
                 ArcOffset = (float) (Vector2.SignedAngle(Vector2.right, VectorToPlayer)* Math.PI/180.0);
             }
             for (int i = 1; i <= bulletAmount; i++) {
@@ -46,7 +48,7 @@ public class BulletSpawner : MonoBehaviour {
                 Vector2 direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
                 
                 var sp = BulletPool.rent();
-                sp.transform.position = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
+                sp.transform.position = (useOtherSpawnPoint ? alternateSpawnLocation : transform).position;
                 sp.GetComponent<Bullet>().Init(direction, (bulletsFaceOutward) ? angle * (float)180.0 / Mathf.PI : 0, bulletSpeed, moveFunc, spawnFunc, bulletSprite, bulletTint, true, colliderRadius,SpawnFunctionParams);
         
                 sp.transform.localScale = scale;
