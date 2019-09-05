@@ -267,7 +267,6 @@ GameObject:
   m_Component:
   - component: {fileID: 67371646}
   - component: {fileID: 67371647}
-  - component: {fileID: 67371648}
   m_Layer: 0
   m_Name: RatbossSpr
   m_TagString: Untagged
@@ -334,31 +333,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &67371648
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 67371645}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.69, y: 3.25}
-    newSize: {x: 3.04, y: 2.51}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3.69, y: 3.25}
-  m_EdgeRadius: 0
 --- !u!1 &90764511
 GameObject:
   m_ObjectHideFlags: 0
@@ -4050,7 +4024,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1049692760}
   - component: {fileID: 1049692761}
-  - component: {fileID: 1049692762}
   m_Layer: 0
   m_Name: RatbossSpr
   m_TagString: Untagged
@@ -4117,31 +4090,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &1049692762
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1049692759}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.14, y: 3.15}
-    newSize: {x: 4.11, y: 3.27}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.14, y: 3.15}
-  m_EdgeRadius: 0
 --- !u!1 &1056662472
 GameObject:
   m_ObjectHideFlags: 0
@@ -5281,15 +5229,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1358319885}
-  - component: {fileID: 1358319889}
+  - component: {fileID: 1358319892}
   - component: {fileID: 1358319888}
   - component: {fileID: 1358319890}
   - component: {fileID: 1358319887}
   - component: {fileID: 1358319886}
-  - component: {fileID: 1358319891}
   m_Layer: 0
   m_Name: Ratboss
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5334,8 +5281,8 @@ MonoBehaviour:
     backgroundActions: []
     PossibleActions:
     - selectionChance: 0
-      runFrames: 10000
-      cooldownFrames: 0
+      runFrames: 1000
+      cooldownFrames: 20
       behavior: {fileID: 1358319890}
   - health: 30
     startBehaviour: {fileID: 0}
@@ -5343,8 +5290,8 @@ MonoBehaviour:
     backgroundActions: []
     PossibleActions:
     - selectionChance: 0
-      runFrames: 10000
-      cooldownFrames: 0
+      runFrames: 1000
+      cooldownFrames: 20
       behavior: {fileID: 1358319890}
   currentPhase: 0
   actionQueue: []
@@ -5383,37 +5330,26 @@ MonoBehaviour:
     rat: {fileID: 1210766902}
   - door: {fileID: 1272679059}
     rat: {fileID: 1745582296}
---- !u!114 &1358319889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1358319884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57624ca9a8f8d5640ba3b9b36f394674, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentLocation: {fileID: 0}
 --- !u!114 &1358319890
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1358319884}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3cc824ccb06588a4ba744b68c31bac97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tailPrefab: {fileID: 1450805088487582, guid: aa054950630515d41a5d001a2e9539ab, type: 2}
-  chargedTail: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  extendedTail: {fileID: 21300000, guid: ccb87e0419b20794cb73315fcfe92453, type: 3}
+  chargedTail: {fileID: 21300002, guid: cc3f2b6f9ab7ad441b4f7a76a360d9c9, type: 3}
+  extendedTail: {fileID: 21300000, guid: cc3f2b6f9ab7ad441b4f7a76a360d9c9, type: 3}
   currentSprite: {fileID: 0}
+  backSprite: {fileID: 21300006, guid: ff67127591109a1419156d7eac963eb9, type: 3}
   lookingFrames: 300
-  curlFrames: 10
+  curlFrames: 20
   coolDownFrames: 60
---- !u!114 &1358319891
+--- !u!114 &1358319892
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5897,7 +5833,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1521196768}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -46.13, y: -22.7, z: -1.5}
+  m_LocalPosition: {x: -47.5, y: -22.7, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1332433607}
@@ -6223,7 +6159,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1600641487}
   - component: {fileID: 1600641488}
-  - component: {fileID: 1600641489}
   m_Layer: 0
   m_Name: RatbossSpr
   m_TagString: Untagged
@@ -6290,31 +6225,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &1600641489
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1600641486}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.11, y: 3.27}
-    newSize: {x: 4.11, y: 3.27}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.11, y: 3.27}
-  m_EdgeRadius: 0
 --- !u!1 &1604589476
 GameObject:
   m_ObjectHideFlags: 0
