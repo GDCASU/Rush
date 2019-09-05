@@ -18,7 +18,6 @@ public class RatbossA2 : MonoBehaviour
     private SpriteRenderer srBoss;
     private Transform player;
     private GameObject tail;
-    private int attacksPerformed=0;
     private float distance;
     private Vector2 origin;
 
@@ -39,10 +38,12 @@ public class RatbossA2 : MonoBehaviour
         srBoss = A0.location.GetComponentInChildren<SpriteRenderer>();
         if (srBoss.sprite.name == "rat_king_sprites_front") srBoss.sprite = backSprite;
         else srBoss.flipX = true;
-        tail = Instantiate(tailPrefab, Vector3.zero, Quaternion.Euler(0f, 0f, 0f));
+        if(tail==null) tail = Instantiate(tailPrefab, Vector3.zero, Quaternion.Euler(0f, 0f, 0f));
         srTail = tail.GetComponent<SpriteRenderer>();
+        srTail.enabled = true;
         tail.transform.parent = A0.location.transform;
         tail.transform.localPosition= (srBoss.sprite.name != "rat_king_sprites_front"? new Vector3(0,0,1f): new Vector3(0, 0, 2f));
+        int attacksPerformed = 0;
         while (attacksPerformed < 3)
         {
 
@@ -78,6 +79,7 @@ public class RatbossA2 : MonoBehaviour
             attacksPerformed++;
         }
         srBoss.flipX = false;
+        srTail.enabled = false;
         GetComponent<BossBehaviorController>().ChangeAction ();
         
         yield return A0.returnIntoDoor();
