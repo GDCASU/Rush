@@ -21,7 +21,7 @@ public class RatbossA2 : MonoBehaviour
     private RatbossA0 A0;
 
 
-    private void Start()
+    private void Awake()
     {
         player = GameObject.Find("Player").GetComponent<Transform>();
         A0 = GetComponent<RatbossA0>();

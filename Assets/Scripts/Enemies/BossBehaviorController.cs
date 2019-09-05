@@ -40,7 +40,9 @@ public class BossBehaviorController : MonoBehaviour {
     private float phaseHealth;
     private PhaseAction currentAction;
     private System.Random rand = new System.Random();
-    public Queue<PhaseAction> actionQueue = new Queue<PhaseAction>();
+
+    [SerializeField]
+    public List<PhaseAction> actionQueue = new List<PhaseAction>();
     public void checkHealth (float damageDealt, float healthAfterDamage) {
         while(damageDealt > 0 && phaseHealth > 0) {
             float temp = damageDealt;
@@ -70,13 +72,13 @@ public class BossBehaviorController : MonoBehaviour {
     }
     public void ChangeAction () {
         if(currentAction.behavior != null) currentAction.behavior.enabled = false;
-        if(actionQueue.Any()) 
-            currentAction = actionQueue.Dequeue();
-        else if(bossPhases[currentPhase].PossibleActions.Any()) 
+        if(actionQueue.Any()) { currentAction =  actionQueue[0]; actionQueue.RemoveAt(0); }
+        else if(bossPhases[currentPhase].PossibleActions.Count > 1) 
             currentAction = bossPhases[currentPhase].PossibleActions.Where(x=> !x.Equals(currentAction)).ElementAt( rand.Next(bossPhases[currentPhase].PossibleActions.Count-2) );
-        else
-            currentAction = new PhaseAction();
-        StartCoroutine(startAction(currentAction, true));
+        else currentAction = bossPhases[currentPhase].PossibleActions.FirstOrDefault();
+        
+        if(currentAction.behavior != null) StartCoroutine(startAction(currentAction, true));
+        else Debug.Log("BBC Error: Cannot start null behavior!");
     }
     public IEnumerator startAction (PhaseAction action, bool startNewOnFinish) {
         action.behavior.enabled = true;

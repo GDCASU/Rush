@@ -24,10 +24,10 @@ public class RatbossA0 : MonoBehaviour
     private List<int> activeDoors = new List<int>();
     // Use this for initialization'
     void OnAwake() => StartCoroutine(shakedoors());
-    public void Start () => bbc = GetComponent<BossBehaviorController>();
+    public void Awake () => bbc = GetComponent<BossBehaviorController>();
     public IEnumerator shakedoors()
     {
-        var r = pick_door(bbc.currentPhase);
+        var r = pick_door(bbc.currentPhase+1);
         location = r.rat;
         correctDoor = r.door;
         
@@ -47,7 +47,7 @@ public class RatbossA0 : MonoBehaviour
         foreach (var loc in activeDoors) posLocations[loc].door.transform.position = orgPos[loc];
 
         // open wrong doors
-        if(bbc.currentPhase>1) {
+        if(bbc.currentPhase+1>1) {
             for (int i = 0; i < openingframes+60; i++)
             {
                 yield return new WaitForEndOfFrame();
