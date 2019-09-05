@@ -1,7 +1,9 @@
 fileFormatVersion: 2
-guid: ccb87e0419b20794cb73315fcfe92453
+guid: cc3f2b6f9ab7ad441b4f7a76a360d9c9
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: rat_king_sprites_tails_0
+    21300002: rat_king_sprites_tails_1
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -40,12 +42,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 7
-  spritePivot: {x: 0.5, y: 0}
-  spritePixelsToUnits: 500
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -82,11 +84,51 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: rat_king_sprites_tails_0
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 88
+        width: 24
+        height: 350
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d5da3d482530d64aaa2d03092cce1bf
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rat_king_sprites_tails_1
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 126
+        width: 129
+        height: 142
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eda70459d79779f4ab7d11ade354b3a0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 104fcbeee31c7a04492f7d2c27127baa
+    spriteID: cc80ab231fc55d640ab2f7932f9bba6c
     vertices: []
     indices: 
     edges: []

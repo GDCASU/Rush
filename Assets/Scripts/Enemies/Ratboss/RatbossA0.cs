@@ -23,8 +23,11 @@ public class RatbossA0 : MonoBehaviour
     private BossBehaviorController bbc;
     private List<int> activeDoors = new List<int>();
     // Use this for initialization'
-    void OnAwake() => StartCoroutine(shakedoors());
-    public void Start () => bbc = GetComponent<BossBehaviorController>();
+    public void Awake()
+    {
+        bbc = GetComponent<BossBehaviorController>();
+        StartCoroutine(shakedoors());
+    } 
     IEnumerator shakedoors()
     {
         var r = pick_door(bbc.currentPhase);

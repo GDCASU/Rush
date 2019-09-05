@@ -38,12 +38,9 @@ public class PlayerHealth : MonoBehaviour {
     void OnTriggerEnter2D (Collider2D other) {
         if ( (!inv) && ((other.gameObject.CompareTag("Bullet") && other.GetComponent<Bullet>().hostile ) || other.gameObject.CompareTag("Enemy")) )
         {
-            inv = true;
-            StartCoroutine(flashingSprite());
-            lives--;
+            takeDamage();
             // Hurt the player
-            
-
+          
             if(other.gameObject.CompareTag("Bullet")) other.GetComponent<Bullet>().BulletDestroy ();
         }
     }
@@ -56,5 +53,11 @@ public class PlayerHealth : MonoBehaviour {
         }
         sp.enabled = true;
         inv = false;
+    }
+    public void takeDamage()
+    {
+        inv = true;
+        StartCoroutine(flashingSprite());
+        lives--;
     }
 }
