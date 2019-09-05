@@ -37,7 +37,7 @@ public class RatbossA0 : MonoBehaviour
         
         // rumble doors
         const int shakingFrames = 120;
-        List<Vector3> orgPos = activeDoors.Select(d => posLocations[d].door.transform.position).ToList();
+        List<Vector3> orgPos = posLocations.Select(d => d.door.transform.position).ToList();
         for (int i = 0; i < shakingFrames; i++)
         {
             foreach (var loc in activeDoors)
@@ -100,14 +100,14 @@ public class RatbossA0 : MonoBehaviour
     }
     private RatLocation pick_door(int num)
     {
-        /* activeDoors = new List<int>();
-         var correct = ran.Next(num-1); //oh my god this is fucking stupid we can do better than this why do you let jacob commit anything// wait wut, u ok jacob?
+        activeDoors = new List<int>();
+        /* var correct = ran.Next(num-1); //oh my god this is fucking stupid we can do better than this why do you let jacob commit anything// wait wut, u ok jacob?
         HashSet<int> otherDoors = new HashSet<int>{correct};
         while(otherDoors.Count < num) otherDoors.Add(ran.Next(num-1)); 
         GameObject curLocation = posLocations[correct].rat; */
 
         while(activeDoors.Count < num) {
-            var r = ran.Next(num-1);
+            var r = ran.Next(3);
             if(!activeDoors.Contains(r)) activeDoors.Add(r);
         } 
         return posLocations[activeDoors.LastOrDefault()];

@@ -80,9 +80,9 @@ public class RatbossA2 : MonoBehaviour
         }
         srBoss.flipX = false;
         srTail.enabled = false;
-        GetComponent<BossBehaviorController>().ChangeAction ();
-        
         yield return A0.returnIntoDoor();
+        
+        GetComponent<BossBehaviorController>().ChangeAction ();
     }
     void OnDrawGizmos()
     {

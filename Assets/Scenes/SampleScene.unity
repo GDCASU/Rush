@@ -5281,7 +5281,7 @@ MonoBehaviour:
     backgroundActions: []
     PossibleActions:
     - selectionChance: 0
-      runFrames: 1000
+      runFrames: 100000
       cooldownFrames: 20
       behavior: {fileID: 1358319890}
   - health: 30
@@ -5290,7 +5290,7 @@ MonoBehaviour:
     backgroundActions: []
     PossibleActions:
     - selectionChance: 0
-      runFrames: 1000
+      runFrames: 100000
       cooldownFrames: 20
       behavior: {fileID: 1358319890}
   currentPhase: 0
@@ -5319,7 +5319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.2
-  openingframes: 150
+  openingframes: 100
   closeFrames: 60
   cooldownFrames: 0
   location: {fileID: 0}
@@ -5346,9 +5346,9 @@ MonoBehaviour:
   extendedTail: {fileID: 21300000, guid: cc3f2b6f9ab7ad441b4f7a76a360d9c9, type: 3}
   currentSprite: {fileID: 0}
   backSprite: {fileID: 21300006, guid: ff67127591109a1419156d7eac963eb9, type: 3}
-  lookingFrames: 300
+  lookingFrames: 60
   curlFrames: 20
-  coolDownFrames: 60
+  coolDownFrames: 20
 --- !u!114 &1358319892
 MonoBehaviour:
   m_ObjectHideFlags: 0
