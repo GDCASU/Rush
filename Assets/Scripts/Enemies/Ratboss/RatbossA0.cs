@@ -25,7 +25,7 @@ public class RatbossA0 : MonoBehaviour
     // Use this for initialization'
     void OnAwake() => StartCoroutine(shakedoors());
     public void Start () => bbc = GetComponent<BossBehaviorController>();
-    IEnumerator shakedoors()
+    public IEnumerator shakedoors()
     {
         var r = pick_door(bbc.currentPhase);
         location = r.rat;
@@ -33,15 +33,18 @@ public class RatbossA0 : MonoBehaviour
         
         // rumble doors
         const int shakingFrames = 120;
+        List<Vector3> orgPos = activeDoors.Select(d => posLocations[d].door.transform.position).ToList();
         for (int i = 0; i < shakingFrames; i++)
         {
             foreach (var loc in activeDoors)
             {
                 var door = posLocations[loc].door;
-                // SHAKE
+                door.transform.position = orgPos[loc] + new Vector3( (float)ran.NextDouble(), (float)ran.NextDouble(), 0);// SHAKE
             }
             yield return new WaitForEndOfFrame();
         }
+        //return doors to original position 
+        foreach (var loc in activeDoors) posLocations[loc].door.transform.position = orgPos[loc];
 
         // open wrong doors
         if(bbc.currentPhase>1) {
@@ -74,12 +77,22 @@ public class RatbossA0 : MonoBehaviour
         // After the wait the boss is enabled and starts moving out
         location.GetComponentInChildren<SpriteRenderer>().enabled = true;
         
-        const int burstFrames = 10; // time for the boss to burst out of the door
-        for (int i = 0; i < burstFrames; i++){
+        const int retractFrames = 20; // time for the boss to return into the door
+        for (int i = 0; i < retractFrames; i++){
             location.transform.position = Vector3.MoveTowards(location.transform.position, location.transform.position + location.transform.forward, speed);
             yield return new WaitForEndOfFrame();
         }
 
+    }
+    public IEnumerator returnIntoDoor() {
+        
+        const int burstFrames = 10; // time for the boss to burst out of the door
+        for (int i = 0; i < burstFrames; i++){
+            location.transform.position = Vector3.MoveTowards(location.transform.position, location.transform.position - location.transform.forward, speed);
+            yield return new WaitForEndOfFrame();
+        }
+        
+        location.GetComponentInChildren<SpriteRenderer>().enabled = true;
     }
     private RatLocation pick_door(int num)
     {

@@ -16,31 +16,31 @@ public class RatbossA2 : MonoBehaviour
     private SpriteRenderer srTail;
     private SpriteRenderer srBoss;
     private Transform player;
-    private GameObject location;
     private int attacksPerformed=0;
 
-
+    private RatbossA0 A0;
 
 
     private void Start()
     {
         player = GameObject.Find("Player").GetComponent<Transform>();
-        location = GetComponent<RatbossA0>().location;
-        StartCoroutine(TailStab());
-        
+        A0 = GetComponent<RatbossA0>();
     }
+
+    private void OnEnable() => StartCoroutine(TailStab());
 
     IEnumerator TailStab()
     {
+        yield return A0.shakedoors();
         while (attacksPerformed < 3)
         {
-            srBoss = location.GetComponentInChildren<SpriteRenderer>();
+            srBoss = A0.location.GetComponentInChildren<SpriteRenderer>();
             srBoss.flipX = true;
             GameObject tail = Instantiate(tailPrefab, Vector3.zero, Quaternion.Euler(0f, 0f, 0f));
             srTail = tail.GetComponent<SpriteRenderer>();
             srTail.sprite = extendedTail;
-            tail.transform.SetParent(location.transform);
-            tail.transform.position = location.transform.position + new Vector3(2f, 0, 0);
+            tail.transform.SetParent(A0.location.transform);
+            tail.transform.position = A0.location.transform.position + new Vector3(2f, 0, 0);
             //tail.transform.rotation= location.transform.rotation;
 
 
@@ -57,8 +57,8 @@ public class RatbossA2 : MonoBehaviour
             srTail.sprite = extendedTail;
 
 
-            Vector3 midVector = Vector3.Lerp(player.transform.position, location.transform.position, 0.5f);
-            float distance = Vector2.Distance(player.transform.position, location.transform.position);
+            Vector3 midVector = Vector3.Lerp(player.transform.position, A0.location.transform.position, 0.5f);
+            float distance = Vector2.Distance(player.transform.position, A0.location.transform.position);
             Vector2 origin = new Vector2(midVector.x, midVector.y);
 
             var hits = Physics2D.BoxCastAll(origin, new Vector2(distance, 3), 0, player.transform.position);
@@ -73,6 +73,7 @@ public class RatbossA2 : MonoBehaviour
 
             attacksPerformed++;
         }
+        yield return A0.returnIntoDoor();
     }
 
 }
