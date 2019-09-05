@@ -9,6 +9,7 @@ public class RatbossA0 : MonoBehaviour
     public GameObject location_3;
     public int speed;
     public int openingframes;
+    public int closeFrames;
     private GameObject location;
     private List<GameObject> posLocations;
     private List<GameObject> activeDoors;
@@ -17,12 +18,14 @@ public class RatbossA0 : MonoBehaviour
     private System.Random ran = new System.Random();
 
     // Use this for initialization
-    void Start ()
+    void OnAwake()
     {
         posLocations.Add(location_1);
         posLocations.Add(location_2);
         posLocations.Add(location_3);
         NumofPhases = GetComponent<BossBehaviorController>().bossPhases.Count;
+
+        StartCoroutine(shakedoors());
 	}
     IEnumerator shakedoors()
     {
@@ -37,11 +40,14 @@ public class RatbossA0 : MonoBehaviour
         }
 
         location.GetComponentInChildren<SpriteRenderer>().enabled = true;
-        
-        
+        close_doors();
+        for (int i = 0; i < closeFrames; i++)
+        {
 
+            yield return new WaitForEndOfFrame();
+        }
+        moveRatForward();
 
-        yield return new WaitForEndOfFrame();
     }
     void moveRatForward()
     {
