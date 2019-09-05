@@ -5316,7 +5316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa4f14bbe8a055443b3c6582b5234fca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 0.2
   openingframes: 150
   closeFrames: 60
   cooldownFrames: 0
