@@ -56,7 +56,11 @@ public class BossBehaviorController : MonoBehaviour {
     public void ChangePhase () {
         if( bossPhases[currentPhase].endBehaviour != null) bossPhases[currentPhase].endBehaviour.enabled = true;
         foreach(PhaseAction p in bossPhases[currentPhase].backgroundActions) p.behavior.enabled = false;
-        if(currentAction.behavior != null) currentAction.behavior.enabled = false;
+        foreach(PhaseAction p in bossPhases[currentPhase].PossibleActions) {
+            p.behavior.StopAllCoroutines(); 
+            p.behavior.enabled = false;
+        }
+
         // if there are phases left
         if(currentPhase<bossPhases.Count-1) {
             currentPhase++;
@@ -76,7 +80,7 @@ public class BossBehaviorController : MonoBehaviour {
         else if(bossPhases[currentPhase].PossibleActions.Count > 1) 
             currentAction = bossPhases[currentPhase].PossibleActions.Where(x=> !x.Equals(currentAction)).ElementAt( rand.Next(bossPhases[currentPhase].PossibleActions.Count-1) );
         else currentAction = bossPhases[currentPhase].PossibleActions.FirstOrDefault();
-        
+
         if(currentAction.behavior != null) StartCoroutine(startAction(currentAction, true));
         else Debug.Log("BBC Error: Cannot start null behavior!");
     }

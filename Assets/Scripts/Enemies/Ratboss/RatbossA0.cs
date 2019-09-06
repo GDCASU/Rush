@@ -14,6 +14,8 @@ public class RatbossA0 : MonoBehaviour
     }
     public float speed;
     public int openingframes;
+
+    public bool ratOut = false;
     public int closeFrames;
     public int cooldownFrames; // frames before the boss bursts out 
     public GameObject location;
@@ -84,7 +86,7 @@ public class RatbossA0 : MonoBehaviour
         // After the wait the boss is enabled and starts moving out
         location.GetComponentInChildren<SpriteRenderer>().enabled = true;
         currentCollider.enabled = true;
-        
+        ratOut = true;
         const int burstFrames = 20; // time for the boss to burst out of the door
         for (int i = 0; i < burstFrames; i++){
             location.transform.position = Vector3.MoveTowards(location.transform.position, location.transform.position + location.transform.forward, speed);
@@ -93,7 +95,6 @@ public class RatbossA0 : MonoBehaviour
 
     }
     public IEnumerator returnIntoDoor() {
-        
         const int burstFrames = 20; 
         for (int i = 0; i < burstFrames; i++){
             location.transform.position = Vector3.MoveTowards(location.transform.position, location.transform.position - location.transform.forward, speed);
@@ -102,6 +103,7 @@ public class RatbossA0 : MonoBehaviour
         
         location.GetComponentInChildren<SpriteRenderer>().enabled = false;
         currentCollider.enabled = false;
+        ratOut = false;
     }
     private RatLocation pick_door(int num)
     {
@@ -124,7 +126,12 @@ public class RatbossA0 : MonoBehaviour
     /// <param name="f">a value between zero and one</param>
     public void swingDoorInterp(float f)
     {
-        throw new NotImplementedException();
+        // swing 
+    }
+
+    public void resetRatLocations () {
+         foreach(var loc in posLocations) 
+            loc.rat.transform.position = loc.rat.transform.parent.position;
     }
 
     public void Update () {
