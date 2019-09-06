@@ -42,7 +42,7 @@ public class RatbossA2 : MonoBehaviour
         srTail = tail.GetComponent<SpriteRenderer>();
         srTail.enabled = true;
         tail.transform.parent = A0.location.transform;
-        tail.transform.localPosition= (srBoss.sprite.name != "rat_king_sprites_front"? new Vector3(0,0,1f): new Vector3(0, 0, 2f));
+        tail.transform.localPosition = (srBoss.sprite.name != "rat_king_sprites_front" ? new Vector3(0, 0, 1f) : new Vector3(0, 0, 2f));
         int attacksPerformed = 0;
         while (attacksPerformed < 3)
         {
@@ -50,26 +50,26 @@ public class RatbossA2 : MonoBehaviour
 
             for (int i = 0; i < lookingFrames; i++)
             {
-                tail.transform.LookAt(player.transform.position, Vector3.up);
+                var VectorToPlayer = (Vector2)(PlayerHealth.singleton.transform.position - tail.transform.position).normalized;
+                tail.transform.rotation = Quaternion.identity;
+                tail.transform.Rotate(new Vector3(0, 0, Vector2.SignedAngle(Vector2.right, VectorToPlayer)));
                 yield return new WaitForEndOfFrame();
             }
             srTail.sprite = chargedTail;
+
+            Vector3 midVector = Vector3.Lerp(player.transform.position, A0.location.transform.position, 0.5f);
+            distance = Vector2.Distance(player.transform.position, A0.location.transform.position);
+            origin = new Vector2(midVector.x, midVector.y);
+
+            var hits = Physics2D.BoxCastAll(origin, new Vector2(distance, .1f), 0, player.transform.position - midVector);
             for (int i = 0; i < curlFrames; i++)
             {
                 yield return new WaitForEndOfFrame();
             }
             srTail.sprite = extendedTail;
 
-
-
-            Vector3 midVector = Vector3.Lerp(player.transform.position, A0.location.transform.position, 0.5f);
-            distance = Vector2.Distance(player.transform.position, A0.location.transform.position);
-            origin = new Vector2(midVector.x, midVector.y);
-
-            var hits = Physics2D.BoxCastAll(origin, new Vector2(distance, .5f), 0, player.transform.position-midVector);
-
             var players = hits?.Where(x => x.transform.tag == "Player")?.Select(e => e.transform.GetComponent<PlayerHealth>());
-            foreach (PlayerHealth player in players) player.takeDamage();
+            foreach (PlayerHealth playerH in players) if (!playerH.inv) playerH.takeDamage();
 
             for (int i = 0; i < coolDownFrames; i++)
             {
@@ -81,12 +81,13 @@ public class RatbossA2 : MonoBehaviour
         srBoss.flipX = false;
         srTail.enabled = false;
         yield return A0.returnIntoDoor();
-        
-        GetComponent<BossBehaviorController>().ChangeAction ();
+
+        GetComponent<BossBehaviorController>().ChangeAction();
     }
     void OnDrawGizmos()
     {
-        if (Application.isPlaying && tail != null) Gizmos.DrawLine(tail.transform.position,player.transform.position);
+        if (Application.isPlaying && tail != null) Gizmos.DrawLine(tail.transform.position, player.transform.position);
     }
 
 }
+
