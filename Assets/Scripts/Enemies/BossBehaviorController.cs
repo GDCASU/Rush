@@ -74,7 +74,7 @@ public class BossBehaviorController : MonoBehaviour {
         if(currentAction.behavior != null) currentAction.behavior.enabled = false;
         if(actionQueue.Any()) { currentAction =  actionQueue[0]; actionQueue.RemoveAt(0); }
         else if(bossPhases[currentPhase].PossibleActions.Count > 1) 
-            currentAction = bossPhases[currentPhase].PossibleActions.Where(x=> !x.Equals(currentAction)).ElementAt( rand.Next(bossPhases[currentPhase].PossibleActions.Count-2) );
+            currentAction = bossPhases[currentPhase].PossibleActions.Where(x=> !x.Equals(currentAction)).ElementAt( rand.Next(bossPhases[currentPhase].PossibleActions.Count-1) );
         else currentAction = bossPhases[currentPhase].PossibleActions.FirstOrDefault();
         
         if(currentAction.behavior != null) StartCoroutine(startAction(currentAction, true));

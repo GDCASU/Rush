@@ -24,5 +24,4 @@ public class RatbossA1 : MonoBehaviour {
         yield return a0.returnIntoDoor();
     }
     public void Update() => spawner.alternateSpawnLocation = a0.location.transform;
-	
 }

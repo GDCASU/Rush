@@ -5161,15 +5161,15 @@ GameObject:
   - component: {fileID: 1358319885}
   - component: {fileID: 1358319892}
   - component: {fileID: 1358319888}
+  - component: {fileID: 1358319895}
   - component: {fileID: 1358319890}
+  - component: {fileID: 1358319896}
   - component: {fileID: 1358319887}
   - component: {fileID: 1358319886}
   - component: {fileID: 1358319893}
   - component: {fileID: 1358319891}
   - component: {fileID: 1358319889}
-  - component: {fileID: 1358319895}
   - component: {fileID: 1358319894}
-  - component: {fileID: 1358319896}
   m_Layer: 0
   m_Name: Ratboss
   m_TagString: Enemy
@@ -5206,13 +5206,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossPhases:
-  - health: 30
+  - health: 60
     startBehaviour: {fileID: 0}
     endBehaviour: {fileID: 0}
     backgroundActions: []
     PossibleActions:
     - selectionChance: 0
-      runFrames: 100000
+      runFrames: 450
       cooldownFrames: 20
       behavior: {fileID: 1358319890}
     - selectionChance: 0
@@ -5318,6 +5318,7 @@ MonoBehaviour:
   extendedTail: {fileID: 21300000, guid: cc3f2b6f9ab7ad441b4f7a76a360d9c9, type: 3}
   currentSprite: {fileID: 0}
   backSprite: {fileID: 21300006, guid: ff67127591109a1419156d7eac963eb9, type: 3}
+  frontSprite: {fileID: 21300000, guid: ff67127591109a1419156d7eac963eb9, type: 3}
   lookingFrames: 60
   curlFrames: 20
   coolDownFrames: 20
@@ -5420,7 +5421,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1358319884}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09ba1622907ad804586f104d5b852be6, type: 3}
   m_Name: 

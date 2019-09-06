@@ -114,6 +114,8 @@ public class RatbossA3 : MonoBehaviour
         Instantiate(racerLB);
         Instantiate(racerRB);
 
+
+        yield return A0.returnIntoDoor();
         //Debug.Log(xPosRB + " " + xLengthRB);
 
         //Debug.Log("left " + leftSpawn);
@@ -121,7 +123,5 @@ public class RatbossA3 : MonoBehaviour
         //Debug.Log("top " + topSpawn);
         //Debug.Log("LB " + leftBottomSpawn);
         //Debug.Log("RB " + rightBottomSpawn);
-
-        //GetComponent<BossBehaviorController>().ChangeAction();
     }
 }

@@ -11,6 +11,7 @@ public class RatbossA2 : MonoBehaviour
     public Sprite extendedTail;
     public Sprite currentSprite;
     public Sprite backSprite;
+    public Sprite frontSprite;
     public int lookingFrames;
     public int curlFrames;
     public int coolDownFrames;
@@ -52,7 +53,7 @@ public class RatbossA2 : MonoBehaviour
             {
                 var VectorToPlayer = (Vector2)(PlayerHealth.singleton.transform.position - tail.transform.position).normalized;
                 tail.transform.rotation = Quaternion.identity;
-                tail.transform.Rotate(new Vector3(0, 0, Vector2.SignedAngle(Vector2.right, VectorToPlayer)));
+                tail.transform.Rotate(new Vector3(0, 0, Vector2.SignedAngle(Vector2.up, VectorToPlayer)));
                 yield return new WaitForEndOfFrame();
             }
             srTail.sprite = chargedTail;
@@ -78,16 +79,13 @@ public class RatbossA2 : MonoBehaviour
 
             attacksPerformed++;
         }
-        srBoss.flipX = false;
+        if (srBoss.sprite.name == "rat_king_sprites_back") srBoss.sprite = frontSprite; srBoss.flipX = false;
         srTail.enabled = false;
         yield return A0.returnIntoDoor();
-
-        GetComponent<BossBehaviorController>().ChangeAction();
     }
     void OnDrawGizmos()
     {
         if (Application.isPlaying && tail != null) Gizmos.DrawLine(tail.transform.position, player.transform.position);
     }
-
 }
 
