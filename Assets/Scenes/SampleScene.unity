@@ -734,7 +734,7 @@ Transform:
   m_LocalScale: {x: 20, y: 4, z: 6}
   m_Children: []
   m_Father: {fileID: 1017498756}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &148979002
 Rigidbody2D:
@@ -2501,34 +2501,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 559980277}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &617454285
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 617454286}
-  m_Layer: 0
-  m_Name: Racers Spawn 2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &617454286
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 617454285}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.2207985, y: 12.3582, z: -381.85898}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1358319885}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &619874781
 GameObject:
   m_ObjectHideFlags: 0
@@ -2921,34 +2893,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 721739911}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &747664296
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 747664297}
-  m_Layer: 0
-  m_Name: Racers Spawn 4
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &747664297
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 747664296}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.2207985, y: 12.3582, z: -381.85898}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1358319885}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &747716771
 GameObject:
   m_ObjectHideFlags: 0
@@ -3503,34 +3447,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 873388682}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &917245515
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 917245516}
-  m_Layer: 0
-  m_Name: Racers Spawn 5
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &917245516
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 917245515}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.2207985, y: 12.3582, z: -381.85898}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1358319885}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &929387049 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: ce3abf15b85a2044c95a2a96f2dc724a,
@@ -3572,7 +3488,7 @@ Transform:
   m_LocalScale: {x: 8, y: 4, z: 6}
   m_Children: []
   m_Father: {fileID: 1017498756}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &934211253
 MonoBehaviour:
@@ -4020,10 +3936,10 @@ Transform:
   - {fileID: 1916895764}
   - {fileID: 1272679061}
   - {fileID: 2026851202}
-  - {fileID: 1502550698}
   - {fileID: 148979001}
   - {fileID: 1970410864}
   - {fileID: 934211252}
+  - {fileID: 1502550698}
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5253,6 +5169,7 @@ GameObject:
   - component: {fileID: 1358319889}
   - component: {fileID: 1358319895}
   - component: {fileID: 1358319894}
+  - component: {fileID: 1358319896}
   m_Layer: 0
   m_Name: Ratboss
   m_TagString: Enemy
@@ -5274,11 +5191,6 @@ Transform:
   - {fileID: 1210766904}
   - {fileID: 1745582298}
   - {fileID: 16234621}
-  - {fileID: 1917126218}
-  - {fileID: 617454286}
-  - {fileID: 1604589477}
-  - {fileID: 747664297}
-  - {fileID: 917245516}
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5307,6 +5219,10 @@ MonoBehaviour:
       runFrames: 300
       cooldownFrames: 20
       behavior: {fileID: 1358319895}
+    - selectionChance: 0
+      runFrames: 300
+      cooldownFrames: 20
+      behavior: {fileID: 1358319896}
   - health: 30
     startBehaviour: {fileID: 0}
     endBehaviour: {fileID: 0}
@@ -5392,7 +5308,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1358319884}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3cc824ccb06588a4ba744b68c31bac97, type: 3}
   m_Name: 
@@ -5509,6 +5425,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09ba1622907ad804586f104d5b852be6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1358319896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1358319884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba4faa7b5631bf840992f6ea041de92f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  racerL: {fileID: 1674411583284584, guid: 2ec64e1a7c76283478b7977c30bdd1e0, type: 2}
+  racerR: {fileID: 1745918092114254, guid: 85917738bd5f88f41a0a01e13cfa27fe, type: 2}
+  racerT: {fileID: 1050018574884524, guid: bbfd5664c7b023f4295e01000984e8e5, type: 2}
+  racerLB: {fileID: 1203746612648270, guid: 5ef1264825ec1ee45bdf2bea4dd51ff5, type: 2}
+  racerRB: {fileID: 1883912106552400, guid: 4dbc4100aa0490b40a4af459057e44f3, type: 2}
+  leftWall: {fileID: 1502550694}
+  rightWall: {fileID: 1970410860}
+  topWall: {fileID: 148978997}
+  leftBottomWall: {fileID: 2026851198}
+  rightBottomWall: {fileID: 934211251}
 --- !u!1 &1362872080
 GameObject:
   m_ObjectHideFlags: 0
@@ -5831,7 +5768,7 @@ Transform:
   m_LocalScale: {x: 4, y: 15, z: 6}
   m_Children: []
   m_Father: {fileID: 1017498756}
-  m_RootOrder: 4
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1502550699
 Rigidbody2D:
@@ -6372,34 +6309,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1604589476
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1604589477}
-  m_Layer: 0
-  m_Name: Racers Spawn 3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1604589477
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1604589476}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.2207985, y: 12.3582, z: -381.85898}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1358319885}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1636379776
 GameObject:
   m_ObjectHideFlags: 0
@@ -7136,34 +7045,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: ce3abf15b85a2044c95a2a96f2dc724a,
     type: 3}
   m_PrefabInternal: {fileID: 485388547}
---- !u!1 &1917126217
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1917126218}
-  m_Layer: 0
-  m_Name: Racers Spawn 1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1917126218
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1917126217}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.2207985, y: 12.3582, z: -381.85898}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1358319885}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1925221155
 GameObject:
   m_ObjectHideFlags: 0
@@ -7331,7 +7212,7 @@ Transform:
   m_LocalScale: {x: 4, y: 15, z: 6}
   m_Children: []
   m_Father: {fileID: 1017498756}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1970410865
 Rigidbody2D:
