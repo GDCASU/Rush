@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RatbossA0 : MonoBehaviour
+public class RatbossA0 : BossAction
 { 
     [Serializable]
     private class RatLocation {
@@ -30,9 +30,12 @@ public class RatbossA0 : MonoBehaviour
 
     public void Awake()
     {
+        actionRunning = true;
+        print("woke");
         bbc = GetComponent<BossBehaviorController>();
+        if (ratOut) StartCoroutine(returnIntoDoor());
+        else StartCoroutine(shakedoors());
     }
-    
     public IEnumerator shakedoors()
     {
         var r = pick_door(bbc.currentPhase+1);
@@ -92,9 +95,10 @@ public class RatbossA0 : MonoBehaviour
             location.transform.position = Vector3.MoveTowards(location.transform.position, location.transform.position + location.transform.forward, speed);
             yield return new WaitForEndOfFrame();
         }
-
+        actionRunning = false;
     }
     public IEnumerator returnIntoDoor() {
+        print("returning");
         const int burstFrames = 20; 
         for (int i = 0; i < burstFrames; i++){
             location.transform.position = Vector3.MoveTowards(location.transform.position, location.transform.position - location.transform.forward, speed);
@@ -104,6 +108,7 @@ public class RatbossA0 : MonoBehaviour
         location.GetComponentInChildren<SpriteRenderer>().enabled = false;
         currentCollider.enabled = false;
         ratOut = false;
+        StartCoroutine(shakedoors());
     }
     private RatLocation pick_door(int num)
     {

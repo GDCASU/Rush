@@ -4,7 +4,7 @@ using System.Linq;
 using System;
 using UnityEngine;
 
-public class RatbossA2 : MonoBehaviour
+public class RatbossA2 : BossAction
 {
     public GameObject tailPrefab;
     public Sprite chargedTail;
@@ -34,8 +34,7 @@ public class RatbossA2 : MonoBehaviour
 
     IEnumerator TailStab()
     {
-        yield return A0.shakedoors();
-
+        actionRunning = true;
         srBoss = A0.location.GetComponentInChildren<SpriteRenderer>();
         if (srBoss.sprite.name == "rat_king_sprites_front") srBoss.sprite = backSprite;
         else srBoss.flipX = true;
@@ -81,7 +80,7 @@ public class RatbossA2 : MonoBehaviour
         }
         if (srBoss.sprite.name == "rat_king_sprites_back") srBoss.sprite = frontSprite; srBoss.flipX = false;
         srTail.enabled = false;
-        yield return A0.returnIntoDoor();
+        actionRunning=false;
     }
     void OnDrawGizmos()
     {
