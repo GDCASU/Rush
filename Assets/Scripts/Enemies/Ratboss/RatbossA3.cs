@@ -88,8 +88,6 @@ public class RatbossA3 : BossAction
 
     IEnumerator Racers()
     {
-
-        actionRunning = true;
         leftSpawn = Random.Range(yPosLR - (yLengthLR / 2), yPosLR + (yLengthLR / 2));
         racerL.transform.position = new Vector3(leftWall.transform.position.x + (xLengthLR / 2)+0.5f, leftSpawn, -2);
         racerL.tag = "RatRacer";

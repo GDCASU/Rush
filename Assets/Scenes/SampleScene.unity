@@ -4121,7 +4121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 097da67cb82ef0a4ca352774b96197e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
   bossPhases:
   - health: 20
     repeatingBehaviour: {fileID: 0}
@@ -5565,7 +5564,6 @@ GameObject:
   - component: {fileID: 1358319890}
   - component: {fileID: 1358319896}
   - component: {fileID: 1358319887}
-  - component: {fileID: 1358319897}
   - component: {fileID: 1358319886}
   - component: {fileID: 1358319893}
   - component: {fileID: 1358319891}
@@ -5608,7 +5606,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 097da67cb82ef0a4ca352774b96197e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
   bossPhases:
   - health: 10
     repeatingBehaviour: {fileID: 1358319888}
@@ -5857,18 +5854,6 @@ MonoBehaviour:
   topWall: {fileID: 148978997}
   leftBottomWall: {fileID: 2026851198}
   rightBottomWall: {fileID: 934211251}
---- !u!114 &1358319897
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1358319884}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7726a63e930dd694b83a7a75371ff5b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1362872080
 GameObject:
   m_ObjectHideFlags: 0

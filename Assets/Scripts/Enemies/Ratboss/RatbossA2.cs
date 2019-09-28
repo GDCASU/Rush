@@ -34,7 +34,6 @@ public class RatbossA2 : BossAction
 
     IEnumerator TailStab()
     {
-        actionRunning = true;
         srBoss = A0.location.GetComponentInChildren<SpriteRenderer>();
         if (srBoss.sprite.name == "rat_king_sprites_front") srBoss.sprite = backSprite;
         else srBoss.flipX = true;
@@ -69,7 +68,7 @@ public class RatbossA2 : BossAction
             srTail.sprite = extendedTail;
 
             var players = hits?.Where(x => x.transform.tag == "Player")?.Select(e => e.transform.GetComponent<PlayerHealth>());
-            foreach (PlayerHealth playerH in players) if (!playerH.inv) playerH.takeDamage();
+            foreach (PlayerHealth playerH in players) if (!playerH.inv && distance<7) playerH.takeDamage();
 
             for (int i = 0; i < coolDownFrames; i++)
             {
