@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 114521306291101972}
   m_Layer: 0
   m_Name: RacerL
-  m_TagString: Enemy
+  m_TagString: RatRacer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1674411583284584}
   m_LocalRotation: {x: -0.49928945, y: 0, z: 0, w: 0.8664352}
-  m_LocalPosition: {x: -19.1, y: -0.6199124, z: -2}
+  m_LocalPosition: {x: -19.1, y: 5.619241, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
