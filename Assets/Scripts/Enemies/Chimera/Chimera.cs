@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Chimera.cs : MonoBehaviour
+public class Chimera : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
