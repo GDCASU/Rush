@@ -25,9 +25,9 @@ public class BossBehaviorController : MonoBehaviour
     public struct PhaseAction
     {
         public bool independent;
-        public float selectionChance; // chance that this is chosen from possible actions
+        private float selectionChance; // chance that this is chosen from possible actions
         //public bool background;
-        public int runFrames; // framesa to run before finding next action
+        public int runFrames; // frames to run before finding next action
         public int cooldownFrames; // frames after running before nfinding next action
         public BossAction behavior;
     }
@@ -63,14 +63,24 @@ public class BossBehaviorController : MonoBehaviour
             phaseHealth -= temp;
             if (phaseHealth <= 0)
             { // Change Phases
-                ChangePhase();
+                StartCoroutine(ChangePhase());
             }
         }
     }
-    public void ChangePhase()
+    public IEnumerator ChangePhase()
     {
-        if (bossPhases[currentPhase].endBehaviour != null) bossPhases[currentPhase].endBehaviour.enabled = true;
-        
+        if (bossPhases[currentPhase].endBehaviour != null)
+        {
+            bossPhases[currentPhase].endBehaviour.enabled = true;
+            do
+            {
+                yield return new WaitForEndOfFrame();
+
+            }
+            while (bossPhases[currentPhase].endBehaviour.actionRunning);
+            bossPhases[currentPhase].endBehaviour.enabled = false;
+        }
+
         foreach (PhaseAction p in bossPhases[currentPhase].backgroundActions) p.behavior.enabled = false;
         foreach (PhaseAction p in bossPhases[currentPhase].PossibleActions)
         {
@@ -92,13 +102,15 @@ public class BossBehaviorController : MonoBehaviour
         if (bossPhases[currentPhase].startBehaviour != null)
         {
             bossPhases[currentPhase].startBehaviour.enabled = true;
-            while (bossPhases[currentPhase].startBehaviour.actionRunning)
+            do
             {
                 yield return new WaitForEndOfFrame();
+
             }
+            while (bossPhases[currentPhase].startBehaviour.actionRunning);
             bossPhases[currentPhase].startBehaviour.enabled = false;
         }
-        else ChangeAction();
+        ChangeAction();
         foreach (PhaseAction p in bossPhases[currentPhase].backgroundActions) StartCoroutine(startActionBackground(p));
 
     }
@@ -107,11 +119,14 @@ public class BossBehaviorController : MonoBehaviour
         if (currentAction.behavior != null) currentAction.behavior.enabled = false;                     //disables the current action
         if (bossPhases[currentPhase].repeatingBehaviour != null &&
             currentAction.behavior != bossPhases[currentPhase].repeatingBehaviour)
-            currentAction.behavior = bossPhases[currentPhase].repeatingBehaviour;                       //if there's a repeating beahior it will choose it if it wasnt the previous action running  
-       // else if (actionQueue.Any()) { currentAction = actionQueue[0]; actionQueue.RemoveAt(0); }        // im pretty sure this is never used but i was afraid to eras it in case you wanted to modify it
-        else if (bossPhases[currentPhase].PossibleActions.Count > 1)                                    //if there is more than one possible action then it randomly chooses one of them
-            currentAction = bossPhases[currentPhase].PossibleActions.Where(x => !x.Equals(currentAction)).ElementAt(rand.Next(bossPhases[currentPhase].PossibleActions.Count));
-        else currentAction = bossPhases[currentPhase].PossibleActions.FirstOrDefault();                 //otherwise it chooses the first one
+            currentAction.behavior = bossPhases[currentPhase].repeatingBehaviour;                       //if there's a repeating beahior it will choose it if it wasnt the previous action running
+        // else if (actionQueue.Any()) { currentAction = actionQueue[0]; actionQueue.RemoveAt(0); }        // im pretty sure this is never used but i was afraid to eras it in case you wanted to modify it
+        else if (bossPhases[currentPhase].PossibleActions.Count > 1)
+        {                                                                                               //if there is more than one possible action then it randomly chooses one of them
+            if (bossPhases[currentPhase].repeatingBehaviour!=null)currentAction = bossPhases[currentPhase].PossibleActions.Where(x => !x.Equals(currentAction)).ElementAt(rand.Next(bossPhases[currentPhase].PossibleActions.Count));
+            else currentAction = bossPhases[currentPhase].PossibleActions.Where(x => !x.Equals(currentAction)).ElementAt(rand.Next(bossPhases[currentPhase].PossibleActions.Count-1));
+        }
+        else if (bossPhases[currentPhase].PossibleActions.Count != 0) currentAction = bossPhases[currentPhase].PossibleActions.FirstOrDefault();                 //otherwise it chooses the first one
 
         if (currentAction.behavior != null) StartCoroutine(startAction(currentAction, true));
         else Debug.Log("BBC Error: Cannot start null behavior!");

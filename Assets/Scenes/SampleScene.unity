@@ -2073,6 +2073,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb16419c509c2f94982de5d5e8fa0091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actionRunning: 0
   bulletSpeed: 5.56
   bulletAmount: 4
   bulletArc: 6.2831855
@@ -2423,6 +2424,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb16419c509c2f94982de5d5e8fa0091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actionRunning: 0
   bulletSpeed: 5.56
   bulletAmount: 3
   bulletArc: 3.1415
@@ -3838,15 +3840,15 @@ GameObject:
   - component: {fileID: 1003804387}
   - component: {fileID: 1003804386}
   - component: {fileID: 1003804394}
-  - component: {fileID: 1003804396}
   - component: {fileID: 1003804395}
+  - component: {fileID: 1003804396}
   m_Layer: 0
   m_Name: TestBossPhaseController
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1003804386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3859,6 +3861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb16419c509c2f94982de5d5e8fa0091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actionRunning: 0
   bulletSpeed: 3
   bulletAmount: 1
   bulletArc: 6.2831855
@@ -3890,6 +3893,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb16419c509c2f94982de5d5e8fa0091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actionRunning: 0
   bulletSpeed: 5.56
   bulletAmount: 6
   bulletArc: 6.283185
@@ -4058,6 +4062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb16419c509c2f94982de5d5e8fa0091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actionRunning: 0
   bulletSpeed: 4
   bulletAmount: 2
   bulletArc: 6.2831855
@@ -4090,6 +4095,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb16419c509c2f94982de5d5e8fa0091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actionRunning: 0
   bulletSpeed: 7
   bulletAmount: 8
   bulletArc: 6.2831855
@@ -4128,20 +4134,17 @@ MonoBehaviour:
     endBehaviour: {fileID: 0}
     backgroundActions:
     - independent: 0
-      selectionChance: 0
       runFrames: 600
       cooldownFrames: 200
-      behavior: {fileID: 0}
+      behavior: {fileID: 1003804387}
     - independent: 0
-      selectionChance: 0
       runFrames: 600
       cooldownFrames: 200
-      behavior: {fileID: 0}
+      behavior: {fileID: 1003804386}
     - independent: 0
-      selectionChance: 0
       runFrames: 600
       cooldownFrames: 200
-      behavior: {fileID: 0}
+      behavior: {fileID: 1003804394}
     PossibleActions: []
   - health: 20
     repeatingBehaviour: {fileID: 0}
@@ -4150,15 +4153,13 @@ MonoBehaviour:
     backgroundActions: []
     PossibleActions:
     - independent: 0
-      selectionChance: 0
       runFrames: 100
       cooldownFrames: 100
-      behavior: {fileID: 0}
+      behavior: {fileID: 1003804395}
     - independent: 0
-      selectionChance: 0
       runFrames: 300
       cooldownFrames: 50
-      behavior: {fileID: 0}
+      behavior: {fileID: 1003804386}
   currentPhase: 0
   actionQueue: []
 --- !u!1 &1017498755
@@ -5172,6 +5173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb16419c509c2f94982de5d5e8fa0091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actionRunning: 0
   bulletSpeed: 5.56
   bulletAmount: 6
   bulletArc: 6.28
@@ -5614,17 +5616,14 @@ MonoBehaviour:
     backgroundActions: []
     PossibleActions:
     - independent: 1
-      selectionChance: 0
       runFrames: 0
       cooldownFrames: 0
       behavior: {fileID: 1358319890}
     - independent: 0
-      selectionChance: 0
       runFrames: 300
       cooldownFrames: 20
       behavior: {fileID: 1358319895}
     - independent: 1
-      selectionChance: 0
       runFrames: 0
       cooldownFrames: 0
       behavior: {fileID: 1358319896}
@@ -5799,6 +5798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb16419c509c2f94982de5d5e8fa0091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actionRunning: 0
   bulletSpeed: 4
   bulletAmount: 3
   bulletArc: 3
