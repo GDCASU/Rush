@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-public class BulletSpawner : MonoBehaviour {
+public class BulletSpawner : BossAction {
 	const float tau = 2*Mathf.PI;
 	private GameObject bulletTemplate;
 	public float bulletSpeed;

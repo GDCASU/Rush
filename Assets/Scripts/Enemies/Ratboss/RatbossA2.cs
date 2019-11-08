@@ -4,7 +4,7 @@ using System.Linq;
 using System;
 using UnityEngine;
 
-public class RatbossA2 : MonoBehaviour
+public class RatbossA2 : BossAction
 {
     public GameObject tailPrefab;
     public Sprite chargedTail;
@@ -34,8 +34,6 @@ public class RatbossA2 : MonoBehaviour
 
     IEnumerator TailStab()
     {
-        yield return A0.shakedoors();
-
         srBoss = A0.location.GetComponentInChildren<SpriteRenderer>();
         if (srBoss.sprite.name == "rat_king_sprites_front") srBoss.sprite = backSprite;
         else srBoss.flipX = true;
@@ -70,7 +68,7 @@ public class RatbossA2 : MonoBehaviour
             srTail.sprite = extendedTail;
 
             var players = hits?.Where(x => x.transform.tag == "Player")?.Select(e => e.transform.GetComponent<PlayerHealth>());
-            foreach (PlayerHealth playerH in players) if (!playerH.inv) playerH.takeDamage();
+            foreach (PlayerHealth playerH in players) if (!playerH.inv && distance<7) playerH.takeDamage();
 
             for (int i = 0; i < coolDownFrames; i++)
             {
@@ -81,7 +79,7 @@ public class RatbossA2 : MonoBehaviour
         }
         if (srBoss.sprite.name == "rat_king_sprites_back") srBoss.sprite = frontSprite; srBoss.flipX = false;
         srTail.enabled = false;
-        yield return A0.returnIntoDoor();
+        actionRunning=false;
     }
     void OnDrawGizmos()
     {

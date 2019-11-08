@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // This is really just a wrapper for a bullet spawner 
-public class RatbossA1 : MonoBehaviour {
+public class RatbossA1 : BossAction{
     BulletSpawner spawner;
     RatbossA0 a0;
     public void Awake() {
@@ -11,8 +11,8 @@ public class RatbossA1 : MonoBehaviour {
         a0 = GetComponent<RatbossA0>();
     }
 
-    public void OnEnable () => StartCoroutine(Cheese()); 
-    public void OnDisable () =>  StartCoroutine(NoMoreCheese());
+    public void OnEnable () => spawner.enabled = true;//StartCoroutine(Cheese()); 
+    public void OnDisable () => spawner.enabled = false;//StartCoroutine(NoMoreCheese());
     IEnumerator Cheese()
     {
         yield return a0.shakedoors();
