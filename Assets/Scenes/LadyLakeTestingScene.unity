@@ -175,11 +175,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114336014866587410, guid: e9b2e5bfc07001e4c8442a7bb10147a5,
-        type: 3}
-      propertyPath: disableSaves
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 114656416383538420, guid: e9b2e5bfc07001e4c8442a7bb10147a5,
         type: 3}
       propertyPath: playerPrefab
@@ -204,6 +199,11 @@ PrefabInstance:
         type: 3}
       propertyPath: buttons.Array.data[3].keyboardButton
       value: 104
+      objectReference: {fileID: 0}
+    - target: {fileID: 114336014866587410, guid: e9b2e5bfc07001e4c8442a7bb10147a5,
+        type: 3}
+      propertyPath: disableSaves
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9b2e5bfc07001e4c8442a7bb10147a5, type: 3}
@@ -993,7 +993,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f679d90c4caa3bd409c2c9e3547e4447, type: 2}
+  - {fileID: 2100000, guid: bc4dd6263cb6d804ca35f1b9528729c5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
