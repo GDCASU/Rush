@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour {
 	public bool hostile; //0=hurts enemys 1=hurts player
     public bool solid; //collides with enviroment walls
     public float speed;
+    public bool onScreenDestroy=true;
 	public void Init(Vector2 dir, float rot, float spd, MoveFunctions act, SpawnFunctions spwn, Sprite spr, Color color, bool enemy, float colliderRadius = 0.5f, List<float> SpawnFunctionParams = null) {
 		SpriteRenderer sp = GetComponent<SpriteRenderer>();
 		MoveVector = dir.normalized * spd; 
@@ -26,7 +27,7 @@ public class Bullet : MonoBehaviour {
 	}
 
 	void Update () {
-		if (!Utils.IsOnScreen(gameObject)) BulletDestroy ();
+		if (!Utils.IsOnScreen(gameObject) && onScreenDestroy) BulletDestroy ();
 		
 		Vector2 m = MoveVector * Time.deltaTime;
 		transform.localPosition = transform.localPosition+new Vector3(m.x,m.y,0);
