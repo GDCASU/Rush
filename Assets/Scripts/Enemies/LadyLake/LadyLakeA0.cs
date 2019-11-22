@@ -32,6 +32,7 @@ public class LadyLakeA0 : MonoBehaviour
     public int convergeRadius;  //This is the radius that the lady and clones stop converging to the center
     public int copyCount;
     public Vector2 centerPoint; //The center that the lady and clones converge into
+    public float convergeSpeed;
 
     [Header("Between Water Variables")]
     public float sinkTransitionZ;  //This is the z position for when to stop the disappear sequence. This is a positive number
@@ -46,10 +47,28 @@ public class LadyLakeA0 : MonoBehaviour
         if (GetComponent<BossBehaviorController>() != null)
         {
             isRising = false;
+
+            //Since this is the boss with the variables it transfers them to it's copies
+            SetPrefabVariables();
         }
 
         //Whether this is a copy or boss it starts off by moving between the water
         StartCoroutine(TransitionBetweenWater(isRising));
+    }
+
+    /// <summary>
+    /// This transfers needed variables from the main boss to
+    /// it's copies
+    /// </summary>
+    private void SetPrefabVariables()
+    {
+        LadyLakeA0 copyAction = CopyPrefab.GetComponent<LadyLakeA0>();
+
+        copyAction.riseTransitionZ = this.riseTransitionZ;
+        copyAction.betweenWaterSpeed = this.betweenWaterSpeed;
+        copyAction.convergeRadius = this.convergeRadius;
+        copyAction.centerPoint = this.centerPoint;
+        copyAction.convergeSpeed = this.convergeSpeed;
     }
 
     /// <summary>
@@ -75,7 +94,7 @@ public class LadyLakeA0 : MonoBehaviour
         }
 
         //This is just a temp delay I added to prevent it from acting on it's own too quickly. Remove later one
-        int delay = 3;
+        int delay = 1;
         while(delay > 0)
         {
             delay--;
@@ -103,10 +122,23 @@ public class LadyLakeA0 : MonoBehaviour
             }
         }
 
-        //If this is the main boss
+        //Creates copies if this is the boss and we just sank
         if (!isRising && GetComponent<BossBehaviorController>() != null)
         {
             CreateAndPlace();
+        }
+        //Starts converging onto the boss if we essentially had just risen
+        else
+        {
+            //This is just a temp delay I added to prevent it from acting on it's own too quickly. Remove later one
+            int delay = 1;
+            while (delay > 0)
+            {
+                delay--;
+                yield return new WaitForSeconds(1f);
+            }
+
+            StartCoroutine(ConvergeToCenter());
         }
 
         yield return null;
@@ -160,5 +192,44 @@ public class LadyLakeA0 : MonoBehaviour
 
             currentAngle += angleDiff;
         }
+
+        //After all copies are made then rise out of water
+        StartCoroutine(TransitionBetweenWater(true));
+    }
+
+    /// <summary>
+    /// Coroutine that moves this object to the center
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator ConvergeToCenter()
+    {
+        Vector2 distance = GetDistanceToCenter();
+
+        while(distance.magnitude > convergeRadius)
+        {
+            Vector2 travelDist = distance.normalized * convergeSpeed;
+
+            Vector3 newPos = LadyTransform.position;
+            newPos.x += travelDist.x;
+            newPos.y += travelDist.y;
+
+            LadyTransform.position = newPos;
+
+            distance = GetDistanceToCenter();
+
+            yield return new WaitForEndOfFrame();
+        }
+
+        yield return null;
+    }
+
+    /// <summary>
+    /// Simple method that gets the vector2 of the distance
+    /// between this object and the center point
+    /// </summary>
+    /// <returns>Distance vector from this object to center point</returns>
+    private Vector2 GetDistanceToCenter()
+    {
+        return new Vector2(centerPoint.x - LadyTransform.position.x, centerPoint.y - LadyTransform.position.y);
     }
 }

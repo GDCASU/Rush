@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2963200048994050178}
   - component: {fileID: 2963200048994050191}
   - component: {fileID: 2963200048994050176}
-  - component: {fileID: 2963200048994050177}
   - component: {fileID: 2963200048994050190}
   m_Layer: 0
   m_Name: Reflection
@@ -81,20 +80,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2963200048994050177
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2963200048994050179}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &2963200048994050190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,6 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xOffSet: 0
   yOffSet: -1
+  zOffSet: 0
   objTransform: {fileID: 0}
 --- !u!1 &2963200049868911149
 GameObject:
