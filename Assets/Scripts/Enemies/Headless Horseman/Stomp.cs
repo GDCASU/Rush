@@ -12,6 +12,7 @@ public class Stomp : BossAction
 
     void Awake()
     {
+        player = GameObject.Find("Player").GetComponent<Transform>();
         float diameter = 2 * GetComponentInParent<CircleCollider2D>().radius;
         increment = diameter / warningFrames;
         decrement = -diameter / endingFrames;
