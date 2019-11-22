@@ -131,7 +131,6 @@ public class LadyLakeA0 : MonoBehaviour
         else
         {
             //This is just a temp delay I added to prevent it from acting on it's own too quickly. Remove later one
-            int delay = 1;
             while (delay > 0)
             {
                 delay--;

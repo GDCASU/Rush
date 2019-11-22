@@ -674,6 +674,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 2094155818531741498, guid: ab0a4eaace8d2334ebb5496f8d011766,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4828904023027043125, guid: ab0a4eaace8d2334ebb5496f8d011766,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -774,6 +779,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_MaskInteraction
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4972897495111253431, guid: ab0a4eaace8d2334ebb5496f8d011766,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4972897495111253431, guid: ab0a4eaace8d2334ebb5496f8d011766,
+        type: 3}
+      propertyPath: m_DrawMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4972897495111253431, guid: ab0a4eaace8d2334ebb5496f8d011766,
+        type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4972897495111253431, guid: ab0a4eaace8d2334ebb5496f8d011766,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab0a4eaace8d2334ebb5496f8d011766, type: 3}
@@ -922,12 +947,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3cc76b395701e445ae7b5e74e98c88b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ringRadius: 0
-  convergeRadius: 0
-  copyCount: 0
+  CopyPrefab: {fileID: 5421877923684637864, guid: 043e6413325cc1c4a88697125970989c,
+    type: 3}
+  ringRadius: 18
+  convergeRadius: 5
+  copyCount: 10
   centerPoint: {x: 0, y: 0}
-  disappearTransitionZ: 2
-  disappearSpeed: 0.1
+  convergeSpeed: 0.05
+  sinkTransitionZ: 2
+  riseTransitionZ: -2
+  betweenWaterSpeed: 0.05
 --- !u!1 &1042659683
 GameObject:
   m_ObjectHideFlags: 0
@@ -1078,6 +1107,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 10cac67d89c7b2041bc726f4d093061d, type: 2}
+    - target: {fileID: 2963200048994050176, guid: 2c075669982bbb243869fe502f8ec2d2,
+        type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963200048994050176, guid: 2c075669982bbb243869fe502f8ec2d2,
+        type: 3}
+      propertyPath: m_ReflectionProbeUsage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2963200048994050178, guid: 2c075669982bbb243869fe502f8ec2d2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1148,6 +1187,11 @@ PrefabInstance:
       propertyPath: yOffSet
       value: -2.7
       objectReference: {fileID: 0}
+    - target: {fileID: 2963200048994050191, guid: 2c075669982bbb243869fe502f8ec2d2,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 2963200049868911146, guid: 2c075669982bbb243869fe502f8ec2d2,
         type: 3}
       propertyPath: m_TargetTexture
@@ -1606,6 +1650,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 992bea7328c9eab47904c3321dcf3a61, type: 2}
+    - target: {fileID: 2963200048994050176, guid: 2c075669982bbb243869fe502f8ec2d2,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963200048994050176, guid: 2c075669982bbb243869fe502f8ec2d2,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2963200048994050178, guid: 2c075669982bbb243869fe502f8ec2d2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1743,6 +1797,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2963200048994050190, guid: 2c075669982bbb243869fe502f8ec2d2, type: 3}
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2c075669982bbb243869fe502f8ec2d2, type: 3}
 --- !u!1001 &2963200049450580215
 PrefabInstance:
