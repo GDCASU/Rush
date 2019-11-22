@@ -1,0 +1,415 @@
+fileFormatVersion: 2
+guid: c60d51655c1e5bd41b9cbddddd392483
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1243185959719095272
+    second: wisp_boss_0
+  - first:
+      213: -1161100823943283964
+    second: wisp_boss_1
+  - first:
+      213: 8381185347400943613
+    second: wisp_boss_2
+  - first:
+      213: 8700581184018476385
+    second: wisp_boss_3
+  - first:
+      213: -2663401189923312691
+    second: wisp_boss_4
+  - first:
+      213: -8795804722823341794
+    second: wisp_boss_5
+  - first:
+      213: 8876731717899313133
+    second: wisp_boss_6
+  - first:
+      213: 3720195628767793465
+    second: wisp_boss_7
+  - first:
+      213: 235156036663004228
+    second: wisp_boss_8
+  - first:
+      213: 8757523159995105132
+    second: wisp_boss_9
+  - first:
+      213: 278962933727750892
+    second: wisp_boss_10
+  - first:
+      213: -4821570211803174059
+    second: wisp_boss_11
+  - first:
+      213: -164626600051860684
+    second: wisp_boss_12
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: wisp_boss_0
+      rect:
+        serializedVersion: 2
+        x: 3023
+        y: 0
+        width: 1504
+        height: 1109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bacfb828bcbc1074c91c0f3b18d06002
+      internalID: -1243185959719095272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wisp_boss_1
+      rect:
+        serializedVersion: 2
+        x: 1716
+        y: 0
+        width: 1254
+        height: 1250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62b3d7c700a91c745b52490b6a99cbb3
+      internalID: -1161100823943283964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wisp_boss_2
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 253
+        width: 768
+        height: 1025
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 668044a2c3030834089ed65e83317cee
+      internalID: 8381185347400943613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wisp_boss_3
+      rect:
+        serializedVersion: 2
+        x: 2278
+        y: 1296
+        width: 2812
+        height: 1190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8cea8008d596b44cbf18c5af5995132
+      internalID: 8700581184018476385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wisp_boss_4
+      rect:
+        serializedVersion: 2
+        x: 1166
+        y: 1515
+        width: 787
+        height: 453
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06323b00637893248ad8070479e897f3
+      internalID: -2663401189923312691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wisp_boss_5
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 1321
+        width: 1591
+        height: 1364
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01b133d3f0e3e3d4db6cb4410b2156ec
+      internalID: -8795804722823341794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wisp_boss_6
+      rect:
+        serializedVersion: 2
+        x: 2367
+        y: 2743
+        width: 1916
+        height: 1112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c845f2804f82f343aef39e79c2229de
+      internalID: 8876731717899313133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wisp_boss_7
+      rect:
+        serializedVersion: 2
+        x: 1185
+        y: 2775
+        width: 1013
+        height: 1047
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dfcad109a0d49d41b37fc4ef35a85f7
+      internalID: 3720195628767793465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wisp_boss_8
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 2662
+        width: 910
+        height: 1278
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84868839ad8336f409d3e4a468df7c53
+      internalID: 235156036663004228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wisp_boss_9
+      rect:
+        serializedVersion: 2
+        x: 4123
+        y: 4028
+        width: 898
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45099088fd868b94b966a7bdc8b283bc
+      internalID: 8757523159995105132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wisp_boss_10
+      rect:
+        serializedVersion: 2
+        x: 3104
+        y: 4003
+        width: 884
+        height: 1081
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dc19a2ea5484f440b8622962a6bf1f1
+      internalID: 278962933727750892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wisp_boss_11
+      rect:
+        serializedVersion: 2
+        x: 1549
+        y: 3851
+        width: 1303
+        height: 1249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42fca8fcf24ed3a4eb754051d581c885
+      internalID: -4821570211803174059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wisp_boss_12
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 3932
+        width: 1285
+        height: 960
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80db76abda207ce4fa590a58d437ef65
+      internalID: -164626600051860684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: fff620d03b9ff354f8d7bceb6ef8561d
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
