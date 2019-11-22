@@ -18,14 +18,6 @@ public class LadyLakeA0 : MonoBehaviour
             return LadyObject.GetComponent<Transform>();
         }
     }
-    public GameObject LadyReflection;
-    private Transform ReflectionTransform
-    {
-        get
-        {
-            return LadyReflection.GetComponent<Transform>();
-        }
-    }
 
     [Header("Converge Variables")]
     public int ringRadius;
@@ -42,12 +34,24 @@ public class LadyLakeA0 : MonoBehaviour
         StartCoroutine(DisappearIntoWater());
     }
 
+    /// <summary>
+    /// Coroutine that slowly lowers the boss under the water.
+    /// 
+    /// Note: This will likely be replaced with an animation later
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator DisappearIntoWater()
     {
+        int delay = 3;
+        while(delay > 0)
+        {
+            delay--;
+            yield return new WaitForSeconds(1f);
+        }
+
         while(LadyTransform.position.z <= disappearTransitionZ)
         {
             Vector3 newLadyPosition = LadyTransform.position;
-            Vector3 newReflectionPosition = ReflectionTransform.position;
 
             /*
              * Note: The z position will start of negative and
@@ -55,14 +59,20 @@ public class LadyLakeA0 : MonoBehaviour
              */
 
             newLadyPosition.z += disappearSpeed;
-            newReflectionPosition.z += disappearSpeed;
 
             LadyTransform.position = newLadyPosition;
-            ReflectionTransform.position = newReflectionPosition;
 
             yield return new WaitForFixedUpdate();
         }
 
         yield return null;
+    }
+
+    private void CreateAndPlace()
+    {
+        for(int x = 0; x < copyCount; x++)
+        {
+
+        }
     }
 }
