@@ -15,8 +15,13 @@ public class RacerWall : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other == wall.GetComponent<BoxCollider2D>())
+        if (other.tag == "Wall")
         {
+            Destroy(gameObject);
+        }
+        else if (other.tag == "Player")
+        {
+            other.GetComponent<PlayerHealth>().takeDamage();
             Destroy(gameObject);
         }
     }

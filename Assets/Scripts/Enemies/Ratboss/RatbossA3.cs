@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RatbossA3 : MonoBehaviour
+public class RatbossA3 : BossAction
 {    
     public GameObject racerL; //left
     public GameObject racerR; //right
@@ -88,34 +88,40 @@ public class RatbossA3 : MonoBehaviour
 
     IEnumerator Racers()
     {
-        yield return A0.shakedoors();
-
         leftSpawn = Random.Range(yPosLR - (yLengthLR / 2), yPosLR + (yLengthLR / 2));
         racerL.transform.position = new Vector3(leftWall.transform.position.x + (xLengthLR / 2)+0.5f, leftSpawn, -2);
+        racerL.tag = "RatRacer";
         //Debug.Log(yPosLR + " " + yLengthLR);
 
         rightSpawn = Random.Range(yPosLR - (yLengthLR / 2), yPosLR + (yLengthLR / 2));
         racerR.transform.position = new Vector3(rightWall.transform.position.x - (xLengthLR / 2)-0.5f, rightSpawn, -2);
+        racerR.tag = "RatRacer";
 
         topSpawn = Random.Range(xPosTop - (xLengthTop / 2), xPosTop + (xLengthTop / 2));
         racerT.transform.position = new Vector3(topSpawn, topWall.transform.position.y - (yLengthTop / 2)-0.5f, -2);
+        racerT.tag = "RatRacer";
         //Debug.Log(xPosTop + " " + xLengthTop);
 
         leftBottomSpawn = Random.Range(xPosLB - (xLengthLB / 2), xPosLB + (xLengthLB / 2));
         racerLB.transform.position = new Vector3(leftBottomSpawn, leftBottomWall.transform.position.y + (yLengthLB / 2)+0.5f, -2);
+        racerLB.tag = "RatRacer";
         //Debug.Log(xPosLB + " " + xLengthLB);
 
         rightBottomSpawn = Random.Range(xPosRB - (xLengthRB / 2), xPosRB + (xLengthRB / 2));
         racerRB.transform.position = new Vector3(rightBottomSpawn, rightBottomWall.transform.position.y + (yLengthRB / 2)+0.5f, -2);
-       
+        racerRB.tag = "RatRacer";
+
         Instantiate(racerL);
         Instantiate(racerR);
         Instantiate(racerT);
         Instantiate(racerLB);
         Instantiate(racerRB);
 
-
-        yield return A0.returnIntoDoor();
+        while (GameObject.FindGameObjectsWithTag("RatRacer").Length!=0)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        actionRunning = false;
         //Debug.Log(xPosRB + " " + xLengthRB);
 
         //Debug.Log("left " + leftSpawn);

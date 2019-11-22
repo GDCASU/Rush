@@ -4,10 +4,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RatbossA0 : MonoBehaviour
-{ 
+public class RatbossA0 : BossAction
+{
     [Serializable]
-    private class RatLocation {
+    private class RatLocation
+    {
         public GameObject door;
         public GameObject rat;
         public Collider2D collider;
@@ -32,14 +33,18 @@ public class RatbossA0 : MonoBehaviour
     {
         bbc = GetComponent<BossBehaviorController>();
     }
-    
+    public void OnEnable()
+    {
+        if (ratOut) StartCoroutine(returnIntoDoor());
+        else StartCoroutine(shakedoors());
+    }
     public IEnumerator shakedoors()
     {
-        var r = pick_door(bbc.currentPhase+1);
+        var r = pick_door(bbc.currentPhase + 1);
         location = r.rat;
         correctDoor = r.door;
         currentCollider = r.collider;
-        
+
         // rumble doors
         const int shakingFrames = 120;
         List<Vector3> orgPos = posLocations.Select(d => d.door.transform.position).ToList();
@@ -48,7 +53,7 @@ public class RatbossA0 : MonoBehaviour
             foreach (var loc in activeDoors)
             {
                 var door = posLocations[loc].door;
-                door.transform.position = orgPos[loc] + new Vector3( (float)ran.NextDouble(), (float)ran.NextDouble(), 0);// SHAKE
+                door.transform.position = orgPos[loc] + new Vector3((float)ran.NextDouble(), (float)ran.NextDouble(), 0);// SHAKE
             }
             yield return new WaitForEndOfFrame();
         }
@@ -56,15 +61,16 @@ public class RatbossA0 : MonoBehaviour
         foreach (var loc in activeDoors) posLocations[loc].door.transform.position = orgPos[loc];
 
         // open wrong doors
-        if(bbc.currentPhase+1>1) {
-            for (int i = 0; i < openingframes+60; i++)
+        if (bbc.currentPhase + 1 > 1)
+        {
+            for (int i = 0; i < openingframes + 60; i++)
             {
                 yield return new WaitForEndOfFrame();
                 foreach (var loc in activeDoors)
                 {
-                    if(posLocations[loc].rat == location) continue;
+                    if (posLocations[loc].rat == location) continue;
                     var door = posLocations[loc].door;
-                    swingDoorInterp( (float) i / (float) (openingframes + 60));
+                    swingDoorInterp((float)i / (float)(openingframes + 60));
                 }
             }
 
@@ -73,9 +79,9 @@ public class RatbossA0 : MonoBehaviour
                 yield return new WaitForEndOfFrame();
                 foreach (var loc in activeDoors)
                 {
-                    if(posLocations[loc].rat == location) continue;
+                    if (posLocations[loc].rat == location) continue;
                     var door = posLocations[loc].door;
-                    swingDoorInterp( 1.0f - (float) i / (float) (openingframes + 60));
+                    swingDoorInterp(1.0f - (float)i / (float)(openingframes + 60));
                 }
             }
         }
@@ -88,22 +94,26 @@ public class RatbossA0 : MonoBehaviour
         currentCollider.enabled = true;
         ratOut = true;
         const int burstFrames = 20; // time for the boss to burst out of the door
-        for (int i = 0; i < burstFrames; i++){
+        for (int i = 0; i < burstFrames; i++)
+        {
             location.transform.position = Vector3.MoveTowards(location.transform.position, location.transform.position + location.transform.forward, speed);
             yield return new WaitForEndOfFrame();
         }
-
+        actionRunning = false;
     }
-    public IEnumerator returnIntoDoor() {
-        const int burstFrames = 20; 
-        for (int i = 0; i < burstFrames; i++){
+    public IEnumerator returnIntoDoor()
+    {
+        const int burstFrames = 20;
+        for (int i = 0; i < burstFrames; i++)
+        {
             location.transform.position = Vector3.MoveTowards(location.transform.position, location.transform.position - location.transform.forward, speed);
             yield return new WaitForEndOfFrame();
         }
-        
+
         location.GetComponentInChildren<SpriteRenderer>().enabled = false;
         currentCollider.enabled = false;
         ratOut = false;
+        StartCoroutine(shakedoors());
     }
     private RatLocation pick_door(int num)
     {
@@ -113,10 +123,11 @@ public class RatbossA0 : MonoBehaviour
         while(otherDoors.Count < num) otherDoors.Add(ran.Next(num-1)); 
         GameObject curLocation = posLocations[correct].rat; */
 
-        while(activeDoors.Count < num) {
+        while (activeDoors.Count < num)
+        {
             var r = ran.Next(3);
-            if(!activeDoors.Contains(r)) activeDoors.Add(r);
-        } 
+            if (!activeDoors.Contains(r)) activeDoors.Add(r);
+        }
         return posLocations[activeDoors.LastOrDefault()];
     }
 
@@ -129,13 +140,17 @@ public class RatbossA0 : MonoBehaviour
         // swing 
     }
 
-    public void resetRatLocations () {
-         foreach(var loc in posLocations) 
+    public void resetRatLocations()
+    {
+        foreach (var loc in posLocations)
             loc.rat.transform.position = loc.rat.transform.parent.position;
     }
 
-    public void Update () {
-        foreach(var loc in posLocations) loc.collider.offset = transform.InverseTransformPoint( loc.rat.transform.position );
+    public void Update()
+    {
+        foreach (var loc in posLocations) loc.collider.offset = transform.InverseTransformPoint(loc.rat.transform.position);
     }
 }
-    
+
+
+

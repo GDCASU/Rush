@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1674411583284584
+--- !u!1 &1050018574884524
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4997472291781542}
-  - component: {fileID: 212669882724548818}
-  - component: {fileID: 114024074890242166}
-  - component: {fileID: 61504126509416052}
-  - component: {fileID: 114521306291101972}
+  - component: {fileID: 4890601056599292}
+  - component: {fileID: 212636894138065084}
+  - component: {fileID: 114457571711057626}
+  - component: {fileID: 61634755677731618}
+  - component: {fileID: 114511822882952330}
   m_Layer: 0
-  m_Name: RacerL
-  m_TagString: Enemy
+  m_Name: RacerT
+  m_TagString: RatRacer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4997472291781542
+--- !u!4 &4890601056599292
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1674411583284584}
-  m_LocalRotation: {x: -0.49928945, y: 0, z: 0, w: 0.8664352}
-  m_LocalPosition: {x: -19.1, y: -0.6199124, z: -2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_GameObject: {fileID: 1050018574884524}
+  m_LocalRotation: {x: -0.49928945, y: -0, z: -0, w: 0.8664352}
+  m_LocalPosition: {x: -9.121379, y: 6.59, z: -2}
+  m_LocalScale: {x: 1, y: 0.9999999, z: 0.9999999}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -59.906, y: 0, z: 0}
---- !u!212 &212669882724548818
+--- !u!212 &212636894138065084
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1674411583284584}
+  m_GameObject: {fileID: 1050018574884524}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300010, guid: ff67127591109a1419156d7eac963eb9, type: 3}
+  m_Sprite: {fileID: 21300016, guid: ff67127591109a1419156d7eac963eb9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -83,27 +83,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &114024074890242166
+--- !u!114 &114457571711057626
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1674411583284584}
+  m_GameObject: {fileID: 1050018574884524}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16591b9f55c1d7b44a73ebfbea4df5ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   wall: {fileID: 0}
-  moveInX: 1
---- !u!61 &61504126509416052
+  moveInX: 0
+--- !u!61 &61634755677731618
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1674411583284584}
+  m_GameObject: {fileID: 1050018574884524}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -114,22 +114,22 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.91, y: 1.37}
+    oldSize: {x: 1.31, y: 1.81}
     newSize: {x: 1.91, y: 1.37}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.91, y: 1.37}
+  m_Size: {x: 1.31, y: 1.81}
   m_EdgeRadius: 0
---- !u!114 &114521306291101972
+--- !u!114 &114511822882952330
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1674411583284584}
+  m_GameObject: {fileID: 1050018574884524}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c00e79e4f2ee7714f829792cbdbf6157, type: 3}
