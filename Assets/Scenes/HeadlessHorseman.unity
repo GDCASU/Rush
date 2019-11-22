@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 39110804}
   m_Layer: 0
   m_Name: Left Wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -305,6 +305,34 @@ MonoBehaviour:
   actionRunning: 0
   preDashFrames: 120
   dashFrames: 120
+  move: 0
+  readjustFrames: 30
+--- !u!61 &142641150
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142641141}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.3, y: 1.94}
+    newSize: {x: 2.3, y: 1.94}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.3, y: 1.94}
+  m_EdgeRadius: 0
 --- !u!1001 &269183417
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -389,7 +417,7 @@ GameObject:
   - component: {fileID: 516897990}
   m_Layer: 0
   m_Name: Top Wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -516,7 +544,7 @@ GameObject:
   - component: {fileID: 856123023}
   m_Layer: 0
   m_Name: Right Wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -643,7 +671,7 @@ GameObject:
   - component: {fileID: 879368057}
   m_Layer: 0
   m_Name: Bottom Wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -875,7 +903,7 @@ PrefabInstance:
     - target: {fileID: 257951202130026146, guid: ab0a4eaace8d2334ebb5496f8d011766,
         type: 3}
       propertyPath: bossPhases.Array.data[0].PossibleActions.Array.data[1].runFrames
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 257951202130026146, guid: ab0a4eaace8d2334ebb5496f8d011766,
         type: 3}
@@ -887,6 +915,16 @@ PrefabInstance:
       propertyPath: bossPhases.Array.data[0].PossibleActions.Array.data[1].behavior
       value: 
       objectReference: {fileID: 142641149}
+    - target: {fileID: 257951202130026146, guid: ab0a4eaace8d2334ebb5496f8d011766,
+        type: 3}
+      propertyPath: bossPhases.Array.data[0].PossibleActions.Array.data[0].independent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 257951202130026146, guid: ab0a4eaace8d2334ebb5496f8d011766,
+        type: 3}
+      propertyPath: bossPhases.Array.data[0].PossibleActions.Array.data[1].independent
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4972897495111253431, guid: ab0a4eaace8d2334ebb5496f8d011766,
         type: 3}
       propertyPath: m_Sprite
@@ -952,7 +990,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4435268738181252, guid: e9b2e5bfc07001e4c8442a7bb10147a5, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4435268738181252, guid: e9b2e5bfc07001e4c8442a7bb10147a5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1159,7 +1197,7 @@ GameObject:
   - component: {fileID: 1922656007}
   m_Layer: 0
   m_Name: Arena
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1180,7 +1218,7 @@ Transform:
   - {fileID: 516897994}
   - {fileID: 879368061}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2005719116
 GameObject:
