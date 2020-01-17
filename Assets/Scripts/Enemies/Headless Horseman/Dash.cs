@@ -46,13 +46,9 @@ public class Dash : BossAction
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log(collision.gameObject.tag);
-        //if (collision.gameObject.tag == "Player")
-            //player.GetComponent<PlayerHealth>().takeDamage();
+    {       
         if (collision.gameObject.tag == "Wall")
         {
-            //Debug.Log("Hello");
             for (int i = 0; i < readjustFrames; i++)
             {
                 transform.position = Vector3.MoveTowards(transform.position, PlayerHealth.singleton.transform.position, 0.01f);
