@@ -20,12 +20,31 @@ public class Bullet : MonoBehaviour {
         transform.Rotate(new Vector3(0,0,rot));
 		MoveFunc = getMoveFunction(act); sp.sprite = spr;
 		sp.color = color; hostile = enemy;
-        GetComponent<CircleCollider2D>().radius = colliderRadius;
+        if (GetComponent<CircleCollider2D>()) GetComponent<CircleCollider2D>().radius = colliderRadius;
+        else Debug.Log("Missing Collider Component, please add a CircleCollider2d!");
+
 
         getSpawnFunction(spwn)?.Invoke(SpawnFunctionParams.ToArray());
 	}
 
-	void Update () {
+    public void Init(Vector2 dir, float rot, float spd, MoveFunctions act, SpawnFunctions spwn, Sprite spr, Color color, bool enemy, float colliderX = 0.5f, float colliderY = 0.5f, List<float> SpawnFunctionParams = null)
+    {
+        SpriteRenderer sp = GetComponent<SpriteRenderer>();
+        MoveVector = dir.normalized * spd;
+        speed = spd;
+        Rotation = rot;
+        transform.rotation = Quaternion.identity;
+        transform.Rotate(new Vector3(0, 0, rot));
+        MoveFunc = getMoveFunction(act); sp.sprite = spr;
+        sp.color = color; hostile = enemy;
+        if (GetComponent<BoxCollider2D>()) GetComponent<BoxCollider2D>().size = new Vector2(colliderX, colliderY);
+        else Debug.Log("Missing Collider Component, please add a BoxCollider2D!");
+
+        getSpawnFunction(spwn)?.Invoke(SpawnFunctionParams.ToArray());
+    }
+
+
+    void Update () {
 		if (!Utils.IsOnScreen(gameObject)) BulletDestroy ();
 		
 		Vector2 m = MoveVector * Time.deltaTime;
