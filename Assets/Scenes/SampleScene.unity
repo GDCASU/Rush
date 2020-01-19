@@ -7275,7 +7275,7 @@ PrefabInstance:
     - target: {fileID: 5846215136360199586, guid: 5c55045efb4e4794383e0a2e1cd9dc01,
         type: 3}
       propertyPath: chargeUpFrames
-      value: 60
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 5846215136360199586, guid: 5c55045efb4e4794383e0a2e1cd9dc01,
         type: 3}

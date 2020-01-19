@@ -12,6 +12,7 @@ public class PlayerBasicShot : MonoBehaviour {
     public float shootFrameReset;
     private IInputPlayer player;
     private float charge=0;
+    private bool shot = true;
     
     private PlayerMovement pMovement;
 
@@ -35,24 +36,33 @@ public class PlayerBasicShot : MonoBehaviour {
                 sp.GetComponent<Bullet>().Init(direction, 0, bulletSpeed, Bullet.MoveFunctions.Spin, Bullet.SpawnFunctions.None, bulletSprite, Color.white, false, 0.15f);
 
                 sp.transform.localScale = Vector3.one * scale;
+                shot = true;
             }
             resetShot();
         }
         if (GetComponent<PlayerHealth>().inv) resetShot();
-        if (InputManager.GetButtonDown(PlayerInput.PlayerButton.Shoot, player) && !charging && timer < 0)
+        if (InputManager.GetButtonDown(PlayerInput.PlayerButton.Shoot, player) && !charging)
         {
             charging = true;
-            charge = 0;
+            if (timer < 0)
+            {
+                charge = 0;
+            }
+            else if (!shot && timer > 0)
+            {
+                charge = timer;
+            }
         } 
         if (InputManager.GetButton(PlayerInput.PlayerButton.Shoot, player) && charging )
         {
             charge++;
         }
         
-        timer--;
+        if(!charging && timer>=1)timer--;
     }
     void resetShot()
     {
+        shot = false;
         charging = false;
         timer = (charge < chargeUpFrames) ? charge : shootFrameReset;
         charge = 0;
