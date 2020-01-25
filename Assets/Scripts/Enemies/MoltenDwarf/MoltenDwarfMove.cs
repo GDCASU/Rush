@@ -11,9 +11,13 @@ public class MoltenDwarfMove : MonoBehaviour
 
     private Vector2 playerPosition;
 
+    private Animator dwarfAnim;
+
     // Start is called before the first frame update
     void Start()
     {
+        dwarfAnim = GetComponent<Animator>();
+
         speed = 1.5f;
     }
 
@@ -22,9 +26,14 @@ public class MoltenDwarfMove : MonoBehaviour
     {
         playerPosition = myPlayer.transform.position;
 
-        if(Vector2.Distance(this.transform.position, playerPosition) > 5.0f)
+        if(Vector2.Distance(this.transform.position, playerPosition) > 3.0f)
         {
             MoveToPlayer(playerPosition);
+            dwarfAnim.SetBool("isAttacking", false);
+        }
+        else
+        {
+            dwarfAnim.SetBool("isAttacking", true);
         }
     }
 
