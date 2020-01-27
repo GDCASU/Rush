@@ -51,7 +51,7 @@ public class TurretControl : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Once the turret has reached it's target location stop it from moving
-        if (collision.gameObject.name.Contains("Location"))
+        if (collision.gameObject.name.Equals(targetLocationObj.name))
             _isMoving = false;
     }
 }

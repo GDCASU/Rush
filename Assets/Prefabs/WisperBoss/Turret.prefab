@@ -143,4 +143,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLocationObj: {fileID: 0}
-  movementSpeed: 0.1
+  movementSpeed: 0.5
+  startingDirection: {x: 0, y: 50, z: 0}
+  archModifier: 0.8
