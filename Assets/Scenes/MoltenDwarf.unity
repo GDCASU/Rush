@@ -411,7 +411,7 @@ Transform:
   m_LocalScale: {x: 4, y: 40, z: 6}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &333500939
 PrefabInstance:
@@ -463,7 +463,7 @@ PrefabInstance:
     - target: {fileID: 5846215137743975858, guid: 5c55045efb4e4794383e0a2e1cd9dc01,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5846215137743975858, guid: 5c55045efb4e4794383e0a2e1cd9dc01,
         type: 3}
@@ -1145,6 +1145,16 @@ PrefabInstance:
       propertyPath: offsetFacesPlayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8901890949247111168, guid: ab0a4eaace8d2334ebb5496f8d011766,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1335175054003925466, guid: ab0a4eaace8d2334ebb5496f8d011766,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab0a4eaace8d2334ebb5496f8d011766, type: 3}
 --- !u!1 &1713749241
@@ -1569,12 +1579,32 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1998858463}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b582999dd5b7a5408f247d893d26331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   myPlayer: {fileID: 586152598}
+--- !u!114 &1998858467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998858463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2de5615579790b48ad27d7da876959d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  geyserPrefab: {fileID: 797127059967647088, guid: 198a76acb9ddc0140b98beae24888bf7,
+    type: 3}
+  windUpAnimation: 60
+  numberOfGeysers: 50
+  lengthOfWaves: 240
+  waveLength: 5
+  timer: 0
+  waveCount: 0
 --- !u!4 &1998858470 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4828904023027043125, guid: ab0a4eaace8d2334ebb5496f8d011766,
@@ -1638,7 +1668,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1998858463}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 472bcd8776721d244a47d2187152d080, type: 2}
   m_CullingMode: 0
