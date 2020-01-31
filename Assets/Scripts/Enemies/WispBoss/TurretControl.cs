@@ -33,21 +33,16 @@ public class TurretControl : MonoBehaviour
     public Vector3 startingDirection;   //This is the initial direction for the arch feature
     private Vector3 _currentDirection;
     public float archModifier;  //Decrease to create less arch and Increase for the opposite. Neutral value is 1
-    private bool _isMoving = false;
+    public bool isMoving;
 
     private void Awake()
     {
         _currentDirection = startingDirection;
     }
 
-    private void Start()
-    {
-        _isMoving = true;
-    }
-
     private void FixedUpdate()
     {
-        if(_isMoving)
+        if(isMoving)
         {
             Vector3 newPos = NormalizedTargetVector + _currentDirection;
             _currentDirection = newPos * archModifier;
@@ -61,10 +56,17 @@ public class TurretControl : MonoBehaviour
         //Once the turret has reached it's target location stop it from moving
         if (collision.gameObject.name.Equals(targetLocationObj.name))
         {
-            _isMoving = false;
-
-            //This exact line can be changed. The turrets just need to start shooting at this point
-            bulletSpawner.bulletAmount = 1;
+            isMoving = false;
         }
+    }
+
+    /// <summary>
+    /// Public method that tells the bullet spawner to start
+    /// shooting
+    /// </summary>
+    public void StartShooting()
+    {
+        //This exact line can be changed. The turrets just need to start shooting at this point
+        bulletSpawner.bulletAmount = 1;
     }
 }

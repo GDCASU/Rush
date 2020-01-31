@@ -7,6 +7,7 @@ using UnityEngine;
 /// </summary>
 public class WispBossA0 : MonoBehaviour
 {
+    [Header("Turrets")]
     /**
      * Each turret location is under one parent obj. This is the
      * var locationsParent. I am then able to then get a reference to all locations
@@ -28,11 +29,17 @@ public class WispBossA0 : MonoBehaviour
         }
     }
     public GameObject turretPrefab;
+    private TurretControl[] spawnedTurrets;
+
+    [Header("Chains")]
+    [SerializeField]
+    private GameObject chainPrefab;
+    private ChainHandler[] spawnedChains;
 
     private void Start()
     {
         //This is mostly a test method that spawns turrets at all locations
-        SpawnTurrets(TurretLocations);
+        SpawnTurrets(TurretLocations[0]);
     }
 
     /// <summary>
@@ -43,13 +50,25 @@ public class WispBossA0 : MonoBehaviour
     {
         if(targetLocations != null)
         {
-            foreach (GameObject location in targetLocations)
+            //Essentially resets arrays and sets new lengths
+            spawnedTurrets = new TurretControl[targetLocations.Length];
+            spawnedChains = new ChainHandler[spawnedTurrets.Length];
+
+            //Spawns a turret and chain for each given location
+            for(int x = 0; x < targetLocations.Length; x++)
             {
                 TurretControl control = Instantiate(turretPrefab, transform.position, transform.rotation).GetComponent<TurretControl>();
+                spawnedTurrets[x] = control;
 
-                control.targetLocationObj = location;
+                control.targetLocationObj = targetLocations[x];
+                control.isMoving = true;
+
+                ChainHandler chain = Instantiate(chainPrefab, transform.position, transform.rotation).GetComponent<ChainHandler>();
+                spawnedChains[x] = chain;
             }
         }
+
+        StartCoroutine(SetupTurret());
     }
 
     /// <summary>
@@ -61,5 +80,48 @@ public class WispBossA0 : MonoBehaviour
     {
         GameObject[] location = { targetLocation };
         SpawnTurrets(location);
+    }
+
+    private IEnumerator SetupTurret()
+    {
+        //Waits for turret to get to their locations
+        while(!AreTurretsSet())
+        {
+            yield return new WaitForEndOfFrame();
+        }
+
+        SetupChains();
+
+        yield return null;
+    }
+
+    /// <summary>
+    /// Simple bool check to see if all currently spawned turrets
+    /// are moving or not
+    /// </summary>
+    /// <returns>True if all turrets are not moving and false otherwise</returns>
+    private bool AreTurretsSet()
+    {
+        foreach(TurretControl control in spawnedTurrets)
+        {
+            if (control.isMoving)
+                return false;
+        }
+
+        return true;
+    }
+
+    /// <summary>
+    /// Not fully done so re-comment later but this should basically
+    /// setup each chain individually (I think)
+    /// </summary>
+    private void SetupChains()
+    {
+        for(int x = 0; x < spawnedChains.Length; x++)
+        {
+            float distance = Vector3.Magnitude(spawnedTurrets[x].transform.position - spawnedChains[x].transform.position);
+
+            spawnedChains[x].SetupChain(distance);
+        }
     }
 }
