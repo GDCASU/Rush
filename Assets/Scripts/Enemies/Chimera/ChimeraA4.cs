@@ -13,17 +13,10 @@ public class ChimeraA4 : BossAction
     public BoxCollider2D claw2;
     //public BoxCollider2D claw3;
 
-    void Start()
+    void OnEnable()
     {
         StartCoroutine("ClawAttack");
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     IEnumerator ClawAttack()
     {
         actionRunning = true;

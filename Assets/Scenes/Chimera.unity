@@ -288,9 +288,54 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 257951202130026146, guid: ab0a4eaace8d2334ebb5496f8d011766,
         type: 3}
-      propertyPath: m_Enabled
-      value: 0
+      propertyPath: bossPhases.Array.size
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 257951202130026146, guid: ab0a4eaace8d2334ebb5496f8d011766,
+        type: 3}
+      propertyPath: bossPhases.Array.data[0].PossibleActions.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 257951202130026146, guid: ab0a4eaace8d2334ebb5496f8d011766,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 257951202130026146, guid: ab0a4eaace8d2334ebb5496f8d011766,
+        type: 3}
+      propertyPath: bossPhases.Array.data[0].health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 257951202130026146, guid: ab0a4eaace8d2334ebb5496f8d011766,
+        type: 3}
+      propertyPath: bossPhases.Array.data[0].PossibleActions.Array.data[0].behavior
+      value: 
+      objectReference: {fileID: 1990584514}
+    - target: {fileID: 257951202130026146, guid: ab0a4eaace8d2334ebb5496f8d011766,
+        type: 3}
+      propertyPath: bossPhases.Array.data[0].PossibleActions.Array.data[1].behavior
+      value: 
+      objectReference: {fileID: 1990584520}
+    - target: {fileID: 257951202130026146, guid: ab0a4eaace8d2334ebb5496f8d011766,
+        type: 3}
+      propertyPath: bossPhases.Array.data[0].PossibleActions.Array.data[1].independent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 257951202130026146, guid: ab0a4eaace8d2334ebb5496f8d011766,
+        type: 3}
+      propertyPath: bossPhases.Array.data[0].PossibleActions.Array.data[0].independent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 257951202130026146, guid: ab0a4eaace8d2334ebb5496f8d011766,
+        type: 3}
+      propertyPath: bossPhases.Array.data[0].PossibleActions.Array.data[2].independent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 257951202130026146, guid: ab0a4eaace8d2334ebb5496f8d011766,
+        type: 3}
+      propertyPath: bossPhases.Array.data[0].PossibleActions.Array.data[2].behavior
+      value: 
+      objectReference: {fileID: 1990584525}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab0a4eaace8d2334ebb5496f8d011766, type: 3}
 --- !u!1001 &1848943121
@@ -455,14 +500,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1990584513}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ee93378efb91544596be39124edb6f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actionRunning: 0
   windupFrames: 60
   followFrames: 120
   chargeFrames: 30
+  lungeSpeed: 1
+  collided: 0
   box: {fileID: 1990584521}
 --- !u!114 &1990584520
 MonoBehaviour:
@@ -560,6 +608,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1990584525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990584513}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0e71ef402dc3ce479f560472c16119c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionRunning: 0
+  flySpeed: 0.1
 --- !u!1 &1995161872
 GameObject:
   m_ObjectHideFlags: 0
