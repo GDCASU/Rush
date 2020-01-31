@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +9,14 @@ using UnityEngine;
 /// </summary>
 public class TurretControl : MonoBehaviour
 {
+    private BulletSpawner bulletSpawner
+    {
+        get
+        {
+            return GetComponent<BulletSpawner>();
+        }
+    }
+
     [Header("Turret Travel")]
     public GameObject targetLocationObj;
     public float movementSpeed;
@@ -52,6 +60,11 @@ public class TurretControl : MonoBehaviour
     {
         //Once the turret has reached it's target location stop it from moving
         if (collision.gameObject.name.Equals(targetLocationObj.name))
+        {
             _isMoving = false;
+
+            //This exact line can be changed. The turrets just need to start shooting at this point
+            bulletSpawner.bulletAmount = 1;
+        }
     }
 }

@@ -51,4 +51,15 @@ public class WispBossA0 : MonoBehaviour
             }
         }
     }
+
+    /// <summary>
+    /// Simple override that spawns a single turret to a single
+    /// specified location
+    /// </summary>
+    /// <param name="targetLocation">Gameobject of the turret location</param>
+    public void SpawnTurrets(GameObject targetLocation)
+    {
+        GameObject[] location = { targetLocation };
+        SpawnTurrets(location);
+    }
 }
