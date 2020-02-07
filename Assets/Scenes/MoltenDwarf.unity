@@ -1100,6 +1100,11 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0.1273585
       objectReference: {fileID: 0}
+    - target: {fileID: 4972897495111253431, guid: ab0a4eaace8d2334ebb5496f8d011766,
+        type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6411948849731428867, guid: ab0a4eaace8d2334ebb5496f8d011766,
         type: 3}
       propertyPath: bulletSpeed
@@ -1148,7 +1153,7 @@ PrefabInstance:
     - target: {fileID: 8901890949247111168, guid: ab0a4eaace8d2334ebb5496f8d011766,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1335175054003925466, guid: ab0a4eaace8d2334ebb5496f8d011766,
         type: 3}
@@ -1579,7 +1584,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1998858463}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b582999dd5b7a5408f247d893d26331, type: 3}
   m_Name: 
@@ -1592,11 +1597,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1998858463}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2de5615579790b48ad27d7da876959d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actionRunning: 0
   geyserPrefab: {fileID: 797127059967647088, guid: 198a76acb9ddc0140b98beae24888bf7,
     type: 3}
   windUpAnimation: 60
@@ -1668,7 +1674,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1998858463}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 472bcd8776721d244a47d2187152d080, type: 2}
   m_CullingMode: 0
