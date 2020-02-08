@@ -240,45 +240,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 25366682}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &344381478 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5141580686008062575, guid: c596c0c0e2f7c75428811f0f3d262ebc,
-    type: 3}
-  m_PrefabInstance: {fileID: 4672541060877874065}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &344381479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 344381478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4ed9fabb044af441888d4827f6bdfbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  locationsParent: {fileID: 1706477669}
-  turretPrefab: {fileID: 4103198208911393064, guid: 51a63d2bddb890b40ad6d81643a93bbd,
-    type: 3}
-  chainPrefab: {fileID: 5236164305757307164, guid: cc034b22c7f9ba14c911337d7618126d,
-    type: 3}
---- !u!58 &344381485
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 344381478}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.09
 --- !u!1 &416570632
 GameObject:
   m_ObjectHideFlags: 0
@@ -1411,6 +1372,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2149381935911444041, guid: c596c0c0e2f7c75428811f0f3d262ebc,
+        type: 3}
+      propertyPath: locationsParent
+      value: 
+      objectReference: {fileID: 1706477669}
     - target: {fileID: 5141580686008062575, guid: c596c0c0e2f7c75428811f0f3d262ebc,
         type: 3}
       propertyPath: m_Name
@@ -1480,56 +1446,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1491117702397602713, guid: c596c0c0e2f7c75428811f0f3d262ebc,
-        type: 3}
-      propertyPath: maxHealth
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 6112734903741970254, guid: c596c0c0e2f7c75428811f0f3d262ebc,
-        type: 3}
-      propertyPath: enemyName
-      value: Wisper Person
-      objectReference: {fileID: 0}
-    - target: {fileID: 4142485986110898408, guid: c596c0c0e2f7c75428811f0f3d262ebc,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-    - target: {fileID: 4142485986110898408, guid: c596c0c0e2f7c75428811f0f3d262ebc,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4142485986110898408, guid: c596c0c0e2f7c75428811f0f3d262ebc,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4142485986110898408, guid: c596c0c0e2f7c75428811f0f3d262ebc,
-        type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4142485986110898408, guid: c596c0c0e2f7c75428811f0f3d262ebc,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4142485986110898408, guid: c596c0c0e2f7c75428811f0f3d262ebc,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4142485986110898408, guid: c596c0c0e2f7c75428811f0f3d262ebc,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.8556876
-      objectReference: {fileID: 0}
-    - target: {fileID: 513388018510028983, guid: c596c0c0e2f7c75428811f0f3d262ebc,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c596c0c0e2f7c75428811f0f3d262ebc, type: 3}
