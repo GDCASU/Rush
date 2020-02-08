@@ -197,6 +197,11 @@ PrefabInstance:
       propertyPath: playerIndex
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5846215136500020346, guid: 5c55045efb4e4794383e0a2e1cd9dc01,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 311
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c55045efb4e4794383e0a2e1cd9dc01, type: 3}
 --- !u!1 &57806843
@@ -256,8 +261,10 @@ MonoBehaviour:
   locationsParent: {fileID: 1706477669}
   turretPrefab: {fileID: 4103198208911393064, guid: 51a63d2bddb890b40ad6d81643a93bbd,
     type: 3}
---- !u!61 &344381485
-BoxCollider2D:
+  chainPrefab: {fileID: 5236164305757307164, guid: cc034b22c7f9ba14c911337d7618126d,
+    type: 3}
+--- !u!58 &344381485
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -270,18 +277,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.2, y: 0.2}
-    newSize: {x: 0.2, y: 0.2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.2}
-  m_EdgeRadius: 0
+  m_Radius: 0.09
 --- !u!1 &416570632
 GameObject:
   m_ObjectHideFlags: 0

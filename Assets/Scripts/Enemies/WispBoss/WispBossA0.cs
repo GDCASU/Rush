@@ -64,6 +64,8 @@ public class WispBossA0 : MonoBehaviour
                 control.isMoving = true;
 
                 ChainHandler chain = Instantiate(chainPrefab, transform.position, transform.rotation).GetComponent<ChainHandler>();
+                chain.targetObj = control.gameObject;
+                chain.bossObj = gameObject;
                 spawnedChains[x] = chain;
             }
         }
