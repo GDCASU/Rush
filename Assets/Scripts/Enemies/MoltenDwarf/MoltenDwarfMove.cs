@@ -2,23 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoltenDwarfMove : MonoBehaviour
+public class MoltenDwarfMove : MoltenDwarfParent
 {
-    public GameObject myPlayer;
+    
 
     private float speed;
     private float step;
 
-    private Vector2 playerPosition;
-
-    private Animator dwarfAnim;
     private SpriteRenderer dwarfSprite;
 
     // Start is called before the first frame update
     void Start()
     {
-        dwarfAnim = GetComponent<Animator>();   //get the animator
         dwarfSprite = GetComponent<SpriteRenderer>();   //get the sprite renderer
+        dwarfTransform = GetComponent<Transform>();
 
         speed = 1.5f;  //movement speed set
     }
@@ -28,14 +25,9 @@ public class MoltenDwarfMove : MonoBehaviour
     {
         playerPosition = myPlayer.transform.position;  //position of player to use
 
-        if(Vector2.Distance(this.transform.position, playerPosition) > 3.0f)  //distance between dwarf and player
+        if (Vector2.Distance(this.transform.position, playerPosition) > 3.0f)  //distance between dwarf and player
         {
             MoveToPlayer(playerPosition);
-            dwarfAnim.SetBool("isAttacking", false); // activates attack animation
-        }
-        else
-        {
-            dwarfAnim.SetBool("isAttacking", true);
         }
 
         CheckFacing();
@@ -52,11 +44,11 @@ public class MoltenDwarfMove : MonoBehaviour
     {
         if(playerPosition.x > gameObject.transform.position.x) //if player is on the RIGHT side of the dwarf
         {
-            dwarfSprite.flipX = true;
+            dwarfTransform.rotation = Quaternion.Euler(0, 180, 0); //flips dwarf's transform
         }
         else //if player is on left side of dwarf
         {
-            dwarfSprite.flipX = false;
+            dwarfTransform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
 }
