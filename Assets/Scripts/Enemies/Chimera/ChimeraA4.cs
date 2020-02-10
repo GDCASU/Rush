@@ -11,12 +11,14 @@ public class ChimeraA4 : BossAction
 
     public BoxCollider2D claw1;
     public BoxCollider2D claw2;
+    public BoxCollider2D claw3;
     //public BoxCollider2D claw3;
 
     void OnEnable()
     {
         StartCoroutine("ClawAttack");
     }
+
     IEnumerator ClawAttack()
     {
         actionRunning = true;
@@ -49,11 +51,11 @@ public class ChimeraA4 : BossAction
             else if (x == (attackingFrames / 3)*2 -1)
             {
                 claw2.enabled = false;
-                claw1.enabled = true;
+                claw3.enabled = true;
             }
             yield return new WaitForEndOfFrame();
         }
-        claw1.enabled = false;
+        claw3.enabled = false;
 
 
         actionRunning = false;                                                                  //Lets the BossBehaviorController its done with the action
