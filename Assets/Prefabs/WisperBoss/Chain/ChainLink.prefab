@@ -121,3 +121,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossObj: {fileID: 0}
+  targetObj: {fileID: 0}

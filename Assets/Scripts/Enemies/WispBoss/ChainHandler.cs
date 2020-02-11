@@ -7,11 +7,12 @@ using UnityEngine;
 /// </summary>
 public class ChainHandler : MonoBehaviour
 {
-    private BoxCollider2D collider; //Collider for this obj
+    [Header("Object References")]
     public GameObject linkModel;
     public GameObject targetObj;
     public GameObject bossObj;
 
+    [Header("Chain Setup")]
     private Vector3 directionVector;  //Vector from this to the target
     public float speed;
     private bool isMoving;
@@ -24,9 +25,23 @@ public class ChainHandler : MonoBehaviour
         }
     }
 
-    private void Awake()
+    [Header("Player Damage")]
+    [SerializeField]
+    private float damageDelay = 1f;  //Delay until player can be damaged again
+    private IEnumerator damageRoutine = null;
+
+    private void OnDestroy()
     {
-        collider = GetComponent<BoxCollider2D>();
+        //When the chain is destroyed the boss can take damage
+        if (bossObj != null)
+        {
+            WispHealth health = bossObj.GetComponent<WispHealth>();
+            health.SetCanTakeDamage();
+        }
+
+        //Destroyes associated turret/target
+        if (targetObj != null)
+            Destroy(targetObj);
     }
 
     private void FixedUpdate()
@@ -48,6 +63,19 @@ public class ChainHandler : MonoBehaviour
         if (collision.gameObject == targetObj)
         {
             isMoving = false;
+        }
+
+        /**
+         * This starts the damagin routine for the player when the player has collided with the chain
+         * 
+         * Note: By checking isMoving this means that even if the chain is visible it will not damage the player till it stops moving.
+         * Since the chain is moving fast and it was more of a safe method to me I decided to do it this way. Feel free to change this
+         * if needed
+         */
+        if (!isMoving && collision.gameObject.tag.Equals("Player") && damageRoutine == null)
+        {
+            damageRoutine = DelayDamage(collision.gameObject.GetComponent<PlayerDash>());
+            StartCoroutine(damageRoutine);
         }
     }
 
@@ -94,5 +122,23 @@ public class ChainHandler : MonoBehaviour
         transform.position = newPos;
 
         isMoving = true;
+    }
+
+    /// <summary>
+    /// This handles damage to the player
+    /// </summary>
+    /// <param name="dash">Reference to tell if the player is currently dashing or not</param>
+    private IEnumerator DelayDamage(PlayerDash dash)
+    {
+        if(!dash.inDash)
+        {
+            PlayerHealth.singleton.takeDamage();
+
+            yield return new WaitForSeconds(damageDelay);
+        }
+
+        damageRoutine = null;
+
+        yield return null;
     }
 }

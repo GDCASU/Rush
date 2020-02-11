@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Action that control's the spawning of the turrets
 /// </summary>
-public class WispBossA0 : MonoBehaviour
+public class WispBossA0 : BossAction
 {
     [Header("Turrets")]
     /**
@@ -39,7 +39,25 @@ public class WispBossA0 : MonoBehaviour
     private void Start()
     {
         //This is mostly a test method that spawns turrets at all locations
-        SpawnTurrets(TurretLocations);
+        SpawnTurrets(TurretLocations[3]);
+    }
+
+    /// <summary>
+    /// Destroys all associated objects when the boss is destroyed
+    /// </summary>
+    private void OnDestroy()
+    {
+        foreach(TurretControl control in spawnedTurrets)
+        {
+            if (control != null)
+                Destroy(control.gameObject);
+        }
+
+        foreach (ChainHandler handler in spawnedChains)
+        {
+            if (handler != null)
+                Destroy(handler.gameObject);
+        }
     }
 
     /// <summary>

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8128845472949049963}
   - component: {fileID: 3630437425930214867}
-  - component: {fileID: 1491117702397602713}
+  - component: {fileID: 4771712450156263635}
   - component: {fileID: 6112734903741970254}
   - component: {fileID: 513388018510028983}
   - component: {fileID: 4142485986110898408}
@@ -58,7 +58,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1491117702397602713
+--- !u!114 &4771712450156263635
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -67,10 +67,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5141580686008062575}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c00e79e4f2ee7714f829792cbdbf6157, type: 3}
+  m_Script: {fileID: 11500000, guid: f208307570df3d446bb247c767c54439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  attackDuration: 5
 --- !u!114 &6112734903741970254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,7 +100,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossPhases: []
   currentPhase: 0
-  actionQueue: []
+  actionQueue:
+  - independent: 0
+    runFrames: 0
+    cooldownFrames: 0
+    behavior: {fileID: 2149381935911444041}
 --- !u!212 &4142485986110898408
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -137,7 +142,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0, g: 1, b: 0.8556876, a: 1}
   m_FlipX: 0
@@ -161,6 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4ed9fabb044af441888d4827f6bdfbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actionRunning: 1
   locationsParent: {fileID: 0}
   turretPrefab: {fileID: 4103198208911393064, guid: 51a63d2bddb890b40ad6d81643a93bbd,
     type: 3}
