@@ -68,6 +68,7 @@ public class ChainHandler : MonoBehaviour
             //Creates chain and sets references
             Transform linkTransform = Instantiate(linkModel, transform).GetComponent<Transform>();
             linkTransform.gameObject.GetComponent<ChainVisibleHandler>().bossObj = bossObj;
+            linkTransform.gameObject.GetComponent<ChainVisibleHandler>().targetObj = targetObj;
 
             //Sets starting position value
             Vector3 linkPos = linkTransform.localPosition;

@@ -39,7 +39,7 @@ public class WispBossA0 : MonoBehaviour
     private void Start()
     {
         //This is mostly a test method that spawns turrets at all locations
-        SpawnTurrets(TurretLocations[0]);
+        SpawnTurrets(TurretLocations);
     }
 
     /// <summary>
