@@ -34,10 +34,7 @@ public class ChainHandler : MonoBehaviour
     {
         //When the chain is destroyed the boss can take damage
         if (bossObj != null)
-        {
-            WispHealth health = bossObj.GetComponent<WispHealth>();
-            health.SetCanTakeDamage();
-        }
+            bossObj.GetComponent<WispBossA0>().OnChainDestroy(this);
 
         //Destroyes associated turret/target
         if (targetObj != null)

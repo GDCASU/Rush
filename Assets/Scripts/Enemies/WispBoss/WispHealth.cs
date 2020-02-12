@@ -8,45 +8,7 @@ using UnityEngine;
 /// </summary>
 public class WispHealth : EnemyHealth
 {
-    private bool canTakeDamage = false;
-    public float attackDuration = 5f;    //How long the boss can take damage before it no longer can
-    private IEnumerator attackRoutine;
-
-    /// <summary>
-    /// Method that allows the boss to be damaged. In terms of the wisp this
-    /// would be the sort of "imbued sword" phase
-    /// </summary>
-    public void SetCanTakeDamage()
-    {
-        //Starts a new routine where the boss can be damaged
-        if(attackRoutine == null)
-        {
-            canTakeDamage = true;
-            attackRoutine = WaitStopAttack();
-            StartCoroutine(attackRoutine);
-        }
-        //Resets the routine of boss damage
-        else
-        {
-            StopCoroutine(attackRoutine);
-            StartCoroutine(attackRoutine);
-        }
-    }
-
-    /// <summary>
-    /// Coroutine that has the boss stop taking damage after
-    /// the time set by the var attackDuration
-    /// </summary>
-    private IEnumerator WaitStopAttack()
-    {
-        yield return new WaitForSeconds(attackDuration);
-
-        canTakeDamage = false;
-
-        attackRoutine = null;
-
-        yield return null;
-    }
+    public bool canTakeDamage = false;
 
     /// <summary>
     /// Damages the boss on collision if it can take damage
