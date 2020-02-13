@@ -18,10 +18,11 @@ public class WispHealth : EnemyHealth
     {
         if (other.gameObject.CompareTag("Bullet") && other.GetComponent<Bullet>()?.hostile == false) // note that the ?. returns a bool? so we need an explicit truth check
         {
-            other.GetComponent<Bullet>().BulletDestroy();
-
             if (canTakeDamage)
+            {
                 takeDamage(1);
+                other.GetComponent<Bullet>().BulletDestroy();
+            }
         }
     }
 }

@@ -57,6 +57,9 @@ public class TurretControl : MonoBehaviour
         if (collision.gameObject.name.Equals(targetLocationObj.name))
         {
             isMoving = false;
+
+            //Turrets start attacking once they have stoped moving
+            GetComponentInChildren<WispAttackModel>().StartAttacking();
         }
     }
 

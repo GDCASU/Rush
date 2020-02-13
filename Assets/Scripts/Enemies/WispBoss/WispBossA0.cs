@@ -32,6 +32,7 @@ public class WispBossA0 : BossAction
     private TurretControl[] _spawnedTurrets;
     private int _turretsToSpawn = 1;
     public int maxTurrets = 3;
+    public GameObject[] turretAttacks;  //Array of attack prefabs that are spawned on turrets
 
     [Header("Chains")]
     [SerializeField]
@@ -90,6 +91,9 @@ public class WispBossA0 : BossAction
 
                 control.targetLocationObj = targetLocations[x];
                 control.isMoving = true;
+
+                //Spawns a random attack onto the turret
+                Instantiate(turretAttacks[Random.Range(0, turretAttacks.Length)], control.transform);
 
                 ChainHandler chain = Instantiate(_chainPrefab, transform.position, transform.rotation).GetComponent<ChainHandler>();
                 chain.targetObj = control.gameObject;

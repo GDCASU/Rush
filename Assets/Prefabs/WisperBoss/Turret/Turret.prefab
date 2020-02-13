@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4048189036670458420}
   - component: {fileID: 6274449983204679400}
   - component: {fileID: 2094421335}
-  - component: {fileID: 154849828554957396}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Enemy
@@ -148,35 +147,3 @@ MonoBehaviour:
   startingDirection: {x: 0, y: 50, z: 0}
   archModifier: 0.8
   isMoving: 0
---- !u!114 &154849828554957396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4103198208911393064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb16419c509c2f94982de5d5e8fa0091, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actionRunning: 1
-  bulletSpeed: 15
-  bulletAmount: 0
-  bulletArc: 6.2831855
-  ArcOffset: 0
-  offsetFacesPlayer: 1
-  bulletfrequency: 1
-  spin: 0
-  wave: 0
-  bulletSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  bulletTint: {r: 0.36268467, g: 0.7924528, b: 0.28034887, a: 1}
-  rotation: {x: 0, y: 0, z: 0, w: 1}
-  scale: {x: 2, y: 2, z: 2}
-  moveFunc: 0
-  spawnFunc: 0
-  SpawnFunctionParams: []
-  bulletsFaceOutward: 1
-  colliderRadius: 0.1
-  useOtherSpawnPoint: 0
-  alternateSpawnLocation: {fileID: 0}
