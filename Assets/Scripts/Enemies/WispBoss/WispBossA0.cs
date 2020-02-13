@@ -40,7 +40,6 @@ public class WispBossA0 : BossAction
 
     [Header("Misc")]
     public float damagePhaseDuration = 3;
-    private IEnumerator _damagePhaseRoutine;    //Coroutine that allows the boss to take damage
 
     private void Awake()
     {
@@ -196,12 +195,9 @@ public class WispBossA0 : BossAction
     {
         _spawnedChains.Remove(chain);
 
-        if (_damagePhaseRoutine != null)
-            StopCoroutine(_damagePhaseRoutine);
-
-        _damagePhaseRoutine = DamageRoutine();
-
-        StartCoroutine(_damagePhaseRoutine);
+        //Let's boss take damage once all chains are destroyed
+        if(_spawnedChains.Count == 0)
+            StartCoroutine(DamageRoutine());
     }
 
     /// <summary>
@@ -217,10 +213,7 @@ public class WispBossA0 : BossAction
         yield return new WaitForSeconds(damagePhaseDuration);
 
         health.canTakeDamage = false;
-        _damagePhaseRoutine = null;
 
-        //Spawns in more turrets if there are no more
-        if(_spawnedChains.Count == 0)
-            SpawnTurrets();
+        SpawnTurrets();
     }
 }
