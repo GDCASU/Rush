@@ -38,7 +38,6 @@ public class ChimeraA5 : BossAction
 
             yield return new WaitForEndOfFrame();
         }
-        print("ended");
         actionRunning = false;
 
     }

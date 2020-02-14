@@ -294,7 +294,7 @@ PrefabInstance:
     - target: {fileID: 257951202130026146, guid: ab0a4eaace8d2334ebb5496f8d011766,
         type: 3}
       propertyPath: bossPhases.Array.data[0].PossibleActions.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 257951202130026146, guid: ab0a4eaace8d2334ebb5496f8d011766,
         type: 3}
@@ -356,6 +356,16 @@ PrefabInstance:
       propertyPath: bossPhases.Array.data[0].PossibleActions.Array.data[4].behavior
       value: 
       objectReference: {fileID: 1990584520}
+    - target: {fileID: 257951202130026146, guid: ab0a4eaace8d2334ebb5496f8d011766,
+        type: 3}
+      propertyPath: bossPhases.Array.data[0].PossibleActions.Array.data[5].independent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 257951202130026146, guid: ab0a4eaace8d2334ebb5496f8d011766,
+        type: 3}
+      propertyPath: bossPhases.Array.data[0].PossibleActions.Array.data[5].behavior
+      value: 
+      objectReference: {fileID: 1990584517}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab0a4eaace8d2334ebb5496f8d011766, type: 3}
 --- !u!1001 &1848943121
@@ -571,6 +581,25 @@ MonoBehaviour:
   attackingFrames: 120
   wavePrefab: {fileID: 6275315061094590531, guid: 318d97b112e0ae24ba9e12c86c301419,
     type: 3}
+--- !u!114 &1990584517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990584513}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42c0d79ceb1d51a46a1b0b9889604e92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionRunning: 0
+  tailPrefab: {fileID: 5662415377755566909, guid: 96d1ce1ac747291489933d9baf4219c5,
+    type: 3}
+  chargedTail: {fileID: 21300000, guid: 1f439f30f8812664a8449928e788c6ca, type: 3}
+  extendedTail: {fileID: 21300000, guid: 727c6056b1b5b8f4ab9aee8fd5f8a584, type: 3}
+  lookingFrames: 120
+  curlFrames: 20
 --- !u!114 &1990584520
 MonoBehaviour:
   m_ObjectHideFlags: 0
