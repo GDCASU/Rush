@@ -37,7 +37,6 @@ public class Dash : BossAction
             //OnCollisionEnter2D(player.GetComponent<Rigidbody2D>().coll);
             //yield return new WaitForEndOfFrame();
         }
-        
     }
 
     private void Update()
