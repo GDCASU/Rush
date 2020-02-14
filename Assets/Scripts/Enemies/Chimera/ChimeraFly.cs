@@ -37,7 +37,6 @@ public class ChimeraFly : BossAction
         }
 
         action = rng.Next(2);
-        print(action);
         if (action == 0)
         {
             chimera.position = PlayerHealth.singleton.transform.position + new Vector3(0, 0, chimera.position.z);
@@ -79,8 +78,7 @@ public class ChimeraFly : BossAction
     IEnumerator flyback(float z)
     {
         flying = true;
-        GameObject shadow=new GameObject();
-        if (action == 0)shadow = GameObject.Instantiate(shadowPrefab, new Vector3(transform.position.x, transform.position.y, -.1f), Quaternion.identity);
+        GameObject shadow = GameObject.Instantiate(shadowPrefab, new Vector3(transform.position.x, transform.position.y, -.1f), Quaternion.identity);
         shadow.transform.localScale = new Vector3(.1f,.1f,.1f);
         while (transform.position.z!=z)
         {

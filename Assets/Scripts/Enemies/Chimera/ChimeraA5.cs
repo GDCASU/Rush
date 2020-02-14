@@ -13,7 +13,7 @@ public class ChimeraA5 : BossAction
     public int lps;
 
     private System.Random rng = new System.Random();
-    private void Start()
+    private void OnEnable()
     {
         StartCoroutine("lighting");
     }
@@ -38,6 +38,7 @@ public class ChimeraA5 : BossAction
 
             yield return new WaitForEndOfFrame();
         }
+        print("ended");
         actionRunning = false;
 
     }
