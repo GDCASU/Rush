@@ -1398,7 +1398,7 @@ PrefabInstance:
     - target: {fileID: 2149381935911444041, guid: c596c0c0e2f7c75428811f0f3d262ebc,
         type: 3}
       propertyPath: turretAttacks.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2149381935911444041, guid: c596c0c0e2f7c75428811f0f3d262ebc,
         type: 3}
@@ -1433,6 +1433,12 @@ PrefabInstance:
       propertyPath: turretAttacks.Array.data[2]
       value: 
       objectReference: {fileID: 4005876776342312485, guid: 2cab89a3b7b45cd4aba5be06338e25aa,
+        type: 3}
+    - target: {fileID: 2149381935911444041, guid: c596c0c0e2f7c75428811f0f3d262ebc,
+        type: 3}
+      propertyPath: turretAttacks.Array.data[3]
+      value: 
+      objectReference: {fileID: 489361687944964451, guid: d6e11ad708a2b774f9921b46ce5cef20,
         type: 3}
     - target: {fileID: 8128845472949049963, guid: c596c0c0e2f7c75428811f0f3d262ebc,
         type: 3}
