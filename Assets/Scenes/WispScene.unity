@@ -1226,6 +1226,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2383583119896321767, guid: bdce497d4745f2343a2af2c74d8362a1,
+        type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 2292847843046181767, guid: ae27c38a71b68ef4d9573ab27cf6f450,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdce497d4745f2343a2af2c74d8362a1, type: 3}
 --- !u!1 &1908053867
@@ -1392,7 +1398,7 @@ PrefabInstance:
     - target: {fileID: 2149381935911444041, guid: c596c0c0e2f7c75428811f0f3d262ebc,
         type: 3}
       propertyPath: turretAttacks.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2149381935911444041, guid: c596c0c0e2f7c75428811f0f3d262ebc,
         type: 3}
@@ -1415,6 +1421,18 @@ PrefabInstance:
       propertyPath: turretAttacks.Array.data[0]
       value: 
       objectReference: {fileID: 708748291072839562, guid: 673292a4db2a8614e90b094529e88703,
+        type: 3}
+    - target: {fileID: 2149381935911444041, guid: c596c0c0e2f7c75428811f0f3d262ebc,
+        type: 3}
+      propertyPath: turretAttacks.Array.data[1]
+      value: 
+      objectReference: {fileID: 6860639750387232734, guid: f2d38a0d89144f9469e73b9f71f3c6f2,
+        type: 3}
+    - target: {fileID: 2149381935911444041, guid: c596c0c0e2f7c75428811f0f3d262ebc,
+        type: 3}
+      propertyPath: turretAttacks.Array.data[2]
+      value: 
+      objectReference: {fileID: 4005876776342312485, guid: 2cab89a3b7b45cd4aba5be06338e25aa,
         type: 3}
     - target: {fileID: 8128845472949049963, guid: c596c0c0e2f7c75428811f0f3d262ebc,
         type: 3}
