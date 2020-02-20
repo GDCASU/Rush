@@ -22,8 +22,6 @@ public class WispBullet : Bullet
 
     private IEnumerator HomingRoutine()
     {
-        print(homingDuration);
-
         while(homingDuration > 0)
         {
             MoveVector = Vector3.Normalize(PlayerHealth.singleton.transform.position - transform.position) * speed;

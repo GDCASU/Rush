@@ -41,6 +41,7 @@ public class WispBossA0 : BossAction
 
     [Header("Misc")]
     public float damagePhaseDuration = 3;
+    private IEnumerator damageRoutine;
 
     private void Awake()
     {
@@ -49,15 +50,17 @@ public class WispBossA0 : BossAction
 
     private void Start()
     {
+        damageRoutine = DamageRoutine();
         SpawnTurrets();
     }
 
-    /// <summary>
-    /// Destroys all associated objects when the boss is destroyed
-    /// </summary>
-    private void OnDestroy()
+    private void OnDisable()
     {
-        foreach(TurretControl control in _spawnedTurrets)
+        actionRunning = false;
+
+        StopCoroutine(damageRoutine);
+
+        foreach (TurretControl control in _spawnedTurrets)
         {
             if (control != null)
                 Destroy(control.gameObject);
@@ -201,7 +204,7 @@ public class WispBossA0 : BossAction
 
         //Let's boss take damage once all chains are destroyed
         if(_spawnedChains.Count == 0)
-            StartCoroutine(DamageRoutine());
+            StartCoroutine(damageRoutine);
     }
 
     /// <summary>
@@ -218,6 +221,7 @@ public class WispBossA0 : BossAction
 
         health.canTakeDamage = false;
 
-        SpawnTurrets();
+        if(actionRunning)  //Check to make sre this action is still running
+            SpawnTurrets();
     }
 }
