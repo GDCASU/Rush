@@ -32,6 +32,7 @@ public class WispBossA1 : BossAction
         //Initial movement
         _targetPos = BossLocations[Random.Range(1, BossLocations.Length)].position; //I start at 1 because index 0 is the parent transform and that should not be used
         _isMoving = true;
+        GetComponent<WispHealth>().canTakeDamage = false;
     }
 
     private void FixedUpdate()
@@ -45,6 +46,8 @@ public class WispBossA1 : BossAction
                 _isMoving = false;
                 currentAttack = bossAttacks[Random.Range(0, bossAttacks.Length)];
                 currentAttack.StartAttacking();
+
+                GetComponent<WispHealth>().canTakeDamage = true;
             }
             else
             {
@@ -64,7 +67,9 @@ public class WispBossA1 : BossAction
 
         if(_tmpDamageTaken >= damageToMove)
         {
-            if(currentAttack != null)
+            GetComponent<WispHealth>().canTakeDamage = false;
+
+            if (currentAttack != null)
                 currentAttack.StopAttacking();
 
             _tmpDamageTaken = 0;

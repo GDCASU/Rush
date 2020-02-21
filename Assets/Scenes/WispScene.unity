@@ -2193,19 +2193,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 513388018510028983, guid: c596c0c0e2f7c75428811f0f3d262ebc,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6576239264414887967, guid: c596c0c0e2f7c75428811f0f3d262ebc,
         type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6576239264414887967, guid: c596c0c0e2f7c75428811f0f3d262ebc,
+      propertyPath: locationsParent
+      value: 
+      objectReference: {fileID: 1350547588}
+    - target: {fileID: 8151650226234463911, guid: c596c0c0e2f7c75428811f0f3d262ebc,
         type: 3}
-      propertyPath: actionRunning
+      propertyPath: m_LocalScale.x
+      value: 0.06666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 8151650226234463911, guid: c596c0c0e2f7c75428811f0f3d262ebc,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.06666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 646865752320975652, guid: c596c0c0e2f7c75428811f0f3d262ebc,
+        type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
