@@ -86,7 +86,7 @@ public class MoltendwarfA1 : BossAction
             yield return new WaitForEndOfFrame();
         }
         Destroy(hammer);
-        col.enabled = false;                                                                                 //Disables the dwarfs hitbox
+        //col.enabled = false;                                                                                 //Disables the dwarfs hitbox
         actionRunning = false;                                                                               //Lets the BossBehaviorController know that the action is done running
     }
 }

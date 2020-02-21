@@ -84,14 +84,6 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.25
-    functionName: HitmarkerTrackSet
-    data: 
-    objectReferenceParameter: {fileID: 11500000, guid: 5334feb9da05a4c428d463d5a9cb70b8,
-      type: 3}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
   - time: 1.9166666
     functionName: DamagePlayer
     data: 
@@ -99,14 +91,6 @@ AnimationClip:
       type: 3}
     floatParameter: 0
     intParameter: 0
-    messageOptions: 0
-  - time: 1.9166666
-    functionName: HitmarkerTrackSet
-    data: 
-    objectReferenceParameter: {fileID: 11500000, guid: 5334feb9da05a4c428d463d5a9cb70b8,
-      type: 3}
-    floatParameter: 0
-    intParameter: 1
     messageOptions: 0
   - time: 4
     functionName: LavaSlamSet

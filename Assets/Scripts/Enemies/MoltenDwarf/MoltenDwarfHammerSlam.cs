@@ -4,51 +4,26 @@ using UnityEngine;
 
 public class MoltenDwarfHammerSlam : MoltenDwarfParent
 {
-    private float timeBtwAttack; //timer
-    public float startTimeBtwAttack = 0.3f; //attack delay
-
+    public float attackDistance = 5.0f;
     public Transform attackPOS; //position for attack area of effect
     public float attackRange = 2.0f; //radius of attack
     public LayerMask playerToHit; //checks for objects with a layers (dropdown menu)
 
-    // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
+        actionRunning = true;
+
         dwarfAnim = GetComponent<Animator>();
         dwarfTransform = GetComponent<Transform>();
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        playerPosition = myPlayer.transform.position; //player position
-
-        if (timeBtwAttack <= 0)  //checks if dwarf is allowed to slam again
+        if (Vector2.Distance(transform.position, myPlayer.transform.position) > attackDistance)
         {
-            HammerSlam();
+            isAttackingSet(1);
         }
         else
         {
-            timeBtwAttack -= Time.deltaTime; //decreased timer so dwarf can attack
+            actionRunning = false;
         }
-    }
-
-    void HammerSlam()
-    {
-        if(Vector2.Distance(this.transform.position, playerPosition) < 3.0f) //distance between dwarf and player
-        {
-            isAttackingSet(1); //attack anim
-        }
-        else
-        {
-            isAttackingSet(0); //turn attack off
-        }
-    }
-
-    private void OnDrawGizmosSelected() //for attack area of effect
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(attackPOS.position, attackRange);
     }
 
     void DamagePlayer()
@@ -59,8 +34,6 @@ public class MoltenDwarfHammerSlam : MoltenDwarfParent
             playerToDamage.GetComponent<PlayerHealth>().takeDamage(); //check for PlayerHealth script on objects collided
         }
         catch { }
-
-        timeBtwAttack = startTimeBtwAttack; //resets attack timer
     }
 
     void isAttackingSet(int attacking) //for setting attack bool for animation
@@ -69,6 +42,15 @@ public class MoltenDwarfHammerSlam : MoltenDwarfParent
             dwarfAnim.SetBool("isAttacking", true); // activates attack animation
 
         if (attacking == 0)
+        {
             dwarfAnim.SetBool("isAttacking", false);
+            actionRunning = false;
+        }
+    }
+
+    private void OnDrawGizmosSelected() //for attack area of effect
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPOS.position, attackRange);
     }
 }

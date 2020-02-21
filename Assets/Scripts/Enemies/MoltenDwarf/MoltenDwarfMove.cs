@@ -4,40 +4,43 @@ using UnityEngine;
 
 public class MoltenDwarfMove : MoltenDwarfParent
 {
-    
-
-    private float speed;
+    public float speed = 3.0f;
+    public float distanceToStop = 5.0f;
     private float step;
 
     private SpriteRenderer dwarfSprite;
 
-    // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
+        actionRunning = true;
+
         dwarfSprite = GetComponent<SpriteRenderer>();   //get the sprite renderer
         dwarfTransform = GetComponent<Transform>();
 
-        speed = 1.5f;  //movement speed set
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         playerPosition = myPlayer.transform.position;  //position of player to use
 
-        if (Vector2.Distance(this.transform.position, playerPosition) > 3.0f)  //distance between dwarf and player
-        {
-            MoveToPlayer(playerPosition);
-        }
+        StartCoroutine(MoveToPlayer(playerPosition));
+    }
 
+    private void Update()
+    {
         CheckFacing();
     }
 
-    void MoveToPlayer(Vector2 target)
+    IEnumerator MoveToPlayer(Vector2 target)
     {
-        step = speed * Time.deltaTime; //movement speed
+        while (Vector2.Distance(this.transform.position, playerPosition) > distanceToStop)
+        {
+            playerPosition = myPlayer.transform.position;  //position of player to use
 
-        transform.position = Vector2.MoveTowards(this.transform.position, playerPosition, step); //moves dwarf to player
+            step = speed * Time.deltaTime; //movement speed
+
+            transform.position = Vector2.MoveTowards(this.transform.position, playerPosition, step); //moves dwarf to player
+
+            yield return new WaitForEndOfFrame();
+        }
+
+        actionRunning = false;
     }
 
     void CheckFacing()
