@@ -14,7 +14,12 @@ public class WispLaserAttack : WispAttackModel
      * If possible do some sort of calculation of how wide the obj is instead (yes I tried and yes I failed)
      */
     public float distToParent = 40f;
-    public float laserDuration;
+
+    [Header("Rotation")]
+    public float rotationSpeed;
+    public float rotationCount; //This is how many times the laser sort of swipes around. Ex: 2 would cause the laser to go "there and back"
+    public float rotationAngle; //This is how much the laser attack rotates in degrees
+    public bool rotatingClockwise;
 
     private GameObject spawnedLaser;
 
@@ -63,7 +68,29 @@ public class WispLaserAttack : WispAttackModel
 
             spawnedLaser.GetComponent<WispLaserControl>().canDamagePlayer = true;
 
-            yield return new WaitForSeconds(laserDuration);
+            for(int x = 0; x < rotationCount; x++)
+            {
+                float countRotation = 0;
+
+                int rotationDirection = 1;
+                if (rotatingClockwise)
+                    rotationDirection = -1;
+
+                while(Mathf.Abs(countRotation) < rotationAngle)
+                {
+                    float addRotation = rotationSpeed * rotationDirection;
+
+                    Vector3 newRotation = transform.eulerAngles;
+                    newRotation.z += addRotation;
+                    transform.eulerAngles = newRotation;
+
+                    countRotation += addRotation;
+
+                    yield return new WaitForEndOfFrame();
+                }
+
+                rotatingClockwise = !rotatingClockwise;
+            }
 
             //Fade out
             while (renderer.color.a > 0)

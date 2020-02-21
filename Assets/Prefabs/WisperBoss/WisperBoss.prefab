@@ -351,6 +351,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8128845472949049963}
     m_Modifications:
+    - target: {fileID: 5197738564966752424, guid: 18fb1c0655f40f842af28b1c7f47c9be,
+        type: 3}
+      propertyPath: rotationCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197738564966752424, guid: 18fb1c0655f40f842af28b1c7f47c9be,
+        type: 3}
+      propertyPath: rotationAngle
+      value: 135
+      objectReference: {fileID: 0}
     - target: {fileID: 3943233692832122984, guid: 18fb1c0655f40f842af28b1c7f47c9be,
         type: 3}
       propertyPath: m_Name

@@ -46,5 +46,8 @@ MonoBehaviour:
   laserPrefab: {fileID: 7610818950588386840, guid: 9ee1e85ce7e6bb54d86ad3b2167e720a,
     type: 3}
   distToParent: 40
-  laserDuration: 3
+  rotationSpeed: 5
+  rotationCount: 4
+  rotationAngle: 90
+  rotatingClockwise: 0
   fadeSpeed: 1
