@@ -8,8 +8,60 @@ using UnityEngine;
 /// </summary>
 public class WispBossA1 : BossAction
 {
+    public GameObject locationsParent;  //Parent obj that has children that will be used as referen
+    public Transform[] BossLocations    //All the locations the boss can move to
+    {
+        get
+        {
+            return locationsParent.GetComponentsInChildren<Transform>();
+        }
+    }
+    public float movementSpeed;
+    public float damageToMove;
+
+    private Vector3 _targetPos;
+    private bool _isMoving;
+    private float _tmpDamageTaken = 0;
+    private float _stopAdjuster = 1;  //This is the max distance to the target location to cause the boss to stop moving
+
     private void Start()
     {
-        print("Phase 2");
+        //Initial movement
+        _targetPos = BossLocations[Random.Range(1, BossLocations.Length)].position; //I start at 1 because index 0 is the parent transform and that should not be used
+        _isMoving = true;
+    }
+
+    private void FixedUpdate()
+    {
+        if(_isMoving)
+        {
+            Vector3 distVector = _targetPos - transform.position;
+
+            if(distVector.magnitude < _stopAdjuster)
+            {
+                _isMoving = false;
+            }
+            else
+            {
+                transform.position += distVector.normalized * movementSpeed * Time.deltaTime;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Method called when damage is taken to the boss. 
+    /// Determines whether the boss changes location or not
+    /// </summary>
+    /// <param name="damage">The amount of damage taken</param>
+    public void OnTakenDamage(float damage)
+    {
+        _tmpDamageTaken += damage;
+
+        if(_tmpDamageTaken >= damageToMove)
+        {
+            _tmpDamageTaken = 0;
+            _targetPos = BossLocations[Random.Range(1, BossLocations.Length)].position; //I start at 1 because index 0 is the parent transform and that should not be used
+            _isMoving = true;
+        }
     }
 }

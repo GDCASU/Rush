@@ -8,6 +8,14 @@ using UnityEngine;
 /// </summary>
 public class WispHealth : EnemyHealth
 {
+    public WispBossA1 Phase2
+    {
+        get
+        {
+            return GetComponent<WispBossA1>();
+        }
+    }
+
     public bool canTakeDamage = false;
 
     /// <summary>
@@ -23,6 +31,16 @@ public class WispHealth : EnemyHealth
                 takeDamage(1);
                 other.GetComponent<Bullet>().BulletDestroy();
             }
+        }
+    }
+
+    public void takeDamage(float damage)
+    {
+        base.takeDamage(damage);
+
+        if(Phase2.actionRunning)
+        {
+            Phase2.OnTakenDamage(damage);
         }
     }
 }

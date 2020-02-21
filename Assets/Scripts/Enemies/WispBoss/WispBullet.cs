@@ -15,18 +15,32 @@ public class WispBullet : Bullet
     [Header("Coupling")]
     public GameObject[] coupledObjects;
 
-    public void EnableHoming()
+    public void EnableHomingTurret()
     {
-        StartCoroutine(HomingRoutine());
+        StartCoroutine(HomingRoutine(homingDuration));
     }
 
-    private IEnumerator HomingRoutine()
+    /// <summary>
+    /// Special homing movement that lasts forevor
+    /// </summary>
+    public void EnableHomingBig()
     {
-        while(homingDuration > 0)
+        StartCoroutine(HomingRoutine(-1));
+    }
+
+    /// <summary>
+    /// Coroutine that handles the homing logic
+    /// </summary>
+    /// <param name="timeToFollow">Duration the bullet follows the player. Enter -1 for no duration</param>
+    /// <returns></returns>
+    private IEnumerator HomingRoutine(float timeToFollow)
+    {
+        while (timeToFollow == -1 || timeToFollow > 0)
         {
             MoveVector = Vector3.Normalize(PlayerHealth.singleton.transform.position - transform.position) * speed;
 
-            homingDuration -= Time.deltaTime;
+            if(timeToFollow != -1)
+                timeToFollow -= Time.deltaTime;
 
             yield return new WaitForEndOfFrame();
         }

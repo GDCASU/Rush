@@ -50,7 +50,6 @@ public class WispBossA0 : BossAction
 
     private void Start()
     {
-        damageRoutine = DamageRoutine();
         SpawnTurrets();
     }
 
@@ -204,7 +203,14 @@ public class WispBossA0 : BossAction
 
         //Let's boss take damage once all chains are destroyed
         if(_spawnedChains.Count == 0)
+        {
+            if (damageRoutine == null)
+                damageRoutine = DamageRoutine();
+            else
+                StopCoroutine(damageRoutine);
+
             StartCoroutine(damageRoutine);
+        }
     }
 
     /// <summary>
@@ -221,7 +227,11 @@ public class WispBossA0 : BossAction
 
         health.canTakeDamage = false;
 
+        damageRoutine = null;
+
         if(actionRunning)  //Check to make sre this action is still running
             SpawnTurrets();
+
+        yield return null;
     }
 }
