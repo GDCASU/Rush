@@ -25,4 +25,12 @@ public class WispAttackModel : MonoBehaviour
         else
             Spawner.enabled = true;
     }
+
+    public void StopAttacking()
+    {
+        if (_attackRoutine != null)
+            StopCoroutine(_attackRoutine);
+        else
+            Spawner.enabled = false;
+    }
 }

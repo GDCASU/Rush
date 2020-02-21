@@ -19,6 +19,9 @@ public class WispBossA1 : BossAction
     public float movementSpeed;
     public float damageToMove;
 
+    public WispAttackModel[] bossAttacks;
+    private WispAttackModel currentAttack;
+
     private Vector3 _targetPos;
     private bool _isMoving;
     private float _tmpDamageTaken = 0;
@@ -40,6 +43,8 @@ public class WispBossA1 : BossAction
             if(distVector.magnitude < _stopAdjuster)
             {
                 _isMoving = false;
+                currentAttack = bossAttacks[Random.Range(0, bossAttacks.Length)];
+                currentAttack.StartAttacking();
             }
             else
             {
@@ -59,6 +64,9 @@ public class WispBossA1 : BossAction
 
         if(_tmpDamageTaken >= damageToMove)
         {
+            if(currentAttack != null)
+                currentAttack.StopAttacking();
+
             _tmpDamageTaken = 0;
             _targetPos = BossLocations[Random.Range(1, BossLocations.Length)].position; //I start at 1 because index 0 is the parent transform and that should not be used
             _isMoving = true;

@@ -37,6 +37,11 @@ public class WispBigBullet : WispAttackModel
         _attackRoutine = Shoot();
     }
 
+    private void OnDestroy()
+    {
+        StopCoroutine(_attackRoutine);
+    }
+
     private IEnumerator Shoot()
     {
         while(isActiveAndEnabled)
@@ -56,18 +61,22 @@ public class WispBigBullet : WispAttackModel
             //Waits for the bullet to explode
             yield return new WaitForSeconds(timeToExplode);
 
-            //Setup for the shrapnel
-            WispSpawner.useOtherSpawnPoint = true;
-            WispSpawner.alternateSpawnLocation = WispSpawner.spawnedBigBullet.transform;
-            WispSpawner.bulletAmount = explosionBulletCount;
-            WispSpawner.enableBigBullet = false;
-            WispSpawner.bulletSpeed = shrapnelSpeed;
-            WispSpawner.bulletSprite = shrapnelSprite;
-            WispSpawner.scale = smallBulletScale;
+            //Prevents shrapnel from spawning if the bullet hit the player
+            if (WispSpawner.spawnedBigBullet.activeSelf)
+            {
+                //Setup for the shrapnel
+                WispSpawner.useOtherSpawnPoint = true;
+                WispSpawner.alternateSpawnLocation = WispSpawner.spawnedBigBullet.transform;
+                WispSpawner.bulletAmount = explosionBulletCount;
+                WispSpawner.enableBigBullet = false;
+                WispSpawner.bulletSpeed = shrapnelSpeed;
+                WispSpawner.bulletSprite = shrapnelSprite;
+                WispSpawner.scale = smallBulletScale;
 
-            //Fire shrapnel
-            WispSpawner.enabled = true;
-            WispSpawner.enabled = false;
+                //Fire shrapnel
+                WispSpawner.enabled = true;
+                WispSpawner.enabled = false;
+            }
 
             //Destroys old big bullet
             Destroy(WispSpawner.spawnedBigBullet);
