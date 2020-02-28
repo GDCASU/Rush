@@ -19,27 +19,33 @@ public class MoltenDwarfMove : MoltenDwarfParent
 
         playerPosition = myPlayer.transform.position;  //position of player to use
 
-        StartCoroutine(MoveToPlayer(playerPosition));
+        StartCoroutine("MoveToPlayer");
     }
 
-    private void Update()
+    IEnumerator MoveToPlayer()
     {
-        CheckFacing();
-    }
-
-    IEnumerator MoveToPlayer(Vector2 target)
-    {
-        while (Vector2.Distance(this.transform.position, playerPosition) > distanceToStop)
+        if (Vector2.Distance(this.transform.position, playerPosition) < distanceToStop)
         {
-            playerPosition = myPlayer.transform.position;  //position of player to use
-
-            step = speed * Time.deltaTime; //movement speed
-
-            transform.position = Vector2.MoveTowards(this.transform.position, playerPosition, step); //moves dwarf to player
-
-            yield return new WaitForEndOfFrame();
+            for (int x = 0; x < 60; x++)
+            {
+                yield return new WaitForEndOfFrame();
+            }
+            CheckFacing();
         }
+        else
+        {
+            while (Vector2.Distance(this.transform.position, playerPosition) > distanceToStop)
+            {
+                CheckFacing();
+                playerPosition = myPlayer.transform.position;  //position of player to use
 
+                step = speed * Time.deltaTime; //movement speed
+
+                transform.position = Vector2.MoveTowards(this.transform.position, playerPosition, step); //moves dwarf to player
+                yield return new WaitForEndOfFrame();
+            }
+        }
+        
         actionRunning = false;
     }
 

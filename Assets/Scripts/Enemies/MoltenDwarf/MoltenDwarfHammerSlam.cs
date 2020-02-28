@@ -13,17 +13,12 @@ public class MoltenDwarfHammerSlam : MoltenDwarfParent
     {
         actionRunning = true;
 
+
         dwarfAnim = GetComponent<Animator>();
+        dwarfAnim.enabled = true;
         dwarfTransform = GetComponent<Transform>();
 
-        if (Vector2.Distance(transform.position, myPlayer.transform.position) > attackDistance)
-        {
-            isAttackingSet(1);
-        }
-        else
-        {
-            actionRunning = false;
-        }
+        StartCoroutine("slam");
     }
 
     void DamagePlayer()
@@ -47,6 +42,20 @@ public class MoltenDwarfHammerSlam : MoltenDwarfParent
             actionRunning = false;
         }
     }
+    IEnumerator slam()
+    {
+        while (Vector2.Distance(transform.position, myPlayer.transform.position) > attackDistance)
+        {
+            yield return new WaitForFixedUpdate();
+        }
+        isAttackingSet(1);
+        for(int x=0;x<45;x++)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        dwarfAnim.enabled = false;
+        actionRunning = false;
+    }
 
     private void OnDrawGizmosSelected() //for attack area of effect
     {
@@ -54,3 +63,4 @@ public class MoltenDwarfHammerSlam : MoltenDwarfParent
         Gizmos.DrawWireSphere(attackPOS.position, attackRange);
     }
 }
+
