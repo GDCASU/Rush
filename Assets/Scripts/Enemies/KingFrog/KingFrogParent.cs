@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KingFrogParent : MonoBehaviour
+public class KingFrogParent : BossAction
 {
     [SerializeField]
     protected GameObject myPlayer;
