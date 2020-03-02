@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class MoltenDwarfLavaSlam : MoltenDwarfParent
 {
-    public float hitmarkerSpeed = 8f;
+    [SerializeField]
+    private float hitmarkerSpeed = 8f;
 
-    public Transform attackPOS; //position for attack area of effect
-    public float attackRange = 5.0f; //radius of attack
-    public LayerMask playerToHit; //checks for objects with a layers (dropdown menu)
+    [SerializeField]
+    private Transform attackPOS; //position for attack area of effect
+
+    [SerializeField]
+    private float attackRange = 5.0f; //radius of attack
+
+    [SerializeField]
+    private LayerMask playerToHit; //checks for objects with a layers (dropdown menu)
 
     private bool hitmarkerTrack; //does the hitmarker track player or not
     private float step;     //variable for Area of Effect movement speed

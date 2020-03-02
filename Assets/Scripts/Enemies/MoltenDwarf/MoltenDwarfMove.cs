@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class MoltenDwarfMove : MoltenDwarfParent
 {
-    public float speed = 3.0f;
-    public float distanceToStop = 5.0f;
+    [SerializeField]
+    private float speed = 3.0f;
+    [SerializeField]
+    private float distanceToStop = 5.0f;
     private float step;
 
     private SpriteRenderer dwarfSprite;

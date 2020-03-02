@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class MoltenDwarfPhaseSwitch : BossAction
 {
-    public Transform Phase2POS;
+    [SerializeField]
+    private Transform Phase2POS;
 
     private void OnEnable()
     {

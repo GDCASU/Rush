@@ -7,6 +7,7 @@ public class MoltenDwarfParent : BossAction
     protected Animator dwarfAnim;
     protected Transform dwarfTransform;
 
-    public GameObject myPlayer;
+    [SerializeField]
+    protected GameObject myPlayer;
     protected Vector2 playerPosition;
 }

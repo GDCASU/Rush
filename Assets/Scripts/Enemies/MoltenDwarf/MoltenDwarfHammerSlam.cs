@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class MoltenDwarfHammerSlam : MoltenDwarfParent
 {
-    public float attackDistance = 5.0f;
-    public Transform attackPOS; //position for attack area of effect
-    public float attackRange = 2.0f; //radius of attack
-    public LayerMask playerToHit; //checks for objects with a layers (dropdown menu)
+    [SerializeField]
+    private float attackDistance = 5.0f;
+
+    [SerializeField]
+    private Transform attackPOS; //position for attack area of effect
+
+    [SerializeField]
+    private float attackRange = 2.0f; //radius of attack
+
+    [SerializeField]
+    private LayerMask playerToHit; //checks for objects with a layers (dropdown menu)
 
     void OnEnable()
     {
