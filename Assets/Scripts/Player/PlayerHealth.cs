@@ -17,7 +17,7 @@ public class PlayerHealth : MonoBehaviour {
         else
             Destroy(gameObject);
     }
-     private SpriteRenderer sp;
+    private SpriteRenderer sp;
 
     private void Start()
     {
@@ -25,7 +25,7 @@ public class PlayerHealth : MonoBehaviour {
         sp = GetComponent<SpriteRenderer>();
         HUDManager.singleton.setLiveCount(lives);
     }
-     void Update()
+    void Update()
     {
         if (InputManager.GetButtonDown(PlayerInput.PlayerButton.Potion, player))
         {
@@ -35,8 +35,9 @@ public class PlayerHealth : MonoBehaviour {
         else Debug.Log("Go to gameover"); //example: SceneManager.LoadScene("GameOver"); 
     }
 
-    void OnTriggerEnter2D (Collider2D other) {
-        if ( (!inv) && ((other.gameObject.CompareTag("Bullet") && other.GetComponent<Bullet>().hostile ) || other.gameObject.CompareTag("Enemy")) )
+    void OnTriggerEnter2D(Collider2D other) {
+        if ((!inv) && ((other.gameObject.CompareTag("Bullet") && other.GetComponent<Bullet>().hostile))
+            || other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("HorsemanApparition"))
         {
             takeDamage();
             // Hurt the player
