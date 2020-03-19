@@ -6,6 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Title.unity
+    guid: 1fef1bee4f57742489353bf97daa9811
+  - enabled: 1
+    path: Assets/Scenes/Chimera.unity
+    guid: e97275ef27547504eb77f415014fd7b5
+  - enabled: 1
+    path: Assets/Scenes/MoltenDwarf.unity
+    guid: 6eb730619d87bef4b8661f6c14342a1b
+  - enabled: 1
+    path: Assets/Scenes/HeadlessHorseman.unity
+    guid: 739803b3b136f4495984edbcf714800c
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/WispScene.unity
+    guid: b49d837544ca5ef46bb1974d6e9fc77b
   m_configObjects: {}
