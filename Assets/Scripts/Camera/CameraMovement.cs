@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     public GameObject player;
-    //[Range(25f, 45f)]
+
     public float tilt = 25;
 
     [Range(-10f, -40f)]
