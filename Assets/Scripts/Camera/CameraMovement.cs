@@ -5,9 +5,13 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     public GameObject player;
+    //[Range(25f, 45f)]
     public float tilt = 25;
-	// Use this for initialization
-	void Start ()
+
+    [Range(-10f, -40f)]
+    public float cameraDistance = -10f;
+    // Use this for initialization
+    void Start ()
     {
         transform.rotation = Quaternion.Euler(-tilt, 0,0);
     }
@@ -19,6 +23,6 @@ public class CameraMovement : MonoBehaviour
     }
     void moveCamera()
     {
-        transform.position = new Vector3(player.transform.position.x,player.transform.position.y - tilt/10, -10f);
+        transform.position = new Vector3(player.transform.position.x,player.transform.position.y - tilt/10, cameraDistance);
     }
 }
