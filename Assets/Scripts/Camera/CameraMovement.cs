@@ -10,10 +10,14 @@ public class CameraMovement : MonoBehaviour
 
     [Range(-10f, -40f)]
     public float cameraDistance = -10f;
+
+    public bool isDDRBird = false;
+
     // Use this for initialization
     void Start ()
     {
         transform.rotation = Quaternion.Euler(-tilt, 0,0);
+        if (isDDRBird) tilt = 100f;
     }
 	
 	// Always handle rendering and camera movement in late updates to avoid visual errors
