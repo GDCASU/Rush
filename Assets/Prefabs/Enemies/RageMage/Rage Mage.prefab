@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5354496124324427373}
   - component: {fileID: 4118399639542783618}
+  - component: {fileID: 5498346112368656623}
   - component: {fileID: 8269899620906757464}
   - component: {fileID: 2002472254695705730}
   - component: {fileID: 781697811886580730}
-  - component: {fileID: 5498346112368656623}
   m_Layer: 0
   m_Name: Rage Mage
   m_TagString: Enemy
@@ -31,7 +31,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 5759146478443490002}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -56,48 +57,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &8269899620906757464
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1459910493493633634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c00e79e4f2ee7714f829792cbdbf6157, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 10
---- !u!114 &2002472254695705730
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1459910493493633634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfc3d4bafa666894480e382a47892bfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyName: Rage Mage
-  enemyHealth: {fileID: 0}
---- !u!114 &781697811886580730
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1459910493493633634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 097da67cb82ef0a4ca352774b96197e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bossPhases: []
-  currentPhase: 0
-  actionQueue: []
 --- !u!212 &5498346112368656623
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -147,3 +106,108 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8269899620906757464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459910493493633634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c00e79e4f2ee7714f829792cbdbf6157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+--- !u!114 &2002472254695705730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459910493493633634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc3d4bafa666894480e382a47892bfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyName: Rage Mage
+  enemyHealth: {fileID: 0}
+--- !u!114 &781697811886580730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459910493493633634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 097da67cb82ef0a4ca352774b96197e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossPhases: []
+  currentPhase: 0
+  actionQueue: []
+--- !u!1 &7151873541372071023
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5759146478443490002}
+  - component: {fileID: 3765837036605414132}
+  m_Layer: 0
+  m_Name: Magic Missile
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5759146478443490002
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7151873541372071023}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5354496124324427373}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3765837036605414132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7151873541372071023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb16419c509c2f94982de5d5e8fa0091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionRunning: 0
+  bulletSpeed: 2
+  bulletAmount: 1
+  bulletArc: 6.2831855
+  ArcOffset: 0
+  offsetFacesPlayer: 1
+  bulletfrequency: 6
+  spin: 0
+  wave: 0
+  bulletSprite: {fileID: 21300000, guid: 81b92f2d915dacd4e8d334e378276997, type: 3}
+  bulletTint: {r: 1, g: 1, b: 1, a: 1}
+  rotation: {x: 0, y: 0, z: 0, w: 1}
+  scale: {x: 0.5, y: 0.5, z: 0.5}
+  moveFunc: 0
+  spawnFunc: 0
+  SpawnFunctionParams: []
+  bulletsFaceOutward: 1
+  colliderRadius: 1
+  useOtherSpawnPoint: 0
+  alternateSpawnLocation: {fileID: 0}
