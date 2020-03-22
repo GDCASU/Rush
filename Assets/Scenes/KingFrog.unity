@@ -689,8 +689,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseSeconds: 5
-  maxSpeed: 2
-  rotateSpeed: 3
 --- !u!61 &1779572664
 BoxCollider2D:
   m_ObjectHideFlags: 0
