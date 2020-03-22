@@ -14,14 +14,15 @@ public class KingFrogTongueAttack : KingFrogParent
     public bool hitPlayer; //checks if player was hit
 
     private float scaleX; //gets tongue's X scale
+    private float startScaleX;
     private float amountToChange; //math of tongueSpeed * Time.deltaTime;
-    private Vector3 tempAngle; //gets angle of tongue when facing player
 
     private void OnEnable()
     {
         actionRunning = true;
 
         hitPlayer = false;
+        startScaleX = transform.localScale.x;
 
         AngleTongue();
 
@@ -38,7 +39,7 @@ public class KingFrogTongueAttack : KingFrogParent
             yield return new WaitForEndOfFrame();
         }
 
-        while(scaleX > 1)
+        while(scaleX > startScaleX)
         {
             Shrink();
             yield return new WaitForEndOfFrame();
@@ -61,16 +62,19 @@ public class KingFrogTongueAttack : KingFrogParent
 
     void SetVars()
     {
-        scaleX = tongueObject.transform.localScale.x;
-        amountToChange = tongueSpeed * Time.deltaTime;
+        scaleX = tongueObject.transform.localScale.x; //gets scale of tongue
+        amountToChange = tongueSpeed * Time.deltaTime; //amount to change tongue scale by
     }
 
     void AngleTongue()
     {
-        tongueObject.transform.LookAt(myPlayer.transform, Vector3.left);
-        tempAngle = tongueObject.transform.rotation.eulerAngles;
-        tempAngle.x = 0;
-        tempAngle.y = 0;
-        tongueObject.transform.rotation = Quaternion.Euler(tempAngle); //sets tongue X and Y rotation to 0 but keeps Z the same
+        /*found here: https://answers.unity.com/questions/760900/how-can-i-rotate-a-gameobject-around-z-axis-to-fac.html then edited*/
+
+        //get angle in radians then turn to degrees
+        float rotateAngle = Mathf.Rad2Deg * Mathf.Atan2(myPlayer.transform.position.y - tongueObject.transform.position.y, 
+                                                        myPlayer.transform.position.x - tongueObject.transform.position.x);
+
+        //rotate object
+        tongueObject.transform.rotation = Quaternion.Euler(0, 0, rotateAngle);
     }
 }

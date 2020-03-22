@@ -7,24 +7,28 @@ public class KingFrogInsect : MonoBehaviour
     [SerializeField]
     private float chaseSeconds = 5.0f;
 
-    [SerializeField]
-    private float maxSpeed = 10.0f;
+    //[SerializeField]
+    private float maxSpeed = 5.0f;
 
-    private float acceleration = 10.0f;
+    //[SerializeField]
+    private float rotateSpeed = 3.0f;
 
-    private Vector3 vectorToTarget;
+    private float acceleration =  2.0f;
+
     private GameObject myPlayer;
     private Rigidbody2D flyRB;
 
-    private Quaternion angle;
+    private Vector3 flySpeed;
 
     private float timer;
     private float rotateAngle;
 
-    private void Start()
+    private void OnEnable()
     {
         myPlayer = GameObject.FindGameObjectWithTag("Player");
         flyRB = gameObject.GetComponent<Rigidbody2D>();
+
+        flySpeed = Vector3.zero;
 
         timer = 0;
 
@@ -39,23 +43,43 @@ public class KingFrogInsect : MonoBehaviour
 
             ChasePlayer();
 
+            //timer += timer + Time.deltaTime;
+
             yield return new WaitForEndOfFrame();
         }
     }
 
     void ChasePlayer()
     {
-        if (flyRB.velocity.magnitude < maxSpeed)
-            flyRB.velocity = transform.right * acceleration;
+        Debug.Log(flyRB.velocity.magnitude);
+        if (flySpeed.magnitude < maxSpeed)
+        {
+            flySpeed += transform.right * acceleration;
+            flyRB.velocity = flySpeed;
+        }
         else
-            flyRB.velocity = transform.right;
+        {
+            //flyRB.velocity = transform.right;
+        }
     }
 
     void AngleInsect()
     {
-        vectorToTarget = myPlayer.transform.position - transform.position;
-        rotateAngle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
-        angle = Quaternion.AngleAxis(rotateAngle, Vector3.forward);
-        transform.rotation = Quaternion.Slerp(transform.rotation, angle, 100);
+        float rotateX = myPlayer.transform.position.x - transform.position.x;
+        float rotateY = myPlayer.transform.position.y - transform.position.y;
+        rotateAngle = Mathf.Rad2Deg * Mathf.Atan2(rotateY, rotateX); //get angle in radians then turn to degrees
+
+        //rotate along z-axis to face the x-axis towards the player
+        gameObject.transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, rotateAngle), rotateSpeed * Time.deltaTime);
+
+        //flip sprite depending on player position
+        if (myPlayer.transform.position.x > gameObject.transform.position.x)
+        {
+            gameObject.GetComponent<SpriteRenderer>().flipY = false;
+        }
+        else
+        {
+            gameObject.GetComponent<SpriteRenderer>().flipY = true;
+        }
     }
 }
