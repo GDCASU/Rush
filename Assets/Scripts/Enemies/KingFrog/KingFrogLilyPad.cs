@@ -6,37 +6,50 @@ public class KingFrogLilyPad : MonoBehaviour
 {
     public bool collided = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        StartCoroutine(CheckSpace());
-    }
+    private float scaleAmount = 0.5f;
+    private float maxSize = 2.0f;
+    private float startSize;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        startSize = transform.localScale.x; //save start scale
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "KingFrogLilyPad" || collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "KingFrogLilyPad")
         {
             collided = true;
         }
     }
 
-    IEnumerator CheckSpace()
+    public void Rise()
     {
-        yield return null;
+        StartCoroutine(RiseCR());
+    }
 
-        if(collided)
+    public void Sink()
+    {
+        StartCoroutine(SinkCR());
+    }
+
+    IEnumerator RiseCR()
+    {
+        while(transform.localScale.x < maxSize)
         {
-            Destroy(this, 0.01f);
+            float step = scaleAmount * Time.deltaTime;
+            transform.localScale += new Vector3(step, step, 0);
+            yield return new WaitForEndOfFrame();
         }
-        else
+    }
+
+    IEnumerator SinkCR()
+    {
+        while(transform.localScale.x > startSize)
         {
-            gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            float step = scaleAmount * Time.deltaTime;
+            transform.localScale -= new Vector3(step, step, 0);
+            yield return new WaitForEndOfFrame();
         }
     }
 }

@@ -830,7 +830,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lilyPad: {fileID: 5710365205494932603, guid: 55e3418a6617b7b4ab2a8d4fa65fc50d, type: 3}
   center: {x: 0, y: 0}
-  arenaRadius: 3
+  arenaRadius: 6
 --- !u!4 &2010786805
 Transform:
   m_ObjectHideFlags: 0
