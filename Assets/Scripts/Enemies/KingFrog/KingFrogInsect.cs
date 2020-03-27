@@ -32,34 +32,42 @@ public class KingFrogInsect : MonoBehaviour
 
         timer = 0;
 
-        StartCoroutine(Move());
+        StartCoroutine(ChasePlayer());
     }
 
-    IEnumerator Move()
+    IEnumerator ChasePlayer()
     {
         while(timer < chaseSeconds)
         {
             AngleInsect();
 
-            ChasePlayer();
+            MoveForward();
 
-            //timer += timer + Time.deltaTime;
+            //timer += Time.deltaTime;
+
+            yield return new WaitForEndOfFrame();
+        }
+
+        bool temp = true;
+
+        while(temp)
+        {
+            //move until fly hits wall
+            MoveForward();
 
             yield return new WaitForEndOfFrame();
         }
     }
 
-    void ChasePlayer()
+    void MoveForward()
     {
-        Debug.Log(flyRB.velocity.magnitude);
-        if (flySpeed.magnitude < maxSpeed)
+        if (flyRB.velocity.magnitude < maxSpeed)
         {
-            flySpeed += transform.right * acceleration;
-            flyRB.velocity = flySpeed;
+            flyRB.velocity = transform.right * acceleration;
         }
         else
         {
-            //flyRB.velocity = transform.right;
+            flyRB.velocity = transform.right;
         }
     }
 
