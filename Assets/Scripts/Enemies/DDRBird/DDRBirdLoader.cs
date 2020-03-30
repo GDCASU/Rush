@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class DDRBirdLoader : MonoBehaviour
 {
-    public static Beat[] GetBeats()
+    public static List<Beat> GetBeats()
     {
         var testTextFile = Resources.Load("BeatMaps") as TextAsset;
         Wrapper<Beat> wrapper = JsonUtility.FromJson<Wrapper<Beat>>(testTextFile.text);
         Beat[] beats = wrapper.array;
-        return beats;
+        return new List<Beat>(beats);
     }
 
     /// <summary>
