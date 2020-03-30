@@ -1,0 +1,511 @@
+{
+  "array": [
+    {
+      "TimeStamp": 3.375,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 4.875,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 6.375,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 7.875,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 9.375,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 10.875,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 12.375,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 13.875,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 15.375,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 16.875,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 18.375,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 19.875,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 21.375,
+      "Directions": [
+        2,
+        3
+      ]
+    },
+    {
+      "TimeStamp": 22.875,
+      "Directions": [
+        0,
+        1
+      ]
+    },
+    {
+      "TimeStamp": 24.375,
+      "Directions": [
+        1,
+        2
+      ]
+    },
+    {
+      "TimeStamp": 25.6875,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 26.0625,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 26.4375,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 27.5625,
+      "Directions": [
+        1,
+        2
+      ]
+    },
+    {
+      "TimeStamp": 28.875,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 29.8125,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 31.5,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 31.875,
+      "Directions": [
+        1,
+        2
+      ]
+    },
+    {
+      "TimeStamp": 32.25,
+      "Directions": [
+        0,
+        3
+      ]
+    },
+    {
+      "TimeStamp": 34.5,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 34.6875,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 35.0625,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 35.25,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 35.4375,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 35.625,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 36.75,
+      "Directions": [
+        0,
+        2
+      ]
+    },
+    {
+      "TimeStamp": 37.875,
+      "Directions": [
+        0,
+        3
+      ]
+    },
+    {
+      "TimeStamp": 38.625,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 39.0,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 39.75,
+      "Directions": [
+        2,
+        3
+      ]
+    },
+    {
+      "TimeStamp": 40.875,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 41.25,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 41.625,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 42.0,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 42.75,
+      "Directions": [
+        2,
+        3
+      ]
+    },
+    {
+      "TimeStamp": 43.875,
+      "Directions": [
+        0,
+        1
+      ]
+    },
+    {
+      "TimeStamp": 44.625,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 45.0,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 45.375,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 45.75,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 46.125,
+      "Directions": [
+        0,
+        1
+      ]
+    },
+    {
+      "TimeStamp": 46.875,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 47.25,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 48.75,
+      "Directions": [
+        2,
+        3
+      ]
+    },
+    {
+      "TimeStamp": 49.875,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 50.8125,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 51.0,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 51.1875,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 51.375,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 51.5625,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 51.75,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 51.9375,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 52.125,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 52.3125,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 52.5,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 52.6875,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 52.875,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 53.0625,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 53.25,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 53.4375,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 53.625,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 53.8125,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 54.0,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 54.1875,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 54.375,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 54.5625,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 54.75,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 54.9375,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 55.125,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 56.625,
+      "Directions": [
+        2,
+        3
+      ]
+    },
+    {
+      "TimeStamp": 57.375,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 58.125,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 58.875,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 59.625,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 60.375,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 61.125,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 61.875,
+      "Directions": [
+        2,
+        3
+      ]
+    }
+  ]
+}
