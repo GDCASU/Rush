@@ -5,7 +5,7 @@ using UnityEngine;
 public class LightSource : MonoBehaviour
 {
     public Light SpotLight;
-    //public ColorChangeEvent;
+    public ColorChangeEvent Colors;
 
     public class ColorChangeEvent
     {
