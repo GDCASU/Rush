@@ -6,6 +6,7 @@ using static DDRBirdLoader;
 public class Conductor : MonoBehaviour
 {
     public AudioSource Speaker;
+    public PlayerMovement Player;
 
     public Transform NoteSpawnPoint;
     public Transform NoteDestroyPoint;
@@ -42,6 +43,7 @@ public class Conductor : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Speaker.Play();
+            Player.freezeInPlace = true;
         }
 
 
