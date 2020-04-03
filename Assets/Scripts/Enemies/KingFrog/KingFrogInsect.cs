@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KingFrogInsect : MonoBehaviour
+public class KingFrogInsect : KingFrogParent
 {
     [SerializeField]
     private float chaseSeconds = 5.0f;
 
-    //[SerializeField]
+    [SerializeField]
     private float maxSpeed = 5.0f;
 
-    //[SerializeField]
+    [SerializeField]
     private float rotateSpeed = 3.0f;
 
-    private float acceleration =  2.0f;
+    private float acceleration;
 
     private GameObject myPlayer;
     private Rigidbody2D flyRB;
@@ -29,7 +29,7 @@ public class KingFrogInsect : MonoBehaviour
         flyRB = gameObject.GetComponent<Rigidbody2D>();
 
         flySpeed = Vector3.zero;
-
+        acceleration = 6.0f;
         timer = 0;
 
         StartCoroutine(ChasePlayer());
@@ -43,7 +43,7 @@ public class KingFrogInsect : MonoBehaviour
 
             MoveForward();
 
-            //timer += Time.deltaTime;
+            timer += Time.deltaTime;
 
             yield return new WaitForEndOfFrame();
         }
@@ -71,6 +71,7 @@ public class KingFrogInsect : MonoBehaviour
         }
     }
 
+    //angles the insect towards the player
     void AngleInsect()
     {
         float rotateX = myPlayer.transform.position.x - transform.position.x;

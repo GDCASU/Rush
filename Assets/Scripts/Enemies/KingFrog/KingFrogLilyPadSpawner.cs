@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KingFrogSpawnLilyPadSpawner : MonoBehaviour
+public class KingFrogLilyPadSpawner : MonoBehaviour
 {
     [SerializeField]
     private GameObject lilyPad;
@@ -15,27 +15,49 @@ public class KingFrogSpawnLilyPadSpawner : MonoBehaviour
     private float arenaRadius = 3.0f;
 
     private bool padCollided;
-    private int padCount;
-    private int maxPadCount;
+
+    //[SerializeField]
+    private float padFloatTime = 10.0f;
+    private float timerFloat;
 
     private void OnEnable()
     {
+        timerFloat = 0.0f;
+        StartCoroutine(Beginning());
+    }
+    IEnumerator Beginning() //spawns pads with slight spacing that is needed.
+    {
+        SpawnPad();
+        for (int i = 0; i < 3; i++) //wait frames
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        SpawnPad();
+        for (int i = 0; i < 3; i++) //wait frames
+        {
+            yield return new WaitForEndOfFrame();
+        }
         SpawnPad();
     }
 
-    private void Start()
-    {
-        padCount = 0;
-        maxPadCount = 4;
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E))
+        if(timerFloat > padFloatTime) //timer for pad life
         {
+            DeletePad();
             SpawnPad();
+            timerFloat = 0;
         }
+        else
+        {
+            timerFloat += Time.deltaTime;
+        }
+    }
+
+    private void DeletePad()
+    {
+        //find the first child and calls "sink" since that is the oldest pad
+        gameObject.transform.GetChild(0).GetComponent<KingFrogLilyPad>().Sink();
     }
 
     private void SpawnPad()
@@ -63,7 +85,7 @@ public class KingFrogSpawnLilyPadSpawner : MonoBehaviour
         if(padCollided) //pad collided, destroy and try again
         {
             Destroy(temp);
-            Invoke("SpawnPad", 0);
+            SpawnPad();
         }
         else //pad did not collide. make it small, enable sprite, and make it "rise"
         {

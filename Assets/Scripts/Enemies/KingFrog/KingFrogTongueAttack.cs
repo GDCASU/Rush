@@ -16,24 +16,25 @@ public class KingFrogTongueAttack : KingFrogParent
     private float scaleX; //gets tongue's X scale
     private float startScaleX;
     private float amountToChange; //math of tongueSpeed * Time.deltaTime;
+    private float rotateAngle;
 
     private void OnEnable()
     {
         actionRunning = true;
 
+        myPlayer = GameObject.FindGameObjectWithTag("Player");
+
         hitPlayer = false;
         startScaleX = transform.localScale.x;
-
-        AngleTongue();
 
         StartCoroutine(TongueAttack());
     }
 
     IEnumerator TongueAttack()
     {
-        SetVars();
+        AngleTongue();
 
-        while(scaleX < maxTongueDistance && !hitPlayer)
+        while (scaleX < maxTongueDistance && !hitPlayer)
         {
             Grow();
             yield return new WaitForEndOfFrame();
@@ -70,9 +71,9 @@ public class KingFrogTongueAttack : KingFrogParent
     {
         /*found here: https://answers.unity.com/questions/760900/how-can-i-rotate-a-gameobject-around-z-axis-to-fac.html then modified*/
 
-        //get angle in radians then turn to degrees
-        float rotateAngle = Mathf.Rad2Deg * Mathf.Atan2(myPlayer.transform.position.y - tongueObject.transform.position.y, 
-                                                        myPlayer.transform.position.x - tongueObject.transform.position.x);
+        float rotateX = myPlayer.transform.position.x - tongueObject.transform.position.x;
+        float rotateY = myPlayer.transform.position.y - tongueObject.transform.position.y;
+        rotateAngle = Mathf.Rad2Deg * Mathf.Atan2(rotateY, rotateX); //get angle in radians then turn to degrees
 
         //rotate object
         tongueObject.transform.rotation = Quaternion.Euler(0, 0, rotateAngle);

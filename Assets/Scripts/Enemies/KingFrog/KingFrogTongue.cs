@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KingFrogTongueScript : MonoBehaviour
+public class KingFrogTongue : MonoBehaviour
 {
     [SerializeField]
     private GameObject kingFrogObject;

@@ -10,14 +10,9 @@ public class KingFrogLilyPad : MonoBehaviour
     private float maxSize = 2.0f;
     private float startSize;
 
-    private void Start()
-    {
-        startSize = transform.localScale.x; //save start scale
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "KingFrogLilyPad")
+        if (collision.gameObject.tag == "KingFrogLilyPad") //checks for collision with other pads
         {
             collided = true;
         }
@@ -35,7 +30,8 @@ public class KingFrogLilyPad : MonoBehaviour
 
     IEnumerator RiseCR()
     {
-        while(transform.localScale.x < maxSize)
+        startSize = transform.localScale.x; //save start scale
+        while (transform.localScale.x < maxSize) //while not max size
         {
             float step = scaleAmount * Time.deltaTime;
             transform.localScale += new Vector3(step, step, 0);
@@ -45,11 +41,12 @@ public class KingFrogLilyPad : MonoBehaviour
 
     IEnumerator SinkCR()
     {
-        while(transform.localScale.x > startSize)
+        while(transform.localScale.x > startSize) //while not start size
         {
             float step = scaleAmount * Time.deltaTime;
             transform.localScale -= new Vector3(step, step, 0);
             yield return new WaitForEndOfFrame();
         }
+        Destroy(this.gameObject);
     }
 }

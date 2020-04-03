@@ -4,6 +4,5 @@ using UnityEngine;
 
 public class KingFrogParent : BossAction
 {
-    [SerializeField]
     protected GameObject myPlayer;
 }
