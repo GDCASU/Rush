@@ -52,7 +52,7 @@ public class RageMageA5 : BossAction
         box.enabled = true;
         //tag = "Enemy";
         int y = 0;
-        while (y < punchSeconds*framerate && (!collided || !hitWall))
+        while (y < punchSeconds*framerate && !collided && !hitWall)
         {
             transform.position += chargePosition * punchSpeed;
             y++;

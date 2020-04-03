@@ -32,7 +32,7 @@ public class RageMageA7 : BossAction
         if (collision.tag == "Player" && !collision.GetComponent<PlayerDash>().inDash)
         {
             collided = true;
-            StartCoroutine(throwPlayer());
+            if(isActiveAndEnabled)StartCoroutine(throwPlayer());
         }
         else if (collision.tag == "Wall") hitWall = true;
     }

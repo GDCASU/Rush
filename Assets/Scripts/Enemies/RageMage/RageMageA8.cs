@@ -41,20 +41,16 @@ public class RageMageA8 : BossAction
             transform.position += new Vector3(0, 0, downRate * x);
             shadow.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, shadow.GetComponent<SpriteRenderer>().color.a + .05f);
             shadow.transform.localScale += new Vector3(.001f, .001f, 0);
-            if (transform.position.z <= downHeight)
-            {
-                box.enabled = true;
-                //tag = "Enemy";
-            } 
             yield return ws;
         }
+        box.enabled = true;
         Destroy(shadow);
         //tag = "Untagged";
-        for (int y = 0; y < cooldownSeconds * framerate; y++) 
+        for (int y = 0; y < cooldownSeconds * framerate; y++)
         {
+            if(y==0) box.enabled = false;
             yield return ws;
-        }
-        box.enabled = false;
+        } 
         actionRunning = false; 
     }
 }
