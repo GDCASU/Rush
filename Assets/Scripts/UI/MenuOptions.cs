@@ -14,7 +14,11 @@ public class MenuOptions : MonoBehaviour
     public GameObject bossSelect;
     public GameObject pause;
     public GameObject settings;
+    public GameObject graphics;
+    public GameObject sound;
     public GameObject controls;
+    public GameObject controller;
+    public GameObject keyboard;
     public GameObject chimeraButton;
     public GameObject dwarfButton;
     public GameObject horsemanButton;
@@ -32,7 +36,11 @@ public class MenuOptions : MonoBehaviour
         panels.Add(bossSelect);
         panels.Add(pause);
         panels.Add(settings);
+        panels.Add(graphics);
+        panels.Add(sound);
         panels.Add(controls);
+        panels.Add(controller);
+        panels.Add(keyboard);
         isTitle = (SceneManager.GetActiveScene().name == "Title") ? true : false;
         if (isTitle)
         {
@@ -53,16 +61,22 @@ public class MenuOptions : MonoBehaviour
     {
         if (InputManager.GetButtonDown(PlayerInput.PlayerButton.Pause, player))
         {
+            if (current >= 4)
+            {
+                backFromSettings();
+            }
             if (!isTitle)
             {
-                if (isPaused) Resume();
+                if (isPaused)
+                    if (current == 4) backToPause();
+                    else Resume();
                 else Pause();
             }
             else backToMain();
             
         }
     }
-
+    
     public void Play()
     {
         SceneManager.LoadScene("SampleScene");
@@ -95,15 +109,19 @@ public class MenuOptions : MonoBehaviour
     public void Settings()
     {
         if(!isTitle)panels[3].SetActive(false);
+        panels[4].SetActive(true);                          //4 is the seetings tabs
+        toGraphics();
+    }
+    public void backToPause()
+    {
         panels[current].SetActive(false);
-        current = 4;
+        current = 0;
+        panels[3].SetActive(true);
         panels[current].SetActive(true);
     }
-    
     public void Pause()
     {
-        if(current==4)
-        isPaused = true; panels[0].SetActive(true);
+        isPaused = true;
         panels[3].SetActive(true);
         Time.timeScale = 0;
         current = 0;
@@ -120,5 +138,61 @@ public class MenuOptions : MonoBehaviour
         panels[current].SetActive(false);
         current = 5;
         panels[current].SetActive(true);
+    }
+    public void fullsScreen()
+    {
+        if (Screen.fullScreenMode == FullScreenMode.FullScreenWindow) Screen.fullScreenMode = FullScreenMode.Windowed;
+        else Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
+    }
+    public void toGraphics()
+    {
+        if (current >=7)
+        {
+            //panels[7].SetActive(false);
+            panels[(panels[8].activeSelf == true) ? 9 : 8].SetActive(false);
+        }
+        panels[current].SetActive(false);
+        current = 5;
+        panels[current].SetActive(true);
+    }
+    public void toSound()
+    {
+        if (current >= 7)
+        {
+            //panels[7].SetActive(false);
+            panels[(panels[8].activeSelf == true) ? 8 : 9].SetActive(false);
+        }
+        panels[current].SetActive(false);
+        current = 6;
+        panels[current].SetActive(true);
+    }
+    public void toControls()
+    {
+        panels[current].SetActive(false);
+        current = 7;
+        panels[current].SetActive(true);
+        panels[8].SetActive(true);
+    }
+    public void betweenControllers()
+    {
+        //print((panels[8].activeSelf));
+        if (panels[8].activeSelf == true)
+        {
+            panels[8].SetActive(false);
+            panels[9].SetActive(true);
+        }
+        else
+        {
+            panels[9].SetActive(false);
+            panels[8].SetActive(true);
+        }
+        
+    }
+    public void backFromSettings()
+    {
+        print((panels[8].activeSelf == true) ? 9 : 8);
+        if (current>=7) panels[(panels[8].activeSelf == true) ?8: 9].SetActive(false);
+        panels[current].SetActive(false);
+        panels[4].SetActive(false);
     }
 }
