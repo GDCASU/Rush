@@ -25,7 +25,7 @@ public class PlayerBasicShot : MonoBehaviour {
 
             var sp = BulletPool.rent();
             sp.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-            sp.GetComponent<Bullet>().Init(direction, 0, bulletSpeed, Bullet.MoveFunctions.Spin, Bullet.SpawnFunctions.None, bulletSprite, Color.white, false, 0.15f);
+            sp.GetComponent<Bullet>().Init(direction, 0, bulletSpeed, Bullet.MoveFunctions.Spin, Bullet.SpawnFunctions.None, bulletSprite, Color.white, false, 0.15f, null);
 
             sp.transform.localScale = Vector3.one * scale;
             timer = shootFrameReset;
