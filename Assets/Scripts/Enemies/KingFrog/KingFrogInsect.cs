@@ -15,7 +15,6 @@ public class KingFrogInsect : KingFrogParent
 
     private float acceleration;
 
-    private GameObject myPlayer;
     private Rigidbody2D flyRB;
 
     private Vector3 flySpeed;
@@ -78,7 +77,7 @@ public class KingFrogInsect : KingFrogParent
         float rotateY = myPlayer.transform.position.y - transform.position.y;
         rotateAngle = Mathf.Rad2Deg * Mathf.Atan2(rotateY, rotateX); //get angle in radians then turn to degrees
 
-        //rotate along z-axis to face the x-axis towards the player
+        //rotate along z-axis to face towards the player
         gameObject.transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, rotateAngle), rotateSpeed * Time.deltaTime);
 
         //flip sprite depending on player position

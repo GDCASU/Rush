@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class KingFrogMinion : KingFrogParent
 {
-    //[SerializeField]
+    [SerializeField]
     private float jumpSpeed = 0.2f;
 
-    //[SerializeField]
+    [SerializeField]
     private float jumpWaitTime = 3.0f;
     private float jumpTimer;
     private float rotateAngle;
     private float randomX;
     private float randomY;
-    //[SerializeField]
+    [SerializeField]
     private float randomMax = 1.6f;
 
     private Vector3 playerPos;

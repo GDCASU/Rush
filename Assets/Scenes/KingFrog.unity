@@ -592,7 +592,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 641657715}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a1123bb5dd79df448a70d8348ee10b4, type: 3}
   m_Name: 
@@ -626,7 +626,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 641657715}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e7604f300309364fb2e40b4769e622f, type: 3}
   m_Name: 
@@ -635,6 +635,7 @@ MonoBehaviour:
   minionCount: 0
   frogObject: {fileID: 2425176852810834748, guid: e710b3e63742f444185f21fcdfa15a32,
     type: 3}
+  maxMinionCount: 4
 --- !u!1 &1295106404
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,6 +705,7 @@ MonoBehaviour:
   lilyPad: {fileID: 5710365205494932603, guid: 55e3418a6617b7b4ab2a8d4fa65fc50d, type: 3}
   center: {x: 0, y: 0}
   arenaRadius: 6
+  padFloatTime: 10
 --- !u!4 &2010786805
 Transform:
   m_ObjectHideFlags: 0

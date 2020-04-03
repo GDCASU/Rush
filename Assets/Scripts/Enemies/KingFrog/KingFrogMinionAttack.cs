@@ -9,7 +9,7 @@ public class KingFrogMinionAttack : KingFrogParent
     [SerializeField]
     private GameObject frogObject;
 
-    //[SerializeField]
+    [SerializeField]
     private int maxMinionCount = 4;
 
     private void Start()

@@ -16,7 +16,7 @@ public class KingFrogLilyPadSpawner : MonoBehaviour
 
     private bool padCollided;
 
-    //[SerializeField]
+    [SerializeField]
     private float padFloatTime = 10.0f;
     private float timerFloat;
 
