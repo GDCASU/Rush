@@ -49,6 +49,7 @@ public class RageMageA1 : MonoBehaviour
             RageMageMagicBullet magBullet = newBullet.GetComponent<RageMageMagicBullet>();
             magBullet.Bounces = 2;
 
+            //Sets reference if a fireball is present
             if(FireBallAction.CurrentFireBall != null)
             {
                 magBullet.FireBallAction = this.FireBallAction;

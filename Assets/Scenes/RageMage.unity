@@ -875,6 +875,45 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1918792622 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1534841899599493821, guid: 32acab6da4121e241ad5a0333c523a1f,
+    type: 3}
+  m_PrefabInstance: {fileID: 3558494481202569456}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1918792625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918792622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb16419c509c2f94982de5d5e8fa0091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionRunning: 0
+  bulletSpeed: 5
+  bulletAmount: 0
+  bulletArc: 6.2831855
+  ArcOffset: 0
+  offsetFacesPlayer: 1
+  bulletfrequency: 0
+  spin: 0
+  wave: 0
+  bulletSprite: {fileID: 21300008, guid: ff67127591109a1419156d7eac963eb9, type: 3}
+  bulletTint: {r: 1, g: 1, b: 1, a: 1}
+  rotation: {x: 0, y: 0, z: 0, w: 1}
+  scale: {x: 2, y: 2, z: 2}
+  moveFunc: 0
+  spawnFunc: 0
+  SpawnFunctionParams: []
+  bulletsFaceOutward: 1
+  colliderRadius: 0.5
+  useOtherSpawnPoint: 0
+  alternateSpawnLocation: {fileID: 0}
+  DontSpawnOnStart: 1
 --- !u!1001 &3558494481202569456
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -942,5 +981,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4971824855403064656, guid: 32acab6da4121e241ad5a0333c523a1f,
+        type: 3}
+      propertyPath: Potions.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4971824855403064656, guid: 32acab6da4121e241ad5a0333c523a1f,
+        type: 3}
+      propertyPath: PotionCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4971824855403064656, guid: 32acab6da4121e241ad5a0333c523a1f,
+        type: 3}
+      propertyPath: Potions.Array.data[0]
+      value: 
+      objectReference: {fileID: 6910070305890549605, guid: d0c4daa8f128e7e42a0734f874122b5d,
+        type: 3}
+    - target: {fileID: 4971824855403064656, guid: 32acab6da4121e241ad5a0333c523a1f,
+        type: 3}
+      propertyPath: Potions.Array.data[2]
+      value: 
+      objectReference: {fileID: 6458005530799922368, guid: cbdde9aa60ff1a449990fa7ed787c3b7,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32acab6da4121e241ad5a0333c523a1f, type: 3}

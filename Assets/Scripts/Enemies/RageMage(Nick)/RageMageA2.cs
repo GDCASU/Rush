@@ -6,7 +6,7 @@ using UnityEngine;
 /// Simple class that spawns in fireballs for 
 /// the rage mage boss
 /// 
-/// /// Description is as follows:
+/// Description is as follows:
 /// (4/2/20)
 /// He creates a slow-moving fireball that follows the 
 /// player around. This lasts for the duration of the 

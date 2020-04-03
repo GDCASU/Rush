@@ -34,6 +34,7 @@ Transform:
   m_Children:
   - {fileID: 8546063105516199178}
   - {fileID: 5759146478443490002}
+  - {fileID: 8435958540374238133}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -149,6 +150,89 @@ MonoBehaviour:
   bossPhases: []
   currentPhase: 0
   actionQueue: []
+--- !u!1 &1534841899599493821
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8435958540374238133}
+  - component: {fileID: 4971824855403064656}
+  - component: {fileID: 7560061809668665125}
+  m_Layer: 0
+  m_Name: Potion Burst
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8435958540374238133
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534841899599493821}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5354496124324427373}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4971824855403064656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534841899599493821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba21a7ef8f3af0f47b3163548a3e641e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ThrowDelay: 0.5
+  PotionCount: 3
+  Potions:
+  - {fileID: 6910070305890549605, guid: d0c4daa8f128e7e42a0734f874122b5d, type: 3}
+  - {fileID: 3548478068358773327, guid: 8776e00d83c490249aa23d6871ed42c6, type: 3}
+  - {fileID: 6458005530799922368, guid: cbdde9aa60ff1a449990fa7ed787c3b7, type: 3}
+--- !u!114 &7560061809668665125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534841899599493821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb16419c509c2f94982de5d5e8fa0091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionRunning: 0
+  bulletSpeed: 5
+  bulletAmount: 0
+  bulletArc: 6.2831855
+  ArcOffset: 0
+  offsetFacesPlayer: 1
+  bulletfrequency: 0
+  spin: 0
+  wave: 0
+  bulletSprite: {fileID: 21300008, guid: ff67127591109a1419156d7eac963eb9, type: 3}
+  bulletTint: {r: 1, g: 1, b: 1, a: 1}
+  rotation: {x: 0, y: 0, z: 0, w: 1}
+  scale: {x: 2, y: 2, z: 2}
+  moveFunc: 0
+  spawnFunc: 0
+  SpawnFunctionParams: []
+  bulletsFaceOutward: 1
+  colliderRadius: 0.5
+  useOtherSpawnPoint: 0
+  alternateSpawnLocation: {fileID: 0}
+  DontSpawnOnStart: 1
 --- !u!1 &6086773046306409270
 GameObject:
   m_ObjectHideFlags: 0
