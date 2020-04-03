@@ -35,6 +35,7 @@ Transform:
   - {fileID: 8546063105516199178}
   - {fileID: 5759146478443490002}
   - {fileID: 8435958540374238133}
+  - {fileID: 6711652181666977968}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -147,7 +148,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 097da67cb82ef0a4ca352774b96197e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossPhases: []
+  bossPhases:
+  - health: 10
+    repeatingBehaviour: {fileID: 0}
+    startBehaviour: {fileID: 0}
+    endBehaviour: {fileID: 0}
+    backgroundActions: []
+    PossibleActions:
+    - independent: 0
+      runFrames: 0
+      cooldownFrames: 0
+      behavior: {fileID: 0}
+    - independent: 0
+      runFrames: 0
+      cooldownFrames: 0
+      behavior: {fileID: 0}
+    - independent: 0
+      runFrames: 0
+      cooldownFrames: 0
+      behavior: {fileID: 0}
+  - health: 10
+    repeatingBehaviour: {fileID: 0}
+    startBehaviour: {fileID: 0}
+    endBehaviour: {fileID: 0}
+    backgroundActions: []
+    PossibleActions:
+    - independent: 0
+      runFrames: 0
+      cooldownFrames: 0
+      behavior: {fileID: 0}
+    - independent: 0
+      runFrames: 0
+      cooldownFrames: 0
+      behavior: {fileID: 0}
+    - independent: 0
+      runFrames: 0
+      cooldownFrames: 0
+      behavior: {fileID: 0}
   currentPhase: 0
   actionQueue: []
 --- !u!1 &1534841899599493821
@@ -233,6 +270,52 @@ MonoBehaviour:
   useOtherSpawnPoint: 0
   alternateSpawnLocation: {fileID: 0}
   DontSpawnOnStart: 1
+--- !u!1 &2734694331185544403
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6711652181666977968}
+  - component: {fileID: 5280060620003137271}
+  m_Layer: 0
+  m_Name: Teleport Rune
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6711652181666977968
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2734694331185544403}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5354496124324427373}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5280060620003137271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2734694331185544403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9d56a21257d5614b9ec9be58e7bcac8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TeleportSpotParent: {fileID: 0}
+  DmgRadius: 5
+  TeleportDelay: 2
 --- !u!1 &6086773046306409270
 GameObject:
   m_ObjectHideFlags: 0
