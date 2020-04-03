@@ -21,13 +21,32 @@ public class Bullet : MonoBehaviour {
         transform.Rotate(new Vector3(0,0,rot));
 		MoveFunc = getMoveFunction(act); sp.sprite = spr;
 		sp.color = color; hostile = enemy;
-        GetComponent<CircleCollider2D>().radius = colliderRadius;
+        if (GetComponent<CircleCollider2D>()) GetComponent<CircleCollider2D>().radius = colliderRadius;
+        else Debug.Log("Missing Collider Component, please add a CircleCollider2d!");
+
 
         getSpawnFunction(spwn)?.Invoke(SpawnFunctionParams.ToArray());
 	}
 
-	void Update () {
-		if (!Utils.IsOnScreen(gameObject) && onScreenDestroy) BulletDestroy ();
+    public void Init(Vector2 dir, float rot, float spd, MoveFunctions act, SpawnFunctions spwn, Sprite spr, Color color, bool enemy, float colliderX = 0.5f, float colliderY = 0.5f, List<float> SpawnFunctionParams = null)
+    {
+        SpriteRenderer sp = GetComponent<SpriteRenderer>();
+        MoveVector = dir.normalized * spd;
+        speed = spd;
+        Rotation = rot;
+        transform.rotation = Quaternion.identity;
+        transform.Rotate(new Vector3(0, 0, rot));
+        MoveFunc = getMoveFunction(act); sp.sprite = spr;
+        sp.color = color; hostile = enemy;
+        if (GetComponent<BoxCollider2D>()) GetComponent<BoxCollider2D>().size = new Vector2(colliderX, colliderY);
+        else Debug.Log("Missing Collider Component, please add a BoxCollider2D!");
+
+        getSpawnFunction(spwn)?.Invoke(SpawnFunctionParams.ToArray());
+    }
+
+
+    void Update () {
+		if (!Utils.IsOnScreen(gameObject)) BulletDestroy ();
 		
 		Vector2 m = MoveVector * Time.deltaTime;
 		transform.localPosition = transform.localPosition+new Vector3(m.x,m.y,0);
@@ -46,7 +65,8 @@ public class Bullet : MonoBehaviour {
         None,
         LeftSine,
         RightSine,
-        Spin
+        Spin,
+        FollowPlayer,
     }
 
     public Action getMoveFunction (MoveFunctions f){
@@ -54,6 +74,7 @@ public class Bullet : MonoBehaviour {
             case MoveFunctions.LeftSine: return LeftSine;
             case MoveFunctions.RightSine: return RightSine;
             case MoveFunctions.Spin: return Spin;
+            case MoveFunctions.FollowPlayer: return FollowPlayer;
             default: return null;
         }
     }
@@ -61,7 +82,22 @@ public class Bullet : MonoBehaviour {
     //Move functions 
     public void LeftSine () => MoveVector = MoveVector * -Mathf.Sin(transform.localPosition.y * 25F) * 0.85F;
     public void RightSine () => MoveVector = MoveVector * Mathf.Sin(transform.localPosition.y * 25F) * 0.85F;
-    public void Spin () => transform.Rotate(new Vector3(0,0,5f)); 
+    public void Spin () => transform.Rotate(new Vector3(0,0,5f));
+    public void FollowPlayer() => StartCoroutine(FollowRoutine());
+
+    public IEnumerator FollowRoutine()
+    {
+        YieldInstruction delay = new WaitForEndOfFrame();
+
+        while(true)
+        {
+            MoveTowardsPlayer();
+
+            yield return delay;
+        }
+
+        yield return null;
+    }
 
     // Spawn functions 
     /// <summary>
@@ -73,13 +109,14 @@ public class Bullet : MonoBehaviour {
         None,
         ChangeDirectionToPlayer,
         ChangeDirection,
+        DestroyOnTimer,
     }
 
     
     public SpawnFunction getSpawnFunction (SpawnFunctions f){
         switch (f) {
             case SpawnFunctions.ChangeDirectionToPlayer: return ChangeDirectionToPlayer;
-           
+            case SpawnFunctions.DestroyOnTimer: return StartDestroyTimer;
             default: return null;
         }
     }
@@ -88,11 +125,30 @@ public class Bullet : MonoBehaviour {
     public void ChangeDirectionToPlayer (float [] p) => StartCoroutine(playerDir(p[0])); // not safe
 
     public IEnumerator playerDir (float t) { 
-        yield return new WaitForSeconds (t); 
-        var VectorToPlayer = (Vector2) (PlayerHealth.singleton.transform.position - transform.position).normalized;
-        MoveVector = VectorToPlayer * speed; 
-        setFacingToVector(VectorToPlayer);
+        yield return new WaitForSeconds (t);
+        MoveTowardsPlayer();
         GetComponent<SpriteRenderer>().color = Color.red; //optional
+    }
+
+    private void MoveTowardsPlayer()
+    {
+        var VectorToPlayer = (Vector2)(PlayerHealth.singleton.transform.position - transform.position).normalized;
+        MoveVector = VectorToPlayer * speed;
+        setFacingToVector(VectorToPlayer);
+    }
+
+    private void StartDestroyTimer(float[] p) => StartCoroutine(DestroyTimer(p[0]));
+
+    /// <summary>
+    /// Coroutine that destroys the bullet after a specified amount
+    /// of time in seconds
+    /// </summary>
+    /// <param name="t">Time in seconds to destroy the bullet</param>
+    private IEnumerator DestroyTimer(float t)
+    {
+        yield return new WaitForSeconds(t);
+
+        Destroy(gameObject);
     }
 
     public void setFacingToVector(Vector2 dir) {
