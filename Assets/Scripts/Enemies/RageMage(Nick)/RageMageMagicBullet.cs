@@ -5,15 +5,33 @@ using UnityEngine;
 /// <summary>
 /// Class that handles the bouncing logic of the magic
 /// missile by the rage mage boss
+/// 
+/// Note: There is also fireball logic (A2) in here as their destroy
+/// call is dependent on magic missiles
 /// </summary>
 public class RageMageMagicBullet : MonoBehaviour
 {
     private Bullet _bullet;
     public int Bounces; //How many bounces until this obj is destroyed
 
+    public RageMageA2 FireBallAction;
+
     private void Awake()
     {
         _bullet = GetComponent<Bullet>();
+    }
+
+    /// <summary>
+    /// If a fireball reference was set then destroy that fireball
+    /// when this magic missile is destroyed
+    /// </summary>
+    private void OnDestroy()
+    {
+        if (FireBallAction != null)
+        {
+            Destroy(FireBallAction.CurrentFireBall);
+            FireBallAction.CurrentFireBall = null;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

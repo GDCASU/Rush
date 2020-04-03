@@ -14,10 +14,14 @@ using UnityEngine;
 /// towards the player and ricochet off the walls two times before being 
 /// destroyed. The boss will alternate between this attack and his 
 /// pool of other attacks for Phase 1.
+/// 
+/// Note: There is also fireball logic (A2) in here as their destroy
+/// call is dependent on magic missiles
 /// </summary>
 public class RageMageA1 : MonoBehaviour
 {
     private BulletSpawner _spawner;
+    public RageMageA2 FireBallAction;
 
     public float FireRate;
     private float _fireRateCount;
@@ -44,6 +48,11 @@ public class RageMageA1 : MonoBehaviour
 
             RageMageMagicBullet magBullet = newBullet.GetComponent<RageMageMagicBullet>();
             magBullet.Bounces = 2;
+
+            if(FireBallAction.CurrentFireBall != null)
+            {
+                magBullet.FireBallAction = this.FireBallAction;
+            }
         }
         else
         {
