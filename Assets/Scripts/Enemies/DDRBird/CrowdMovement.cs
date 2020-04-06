@@ -21,7 +21,8 @@ public class CrowdMovement : MonoBehaviour
     {
         _rotationAngle = Mathf.Clamp(_rotationAngle + RotationSpeed * Time.deltaTime, -RotationMaxAngle, RotationMaxAngle);
 
-        transform.Rotate(0, 0, _rotationAngle, Space.Self);
+        //transform.Rotate(0, 0, _rotationAngle, Space.Self);
+        transform.localScale += new Vector3(_rotationAngle, 0, 0);
 
         if (RotationMaxAngle == Mathf.Abs(_rotationAngle))
         {
