@@ -11,6 +11,21 @@ public class PlayerDance : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        DestroyNote(other);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        DestroyNote(other);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        DestroyNote(other);
+    }
+
+    private void DestroyNote(Collider other)
+    {
         if (Input.GetKeyDown(HitDirection) && other.tag.Equals("Note"))
         {
             Destroy(other.gameObject);

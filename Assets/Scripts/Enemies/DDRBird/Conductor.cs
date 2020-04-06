@@ -8,20 +8,21 @@ public class Conductor : MonoBehaviour
     public AudioSource Speaker;
     public PlayerMovement Player;
 
-    public Transform NoteSpawnPoint;
-    public Transform NoteDestroyPoint;
+    public Transform LeftNoteSpawnPoint;
+    public Transform LeftNoteDestroyPoint;
+    public Transform DownNoteSpawnPoint;
+    public Transform DownNoteDestroyPoint;
+    public Transform UpNoteSpawnPoint;
+    public Transform UpNoteDestroyPoint;
+    public Transform RightNoteSpawnPoint;
+    public Transform RightNoteDestroyPoint;
     public GameObject NoteParent;
     public GameObject Music;
 
     public float NoteSpeed;
 
-    private float SpawnDistance
-    {
-        get
-        {
-            return Vector3.Distance(NoteSpawnPoint.position, NoteDestroyPoint.position);
-        }
-    }
+    [SerializeField]
+    private float _distance;
 
     private List<Beat> NoteTimeStamps
     {
@@ -36,6 +37,7 @@ public class Conductor : MonoBehaviour
         Music = Instantiate(Music); // This is so whatever happens, it doesn't override the prefab.
         Music.GetComponent<Song>().Notes = DDRBirdLoader.GetBeats();
         Speaker.clip = Music.GetComponent<Song>().Music;
+        _distance = Vector3.Distance(new Vector3(-13.68f, 7.02f, -1f), LeftNoteDestroyPoint.position);
     }
 
     private void Update()
@@ -50,7 +52,7 @@ public class Conductor : MonoBehaviour
         if (Speaker.isPlaying)
         {
             // Does math to spawn the note ahead of time.
-            if (NoteTimeStamps.Count > 0 && Speaker.time >= NoteTimeStamps[0].TimeStamp - SpawnDistance/NoteSpeed)
+            if (NoteTimeStamps.Count > 0 && Speaker.time >= NoteTimeStamps[0].TimeStamp - _distance/ NoteSpeed)
             {
                 GameObject newNote;
 
@@ -58,7 +60,7 @@ public class Conductor : MonoBehaviour
                 foreach (Direction direction in NoteTimeStamps[0].Directions)
                 {
                     SpawnNote(direction, out newNote);
-                    newNote.GetComponent<Rigidbody>().velocity = Vector3.forward * NoteSpeed;
+                    newNote.GetComponent<Rigidbody>().velocity = Vector3.down * NoteSpeed;
                     Destroy(newNote, 10f);  // Destroys the note after 10 seconds.
                 }
                 NoteTimeStamps.RemoveAt(0);
@@ -69,21 +71,26 @@ public class Conductor : MonoBehaviour
     private void SpawnNote(Direction direction, out GameObject newNote)
     {
         newNote = Instantiate(NoteParent);
-        newNote.transform.position = NoteSpawnPoint.position;
-        
+
         switch(direction)
         {
             case Direction.Left:
-
-                newNote.transform.Rotate(Vector3.forward, -90);
+                newNote.transform.position = LeftNoteSpawnPoint.position;
+                newNote.transform.Rotate(Vector3.down, 90);
                 break;
 
             case Direction.Right:
-                newNote.transform.Rotate(Vector3.forward, 90);
+                newNote.transform.position = RightNoteSpawnPoint.position;
+                newNote.transform.Rotate(Vector3.down, -90);
                 break;
 
             case Direction.Down:
-                newNote.transform.Rotate(Vector3.forward, 180);
+                newNote.transform.position = DownNoteSpawnPoint.position;
+                newNote.transform.Rotate(Vector3.down, 180);
+                break;
+
+            case Direction.Up:
+                newNote.transform.position = UpNoteSpawnPoint.position;
                 break;
         }
     }
