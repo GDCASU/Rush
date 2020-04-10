@@ -21,9 +21,9 @@ public class PlayerBasicShot : MonoBehaviour {
         player = GetComponent<IInputPlayer>();   
         pMovement = GetComponent<PlayerMovement>();
     }
-    private float timer = 0;
     public void Update () 
     {
+        print(charge);
         if (InputManager.GetButtonUp(PlayerInput.PlayerButton.Shoot, player) && charging)
         {
             if (charge > chargeUpFrames)
@@ -33,7 +33,7 @@ public class PlayerBasicShot : MonoBehaviour {
 
                 var sp = BulletPool.rent();
                 sp.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-                sp.GetComponent<Bullet>().Init(direction, 0, bulletSpeed, Bullet.MoveFunctions.Spin, Bullet.SpawnFunctions.None, bulletSprite, Color.white, false, 0.15f);
+                sp.GetComponent<Bullet>().Init(direction, 0, bulletSpeed, Bullet.MoveFunctions.Spin, Bullet.SpawnFunctions.None, bulletSprite, Color.white, false, 0.15f,null);
 
                 sp.transform.localScale = Vector3.one * scale;
                 shot = true;
@@ -44,27 +44,23 @@ public class PlayerBasicShot : MonoBehaviour {
         if (InputManager.GetButtonDown(PlayerInput.PlayerButton.Shoot, player) && !charging)
         {
             charging = true;
-            if (timer < 0)
+            if (charge < 0)
             {
                 charge = 0;
             }
-            else if (!shot && timer > 0)
-            {
-                charge = timer;
-            }
+
         } 
         if (InputManager.GetButton(PlayerInput.PlayerButton.Shoot, player) && charging )
         {
-            charge++;
+            if (!shot)charge++;
         }
         
-        if(!charging && timer>=1)timer--;
+        if(!charging && charge>=1)charge--;
     }
     void resetShot()
     {
         shot = false;
         charging = false;
-        timer = (charge < chargeUpFrames) ? charge : shootFrameReset;
-        charge = 0;
+        charge = (!shot) ? charge : 0;
     }
 }
