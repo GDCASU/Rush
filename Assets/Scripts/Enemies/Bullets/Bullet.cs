@@ -46,7 +46,7 @@ public class Bullet : MonoBehaviour {
 
 
     void Update () {
-		if (!Utils.IsOnScreen(gameObject)) BulletDestroy ();
+		if (onScreenDestroy && !Utils.IsOnScreen(gameObject)) BulletDestroy ();
 		
 		Vector2 m = MoveVector * Time.deltaTime;
 		transform.localPosition = transform.localPosition+new Vector3(m.x,m.y,0);
