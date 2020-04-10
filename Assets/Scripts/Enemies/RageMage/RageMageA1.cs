@@ -42,6 +42,8 @@ public class RageMageA1 : MonoBehaviour
 
             GameObject newBullet = _spawner.GenerateBullet(angle, new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)));
 
+            newBullet.GetComponent<Bullet>().onScreenDestroy = false;
+
             //For some reason 2 components get added? and is why this if statement is here
             if (newBullet.GetComponent<RageMageMagicBullet>() == null)
                 newBullet.AddComponent<RageMageMagicBullet>();

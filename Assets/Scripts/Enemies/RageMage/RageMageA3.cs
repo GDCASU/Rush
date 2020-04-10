@@ -63,6 +63,8 @@ public class RageMageA3 : MonoBehaviour
             float angle = (float)(Vector2.SignedAngle(Vector2.right, PlayerHealth.singleton.transform.position - _spawner.transform.position) * Mathf.PI / 180.0);
             GameObject newBullet = _spawner.GenerateBullet(angle, new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)));
 
+            newBullet.GetComponent<Bullet>().onScreenDestroy = false;
+
             //Sets reference so that potion spot knows which bullet activates it
             potion.PotionBullet = newBullet;
 

@@ -33,6 +33,8 @@ public class RageMageA2 : MonoBehaviour
 
             float angle = (float)(Vector2.SignedAngle(Vector2.right, PlayerHealth.singleton.transform.position - _spawner.transform.position) * Mathf.PI / 180.0);
             CurrentFireBall = _spawner.GenerateBullet(angle, new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)));
+
+            CurrentFireBall.GetComponent<Bullet>().onScreenDestroy = false;
         }
         else
             _fireRateCount -= Time.deltaTime;
