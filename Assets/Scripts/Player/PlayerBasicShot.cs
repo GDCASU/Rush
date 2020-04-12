@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerBasicShot : MonoBehaviour {
 
     public bool charging = false;
+    public float decreaseRate;
     public float chargeUpFrames;
 	public float bulletSpeed = 1;
     public Sprite bulletSprite;
@@ -55,12 +56,12 @@ public class PlayerBasicShot : MonoBehaviour {
             if (!shot)charge++;
         }
         
-        if(!charging && charge>=1)charge--;
+        if(!charging && charge>=1)charge=charge-decreaseRate;
     }
     void resetShot()
     {
+        charge = (!shot && !GetComponent<PlayerHealth>().inv) ? charge : 0;
         shot = false;
         charging = false;
-        charge = (!shot) ? charge : 0;
     }
 }
