@@ -6,7 +6,5 @@ using static DDRBirdLoader;
 public class Song : MonoBehaviour
 {
     public AudioClip Music;
-    //public int Bpm;
-    //public int NoteMovementSpeed;
     public List<Beat> Notes;
 }

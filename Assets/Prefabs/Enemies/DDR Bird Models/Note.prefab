@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 3938810155011457673}
   - component: {fileID: 7186081101247099266}
   - component: {fileID: 2697679581914762425}
+  - component: {fileID: -6764860941149375163}
   m_Layer: 0
-  m_Name: note
+  m_Name: Note
   m_TagString: Note
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,8 +46,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.8830192, y: 0.44486618, z: 1.7857285}
-  m_Center: {x: 0.09487426, y: 0.23674822, z: 0.021932125}
+  m_Size: {x: 1.8830192, y: 1.7080997, z: 1.7857285}
+  m_Center: {x: 0.09487426, y: 0.34361368, z: 0.021932125}
 --- !u!54 &2697679581914762425
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -63,6 +64,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-6764860941149375163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68168825165459610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8adb6f08714435f45a909f8264072315, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Direction: 0
+  NoteDestroyPoint: {fileID: 0}
+  TimeStamp: 0
+  HitBuffer: 0
 --- !u!1 &389475875183418705
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,6 +17,7 @@ public class CrowdMovement : MonoBehaviour
     }
 
     // Update is called once per frame
+    /*
     void Update()
     {
         _rotationAngle = Mathf.Clamp(_rotationAngle + RotationSpeed * Time.deltaTime, -RotationMaxAngle, RotationMaxAngle);
@@ -29,5 +30,5 @@ public class CrowdMovement : MonoBehaviour
             RotationSpeed *= -1;
             print("swap direction");
         }
-    }
+    }*/
 }

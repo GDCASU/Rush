@@ -5,17 +5,19 @@ using static DDRBirdLoader;
 
 public class Conductor : MonoBehaviour
 {
+    public static float CurrentSongTime;
+
     public AudioSource Speaker;
     public PlayerMovement Player;
 
     public Transform LeftNoteSpawnPoint;
-    public Transform LeftNoteDestroyPoint;
+    public PlayerDance LeftNoteDestroyPoint;
     public Transform DownNoteSpawnPoint;
-    public Transform DownNoteDestroyPoint;
+    public PlayerDance DownNoteDestroyPoint;
     public Transform UpNoteSpawnPoint;
-    public Transform UpNoteDestroyPoint;
+    public PlayerDance UpNoteDestroyPoint;
     public Transform RightNoteSpawnPoint;
-    public Transform RightNoteDestroyPoint;
+    public PlayerDance RightNoteDestroyPoint;
     public GameObject NoteParent;
     public GameObject Music;
 
@@ -37,10 +39,10 @@ public class Conductor : MonoBehaviour
         Music = Instantiate(Music); // This is so whatever happens, it doesn't override the prefab.
         Music.GetComponent<Song>().Notes = DDRBirdLoader.GetBeats();
         Speaker.clip = Music.GetComponent<Song>().Music;
-        _distance = Vector3.Distance(new Vector3(-13.68f, 7.02f, -1f), LeftNoteDestroyPoint.position);
+        _distance = Vector3.Distance(new Vector3(-13.68f, 7.02f, -1f), LeftNoteDestroyPoint.transform.position);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -61,10 +63,15 @@ public class Conductor : MonoBehaviour
                 {
                     SpawnNote(direction, out newNote);
                     newNote.GetComponent<Rigidbody>().velocity = Vector3.down * NoteSpeed;
+                    //newNote.GetComponent<Note>().TimeStamp = NoteTimeStamps[0].TimeStamp;
+                    //newNote.GetComponent<Note>().HitBuffer = HitBuffer;
+
                     Destroy(newNote, 10f);  // Destroys the note after 10 seconds.
                 }
                 NoteTimeStamps.RemoveAt(0);
             }
+
+            CurrentSongTime = Speaker.time;
         }
     }
 
@@ -77,20 +84,28 @@ public class Conductor : MonoBehaviour
             case Direction.Left:
                 newNote.transform.position = LeftNoteSpawnPoint.position;
                 newNote.transform.Rotate(Vector3.down, 90);
+                newNote.GetComponent<Note>().Direction = KeyCode.LeftArrow;
+                newNote.GetComponent<Note>().NoteDestroyPoint = LeftNoteDestroyPoint;
                 break;
 
             case Direction.Right:
                 newNote.transform.position = RightNoteSpawnPoint.position;
                 newNote.transform.Rotate(Vector3.down, -90);
+                newNote.GetComponent<Note>().Direction = KeyCode.RightArrow;
+                newNote.GetComponent<Note>().NoteDestroyPoint = RightNoteDestroyPoint;
                 break;
 
             case Direction.Down:
                 newNote.transform.position = DownNoteSpawnPoint.position;
                 newNote.transform.Rotate(Vector3.down, 180);
+                newNote.GetComponent<Note>().Direction = KeyCode.DownArrow;
+                newNote.GetComponent<Note>().NoteDestroyPoint = DownNoteDestroyPoint;
                 break;
 
             case Direction.Up:
                 newNote.transform.position = UpNoteSpawnPoint.position;
+                newNote.GetComponent<Note>().Direction = KeyCode.UpArrow;
+                newNote.GetComponent<Note>().NoteDestroyPoint = UpNoteDestroyPoint;
                 break;
         }
     }

@@ -1720,6 +1720,1209 @@
         0,
         1
       ]
+    },
+    {
+      "TimeStamp": 130.03125,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 130.21875,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 130.40625,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 130.59375,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 130.78125,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 130.96875,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 131.15625,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 131.34375,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 131.53125,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 131.71875,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 131.90625,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 132.09375,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 132.28125,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 132.46875,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 132.65625,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 132.84375,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 133.03125,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 133.59375,
+      "Directions": [
+        2,
+        3
+      ]
+    },
+    {
+      "TimeStamp": 134.15625,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 134.34375,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 134.53125,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 134.625,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 134.8125,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 135.0,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 135.28125,
+      "Directions": [
+        2,
+        3
+      ]
+    },
+    {
+      "TimeStamp": 135.65625,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 136.03125,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 136.40625,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 136.78125,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 137.15625,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 137.53125,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 137.90625,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 138.28125,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 138.65625,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 139.03125,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 139.21875,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 139.40625,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 139.59375,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 139.78125,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 139.96875,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 140.15625,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 140.34375,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 140.625,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 140.71875,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 140.8125,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 141.0,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 141.09375,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 141.1875,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 141.375,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 141.46875,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 141.5625,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 141.75,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 141.84375,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 141.9375,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 142.40625,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 142.59375,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 142.78125,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 142.96875,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 143.15625,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 143.34375,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 143.53125,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 143.71875,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 143.90625,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 144.09375,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 144.28125,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 144.46875,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 144.65625,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 144.84375,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 145.03125,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 145.21875,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 145.40625,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 145.59375,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 145.78125,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 145.96875,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 146.15625,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 146.34375,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 146.53125,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 146.71875,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 146.90625,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 147.09375,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 147.28125,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 147.46875,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 147.65625,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 147.84375,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 148.125,
+      "Directions": [
+        0,
+        1
+      ]
+    },
+    {
+      "TimeStamp": 148.21875,
+      "Directions": [
+        3,
+        2
+      ]
+    },
+    {
+      "TimeStamp": 148.40625,
+      "Directions": [
+        3,
+        2
+      ]
+    },
+    {
+      "TimeStamp": 148.59375,
+      "Directions": [
+        3,
+        2
+      ]
+    },
+    {
+      "TimeStamp": 148.78125,
+      "Directions": [
+        3,
+        2
+      ]
+    },
+    {
+      "TimeStamp": 149.15625,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 149.53125,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 150.1875,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 150.65625,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 151.03125,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 151.21875,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 151.40625,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 151.59375,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 151.78125,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 151.96875,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 152.0625,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 152.15625,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 152.34375,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 152.53125,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 152.71875,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 152.90625,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 153.09375,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 153.28125,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 153.65625,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 153.84375,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 153.9375,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 154.40625,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 154.78125,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 155.15625,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 155.53125,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 155.90625,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 156.28125,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 156.65625,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 157.03125,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 157.40625,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 157.78125,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 158.15625,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 158.53125,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 158.90625,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 159.28125,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 159.65625,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 160.03125,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 160.40625,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 160.78125,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 161.15625,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 161.53125,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 161.90625,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 162.28125,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 162.65625,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 163.03125,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 163.40625,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 163.78125,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 164.15625,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 164.53125,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 164.90625,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 165.28125,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 165.65625,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 166.03125,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 166.40625,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 166.78125,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 167.15625,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 167.53125,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 167.90625,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 168.28125,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 168.65625,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 169.03125,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 169.40625,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 169.78125,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 170.15625,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 170.53125,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 170.90625,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 171.28125,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 171.65625,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 172.03125,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 172.40625,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 172.78125,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 173.15625,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 173.53125,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 173.90625,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 174.28125,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 174.65625,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 175.03125,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 175.40625,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 175.78125,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 176.15625,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 176.53125,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 176.90625,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 177.28125,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 177.65625,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 178.03125,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 178.40625,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 178.78125,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 179.15625,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 179.53125,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 179.90625,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 180.28125,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 180.65625,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 181.03125,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 181.40625,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 181.78125,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 182.15625,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 182.53125,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 182.90625,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 183.28125,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 183.65625,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 184.03125,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 184.40625,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 184.78125,
+      "Directions": [
+        3
+      ]
+    },
+    {
+      "TimeStamp": 185.15625,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 185.53125,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 185.90625,
+      "Directions": [
+        2
+      ]
+    },
+    {
+      "TimeStamp": 186.28125,
+      "Directions": [
+        0
+      ]
+    },
+    {
+      "TimeStamp": 186.65625,
+      "Directions": [
+        1
+      ]
+    },
+    {
+      "TimeStamp": 187.03125,
+      "Directions": [
+        0,
+        1
+      ]
+    },
+    {
+      "TimeStamp": 188.53125,
+      "Directions": [
+        2,
+        3
+      ]
     }
   ]
 }
