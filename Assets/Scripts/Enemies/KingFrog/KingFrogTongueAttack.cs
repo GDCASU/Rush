@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class KingFrogTongueAttack : KingFrogParent
 {
+    WaitForSeconds ws = new WaitForSeconds(1 / 60);
+
     [SerializeField]
     private GameObject tongueObject; //gameobject TongueContainer
     [SerializeField]
     private float maxTongueDistance = 15.0f; //max distance tongue can reach
     [SerializeField]
     private float tongueSpeed = 15.0f; //speed of tongue
+
+    [SerializeField]
+    private float CoolDown = 1.0f;
 
     public bool hitPlayer; //checks if player was hit
 
@@ -37,16 +42,16 @@ public class KingFrogTongueAttack : KingFrogParent
         while (scaleX < maxTongueDistance && !hitPlayer)
         {
             Grow();
-            yield return new WaitForEndOfFrame();
+            yield return ws;
         }
 
         while(scaleX > startScaleX)
         {
             Shrink();
-            yield return new WaitForEndOfFrame();
+            yield return ws;
         }
 
-        actionRunning = false;
+        Invoke("EndAction", CoolDown);
     }
 
     void Grow()
@@ -77,5 +82,10 @@ public class KingFrogTongueAttack : KingFrogParent
 
         //rotate object
         tongueObject.transform.rotation = Quaternion.Euler(0, 0, rotateAngle);
+    }
+
+    void EndAction()
+    {
+        actionRunning = false;
     }
 }

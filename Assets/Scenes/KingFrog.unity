@@ -489,9 +489,12 @@ GameObject:
   - component: {fileID: 641657719}
   - component: {fileID: 641657720}
   - component: {fileID: 641657721}
+  - component: {fileID: 641657723}
+  - component: {fileID: 641657722}
+  - component: {fileID: 641657724}
   m_Layer: 0
   m_Name: KingFrog
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -553,7 +556,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 641657715}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.07, y: 5.23, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1652112, y: 0.25280002, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -592,7 +595,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 641657715}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a1123bb5dd79df448a70d8348ee10b4, type: 3}
   m_Name: 
@@ -626,7 +629,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 641657715}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e7604f300309364fb2e40b4769e622f, type: 3}
   m_Name: 
@@ -636,6 +639,80 @@ MonoBehaviour:
   frogObject: {fileID: 2425176852810834748, guid: e710b3e63742f444185f21fcdfa15a32,
     type: 3}
   maxMinionCount: 4
+--- !u!114 &641657722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641657715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 097da67cb82ef0a4ca352774b96197e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossPhases:
+  - health: 5
+    repeatingBehaviour: {fileID: 0}
+    startBehaviour: {fileID: 0}
+    endBehaviour: {fileID: 0}
+    backgroundActions: []
+    PossibleActions:
+    - independent: 1
+      runFrames: 0
+      cooldownFrames: 0
+      behavior: {fileID: 641657719}
+    - independent: 1
+      runFrames: 0
+      cooldownFrames: 0
+      behavior: {fileID: 641657720}
+  - health: 5
+    repeatingBehaviour: {fileID: 0}
+    startBehaviour: {fileID: 0}
+    endBehaviour: {fileID: 0}
+    backgroundActions: []
+    PossibleActions:
+    - independent: 1
+      runFrames: 0
+      cooldownFrames: 0
+      behavior: {fileID: 641657719}
+    - independent: 1
+      runFrames: 0
+      cooldownFrames: 0
+      behavior: {fileID: 641657720}
+    - independent: 1
+      runFrames: 0
+      cooldownFrames: 0
+      behavior: {fileID: 641657721}
+  currentPhase: 0
+  actionQueue: []
+--- !u!114 &641657723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641657715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c00e79e4f2ee7714f829792cbdbf6157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+--- !u!114 &641657724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641657715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc3d4bafa666894480e382a47892bfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyName: thicc frog
+  enemyHealth: {fileID: 0}
 --- !u!1 &1295106404
 GameObject:
   m_ObjectHideFlags: 0

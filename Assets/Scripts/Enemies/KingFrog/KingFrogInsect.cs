@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class KingFrogInsect : KingFrogParent
 {
+    WaitForSeconds ws = new WaitForSeconds(1 / 60);
+
     [SerializeField]
     private float chaseSeconds = 5.0f;
 
@@ -44,7 +46,7 @@ public class KingFrogInsect : KingFrogParent
 
             timer += Time.deltaTime;
 
-            yield return new WaitForEndOfFrame();
+            yield return ws;
         }
 
         bool temp = true;
@@ -54,7 +56,7 @@ public class KingFrogInsect : KingFrogParent
             //move until fly hits wall
             MoveForward();
 
-            yield return new WaitForEndOfFrame();
+            yield return ws;
         }
     }
 

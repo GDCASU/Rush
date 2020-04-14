@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class KingFrogLilyPadSpawner : MonoBehaviour
 {
+    WaitForSeconds ws = new WaitForSeconds(1 / 60);
+
     [SerializeField]
     private GameObject lilyPad;
     private GameObject temp;
@@ -30,12 +32,12 @@ public class KingFrogLilyPadSpawner : MonoBehaviour
         SpawnPad();
         for (int i = 0; i < 3; i++) //wait frames
         {
-            yield return new WaitForEndOfFrame();
+            yield return ws;
         }
         SpawnPad();
         for (int i = 0; i < 3; i++) //wait frames
         {
-            yield return new WaitForEndOfFrame();
+            yield return ws;
         }
         SpawnPad();
     }
@@ -77,7 +79,7 @@ public class KingFrogLilyPadSpawner : MonoBehaviour
     {
         for(int i = 0; i < 3; i++) //wait frames
         {
-            yield return new WaitForEndOfFrame();
+            yield return ws;
         }
 
         padCollided = temp.GetComponent<KingFrogLilyPad>().collided; //check if pad collided with pad

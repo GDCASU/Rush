@@ -13,6 +13,9 @@ public class KingFrogInsectAttack : KingFrogParent
     [SerializeField]
     private int maxToSpawn = 3;
 
+    [SerializeField]
+    private float CoolDown = 1.0f;
+
     private int counter;
 
     private void OnEnable()
@@ -32,6 +35,11 @@ public class KingFrogInsectAttack : KingFrogParent
         if (counter < maxToSpawn)
             Invoke("SpawnFlies", SpawnDelay);
         else
-            actionRunning = false;
+            Invoke("EndAction", CoolDown);
+    }
+
+    void EndAction()
+    {
+        actionRunning = false;
     }
 }

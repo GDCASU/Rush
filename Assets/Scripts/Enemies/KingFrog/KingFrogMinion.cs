@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class KingFrogMinion : KingFrogParent
 {
+    WaitForSeconds ws = new WaitForSeconds(1 / 60);
+
     [SerializeField]
     private float jumpSpeed = 0.2f;
 
@@ -49,7 +51,7 @@ public class KingFrogMinion : KingFrogParent
         while (Vector3.Distance(transform.position, randomPos) > 0)
         {
             transform.position = Vector3.MoveTowards(transform.position, randomPos, jumpSpeed);
-            yield return new WaitForEndOfFrame();
+            yield return ws;
         }
     }
 
@@ -96,6 +98,10 @@ public class KingFrogMinion : KingFrogParent
     private void OnDestroy()
     {
         //decrease minion count
-        //GameObject.Find("KingFrog").GetComponent<KingFrogMinionAttack>().minionCount--;
+        try
+        {
+            GameObject.Find("KingFrog").GetComponent<KingFrogMinionAttack>().minionCount--;
+        }
+        catch { }
     }
 }

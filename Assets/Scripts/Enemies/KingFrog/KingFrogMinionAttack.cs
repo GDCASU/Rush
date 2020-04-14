@@ -5,12 +5,16 @@ using UnityEngine;
 public class KingFrogMinionAttack : KingFrogParent
 {
     public int minionCount;
+    WaitForSeconds ws = new WaitForSeconds(1 / 60);
 
     [SerializeField]
     private GameObject frogObject;
 
     [SerializeField]
     private int maxMinionCount = 4;
+
+    [SerializeField]
+    private float CoolDown = 1.0f;
 
     private void Start()
     {
@@ -32,8 +36,13 @@ public class KingFrogMinionAttack : KingFrogParent
                 Vector3 pos = transform.position + new Vector3(Random.Range(1, 1.2f), Random.Range(1, 1.2f), 0);
                 Instantiate(frogObject, pos, Quaternion.identity);
             }
-            yield return new WaitForEndOfFrame();
+            yield return ws;
         }
+        Invoke("EndAction", CoolDown);
+    }
+
+    void EndAction()
+    {
         actionRunning = false;
     }
 }
