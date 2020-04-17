@@ -96,9 +96,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionRunning: 0
-  jumpSpeed: 0.2
+  jumpSpeed: 0.25
   jumpWaitTime: 3
   randomMax: 1.6
+  accurateDistance: 1
 --- !u!61 &-93698607265974273
 BoxCollider2D:
   m_ObjectHideFlags: 0

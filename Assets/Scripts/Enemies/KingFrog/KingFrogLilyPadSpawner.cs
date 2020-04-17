@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//*********
+// Curent glitch: sometimes a pad SpriteRenderer doesn't enable. Seems to be because of the for-loop inside CheckSpace that delays the check
+// Another: If a pad a still growing, obv the new pad won't collide with it so they will overlap
+//                  possible fix: give the pads a parent that stay big with no sprite
+//*********
+
 public class KingFrogLilyPadSpawner : MonoBehaviour
 {
     WaitForSeconds ws = new WaitForSeconds(1 / 60);
@@ -13,18 +19,20 @@ public class KingFrogLilyPadSpawner : MonoBehaviour
     [SerializeField]
     private Vector2 center;
 
+    private Vector3 padStartScale;
+
     [SerializeField]
     private float arenaRadius = 3.0f;
-
-    private bool padCollided;
-
     [SerializeField]
     private float padFloatTime = 10.0f;
     private float timerFloat;
 
+    private bool padCollided;
+
     private void OnEnable()
     {
         timerFloat = 0.0f;
+        padStartScale = new Vector3(0.5f, 0.5f, 1);
         StartCoroutine(Beginning());
     }
     IEnumerator Beginning() //spawns pads with slight spacing that is needed.
@@ -77,7 +85,7 @@ public class KingFrogLilyPadSpawner : MonoBehaviour
     //check if spawned lilypad collides with another and continue
     IEnumerator CheckSpace()
     {
-        for(int i = 0; i < 3; i++) //wait frames
+        for (int i = 0; i < 2; i++) //wait frames
         {
             yield return ws;
         }
@@ -86,15 +94,16 @@ public class KingFrogLilyPadSpawner : MonoBehaviour
 
         if(padCollided) //pad collided, destroy and try again
         {
-            Destroy(temp);
+            Destroy(temp.gameObject);
             SpawnPad();
         }
         else //pad did not collide. make it small, enable sprite, and make it "rise"
         {
-            temp.transform.localScale = new Vector3(0.5f, 0.5f, 1);
+            temp.transform.localScale = padStartScale;
             temp.GetComponent<SpriteRenderer>().enabled = true;
             temp.GetComponent<KingFrogLilyPad>().Invoke("Rise", 0);
         }
+        yield return ws;
     }
 
     //draw arena area

@@ -9,8 +9,8 @@ public class KingFrogInsect : KingFrogParent
     [SerializeField]
     private float chaseSeconds = 5.0f;
 
-    [SerializeField]
-    private float maxSpeed = 5.0f;
+    //[SerializeField]
+    private float maxSpeed = 15.0f;
 
     [SerializeField]
     private float rotateSpeed = 3.0f;
@@ -26,11 +26,12 @@ public class KingFrogInsect : KingFrogParent
 
     private void OnEnable()
     {
+
         myPlayer = GameObject.FindGameObjectWithTag("Player");
         rb = gameObject.GetComponent<Rigidbody2D>();
 
         flySpeed = Vector3.zero;
-        acceleration = 6.0f;
+        acceleration = 10.0f;
         timer = 0;
 
         StartCoroutine(ChasePlayer());
@@ -96,4 +97,12 @@ public class KingFrogInsect : KingFrogParent
             gameObject.GetComponent<SpriteRenderer>().flipY = true;
         }
     }
+
+    /*private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag.Equals("Player"))
+        {
+            myPlayer.GetComponent<PlayerHealth>().takeDamage();
+        }
+    }*/
 }

@@ -7,7 +7,8 @@ public class KingFrogLilyPad : MonoBehaviour
     public bool collided = false;
 
     private float scaleAmount = 0.5f;
-    private float maxSize = 2.0f;
+    //[SerializeField]
+    private float maxSize = 4.0f;
     private float startSize;
 
     private void OnTriggerEnter2D(Collider2D collision)

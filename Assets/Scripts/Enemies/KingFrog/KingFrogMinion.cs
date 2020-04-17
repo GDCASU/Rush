@@ -7,7 +7,7 @@ public class KingFrogMinion : KingFrogParent
     WaitForSeconds ws = new WaitForSeconds(1 / 60);
 
     [SerializeField]
-    private float jumpSpeed = 0.2f;
+    private float jumpSpeed = 0.25f;
 
     [SerializeField]
     private float jumpWaitTime = 3.0f;
@@ -17,7 +17,6 @@ public class KingFrogMinion : KingFrogParent
     private float randomY;
     [SerializeField]
     private float randomMax = 1.6f;
-    private float storeMax;
     [SerializeField]
     private float accurateDistance = 1.0f;
 
@@ -28,7 +27,6 @@ public class KingFrogMinion : KingFrogParent
     {
         myPlayer = GameObject.FindGameObjectWithTag("Player");
         jumpTimer = 0;
-        storeMax = randomMax;
 
         //increase minion count
         GameObject.Find("KingFrog").GetComponent<KingFrogMinionAttack>().minionCount++;
@@ -88,7 +86,7 @@ public class KingFrogMinion : KingFrogParent
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag.Equals("Player"))
+        if(collision.gameObject == myPlayer)
         {
             collision.gameObject.GetComponent<PlayerHealth>().takeDamage();
         }
