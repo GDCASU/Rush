@@ -17,7 +17,7 @@ public class KingFrogInsect : KingFrogParent
 
     private float acceleration;
 
-    private Rigidbody2D flyRB;
+    private Rigidbody2D rb;
 
     private Vector3 flySpeed;
 
@@ -27,7 +27,7 @@ public class KingFrogInsect : KingFrogParent
     private void OnEnable()
     {
         myPlayer = GameObject.FindGameObjectWithTag("Player");
-        flyRB = gameObject.GetComponent<Rigidbody2D>();
+        rb = gameObject.GetComponent<Rigidbody2D>();
 
         flySpeed = Vector3.zero;
         acceleration = 6.0f;
@@ -48,27 +48,31 @@ public class KingFrogInsect : KingFrogParent
 
             yield return ws;
         }
+        timer = 0;
 
-        bool temp = true;
-
-        while(temp)
+        while(timer < chaseSeconds)
         {
             //move until fly hits wall
             MoveForward();
 
+            timer += Time.deltaTime;
+
             yield return ws;
         }
+
+        Destroy(this);
+        yield return ws;
     }
 
     void MoveForward()
     {
-        if (flyRB.velocity.magnitude < maxSpeed)
+        if (rb.velocity.magnitude < maxSpeed)
         {
-            flyRB.velocity = transform.right * acceleration;
+            rb.velocity = transform.right * acceleration;
         }
         else
         {
-            flyRB.velocity = transform.right;
+            rb.velocity = transform.right;
         }
     }
 

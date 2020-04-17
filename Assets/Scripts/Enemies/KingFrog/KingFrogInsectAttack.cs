@@ -8,7 +8,7 @@ public class KingFrogInsectAttack : KingFrogParent
     private GameObject FlyObject;
 
     [SerializeField]
-    private float SpawnDelay = 0.2f;
+    private float SpawnDelay = 0.8f;
 
     [SerializeField]
     private int maxToSpawn = 3;

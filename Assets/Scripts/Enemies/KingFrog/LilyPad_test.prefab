@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -7502830437833500361}
   m_Layer: 0
   m_Name: LilyPad_test
-  m_TagString: Player
+  m_TagString: KingFrogLilyPad
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

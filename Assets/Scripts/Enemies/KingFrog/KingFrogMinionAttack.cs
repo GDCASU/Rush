@@ -12,7 +12,10 @@ public class KingFrogMinionAttack : KingFrogParent
 
     [SerializeField]
     private int maxMinionCount = 4;
+    private int spawnCounter;
 
+    [SerializeField]
+    private float spawnDelay = 0.6f;
     [SerializeField]
     private float CoolDown = 1.0f;
 
@@ -24,21 +27,23 @@ public class KingFrogMinionAttack : KingFrogParent
     private void OnEnable()
     {
         actionRunning = true;
-        StartCoroutine(SpawnMinions());
+        spawnCounter = 0;
+        Invoke("SpawnMinions", spawnDelay);
     }
 
-    IEnumerator SpawnMinions()
+    private void SpawnMinions()
     {
-        for(int i = 0; i < 2; i++)
+        if (minionCount < maxMinionCount && spawnCounter < 2)
         {
-            if (minionCount < maxMinionCount)
-            {
-                Vector3 pos = transform.position + new Vector3(Random.Range(1, 1.2f), Random.Range(1, 1.2f), 0);
-                Instantiate(frogObject, pos, Quaternion.identity);
-            }
-            yield return ws;
+            Vector3 pos = transform.position + new Vector3(Random.Range(-1.2f, 1.2f), Random.Range(-1.2f, 1.2f), 0);
+            Instantiate(frogObject, pos, Quaternion.identity);
+            spawnCounter++;
+            Invoke("SpawnMinions", spawnDelay);
         }
-        Invoke("EndAction", CoolDown);
+        else
+        {
+            Invoke("EndAction", CoolDown);
+        }
     }
 
     void EndAction()
