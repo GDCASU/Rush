@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,7 +32,7 @@ using UnityEngine;
 /// Areas hit by the ice shards will freeze temporarily. These spots 
 /// last for 5 seconds and will slow the player if they run over them
 /// </summary>
-public class RageMageA3 : MonoBehaviour
+public class RageMageA3 : BossAction
 {
     private BulletSpawner _spawner;
 
@@ -46,8 +47,8 @@ public class RageMageA3 : MonoBehaviour
 
     private void Start()
     {
-        //Uncomment to activate and test
-        //StartCoroutine(ThrowPotionRoutine());
+        actionRunning = true;
+        StartCoroutine(ThrowPotionRoutine());
     }
 
     private IEnumerator ThrowPotionRoutine()
@@ -57,7 +58,7 @@ public class RageMageA3 : MonoBehaviour
         for(int x = 0; x < PotionCount; x++)
         {
             //Spawns a potion spot
-            RageMagePotion potion = Instantiate(Potions[Random.Range(0, Potions.Length)], PlayerHealth.singleton.transform.position, PlayerHealth.singleton.transform.rotation).GetComponent<RageMagePotion>();
+            RageMagePotion potion = Instantiate(Potions[UnityEngine.Random.Range(0, Potions.Length)], PlayerHealth.singleton.transform.position, PlayerHealth.singleton.transform.rotation).GetComponent<RageMagePotion>();
 
             //Spawns bullet that'll activate potion spot
             float angle = (float)(Vector2.SignedAngle(Vector2.right, PlayerHealth.singleton.transform.position - _spawner.transform.position) * Mathf.PI / 180.0);
@@ -70,6 +71,8 @@ public class RageMageA3 : MonoBehaviour
 
             yield return potionDelay;
         }
+
+        actionRunning = false;
 
         yield return null;
     }

@@ -30,8 +30,12 @@ public class RageMageA4 : BossAction
         {
             _teleportSpots[x] = TeleportSpotParent.GetChild(x);
         }
+    }
 
-        //Teleport();
+    private void OnEnable()
+    {
+        actionRunning = true;
+        Teleport();
     }
 
     /// <summary>
@@ -68,6 +72,8 @@ public class RageMageA4 : BossAction
 
         //Deactivates the rune
         _teleportSpots[_currentSpotIndex].gameObject.SetActive(false);
+
+        actionRunning = false;
 
         yield return null;
     }
