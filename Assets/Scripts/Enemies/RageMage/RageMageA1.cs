@@ -54,7 +54,8 @@ public class RageMageA1 : MonoBehaviour
             //Sets reference if a fireball is present
             if(FireBallAction.CurrentFireBall != null)
             {
-                magBullet.FireBallAction = this.FireBallAction;
+                magBullet.PairedFireBall = FireBallAction.CurrentFireBall;
+                FireBallAction.CurrentFireBall = null;
             }
         }
         else

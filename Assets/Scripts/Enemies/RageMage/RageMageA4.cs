@@ -14,7 +14,7 @@ using UnityEngine;
 /// this.gameObject.transform when teleporting. If this is no the case later
 /// make sure to adjust this
 /// </summary>
-public class RageMageA4 : MonoBehaviour
+public class RageMageA4 : BossAction
 {
     public Transform TeleportSpotParent;
     private Transform[] _teleportSpots;

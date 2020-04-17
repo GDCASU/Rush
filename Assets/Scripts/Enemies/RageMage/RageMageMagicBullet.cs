@@ -14,7 +14,7 @@ public class RageMageMagicBullet : MonoBehaviour
     private Bullet _bullet;
     public int Bounces; //How many bounces until this obj is destroyed
 
-    public RageMageA2 FireBallAction;
+    public GameObject PairedFireBall;
 
     private void Awake()
     {
@@ -27,10 +27,9 @@ public class RageMageMagicBullet : MonoBehaviour
     /// </summary>
     private void OnDestroy()
     {
-        if (FireBallAction != null)
+        if (PairedFireBall != null)
         {
-            Destroy(FireBallAction.CurrentFireBall);
-            FireBallAction.CurrentFireBall = null;
+            Destroy(PairedFireBall);
         }
     }
 
