@@ -9,10 +9,10 @@ public class KingFrogInsectTEST : KingFrogParent
     [SerializeField]
     private float chaseSeconds = 5.0f;
 
-    //[SerializeField]
+    [SerializeField]
     private float maxSpeed = 5.0f;
 
-    //[SerializeField]
+    [SerializeField]
     private float rotateSpeed = 12.0f;
 
     private Vector3 flySpeed;
@@ -26,8 +26,10 @@ public class KingFrogInsectTEST : KingFrogParent
     private Vector3 deccelX;
     private Vector3 deccelY;
 
-    private float accel;
-    private float deccel;
+    [SerializeField]
+    private float accel = 1f;
+    [SerializeField]
+    private float deccel = 2f;
     private float jitterX;
     private float jitterY;
     //
@@ -40,9 +42,10 @@ public class KingFrogInsectTEST : KingFrogParent
 
         deccelX = new Vector3(0.01f, 0, 0);
         deccelY = new Vector3(0, 0.01f, 0);*/
-
-        accel = 0.001f;
-        deccel = 0.0023f;
+        accel = accel * .001f;
+        deccel = deccel * 0.001f;
+        
+        
         //
 
         myPlayer = GameObject.FindGameObjectWithTag("Player");
@@ -66,8 +69,9 @@ public class KingFrogInsectTEST : KingFrogParent
             yield return ws;
         }
         timer = 0;
+        flySpeed *= 3;
 
-        while (timer < chaseSeconds)
+        while (timer < (chaseSeconds / 2))
         {
             //move until fly hits wall
             MoveForward();
@@ -77,7 +81,7 @@ public class KingFrogInsectTEST : KingFrogParent
             yield return ws;
         }
 
-        Destroy(this);
+        Despawn();
         yield return ws;
     }
 
@@ -180,5 +184,11 @@ public class KingFrogInsectTEST : KingFrogParent
         {
             myPlayer.GetComponent<PlayerHealth>().takeDamage();
         }
+    }
+
+    void Despawn()
+    {
+        GameObject.Find("KingFrog").GetComponent<KingFrogInsectAttack>().insectCounter--;
+        Destroy(this.gameObject);
     }
 }

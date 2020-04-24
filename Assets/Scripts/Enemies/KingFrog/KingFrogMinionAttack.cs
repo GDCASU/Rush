@@ -16,6 +16,7 @@ public class KingFrogMinionAttack : KingFrogParent
 
     [SerializeField]
     private float spawnDelay = 0.6f;
+
     [SerializeField]
     private float CoolDown = 1.0f;
 
@@ -28,13 +29,19 @@ public class KingFrogMinionAttack : KingFrogParent
     {
         actionRunning = true;
         spawnCounter = 0;
-        Invoke("SpawnMinions", spawnDelay);
+        Invoke("StartAction", CoolDown);
+    }
+
+    void StartAction()
+    {
+        SpawnMinions();
     }
 
     private void SpawnMinions()
     {
         if (minionCount < maxMinionCount && spawnCounter < 2)
         {
+            //spawn minion randomly near kingfrog
             Vector3 pos = transform.position + new Vector3(Random.Range(-1.2f, 1.2f), Random.Range(-1.2f, 1.2f), 0);
             Instantiate(frogObject, pos, Quaternion.identity);
             spawnCounter++;
@@ -44,10 +51,5 @@ public class KingFrogMinionAttack : KingFrogParent
         {
             Invoke("EndAction", CoolDown);
         }
-    }
-
-    void EndAction()
-    {
-        actionRunning = false;
     }
 }

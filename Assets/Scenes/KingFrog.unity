@@ -639,8 +639,10 @@ MonoBehaviour:
   FlyObject: {fileID: 2880669955417826984, guid: 5e6c1e14bee72ab4ba347a36fd0a380d,
     type: 3}
   SpawnDelay: 0.8
+  spawnNumber: 3
   maxToSpawn: 3
   CoolDown: 1
+  insectCounter: 0
 --- !u!114 &641657721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -673,7 +675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossPhases:
-  - health: 5
+  - health: 100
     repeatingBehaviour: {fileID: 0}
     startBehaviour: {fileID: 0}
     endBehaviour: {fileID: 0}
@@ -687,7 +689,7 @@ MonoBehaviour:
       runFrames: 0
       cooldownFrames: 0
       behavior: {fileID: 641657720}
-  - health: 5
+  - health: 100
     repeatingBehaviour: {fileID: 0}
     startBehaviour: {fileID: 0}
     endBehaviour: {fileID: 0}
@@ -719,7 +721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c00e79e4f2ee7714f829792cbdbf6157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 200
 --- !u!114 &641657724
 MonoBehaviour:
   m_ObjectHideFlags: 0

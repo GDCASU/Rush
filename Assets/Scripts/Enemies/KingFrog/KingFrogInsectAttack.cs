@@ -11,35 +11,41 @@ public class KingFrogInsectAttack : KingFrogParent
     private float SpawnDelay = 0.8f;
 
     [SerializeField]
+    private int spawnNumber = 3; //number to spawn per attack
+
+    [SerializeField]
     private int maxToSpawn = 3;
 
     [SerializeField]
     private float CoolDown = 1.0f;
 
-    private int counter;
+    [HideInInspector]
+    public int insectCounter = 0;
 
     private void OnEnable()
     {
         actionRunning = true;
 
-        counter = 0;
+        StartAction();
+    }
 
-        Invoke("SpawnFlies", SpawnDelay);
+    void StartAction() //delays the start of the attack for a cooldown
+    {
+        Invoke("SpawnFlies", CoolDown);
     }
 
     void SpawnFlies()
     {
         Instantiate(FlyObject);
-        counter++;
+        insectCounter++;
 
-        if (counter < maxToSpawn)
+        if (insectCounter < spawnNumber)
+        {
             Invoke("SpawnFlies", SpawnDelay);
+        }
         else
-            Invoke("EndAction", CoolDown);
-    }
-
-    void EndAction()
-    {
-        actionRunning = false;
+        {
+            actionRunning = false;
+        }
     }
 }

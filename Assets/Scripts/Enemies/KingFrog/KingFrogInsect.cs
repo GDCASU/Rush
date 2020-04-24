@@ -9,7 +9,7 @@ public class KingFrogInsect : KingFrogParent
     [SerializeField]
     private float chaseSeconds = 5.0f;
 
-    //[SerializeField]
+    [SerializeField]
     private float maxSpeed = 15.0f;
 
     [SerializeField]

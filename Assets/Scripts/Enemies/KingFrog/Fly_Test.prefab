@@ -122,3 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionRunning: 0
   chaseSeconds: 5
+  maxSpeed: 5
+  rotateSpeed: 12
+  accel: 1
+  deccel: 2

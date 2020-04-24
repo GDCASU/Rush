@@ -32,6 +32,11 @@ public class KingFrogTongueAttack : KingFrogParent
         hitPlayer = false;
         startScaleX = transform.localScale.x;
 
+        Invoke("StartAction", CoolDown);
+    }
+
+    void StartAction()
+    {
         StartCoroutine(TongueAttack());
     }
 
@@ -51,7 +56,7 @@ public class KingFrogTongueAttack : KingFrogParent
             yield return ws;
         }
 
-        Invoke("EndAction", CoolDown);
+        actionRunning = false;
     }
 
     void Grow()
@@ -82,10 +87,5 @@ public class KingFrogTongueAttack : KingFrogParent
 
         //rotate object
         tongueObject.transform.rotation = Quaternion.Euler(0, 0, rotateAngle);
-    }
-
-    void EndAction()
-    {
-        actionRunning = false;
     }
 }
