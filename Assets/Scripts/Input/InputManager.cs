@@ -107,7 +107,7 @@ public class InputManager : MonoBehaviour
     private static KeyboardController keyboardController;
     private static List<Dictionary<string, KeyCode>> keyboardAxisDictList;
     private static List<Dictionary<string, KeyCode>> keyboardButtonDictList;
-    private static List<XboxController> xboxControllers;
+    public static List<XboxController> xboxControllers;
     private static List<Dictionary<string, XboxController.XboxAxis>> xboxAxisDictList;
     private static List<Dictionary<string, XboxController.XboxButton>> xboxButtonDictList;
 
@@ -486,6 +486,7 @@ public class InputManager : MonoBehaviour
             return;
         else
         {
+            foreach (Dictionary<string, KeyCode> ka in keyboardAxisDictList) print(ka.Keys);
             if (keyboardAxisDictList[player.PlayerIndex + 1].ContainsKey(buttonKey))
                 keyboardAxisDictList[player.PlayerIndex + 1][buttonKey] = key;
             else if (keyboardButtonDictList[player.PlayerIndex + 1].ContainsKey(buttonKey))

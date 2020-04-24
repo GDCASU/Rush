@@ -9,6 +9,8 @@ public class MenuOptions : MonoBehaviour
     IInputPlayer player;
     public bool isPaused;
     private bool isTitle;
+    public List<string> keyboardCodes;
+    public List<string> xboxCodes;
     public GameObject hud;
     public GameObject mainMenu;
     public GameObject bossSelect;
@@ -23,7 +25,7 @@ public class MenuOptions : MonoBehaviour
     public GameObject dwarfButton;
     public GameObject horsemanButton;
     public GameObject ratbossButton;
-    public GameObject wipsButton;
+    public GameObject wispButton;
 
     public List<GameObject> panels;
     private int current;
@@ -31,16 +33,15 @@ public class MenuOptions : MonoBehaviour
     void Start()
     {
         player = transform.parent.gameObject.GetComponentInChildren<IInputPlayer>();
-        panels.Add(hud);
-        panels.Add(mainMenu);
-        panels.Add(bossSelect);
-        panels.Add(pause);
-        panels.Add(settings);
-        panels.Add(graphics);
-        panels.Add(sound);
-        panels.Add(controls);
-        panels.Add(controller);
-        panels.Add(keyboard);
+        keyboardCodes.Add("W");
+        keyboardCodes.Add("S");
+        keyboardCodes.Add("D");
+        keyboardCodes.Add("A");
+        foreach (InputManager.Button b in GameObject.Find("Managers").GetComponent<InputManager>().buttons)
+        {
+            keyboardCodes.Add(b.keyboardButton.ToString());
+            xboxCodes.Add(b.xboxButton.ToString());
+        }
         isTitle = (SceneManager.GetActiveScene().name == "Title") ? true : false;
         if (isTitle)
         {
@@ -146,10 +147,10 @@ public class MenuOptions : MonoBehaviour
     }
     public void toGraphics()
     {
-        if (current >=7)
+        if (current >=6)
         {
-            //panels[7].SetActive(false);
-            panels[(panels[8].activeSelf == true) ? 9 : 8].SetActive(false);
+            panels[7].SetActive(false);
+            panels[(panels[8].activeSelf == true) ? 8 : 9].SetActive(false);
         }
         panels[current].SetActive(false);
         current = 5;
@@ -190,9 +191,9 @@ public class MenuOptions : MonoBehaviour
     }
     public void backFromSettings()
     {
-        print((panels[8].activeSelf == true) ? 9 : 8);
         if (current>=7) panels[(panels[8].activeSelf == true) ?8: 9].SetActive(false);
         panels[current].SetActive(false);
         panels[4].SetActive(false);
+        panels[0].SetActive(true);
     }
 }
