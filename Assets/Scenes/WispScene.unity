@@ -2128,16 +2128,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2149381935911444041, guid: c596c0c0e2f7c75428811f0f3d262ebc,
-        type: 3}
-      propertyPath: locationsParent
-      value: 
-      objectReference: {fileID: 1706477669}
     - target: {fileID: 5141580686008062575, guid: c596c0c0e2f7c75428811f0f3d262ebc,
         type: 3}
       propertyPath: m_Name
       value: WisperBoss
       objectReference: {fileID: 0}
+    - target: {fileID: 2149381935911444041, guid: c596c0c0e2f7c75428811f0f3d262ebc,
+        type: 3}
+      propertyPath: locationsParent
+      value: 
+      objectReference: {fileID: 1706477669}
     - target: {fileID: 6576239264414887967, guid: c596c0c0e2f7c75428811f0f3d262ebc,
         type: 3}
       propertyPath: locationsParent
@@ -2197,6 +2197,27 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8128845472949049963, guid: c596c0c0e2f7c75428811f0f3d262ebc,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8128845472949049963, guid: c596c0c0e2f7c75428811f0f3d262ebc,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4142485986110898408, guid: c596c0c0e2f7c75428811f0f3d262ebc,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f1ae558706978bb4999d68f45cb2c71e,
+        type: 3}
+    - target: {fileID: 6903842080444603537, guid: c596c0c0e2f7c75428811f0f3d262ebc,
+        type: 3}
+      propertyPath: m_Radius
+      value: 4.41
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c596c0c0e2f7c75428811f0f3d262ebc, type: 3}
