@@ -21,6 +21,7 @@ public class KingFrogSinking : MonoBehaviour
     private bool sinking;
 
     private Vector3 sinkVector;
+    private Vector3 startSize;
 
     private void OnEnable()
     {
@@ -28,14 +29,17 @@ public class KingFrogSinking : MonoBehaviour
         timer = 0;
 
         sinkVector = new Vector3(0, 0.00093f, 0);
+        startSize = new Vector3(sinkingObject.transform.localScale.x, 0, 1);
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.gameObject.tag.Equals("KingFrogLilyPad"))
+        if (collision.gameObject.tag.Equals("KingFrogLilyPad"))
         {
-            sinking = false;
-            sinkingObject.transform.localScale = new Vector3(sinkingObject.transform.localScale.x, 0, 1);
+            if(collision.transform.localScale.x >= collision.gameObject.GetComponent<KingFrogLilyPad>().maxPadSize)
+            {
+                sinking = false;
+                sinkingObject.transform.localScale = startSize;
+            }
         }
     }
 

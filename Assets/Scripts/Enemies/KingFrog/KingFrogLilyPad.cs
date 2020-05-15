@@ -6,9 +6,9 @@ public class KingFrogLilyPad : MonoBehaviour
 {
     public bool collided = false;
 
+
+    public float maxPadSize = 4.0f;
     private float scaleAmount = 0.5f;
-    //[SerializeField]
-    private float maxSize = 4.0f;
     private float startSize;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -32,7 +32,7 @@ public class KingFrogLilyPad : MonoBehaviour
     IEnumerator RiseCR()
     {
         startSize = transform.localScale.x; //save start scale
-        while (transform.localScale.x < maxSize) //while not max size
+        while (transform.localScale.x < maxPadSize) //while not max size
         {
             float step = scaleAmount * Time.deltaTime;
             transform.localScale += new Vector3(step, step, 0);
