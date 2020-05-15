@@ -80,9 +80,10 @@ MonoBehaviour:
   ControllerDirection: 0
   NoteDestroyPoint: {fileID: 0}
   rend: {fileID: 9176332324566419656}
+  ArrowColor: {r: 0, g: 0, b: 0, a: 0}
   LeftArrowColor: {r: 0.039215688, g: 0.8980392, b: 0.16470589, a: 0}
   RightArrowColor: {r: 0.039215688, g: 0.31764707, b: 0.8980392, a: 0}
-  UpArrowColor: {r: 0.8980392, g: 0.43137255, b: 0.039215688, a: 0}
+  UpArrowColor: {r: 0.8980392, g: 0.8211739, b: 0.039215658, a: 0}
   DownArrowColor: {r: 0.8980392, g: 0.039215688, b: 0.05490196, a: 0}
   DestroyNoteEffect: {fileID: 5654659655588906633, guid: 8deb211b85126fc40a73594f4c123bf4,
     type: 3}
