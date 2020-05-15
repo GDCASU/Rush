@@ -63,8 +63,6 @@ public class Conductor : MonoBehaviour
                 {
                     SpawnNote(direction, out newNote);
                     newNote.GetComponent<Rigidbody>().velocity = Vector3.down * NoteSpeed;
-                    //newNote.GetComponent<Note>().TimeStamp = NoteTimeStamps[0].TimeStamp;
-                    //newNote.GetComponent<Note>().HitBuffer = HitBuffer;
 
                     Destroy(newNote, 10f);  // Destroys the note after 10 seconds.
                 }
