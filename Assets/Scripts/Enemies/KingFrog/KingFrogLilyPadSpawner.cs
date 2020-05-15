@@ -17,7 +17,7 @@ public class KingFrogLilyPadSpawner : MonoBehaviour
     private GameObject temp;
 
     [SerializeField]
-    private Vector2 center;
+    private Vector3 center;
 
     private Vector3 padStartScale;
 
@@ -73,7 +73,7 @@ public class KingFrogLilyPadSpawner : MonoBehaviour
     private void SpawnPad()
     {
         //pos = random position inside of arena
-        Vector2 pos = center + new Vector2(Random.Range(-arenaRadius, arenaRadius), Random.Range(-arenaRadius, arenaRadius));
+        Vector3 pos = center + new Vector3(Random.Range(-arenaRadius, arenaRadius), Random.Range(-arenaRadius, arenaRadius), 0.31f);
 
         //temp = the newly spawned lilypad (with random position and angle)
         temp = Instantiate(lilyPad, pos, Quaternion.Euler(0, 0, Random.Range(0, 360)));
@@ -101,7 +101,7 @@ public class KingFrogLilyPadSpawner : MonoBehaviour
         {
             temp.transform.localScale = padStartScale;
             temp.GetComponent<SpriteRenderer>().enabled = true;
-            temp.GetComponent<KingFrogLilyPad>().Invoke("Rise", 0);
+            temp.GetComponent<KingFrogLilyPad>().Rise();
         }
         yield return ws;
     }

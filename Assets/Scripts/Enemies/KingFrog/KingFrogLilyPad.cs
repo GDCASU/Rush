@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class KingFrogLilyPad : MonoBehaviour
 {
-    public bool collided = false;
+    WaitForSeconds ws = new WaitForSeconds(1 / 60);
 
+    public bool collided = false;
 
     public float maxPadSize = 4.0f;
     private float scaleAmount = 0.5f;
@@ -36,7 +37,7 @@ public class KingFrogLilyPad : MonoBehaviour
         {
             float step = scaleAmount * Time.deltaTime;
             transform.localScale += new Vector3(step, step, 0);
-            yield return new WaitForEndOfFrame();
+            yield return ws;
         }
     }
 
@@ -46,7 +47,7 @@ public class KingFrogLilyPad : MonoBehaviour
         {
             float step = scaleAmount * Time.deltaTime;
             transform.localScale -= new Vector3(step, step, 0);
-            yield return new WaitForEndOfFrame();
+            yield return ws;
         }
         Destroy(this.gameObject);
     }
