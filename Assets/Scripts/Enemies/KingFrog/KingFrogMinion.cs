@@ -18,7 +18,7 @@ public class KingFrogMinion : KingFrogParent
     [SerializeField]
     private float randomMax = 1.6f;
     [SerializeField]
-    private float accurateDistance = 1.0f;
+    private float accurateDistance = 8.0f;
 
     private Vector3 playerPos;
     private Vector3 randomPos;
@@ -27,6 +27,7 @@ public class KingFrogMinion : KingFrogParent
     {
         myPlayer = GameObject.FindGameObjectWithTag("Player");
         jumpTimer = 0;
+        randomPos = new Vector3(0, 0, 1);
 
         //increase minion count
         GameObject.Find("KingFrog").GetComponent<KingFrogMinionAttack>().minionCount++;
@@ -65,14 +66,15 @@ public class KingFrogMinion : KingFrogParent
         randomY = playerPos.y;
 
         //if frogs out of accurate distance, add randomness to jump
-        if (Vector3.Distance(transform.position, myPlayer.transform.position) > accurateDistance)
+        if (Vector3.Distance(playerPos, transform.position) > accurateDistance)
         {
             //add randomness to it
             randomX += Random.Range(0, randomMax);
             randomY += Random.Range(0, randomMax);
         }
-        
-        randomPos = new Vector3(randomX, randomY, 1);
+
+        randomPos.x = randomX;
+        randomPos.y = randomY;
 
         //check angle compared to randomPos
         float rotateX = randomPos.x - transform.position.x;
@@ -89,6 +91,7 @@ public class KingFrogMinion : KingFrogParent
         if(collision.gameObject == myPlayer)
         {
             collision.gameObject.GetComponent<PlayerHealth>().takeDamage();
+            Destroy(this.gameObject);
         }
     }
 

@@ -10,28 +10,50 @@ public class KingFrogInsect : KingFrogParent
     private float chaseSeconds = 5.0f;
 
     [SerializeField]
-    private float maxSpeed = 15.0f;
+    private float maxSpeed = 5.0f;
 
     [SerializeField]
-    private float rotateSpeed = 3.0f;
-
-    private float acceleration;
-
-    private Rigidbody2D rb;
+    private float rotateSpeed = 12.0f;
 
     private Vector3 flySpeed;
 
     private float timer;
     private float rotateAngle;
 
+    //new stuff
+    private Vector3 accelX;
+    private Vector3 accelY;
+    private Vector3 deccelX;
+    private Vector3 deccelY;
+
+    [SerializeField]
+    private float accel = 1f;
+    [SerializeField]
+    private float deccel = 2f;
+    private float jitterX;
+    private float jitterY;
+    //
+
     private void OnEnable()
     {
+        //new
+        /*accelX = new Vector3(0.001f, 0, 0);
+        accelY = new Vector3(0, 0.001f, 0);
+
+        deccelX = new Vector3(0.01f, 0, 0);
+        deccelY = new Vector3(0, 0.01f, 0);*/
+        accel *= 0.001f;
+        deccel *= 0.001f;
+        maxSpeed = 0.75f / maxSpeed;
+        
+        
+        //
 
         myPlayer = GameObject.FindGameObjectWithTag("Player");
-        rb = gameObject.GetComponent<Rigidbody2D>();
+
+        GameObject.Find("KingFrog").GetComponent<KingFrogInsectAttack>().totalCount++;
 
         flySpeed = Vector3.zero;
-        acceleration = 10.0f;
         timer = 0;
 
         StartCoroutine(ChasePlayer());
@@ -39,19 +61,20 @@ public class KingFrogInsect : KingFrogParent
 
     IEnumerator ChasePlayer()
     {
-        while(timer < chaseSeconds)
+        while (timer < chaseSeconds)
         {
             AngleInsect();
 
-            MoveForward();
+            TrackPlayer();
 
             timer += Time.deltaTime;
 
             yield return ws;
         }
         timer = 0;
+        SetFlyStraight();
 
-        while(timer < chaseSeconds)
+        while (timer < (chaseSeconds / 2))
         {
             //move until fly hits wall
             MoveForward();
@@ -61,20 +84,73 @@ public class KingFrogInsect : KingFrogParent
             yield return ws;
         }
 
-        Destroy(this);
+        Despawn();
         yield return ws;
     }
 
-    void MoveForward()
+    void TrackPlayer()
     {
-        if (rb.velocity.magnitude < maxSpeed)
+        //add jitter to bug movement
+        jitterX = Random.Range(-0.0025f, 0.0025f);
+        jitterY = Random.Range(-0.0025f, 0.0025f);
+        if (transform.position.x < myPlayer.transform.position.x) //if fly left of player
         {
-            rb.velocity = transform.right * acceleration;
+            if (flySpeed.x < maxSpeed) //if below max 'x' speed
+            {
+                if(flySpeed.x < 0) //speed up fast if 'x' speed < 0
+                {
+                    flySpeed.x += deccel + jitterX;
+                }
+                else //speed up normally
+                {
+                    flySpeed.x += accel + jitterX;
+                }
+            }
         }
-        else
+        else //fly right of player
         {
-            rb.velocity = transform.right;
+            if(flySpeed.x > -maxSpeed) //speed not max
+            {
+                if(flySpeed.x > 0) //slow down fast if 'x' speed > 0
+                {
+                    flySpeed.x -= deccel + jitterX;
+                }
+                else //slow down normally
+                {
+                    flySpeed.x -= accel + jitterX;
+                }
+            }
         }
+
+        if(transform.position.y < myPlayer.transform.position.y) //if fly below player
+        {
+            if(flySpeed.y < maxSpeed) //if below max 'y' speed
+            {
+                if(flySpeed.y < 0) //speed up fast if 'y' speed < 0
+                {
+                    flySpeed.y += deccel + jitterY;
+                }
+                else //speed up normally
+                {
+                    flySpeed.y += accel + jitterY;
+                }
+            }
+        }
+        else //fly is above player
+        {
+            if(flySpeed.y > -maxSpeed) //speed not max
+            {
+                if(flySpeed.y > 0) //slow down fast if 'y' speed > 0
+                {
+                    flySpeed.y -= deccel + jitterY;
+                }
+                else //slow down normally
+                {
+                    flySpeed.y -= accel + jitterY;
+                }
+            }
+        }
+        transform.position += flySpeed; //update speed
     }
 
     //angles the insect towards the player
@@ -98,11 +174,61 @@ public class KingFrogInsect : KingFrogParent
         }
     }
 
-    /*private void OnTriggerEnter2D(Collider2D collision)
+    //move straight
+    void MoveForward()
     {
-        if (collision.gameObject.tag.Equals("Player"))
+        transform.position += flySpeed;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject == myPlayer)
         {
             myPlayer.GetComponent<PlayerHealth>().takeDamage();
         }
-    }*/
+    }
+
+    //check fly speed when tracking is stopped
+    //if slow speed up the fly
+    void SetFlyStraight()
+    {
+        //if fly is slower than HALF max speed
+        if (flySpeed.x < (maxSpeed / 2) && flySpeed.x > -(maxSpeed / 2))
+        {
+            //if fly is moving positive or negative make speed = maxSpeed / 2
+            if (flySpeed.x > 0)
+            {
+                flySpeed.x = (maxSpeed / 2);
+            }
+            else //fly x speed is < 0
+            {
+                flySpeed.x = -(maxSpeed / 2);
+            }
+        }
+
+        //if fly is slower than HALF max speed
+        if (flySpeed.y < (maxSpeed / 2) && flySpeed.x > -(maxSpeed / 2))
+        {
+            //if fly is moving positive or negative make speed = maxSpeed / 2
+            if (flySpeed.y > 0)
+            {
+                flySpeed.y = (maxSpeed / 2);
+            }
+            else //if fly y speed < 0
+            {
+                flySpeed.y = -(maxSpeed / 2);
+            }
+        }
+    }
+
+    void Despawn()
+    {
+        try
+        {
+            GameObject.Find("KingFrog").GetComponent<KingFrogInsectAttack>().totalCount--;
+        }
+        catch { }
+        
+        Destroy(this.gameObject);
+    }
 }

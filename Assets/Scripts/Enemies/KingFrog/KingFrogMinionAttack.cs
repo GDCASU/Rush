@@ -49,7 +49,7 @@ public class KingFrogMinionAttack : KingFrogParent
         }
         else
         {
-            Invoke("EndAction", CoolDown);
+            actionRunning = false;
         }
     }
 }
