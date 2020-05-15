@@ -34,7 +34,6 @@ public class PlayerDance : MonoBehaviour
             rend.material.color = PushButtonColor;
             rend.material.EnableKeyword("_EMISSION");
             rend.material.SetColor("_EmissionColor", PushButtonColor);
-            
         }
 
         if (Input.GetKeyUp(HitDirection))

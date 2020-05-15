@@ -1056,6 +1056,26 @@ PrefabInstance:
       propertyPath: rend
       value: 
       objectReference: {fileID: 1985752074}
+    - target: {fileID: 2734627094952668274, guid: c3981ac131d54fe4fb2ebc210cc040a1,
+        type: 3}
+      propertyPath: HitDirection
+      value: 275
+      objectReference: {fileID: 0}
+    - target: {fileID: 2734627094952668274, guid: c3981ac131d54fe4fb2ebc210cc040a1,
+        type: 3}
+      propertyPath: PushButtonColor.r
+      value: 0.039215658
+      objectReference: {fileID: 0}
+    - target: {fileID: 2734627094952668274, guid: c3981ac131d54fe4fb2ebc210cc040a1,
+        type: 3}
+      propertyPath: PushButtonColor.g
+      value: 0.31588423
+      objectReference: {fileID: 0}
+    - target: {fileID: 2734627094952668274, guid: c3981ac131d54fe4fb2ebc210cc040a1,
+        type: 3}
+      propertyPath: PushButtonColor.b
+      value: 0.8980392
+      objectReference: {fileID: 0}
     - target: {fileID: 2734627095672918053, guid: c3981ac131d54fe4fb2ebc210cc040a1,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -3742,6 +3762,26 @@ PrefabInstance:
       propertyPath: rend
       value: 
       objectReference: {fileID: 89298498}
+    - target: {fileID: 2734627094952668274, guid: c3981ac131d54fe4fb2ebc210cc040a1,
+        type: 3}
+      propertyPath: HitDirection
+      value: 273
+      objectReference: {fileID: 0}
+    - target: {fileID: 2734627094952668274, guid: c3981ac131d54fe4fb2ebc210cc040a1,
+        type: 3}
+      propertyPath: PushButtonColor.r
+      value: 0.8980392
+      objectReference: {fileID: 0}
+    - target: {fileID: 2734627094952668274, guid: c3981ac131d54fe4fb2ebc210cc040a1,
+        type: 3}
+      propertyPath: PushButtonColor.g
+      value: 0.43233123
+      objectReference: {fileID: 0}
+    - target: {fileID: 2734627094952668274, guid: c3981ac131d54fe4fb2ebc210cc040a1,
+        type: 3}
+      propertyPath: PushButtonColor.b
+      value: 0.039215658
+      objectReference: {fileID: 0}
     - target: {fileID: 2734627095672918053, guid: c3981ac131d54fe4fb2ebc210cc040a1,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -5783,6 +5823,26 @@ PrefabInstance:
       propertyPath: rend
       value: 
       objectReference: {fileID: 1406592192}
+    - target: {fileID: 2734627094952668274, guid: c3981ac131d54fe4fb2ebc210cc040a1,
+        type: 3}
+      propertyPath: HitDirection
+      value: 274
+      objectReference: {fileID: 0}
+    - target: {fileID: 2734627094952668274, guid: c3981ac131d54fe4fb2ebc210cc040a1,
+        type: 3}
+      propertyPath: PushButtonColor.r
+      value: 0.8980392
+      objectReference: {fileID: 0}
+    - target: {fileID: 2734627094952668274, guid: c3981ac131d54fe4fb2ebc210cc040a1,
+        type: 3}
+      propertyPath: PushButtonColor.g
+      value: 0.039215658
+      objectReference: {fileID: 0}
+    - target: {fileID: 2734627094952668274, guid: c3981ac131d54fe4fb2ebc210cc040a1,
+        type: 3}
+      propertyPath: PushButtonColor.b
+      value: 0.055864654
+      objectReference: {fileID: 0}
     - target: {fileID: 2734627095672918053, guid: c3981ac131d54fe4fb2ebc210cc040a1,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -7733,7 +7793,6 @@ MonoBehaviour:
     type: 3}
   Music: {fileID: 218722135665944730, guid: 59109712e3fcd3d4f96e4ae966986708, type: 3}
   NoteSpeed: 15
-  HitBuffer: 1
   _distance: 0
 --- !u!114 &1981297510
 MonoBehaviour:
