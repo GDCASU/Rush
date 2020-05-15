@@ -11,7 +11,11 @@ public class KingFrogTongue : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
-            kingFrogObject.GetComponent<KingFrogTongueAttack>().hitPlayer = true;
+            try
+            {
+                kingFrogObject.GetComponent<KingFrogTongueAttack>().hitPlayer = true;
+            }
+            catch { }
             collision.gameObject.GetComponent<PlayerHealth>().takeDamage();
         }
     }

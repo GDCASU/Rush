@@ -20,12 +20,6 @@ public class KingFrogInsect : KingFrogParent
     private float timer;
     private float rotateAngle;
 
-    //new stuff
-    private Vector3 accelX;
-    private Vector3 accelY;
-    private Vector3 deccelX;
-    private Vector3 deccelY;
-
     [SerializeField]
     private float accel = 1f;
     [SerializeField]
@@ -36,18 +30,9 @@ public class KingFrogInsect : KingFrogParent
 
     private void OnEnable()
     {
-        //new
-        /*accelX = new Vector3(0.001f, 0, 0);
-        accelY = new Vector3(0, 0.001f, 0);
-
-        deccelX = new Vector3(0.01f, 0, 0);
-        deccelY = new Vector3(0, 0.01f, 0);*/
         accel *= 0.001f;
         deccel *= 0.001f;
-        maxSpeed = 0.75f / maxSpeed;
-        
-        
-        //
+        maxSpeed = 0.80f / maxSpeed;
 
         myPlayer = GameObject.FindGameObjectWithTag("Player");
 
