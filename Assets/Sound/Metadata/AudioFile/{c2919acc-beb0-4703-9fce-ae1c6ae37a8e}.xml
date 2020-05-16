@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{c2919acc-beb0-4703-9fce-ae1c6ae37a8e}">
+		<property name="assetPath">
+			<value>Generic Boss Sounds/Vocalizations/zapsplat_fantasy_giant_angry_growl_002_15420.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.7489583333333334</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e36e271b-3d67-4dc3-b23e-8e083e5667c9}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{b7ac0b03-53be-4260-9956-a2545ff7a4c1}">
+		<property name="assetPath">
+			<value>Generic Boss Sounds/Vocalizations/zapsplat_animal_dinosuar_vocalisation_growl_002_10839.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.968140589569161</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e36e271b-3d67-4dc3-b23e-8e083e5667c9}</destination>
+		</relationship>
+	</object>
+</objects>

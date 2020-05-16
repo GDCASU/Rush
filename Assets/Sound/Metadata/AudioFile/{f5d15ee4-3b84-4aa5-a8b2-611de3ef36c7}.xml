@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{f5d15ee4-3b84-4aa5-a8b2-611de3ef36c7}">
+		<property name="assetPath">
+			<value>Footsteps/Big Boss Footstep 5.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>3.3749886621315195</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e36e271b-3d67-4dc3-b23e-8e083e5667c9}</destination>
+		</relationship>
+	</object>
+</objects>

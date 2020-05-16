@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="EventFolder" id="{19055690-263a-43a6-a430-402fe6930dc3}">
+		<property name="name">
+			<value>Chimera</value>
+		</property>
+		<relationship name="folder">
+			<destination>{0c8a8d63-e166-4923-8cd7-a75b581d971d}</destination>
+		</relationship>
+	</object>
+</objects>

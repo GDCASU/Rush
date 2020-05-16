@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="EncodableAsset" id="{5422f1ae-a3bc-410a-96e8-452fdedfdbf5}">
+		<property name="assetPath">
+			<value>Dialogue/Wisps/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e36e271b-3d67-4dc3-b23e-8e083e5667c9}</destination>
+		</relationship>
+	</object>
+</objects>

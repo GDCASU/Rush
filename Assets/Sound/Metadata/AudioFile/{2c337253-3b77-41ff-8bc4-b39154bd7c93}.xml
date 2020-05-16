@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{2c337253-3b77-41ff-8bc4-b39154bd7c93}">
+		<property name="assetPath">
+			<value>Player Character SFX/Blunt Weapon Impact Armor.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.73333333333333328</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e36e271b-3d67-4dc3-b23e-8e083e5667c9}</destination>
+		</relationship>
+	</object>
+</objects>

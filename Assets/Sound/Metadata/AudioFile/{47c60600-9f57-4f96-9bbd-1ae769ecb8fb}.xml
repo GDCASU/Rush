@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{47c60600-9f57-4f96-9bbd-1ae769ecb8fb}">
+		<property name="assetPath">
+			<value>Footsteps/Hard Footstep HF 3.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>88.1999969</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.75140589569160998</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e36e271b-3d67-4dc3-b23e-8e083e5667c9}</destination>
+		</relationship>
+	</object>
+</objects>
