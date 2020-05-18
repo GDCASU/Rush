@@ -7,6 +7,7 @@ public class Stomp : BossAction
     private Transform player;
     public int warningFrames;
     public int endingFrames;
+    public float speed;
     private float increment;
     private float decrement;
 
@@ -22,14 +23,12 @@ public class Stomp : BossAction
 
     IEnumerator StompAOE()
     {
-        if (transform.position.x > PlayerHealth.singleton.transform.position.x && transform.rotation.y == 0)
-            transform.rotation = Quaternion.Euler(transform.rotation.x, 180, transform.rotation.z);
-        else
-            transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);
+        flip();
 
-        for (int i = 0; i < 120; i++)
+        for (int i = 0; i < 60; i++)
         {
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(PlayerHealth.singleton.transform.position.x, PlayerHealth.singleton.transform.position.y, transform.position.z), 0.1f);
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(PlayerHealth.singleton.transform.position.x, PlayerHealth.singleton.transform.position.y, transform.position.z), speed*0.1f);
+            flip();
             yield return new WaitForEndOfFrame();
         }
 
@@ -50,8 +49,13 @@ public class Stomp : BossAction
         actionRunning = false;
     }
 
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    player.GetComponent<PlayerHealth>().takeDamage();
-    //}
+    void flip()
+    {
+        if (transform.position.x > PlayerHealth.singleton.transform.position.x 
+            //&& transform.rotation.y == 0
+            )
+            transform.rotation = Quaternion.Euler(transform.rotation.x, 180, transform.rotation.z);
+        else
+            transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);
+    }
 }

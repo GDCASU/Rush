@@ -12,6 +12,7 @@ public class Dash : BossAction
     private float distance;
     public int readjustFrames;
     public float speed = 1;
+    bool thisAction = false;
 
     void Awake()
     {
@@ -21,9 +22,17 @@ public class Dash : BossAction
     private void OnEnable() => StartCoroutine(DashAttack());
 
     IEnumerator DashAttack()
-    {  
+    {
+        Vector3 playerPos = PlayerHealth.singleton.transform.position;
+        if (transform.position.x > playerPos.x)
+            transform.rotation = Quaternion.Euler(transform.rotation.x, 180, transform.rotation.z);
+        else
+            transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);
+        thisAction = true;
+
         for (int i = 0; i < preDashFrames; i++)
         {
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, 0, transform.position.z), speed*0.03f);
             yield return new WaitForEndOfFrame();
         }
         for (int x = 0; x < 30; x++)
@@ -33,7 +42,7 @@ public class Dash : BossAction
         }
         GetComponent<BoxCollider2D>().enabled = true;
         GetComponent<EnemyHealth>().enabled = false;
-        Vector3 playerPos = PlayerHealth.singleton.transform.position;
+        playerPos = PlayerHealth.singleton.transform.position;
         vector = playerPos - transform.position;
         distance = Mathf.Sqrt(vector.x * vector.x + vector.y * vector.y);
         if (transform.position.x > playerPos.x)
@@ -41,7 +50,11 @@ public class Dash : BossAction
         else
             transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);
         move = true;
-
+        while (move)
+        {
+            transform.position = transform.position + new Vector3(speed * 0.2f * vector.x / distance, speed * 0.2f * vector.y / distance, 0);
+            yield return new WaitForEndOfFrame();
+        }
     }
 
     IEnumerator Lance()
@@ -55,24 +68,29 @@ public class Dash : BossAction
 
     private void Update()
     {
-        if (move) transform.position = transform.position + new Vector3(speed * 0.2f * vector.x / distance, speed * 0.2f * vector.y / distance, 0);
+        //if (move) transform.position = transform.position + new Vector3(speed * 0.2f * vector.x / distance, speed * 0.2f * vector.y / distance, 0);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {       
-        if (collision.gameObject.tag == "Wall")
+        if (collision.gameObject.tag == "Wall" && thisAction)
         {
-            for (int i = 0; i < readjustFrames; i++)
-            {
-                transform.position = Vector3.MoveTowards(transform.position, PlayerHealth.singleton.transform.position, 0.01f);
-                //yield return new WaitForEndOfFrame();
-            }
             move = false;
+            //readjust();
             //GetComponent<BoxCollider2D>().enabled = false;
             GetComponent<EnemyHealth>().enabled = true;
             StartCoroutine(Lance());
+            thisAction = false;
             actionRunning = false;
         }
 
     }
+
+    //void readjust()
+    //{
+    //    for (int i = 0; i < readjustFrames; i++)
+    //    {
+    //        transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, 0, transform.position.z), 0.01f);
+    //    }
+    //}
 }
