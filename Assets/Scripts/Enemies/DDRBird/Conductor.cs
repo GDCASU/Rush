@@ -40,17 +40,13 @@ public class Conductor : MonoBehaviour
         Music.GetComponent<Song>().Notes = DDRBirdLoader.GetBeats();
         Speaker.clip = Music.GetComponent<Song>().Music;
         _distance = Vector3.Distance(new Vector3(-13.68f, 7.02f, -1f), LeftNoteDestroyPoint.transform.position);
+
+        Speaker.Play();
+        Player.freezeInPlace = true;
     }
 
     private void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Speaker.Play();
-            Player.freezeInPlace = true;
-        }
-
-
         if (Speaker.isPlaying)
         {
             // Does math to spawn the note ahead of time.
