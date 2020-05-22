@@ -15,6 +15,8 @@ public class PlayerDance : MonoBehaviour
     public Color BaseColor;
     public Renderer rend;
 
+    public DDRBirdManager ddrBirdManager;
+
     void Start()
     {
         // This diactivates the zone marker's renderers in the game only when the game is running.
@@ -50,6 +52,7 @@ public class PlayerDance : MonoBehaviour
             Mathf.Sqrt(Mathf.Pow(TopHitZone.position.y - note.position.y, 2)) + Mathf.Sqrt(Mathf.Pow(BottomHitZone.position.y - note.position.y, 2)))
         {
             Destroy(note.gameObject);
+            ddrBirdManager.ChangeDance();
         }
     }
 }

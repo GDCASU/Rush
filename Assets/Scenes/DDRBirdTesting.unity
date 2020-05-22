@@ -3370,6 +3370,7 @@ GameObject:
   - component: {fileID: 947268216}
   - component: {fileID: 947268217}
   - component: {fileID: 947268218}
+  - component: {fileID: 947268219}
   m_Layer: 0
   m_Name: DDRBirdBoss
   m_TagString: Untagged
@@ -3416,6 +3417,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c04df7dedc5ec944934ea43ace019ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &947268219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 947268215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 770c25007a1ecc74da4dbd2ad79bfead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ddrBird: {fileID: 1371846038}
+  _birdDances:
+  - {fileID: 21300000, guid: 68abc34ea069a0e43b9cda09ea35a64e, type: 3}
+  - {fileID: 21300000, guid: 434cab826a11bd649a7caaa8f1a1092a, type: 3}
+  - {fileID: 21300000, guid: 2fabb5999febaf74e9f16c86f964c09c, type: 3}
 --- !u!1 &957516586
 GameObject:
   m_ObjectHideFlags: 0
