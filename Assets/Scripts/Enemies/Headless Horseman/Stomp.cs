@@ -51,9 +51,7 @@ public class Stomp : BossAction
 
     void flip()
     {
-        if (transform.position.x > PlayerHealth.singleton.transform.position.x 
-            //&& transform.rotation.y == 0
-            )
+        if (transform.position.x > PlayerHealth.singleton.transform.position.x)
             transform.rotation = Quaternion.Euler(transform.rotation.x, 180, transform.rotation.z);
         else
             transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);

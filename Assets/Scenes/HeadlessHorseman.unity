@@ -402,7 +402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionRunning: 0
-  warningFrames: 120
+  warningFrames: 60
   endingFrames: 30
   speed: 2
 --- !u!114 &142641144
@@ -412,7 +412,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 142641141}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c302e6aa1df47314e8d9ffb2bc0069c0, type: 3}
   m_Name: 
@@ -424,8 +424,6 @@ MonoBehaviour:
   speed: 1
   spawnpointsObject: {fileID: 332327669}
   spawnpointsObject2: {fileID: 1067178201}
-  remove: 0
-  remove2: 0
 --- !u!114 &142641145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -433,7 +431,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 142641141}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7882ba09e0793724daa8a16bbd448ca4, type: 3}
   m_Name: 
@@ -454,9 +452,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionRunning: 0
-  boomerangFrames: 12000
+  boomerangFrames: 120
   arena: {fileID: 1922656006}
-  speed: 1
+  speed: 1.5
 --- !u!4 &142641148 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4828904023027043125, guid: ab0a4eaace8d2334ebb5496f8d011766,
@@ -594,11 +592,11 @@ GameObject:
   - component: {fileID: 225698901}
   m_Layer: 0
   m_Name: Laser
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &225698900
 Transform:
   m_ObjectHideFlags: 0
@@ -620,10 +618,10 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 225698899}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 2, y: -14}
@@ -646,7 +644,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 225698899}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1610,7 +1608,7 @@ PrefabInstance:
     - target: {fileID: 257951202130026146, guid: ab0a4eaace8d2334ebb5496f8d011766,
         type: 3}
       propertyPath: bossPhases.Array.data[2].PossibleActions.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 257951202130026146, guid: ab0a4eaace8d2334ebb5496f8d011766,
         type: 3}
@@ -1720,7 +1718,7 @@ PrefabInstance:
     - target: {fileID: 257951202130026146, guid: ab0a4eaace8d2334ebb5496f8d011766,
         type: 3}
       propertyPath: bossPhases.Array.data[1].health
-      value: 80
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 257951202130026146, guid: ab0a4eaace8d2334ebb5496f8d011766,
         type: 3}
@@ -1740,23 +1738,28 @@ PrefabInstance:
     - target: {fileID: 257951202130026146, guid: ab0a4eaace8d2334ebb5496f8d011766,
         type: 3}
       propertyPath: bossPhases.Array.data[2].health
-      value: 10
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 257951202130026146, guid: ab0a4eaace8d2334ebb5496f8d011766,
         type: 3}
       propertyPath: bossPhases.Array.data[2].PossibleActions.Array.data[0].cooldownFrames
-      value: 120
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 257951202130026146, guid: ab0a4eaace8d2334ebb5496f8d011766,
         type: 3}
       propertyPath: bossPhases.Array.data[2].PossibleActions.Array.data[0].behavior
       value: 
-      objectReference: {fileID: 142641145}
+      objectReference: {fileID: 0}
     - target: {fileID: 257951202130026146, guid: ab0a4eaace8d2334ebb5496f8d011766,
         type: 3}
       propertyPath: bossPhases.Array.data[1].startBehaviour
       value: 
       objectReference: {fileID: 142641146}
+    - target: {fileID: 257951202130026146, guid: ab0a4eaace8d2334ebb5496f8d011766,
+        type: 3}
+      propertyPath: bossPhases.Array.data[2].repeatingBehaviour
+      value: 
+      objectReference: {fileID: 142641145}
     - target: {fileID: 4972897495111253431, guid: ab0a4eaace8d2334ebb5496f8d011766,
         type: 3}
       propertyPath: m_Sprite
@@ -2203,6 +2206,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1869471812}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1895468260
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1895468261}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1895468261
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895468260}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.25, y: 1.09, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 142641148}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1922656006
 GameObject:
   m_ObjectHideFlags: 0

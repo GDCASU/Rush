@@ -11,8 +11,6 @@ public class HorsemanSpecial : BossAction
     public GameObject spawnpointsObject;
     public GameObject spawnpointsObject2;
     private System.Random rng = new System.Random();
-    public int remove;
-    public int remove2;
 
     private void OnEnable()
     {       
@@ -42,7 +40,8 @@ public class HorsemanSpecial : BossAction
         }
         transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);
         actionRunning = true;
-
+        int remove;
+        int remove2;
         remove = rng.Next(spawnpoints.Count - 1);
         remove2 = -1;
         if (GetComponent<BossBehaviorController>().currentPhase == 1)

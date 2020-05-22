@@ -24,11 +24,8 @@ public class Dash : BossAction
     IEnumerator DashAttack()
     {
         Vector3 playerPos = PlayerHealth.singleton.transform.position;
-        if (transform.position.x > playerPos.x)
-            transform.rotation = Quaternion.Euler(transform.rotation.x, 180, transform.rotation.z);
-        else
-            transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);
-        thisAction = true;
+
+        flip();
 
         for (int i = 0; i < preDashFrames; i++)
         {
@@ -45,10 +42,9 @@ public class Dash : BossAction
         playerPos = PlayerHealth.singleton.transform.position;
         vector = playerPos - transform.position;
         distance = Mathf.Sqrt(vector.x * vector.x + vector.y * vector.y);
-        if (transform.position.x > playerPos.x)
-            transform.rotation = Quaternion.Euler(transform.rotation.x, 180, transform.rotation.z);
-        else
-            transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);
+
+        flip();
+
         move = true;
         while (move)
         {
@@ -86,11 +82,12 @@ public class Dash : BossAction
 
     }
 
-    //void readjust()
-    //{
-    //    for (int i = 0; i < readjustFrames; i++)
-    //    {
-    //        transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, 0, transform.position.z), 0.01f);
-    //    }
-    //}
+    void flip()
+    {
+        if (transform.position.x > PlayerHealth.singleton.transform.position.x)
+            transform.rotation = Quaternion.Euler(transform.rotation.x, 180, transform.rotation.z);
+        else
+            transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);
+        thisAction = true;
+    }
 }
