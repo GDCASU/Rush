@@ -16,6 +16,7 @@ public class PlayerDance : MonoBehaviour
     public Renderer rend;
 
     public DDRBirdManager ddrBirdManager;
+    public LightManager lightManager;
 
     void Start()
     {
@@ -53,6 +54,7 @@ public class PlayerDance : MonoBehaviour
         {
             Destroy(note.gameObject);
             ddrBirdManager.ChangeDance();
+            lightManager.UpdateLightColors();
         }
     }
 }

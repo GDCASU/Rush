@@ -4,27 +4,14 @@ using UnityEngine;
 
 public class LightManager : MonoBehaviour
 {
-    public Light LeftSpotLight;
-    public Light MiddleSpotLight;
-    public Light RightSpotLight;
+    public Light OnStageLight1;
+    public Light OnStageLight2;
 
-    [SerializeField]
-    private float _lerpFactor = 0.01f;
+    public Color[] ColorChoices;
 
-    // Start is called before the first frame update
-    void Start()
+    public void UpdateLightColors()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        MiddleSpotLight.color = Color.Lerp(MiddleSpotLight.color, Color.green, _lerpFactor);
-
-        if (MiddleSpotLight.color == Color.green)
-        {
-            _lerpFactor *= -1;
-        }
+        OnStageLight1.color = ColorChoices[Random.Range(0, ColorChoices.Length)];
+        OnStageLight2.color = ColorChoices[Random.Range(0, ColorChoices.Length)];
     }
 }

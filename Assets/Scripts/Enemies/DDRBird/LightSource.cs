@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class LightSource : MonoBehaviour
 {
-    public Light SpotLight;
-    public ColorChangeEvent Colors;
+    [SerializeField]
+    private float _speed = 1;
 
-    public class ColorChangeEvent
+    [SerializeField]
+    private int _maxRotation = 45;
+
+    [SerializeField]
+    private int _direction = 1;
+
+    private void Update()
     {
-        public Color Color;
-        public float ColorChangeSpeed;
+        transform.rotation = Quaternion.Euler(_maxRotation * Mathf.Sin(Time.time * _speed) * _direction, 0f, 0);
     }
 }
