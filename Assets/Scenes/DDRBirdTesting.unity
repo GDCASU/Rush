@@ -1076,6 +1076,11 @@ PrefabInstance:
       propertyPath: PushButtonColor.b
       value: 0.8980392
       objectReference: {fileID: 0}
+    - target: {fileID: 2734627094952668274, guid: c3981ac131d54fe4fb2ebc210cc040a1,
+        type: 3}
+      propertyPath: ddrBirdManager
+      value: 
+      objectReference: {fileID: 947268219}
     - target: {fileID: 2734627095672918053, guid: c3981ac131d54fe4fb2ebc210cc040a1,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -3267,6 +3272,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: -2784311128158294143, guid: 66595f1996bb67143b615cb7f2d8ca2c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0ef9b7ed43e0f2848babdfa992e30cc8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66595f1996bb67143b615cb7f2d8ca2c, type: 3}
 --- !u!4 &941498241 stripped
@@ -3800,6 +3810,11 @@ PrefabInstance:
       propertyPath: PushButtonColor.b
       value: 0.039215658
       objectReference: {fileID: 0}
+    - target: {fileID: 2734627094952668274, guid: c3981ac131d54fe4fb2ebc210cc040a1,
+        type: 3}
+      propertyPath: ddrBirdManager
+      value: 
+      objectReference: {fileID: 947268219}
     - target: {fileID: 2734627095672918053, guid: c3981ac131d54fe4fb2ebc210cc040a1,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -5861,6 +5876,11 @@ PrefabInstance:
       propertyPath: PushButtonColor.b
       value: 0.055864654
       objectReference: {fileID: 0}
+    - target: {fileID: 2734627094952668274, guid: c3981ac131d54fe4fb2ebc210cc040a1,
+        type: 3}
+      propertyPath: ddrBirdManager
+      value: 
+      objectReference: {fileID: 947268219}
     - target: {fileID: 2734627095672918053, guid: c3981ac131d54fe4fb2ebc210cc040a1,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -8481,6 +8501,11 @@ PrefabInstance:
       propertyPath: HitZoneDistance
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2734627094952668274, guid: c3981ac131d54fe4fb2ebc210cc040a1,
+        type: 3}
+      propertyPath: ddrBirdManager
+      value: 
+      objectReference: {fileID: 947268219}
     - target: {fileID: 2734627095672918053, guid: c3981ac131d54fe4fb2ebc210cc040a1,
         type: 3}
       propertyPath: m_LocalPosition.y
