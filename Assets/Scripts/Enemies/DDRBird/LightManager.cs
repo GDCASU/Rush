@@ -48,10 +48,21 @@ public class LightManager : MonoBehaviour
 
     private void LightsLookAtPlayer()
     {
+        /*
         LeftArrowLight.transform.LookAt(Player.transform, Vector3.left);
         RightArrowLight.transform.LookAt(Player.transform, Vector3.left);
         UpArrowLight.transform.LookAt(Player.transform, Vector3.left);
-        DownArrowLight.transform.LookAt(Player.transform, Vector3.left);
+        DownArrowLight.transform.LookAt(Player.transform, Vector3.left);*/
+
+        Vector3 direction = Player.transform.position - LeftArrowLight.transform.position;
+
+        // The step size is equal to speed times frame time.
+        float singleStep = 10 * Time.deltaTime;
+
+        // Rotate the forward vector towards the target direction by one step
+        Vector3 newDirection = Vector3.RotateTowards(transform.forward, direction, singleStep, 0.0f);
+
+        LeftArrowLight.transform.rotation = Quaternion.LookRotation(newDirection);
     }
 
     private void TurnOffHelpLights()

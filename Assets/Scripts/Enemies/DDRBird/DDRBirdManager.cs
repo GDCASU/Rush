@@ -12,6 +12,9 @@ public class DDRBirdManager : MonoBehaviour
     private PlayerHealth _player;
 
     [SerializeField]
+    private int _increaseHealthCombo;
+
+    [SerializeField]
     private Text _comboText;
 
     [SerializeField]
@@ -40,9 +43,9 @@ public class DDRBirdManager : MonoBehaviour
 
     private void AddHeart()
     {
-        if (_comboCounter % 10 == 0)
+        if (_comboCounter % _increaseHealthCombo == 0)
         {
-            //add player life
+            _player.GainHealth();
         }
     }
 
