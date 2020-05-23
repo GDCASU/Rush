@@ -204,7 +204,7 @@ public class InputManager : MonoBehaviour
             newPlayer.GetComponent<IInputPlayer>().InputMethod = inputMethod;
             newPlayer.GetComponent<IInputPlayer>().PlayerIndex = players.IndexOf(newPlayer);
 
-            DuplicateDictionaries();
+            //DuplicateDictionaries();
             return;
         }
     }
@@ -267,13 +267,13 @@ public class InputManager : MonoBehaviour
         {
             if (player.InputMethod == InputMethod.Keyboard)
             {
-                float keyboardPos = keyboardController.GetAxis(KeyboardAxisLookUp(keyboardAxisDictList[player.PlayerIndex + 1], "(Pos)" + axisKey));
-                float keyboardNeg = -keyboardController.GetAxis(KeyboardAxisLookUp(keyboardAxisDictList[player.PlayerIndex + 1], "(Neg)" + axisKey));
+                float keyboardPos = keyboardController.GetAxis(KeyboardAxisLookUp(keyboardAxisDictList[player.PlayerIndex], "(Pos)" + axisKey));
+                float keyboardNeg = -keyboardController.GetAxis(KeyboardAxisLookUp(keyboardAxisDictList[player.PlayerIndex], "(Neg)" + axisKey));
                 return LargestAbsoluteValue(new List<float> { keyboardPos, keyboardNeg });
             }
 
             else if (player.InputMethod == InputMethod.XboxController)
-                return xboxControllers[player.PlayerIndex].GetAxis(XboxAxisLookUp(xboxAxisDictList[player.PlayerIndex + 1], axisKey));
+                return xboxControllers[player.PlayerIndex].GetAxis(XboxAxisLookUp(xboxAxisDictList[player.PlayerIndex], axisKey));
 
             else return 0;
         }
@@ -306,13 +306,13 @@ public class InputManager : MonoBehaviour
         {
             if (player.InputMethod == InputMethod.Keyboard)
             {
-                float keyboardPos = keyboardController.GetAxisDown(KeyboardAxisLookUp(keyboardAxisDictList[player.PlayerIndex + 1], "(Pos)" + axisKey));
-                float keyboardNeg = -keyboardController.GetAxisDown(KeyboardAxisLookUp(keyboardAxisDictList[player.PlayerIndex + 1], "(Neg)" + axisKey));
+                float keyboardPos = keyboardController.GetAxisDown(KeyboardAxisLookUp(keyboardAxisDictList[player.PlayerIndex], "(Pos)" + axisKey));
+                float keyboardNeg = -keyboardController.GetAxisDown(KeyboardAxisLookUp(keyboardAxisDictList[player.PlayerIndex], "(Neg)" + axisKey));
                 return LargestAbsoluteValue(new List<float> { keyboardPos, keyboardNeg });
             }
 
             else if (player.InputMethod == InputMethod.XboxController)
-                return xboxControllers[(int)player.PlayerIndex].GetAxisDown(XboxAxisLookUp(xboxAxisDictList[(int)player.PlayerIndex + 1], axisKey));
+                return xboxControllers[(int)player.PlayerIndex].GetAxisDown(XboxAxisLookUp(xboxAxisDictList[(int)player.PlayerIndex], axisKey));
 
             else return 0;
         }
@@ -338,10 +338,10 @@ public class InputManager : MonoBehaviour
         else
         {
             if (player.InputMethod == InputMethod.Keyboard)
-                return keyboardController.GetButton(KeyboardButtonLookUp(keyboardButtonDictList[player.PlayerIndex + 1], buttonKey));
+                return keyboardController.GetButton(KeyboardButtonLookUp(keyboardButtonDictList[player.PlayerIndex], buttonKey));
 
             else if (player.InputMethod == InputMethod.XboxController)
-                return xboxControllers[player.PlayerIndex].GetButton(XboxButtonLookUp(xboxButtonDictList[player.PlayerIndex + 1], buttonKey));
+                return xboxControllers[player.PlayerIndex].GetButton(XboxButtonLookUp(xboxButtonDictList[player.PlayerIndex], buttonKey));
 
             else return false;
         }
@@ -367,10 +367,10 @@ public class InputManager : MonoBehaviour
         else
         {
             if (player.InputMethod == InputMethod.Keyboard)
-                return keyboardController.GetButtonDown(KeyboardButtonLookUp(keyboardButtonDictList[player.PlayerIndex + 1], buttonKey));
+                return keyboardController.GetButtonDown(KeyboardButtonLookUp(keyboardButtonDictList[player.PlayerIndex], buttonKey));
 
             else if (player.InputMethod == InputMethod.XboxController)
-                return xboxControllers[player.PlayerIndex].GetButtonDown(XboxButtonLookUp(xboxButtonDictList[player.PlayerIndex + 1], buttonKey));
+                return xboxControllers[player.PlayerIndex].GetButtonDown(XboxButtonLookUp(xboxButtonDictList[player.PlayerIndex], buttonKey));
 
             else return false;
         }
@@ -396,10 +396,10 @@ public class InputManager : MonoBehaviour
         else
         {
             if (player.InputMethod == InputMethod.Keyboard)
-                return keyboardController.GetButtonUp(KeyboardButtonLookUp(keyboardButtonDictList[player.PlayerIndex + 1], buttonKey));
+                return keyboardController.GetButtonUp(KeyboardButtonLookUp(keyboardButtonDictList[player.PlayerIndex], buttonKey));
 
             else if (player.InputMethod == InputMethod.XboxController)
-                return xboxControllers[player.PlayerIndex].GetButtonUp(XboxButtonLookUp(xboxButtonDictList[player.PlayerIndex + 1], buttonKey));
+                return xboxControllers[player.PlayerIndex].GetButtonUp(XboxButtonLookUp(xboxButtonDictList[player.PlayerIndex], buttonKey));
 
             else return false;
         }
@@ -455,7 +455,7 @@ public class InputManager : MonoBehaviour
         if (player == null)
             return;
         else
-            xboxControllers[player.PlayerIndex].ResetButton(XboxButtonLookUp(xboxButtonDictList[player.PlayerIndex + 1], buttonKey));
+            xboxControllers[player.PlayerIndex].ResetButton(XboxButtonLookUp(xboxButtonDictList[player.PlayerIndex], buttonKey));
         Input.ResetInputAxes();
     }
 
@@ -486,11 +486,10 @@ public class InputManager : MonoBehaviour
             return;
         else
         {
-            foreach (Dictionary<string, KeyCode> ka in keyboardAxisDictList) print(ka.Keys);
-            if (keyboardAxisDictList[player.PlayerIndex + 1].ContainsKey(buttonKey))
-                keyboardAxisDictList[player.PlayerIndex + 1][buttonKey] = key;
-            else if (keyboardButtonDictList[player.PlayerIndex + 1].ContainsKey(buttonKey))
-                keyboardButtonDictList[player.PlayerIndex + 1][buttonKey] = key;
+            if (keyboardAxisDictList[player.PlayerIndex].ContainsKey(buttonKey))
+                keyboardAxisDictList[player.PlayerIndex][buttonKey] = key;
+            else if (keyboardButtonDictList[player.PlayerIndex].ContainsKey(buttonKey))
+                keyboardButtonDictList[player.PlayerIndex][buttonKey] = key;
             else
                 Debug.InputLog("No keyboard dictionary contains the key: " + buttonKey, Debug.LogType.Warning);
         }
@@ -509,7 +508,7 @@ public class InputManager : MonoBehaviour
         if (player == null)
             return;
         else
-            xboxButtonDictList[(int)player.PlayerIndex + 1][buttonKey] = xButton;
+            xboxButtonDictList[(int)player.PlayerIndex][buttonKey] = xButton;
     }
 
     /// <summary>

@@ -15,6 +15,7 @@ public class MenuOptions : MonoBehaviour
     public GameObject mainMenu;
     public GameObject bossSelect;
     public GameObject pause;
+    public GameObject backDrop;
     public GameObject settings;
     public GameObject graphics;
     public GameObject sound;
@@ -109,8 +110,9 @@ public class MenuOptions : MonoBehaviour
     }
     public void Settings()
     {
-        if(!isTitle)panels[3].SetActive(false);
+        if (!isTitle)panels[3].SetActive(false);
         panels[4].SetActive(true);                          //4 is the seetings tabs
+        backDrop.SetActive(true);
         toGraphics();
     }
     public void backToPause()
@@ -192,8 +194,9 @@ public class MenuOptions : MonoBehaviour
     public void backFromSettings()
     {
         if (current>=7) panels[(panels[8].activeSelf == true) ?8: 9].SetActive(false);
+        backDrop.SetActive(false);
         panels[current].SetActive(false);
-        panels[4].SetActive(false);
-        panels[0].SetActive(true);
+        current = 4;
+        panels[current].SetActive(false);
     }
 }

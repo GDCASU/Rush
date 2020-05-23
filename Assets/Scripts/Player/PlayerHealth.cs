@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class PlayerHealth : MonoBehaviour {
+public class PlayerHealth : MonoBehaviour
+{
     public static PlayerHealth singleton;
     public int lives;
     private IInputPlayer player;
+    private int _maxHealth;
 
     public bool inv = false;
 
@@ -24,12 +26,13 @@ public class PlayerHealth : MonoBehaviour {
         player = GetComponent<IInputPlayer>();
         sp = GetComponent<SpriteRenderer>();
         HUDManager.singleton.setLiveCount(lives);
+        _maxHealth = lives;
     }
     void Update()
     {
         if (InputManager.GetButtonDown(PlayerInput.PlayerButton.Potion, player))
         {
-            lives++;
+            GainHealth();
         }
         if (lives > 0) HUDManager.singleton.setLiveCount(lives);
         else Debug.Log("Go to gameover"); //example: SceneManager.LoadScene("GameOver"); 
@@ -60,5 +63,9 @@ public class PlayerHealth : MonoBehaviour {
         inv = true;
         StartCoroutine(flashingSprite());
         lives--;
+    }
+    public void GainHealth()
+    {
+        if (lives < _maxHealth) lives++;
     }
 }
