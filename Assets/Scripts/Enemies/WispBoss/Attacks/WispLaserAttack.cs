@@ -114,7 +114,7 @@ public class WispLaserAttack : WispAttackModel
         }
     }
 
-    public void StopAttacking()
+    public override void StopAttacking()
     {
         base.StopAttacking();
 

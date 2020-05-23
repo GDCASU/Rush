@@ -18,7 +18,7 @@ public class WispAttackModel : MonoBehaviour
         }
     }
 
-    public void StartAttacking()
+    public virtual void StartAttacking()
     {
         if (_attackRoutine != null)
             StartCoroutine(_attackRoutine);
@@ -26,7 +26,7 @@ public class WispAttackModel : MonoBehaviour
             Spawner.enabled = true;
     }
 
-    public void StopAttacking()
+    public virtual void StopAttacking()
     {
         if (_attackRoutine != null)
             StopCoroutine(_attackRoutine);
