@@ -24,7 +24,6 @@ public class PlayerBasicShot : MonoBehaviour {
     }
     public void Update () 
     {
-        print(charge);
         if (InputManager.GetButtonUp(PlayerInput.PlayerButton.Shoot, player) && charging)
         {
             if (charge > chargeUpFrames)
