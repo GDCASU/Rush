@@ -72,7 +72,7 @@ public class PlayerBasicMelee : MonoBehaviour
         var hits=Physics2D.CircleCastAll((Vector2)transform.position+mov.overRideFacing*comboData[combo-1].radius*overlapRange, comboData[combo-1].radius, mov.overRideFacing, 0f);
 
         // Damage all hit enemies
-        var enemies = hits?.Where(x => x.transform.tag == "Enemy")?.Select(e => e.transform.GetComponent<EnemyHealth>());
+        var enemies = hits?.Where(x => x.transform.tag == "Enemy" || x.transform.tag == "Hitbox")?.Select(e => e.transform.GetComponent<EnemyHealth>());
         foreach(EnemyHealth enemy in enemies) enemy.takeDamage(comboData[combo-1].damage);
 
         // If we want we can reflect all the bullets

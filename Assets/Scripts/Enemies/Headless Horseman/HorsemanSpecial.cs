@@ -33,7 +33,7 @@ public class HorsemanSpecial : BossAction
             transform.rotation = Quaternion.Euler(transform.rotation.x, 180, transform.rotation.z);
         else
             transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);
-        while ((Mathf.Abs(transform.position.x) > 0.5f) && (Mathf.Abs(transform.position.y) > 0.5f))
+        while ((Mathf.Abs(transform.position.x) > 0.1f) || (Mathf.Abs(transform.position.y) > 0.1f))
         {
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, 0, transform.position.z), 0.25f);
             yield return new WaitForEndOfFrame();
@@ -55,28 +55,17 @@ public class HorsemanSpecial : BossAction
             real = rng.Next(spawnpoints.Count - 1);
         if (GetComponent<BossBehaviorController>().currentPhase == 1)
         {
-            print("check 1 " + spawnpoints.Count);
             if (remove > remove2)
             {
-                print("check 2");
-
                 spawnpoints.RemoveAt(remove); if (real > remove) real--;
-                print("check 3");
 
                 spawnpoints.RemoveAt(remove2); if (real >= remove2) real--;
-                print("check 4");
-
             }
             else
             {
-                print("check 5");
-
                 spawnpoints.RemoveAt(remove2); if (real > remove2) real--;
-                print("check 6");
 
                 spawnpoints.RemoveAt(remove); if (real >= remove) real--;
-                print("check 7");
-
             }
         }
         else

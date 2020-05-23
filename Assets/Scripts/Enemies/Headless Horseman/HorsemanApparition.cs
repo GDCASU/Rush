@@ -16,8 +16,7 @@ public class HorsemanApparition : MonoBehaviour
     {
         if (collision.gameObject.tag == "Wall" || collision.gameObject.tag=="Player")
         {
-            if (gameObject.name == "Horseman") enabled = false;
-            else Destroy(transform.gameObject);
+            if (gameObject.name != "Horseman") Destroy(transform.gameObject);
         }
 
     }

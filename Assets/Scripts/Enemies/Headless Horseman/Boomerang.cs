@@ -22,7 +22,8 @@ public class Boomerang : BossAction
         System.Random rng = new System.Random();
         int wall = rng.Next(4);
         Transform random = arena.transform.GetChild(wall);
-        int adder = rng.Next(10);
+        int adder = rng.Next(Mathf.RoundToInt(Mathf.Abs(arena.transform.GetChild(0).position.x) + Mathf.Abs(arena.transform.GetChild(1).position.x))/2 - 1);
+        print(adder);
         int sign = 1;
         if (rng.Next(2) == 1)
             sign = -1;
@@ -30,13 +31,11 @@ public class Boomerang : BossAction
         {
             if (((Mathf.Abs(transform.position.x - (sign * adder + random.position.x)) > 5f) || (Mathf.Abs(transform.position.y - random.position.y) > 5f)) && wall > 1)
             {
-                print("shit");
                 transform.position = Vector3.MoveTowards(transform.position, new Vector3(sign * adder + random.position.x,random.position.y), speed*0.5f);
                 yield return new WaitForEndOfFrame();
             }
             else if (((Mathf.Abs(transform.position.x - random.position.x) > 5f) || (Mathf.Abs(transform.position.y - (sign * adder + random.position.y)) > 5f)) && wall <= 1)
             {
-                print("fuck");
                 transform.position = Vector3.MoveTowards(transform.position, new Vector3(random.position.x, (sign * adder + random.position.y)), speed*0.5f);
                 yield return new WaitForEndOfFrame();
             }
@@ -46,7 +45,7 @@ public class Boomerang : BossAction
                 wall = rng.Next(4);
                 while (temp == wall)
                     wall = rng.Next(4);
-                adder = rng.Next(20);
+                adder = rng.Next(Mathf.RoundToInt(Mathf.Abs(arena.transform.GetChild(0).position.x) + Mathf.Abs(arena.transform.GetChild(1).position.x)) / 2 - 1); print(adder);
                 sign = 1;
                 if (rng.Next(2) == 1)
                     sign = -1;

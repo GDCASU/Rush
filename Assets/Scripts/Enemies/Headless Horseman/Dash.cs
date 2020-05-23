@@ -12,7 +12,7 @@ public class Dash : BossAction
     private float distance;
     public int readjustFrames;
     public float speed = 1;
-    bool thisAction = false;
+    public bool thisAction = false;
 
     void Awake()
     {
@@ -23,6 +23,7 @@ public class Dash : BossAction
 
     IEnumerator DashAttack()
     {
+        thisAction = true;
         Vector3 playerPos = PlayerHealth.singleton.transform.position;
 
         flip();
@@ -37,7 +38,6 @@ public class Dash : BossAction
             transform.GetChild(1).transform.Rotate(new Vector3(0, 0, 30f / 30f));
             yield return new WaitForEndOfFrame();
         }
-        GetComponent<BoxCollider2D>().enabled = true;
         GetComponent<EnemyHealth>().enabled = false;
         playerPos = PlayerHealth.singleton.transform.position;
         vector = playerPos - transform.position;
@@ -51,6 +51,10 @@ public class Dash : BossAction
             transform.position = transform.position + new Vector3(speed * 0.2f * vector.x / distance, speed * 0.2f * vector.y / distance, 0);
             yield return new WaitForEndOfFrame();
         }
+        GetComponent<EnemyHealth>().enabled = true;
+        StartCoroutine(Lance());
+        thisAction = false;
+        actionRunning = false;
     }
 
     IEnumerator Lance()
@@ -67,20 +71,13 @@ public class Dash : BossAction
         //if (move) transform.position = transform.position + new Vector3(speed * 0.2f * vector.x / distance, speed * 0.2f * vector.y / distance, 0);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {       
-        if (collision.gameObject.tag == "Wall" && thisAction)
-        {
-            move = false;
-            //readjust();
-            //GetComponent<BoxCollider2D>().enabled = false;
-            GetComponent<EnemyHealth>().enabled = true;
-            StartCoroutine(Lance());
-            thisAction = false;
-            actionRunning = false;
-        }
-
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.tag == "Wall" && thisAction)
+    //    {
+    //        move = false;
+    //    }
+    //}
 
     void flip()
     {
@@ -88,6 +85,5 @@ public class Dash : BossAction
             transform.rotation = Quaternion.Euler(transform.rotation.x, 180, transform.rotation.z);
         else
             transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);
-        thisAction = true;
     }
 }
