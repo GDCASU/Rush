@@ -1254,7 +1254,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &370111323
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2211,7 +2211,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &567964833
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4320,7 +4320,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ddrBird: {fileID: 1371846038}
   _player: {fileID: 1598740507}
-  _increaseHealthCombo: 5
+  _increaseHealthCombo: 10
   _comboText: {fileID: 1483071388}
   _comboCounter: 0
   announcer: {fileID: 947268220}
