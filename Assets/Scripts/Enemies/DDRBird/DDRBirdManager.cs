@@ -21,6 +21,9 @@ public class DDRBirdManager : MonoBehaviour
     private int _comboCounter = 0;
 
     [SerializeField]
+    private Announcer announcer;
+
+    [SerializeField]
     private Sprite[] _birdDances;
     private int _currentDanceIndex = 0;
 
@@ -46,6 +49,7 @@ public class DDRBirdManager : MonoBehaviour
         if (_comboCounter % _increaseHealthCombo == 0)
         {
             _player.GainHealth();
+            announcer.PlayPositiveShout();
         }
     }
 
@@ -57,6 +61,7 @@ public class DDRBirdManager : MonoBehaviour
     public void ResetCombo()
     {
         _comboCounter = 0;
+        announcer.PlayNegativeShout();
         UpdateUI();
     }
 }

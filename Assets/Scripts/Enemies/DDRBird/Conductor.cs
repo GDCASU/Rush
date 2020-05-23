@@ -23,6 +23,12 @@ public class Conductor : MonoBehaviour
 
     public float NoteSpeed;
 
+    public LightManager lightManager;
+    public GameObject LeftLightSpawn;
+    public GameObject RightLightSpawn;
+    public GameObject UpLightSpawn;
+    public GameObject DownLightSpawn;
+
     [SerializeField]
     private float _distance;
 
@@ -80,6 +86,7 @@ public class Conductor : MonoBehaviour
                 newNote.transform.Rotate(Vector3.down, 90);
                 newNote.GetComponent<Note>().Direction = KeyCode.LeftArrow;
                 newNote.GetComponent<Note>().NoteDestroyPoint = LeftNoteDestroyPoint;
+                lightManager.FlashLight(LeftLightSpawn, 0.5f);
                 break;
 
             case Direction.Right:
@@ -87,6 +94,7 @@ public class Conductor : MonoBehaviour
                 newNote.transform.Rotate(Vector3.down, -90);
                 newNote.GetComponent<Note>().Direction = KeyCode.RightArrow;
                 newNote.GetComponent<Note>().NoteDestroyPoint = RightNoteDestroyPoint;
+                lightManager.FlashLight(RightLightSpawn, 0.5f);
                 break;
 
             case Direction.Down:
@@ -94,12 +102,14 @@ public class Conductor : MonoBehaviour
                 newNote.transform.Rotate(Vector3.down, 180);
                 newNote.GetComponent<Note>().Direction = KeyCode.DownArrow;
                 newNote.GetComponent<Note>().NoteDestroyPoint = DownNoteDestroyPoint;
+                lightManager.FlashLight(DownLightSpawn, 0.5f);
                 break;
 
             case Direction.Up:
                 newNote.transform.position = UpNoteSpawnPoint.position;
                 newNote.GetComponent<Note>().Direction = KeyCode.UpArrow;
                 newNote.GetComponent<Note>().NoteDestroyPoint = UpNoteDestroyPoint;
+                lightManager.FlashLight(UpLightSpawn, 0.5f);
                 break;
         }
     }

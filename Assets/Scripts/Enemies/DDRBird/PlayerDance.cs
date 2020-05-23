@@ -18,6 +18,8 @@ public class PlayerDance : MonoBehaviour
     public DDRBirdManager ddrBirdManager;
     public LightManager lightManager;
 
+    public GameObject UnderLight;
+
     void Start()
     {
         // This diactivates the zone marker's renderers in the game only when the game is running.
@@ -37,12 +39,14 @@ public class PlayerDance : MonoBehaviour
             rend.material.color = PushButtonColor;
             rend.material.EnableKeyword("_EMISSION");
             rend.material.SetColor("_EmissionColor", PushButtonColor);
+            UnderLight.SetActive(true);
         }
 
         if (Input.GetKeyUp(HitDirection))
         {
             rend.material.color = BaseColor;
             rend.material.DisableKeyword("_EMISSION");
+            UnderLight.SetActive(false);
         }
     }
 

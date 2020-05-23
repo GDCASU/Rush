@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Schema;
 using UnityEngine;
 
 public class LightManager : MonoBehaviour
@@ -24,11 +25,15 @@ public class LightManager : MonoBehaviour
 
     public Color[] ColorChoices;
 
+    private bool lookAtPlayerTrigger = false;
+    private bool dimLightsTrigger = false;
+    private bool turnOnStageLights = false;
+
     private void Start()
     {
         Invoke("TurnOnHelpLights", 1);
         Invoke("LightsLookAtPlayer", 5);
-        Invoke("TurnOffHelpLights", 8);
+        Invoke("TurnOffHelpLights", 6.5f);
         Invoke("TurnOnStageLights", 8);
     }
 
@@ -48,34 +53,75 @@ public class LightManager : MonoBehaviour
 
     private void LightsLookAtPlayer()
     {
-        /*
-        LeftArrowLight.transform.LookAt(Player.transform, Vector3.left);
-        RightArrowLight.transform.LookAt(Player.transform, Vector3.left);
-        UpArrowLight.transform.LookAt(Player.transform, Vector3.left);
-        DownArrowLight.transform.LookAt(Player.transform, Vector3.left);*/
+        lookAtPlayerTrigger = true;
+    }
 
-        Vector3 direction = Player.transform.position - LeftArrowLight.transform.position;
+    private void Update()
+    {
+        if (lookAtPlayerTrigger)
+        {
+            LookAtPlayer(LeftArrowLight.gameObject);
+            LookAtPlayer(RightArrowLight.gameObject);
+            LookAtPlayer(UpArrowLight.gameObject);
+            LookAtPlayer(DownArrowLight.gameObject);
+        }
 
-        // The step size is equal to speed times frame time.
-        float singleStep = 10 * Time.deltaTime;
+        if (dimLightsTrigger)
+        {
+            float value = Time.deltaTime * 10;
+            LeftArrowLight.intensity -= value;
+            RightArrowLight.intensity -= value;
+            UpArrowLight.intensity -= value;
+            DownArrowLight.intensity -= value;
 
-        // Rotate the forward vector towards the target direction by one step
-        Vector3 newDirection = Vector3.RotateTowards(transform.forward, direction, singleStep, 0.0f);
+            if (LeftArrowLight.intensity <= 0)
+            {
+                dimLightsTrigger = false;
+            }
+        }
 
-        LeftArrowLight.transform.rotation = Quaternion.LookRotation(newDirection);
+        if (turnOnStageLights)
+        {
+            float value = Time.deltaTime * 15;
+            OnStageLight1.intensity += value;
+            OnStageLight2.intensity += value;
+
+            if (OnStageLight1.intensity >= 9)
+            {
+                turnOnStageLights = false;
+            }
+        }
+    }
+
+    private void LookAtPlayer(GameObject light)
+    {
+        Vector3 lTargetDir = Player.transform.position - light.transform.position;
+        lTargetDir.y = 0.0f;
+        light.transform.rotation = Quaternion.RotateTowards(light.transform.rotation, Quaternion.LookRotation(lTargetDir), Time.time * .5f);
     }
 
     private void TurnOffHelpLights()
     {
-        LeftArrowLight.gameObject.SetActive(false);
-        RightArrowLight.gameObject.SetActive(false);
-        UpArrowLight.gameObject.SetActive(false);
-        DownArrowLight.gameObject.SetActive(false);
+        lookAtPlayerTrigger = false;
+        dimLightsTrigger = true;
     }
 
     private void TurnOnStageLights()
     {
         OnStageLight1.gameObject.SetActive(true);
         OnStageLight2.gameObject.SetActive(true);
+        turnOnStageLights = true;
+    }
+
+    public void FlashLight(GameObject light, float seconds)
+    {
+        light.SetActive(true);
+        StartCoroutine(TurnOffLight(light, seconds));
+    }
+
+    private IEnumerator TurnOffLight(GameObject light, float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        light.SetActive(false);
     }
 }
