@@ -49,6 +49,7 @@ MonoBehaviour:
   hostile: 1
   solid: 1
   speed: 0
+  onScreenDestroy: 1
   homingDuration: 5
   coupledObjects: []
 --- !u!212 &377205250300873061
@@ -144,7 +145,7 @@ Transform:
   m_GameObject: {fileID: 2292847843046181767}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -2}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 1645236885373157286}
   - {fileID: 8264711064302382270}
@@ -167,6 +168,7 @@ MonoBehaviour:
   hostile: 0
   solid: 1
   speed: 0
+  onScreenDestroy: 1
   homingDuration: 5
   coupledObjects:
   - {fileID: 4165226829465518798}
@@ -209,15 +211,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: dbc3e1920caebf745aa537f23a5cc8b6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.2, y: 0.2}
+  m_Size: {x: 10.48, y: 10.47}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!58 &2241327467530363743
@@ -285,6 +287,7 @@ MonoBehaviour:
   hostile: 1
   solid: 1
   speed: 0
+  onScreenDestroy: 1
   homingDuration: 5
   coupledObjects: []
 --- !u!212 &3156587516653152858

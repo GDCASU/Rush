@@ -7581,16 +7581,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: WisperBoss
       objectReference: {fileID: 0}
-    - target: {fileID: 2149381935911444041, guid: c596c0c0e2f7c75428811f0f3d262ebc,
-        type: 3}
-      propertyPath: locationsParent
-      value: 
-      objectReference: {fileID: 1706477669}
-    - target: {fileID: 6576239264414887967, guid: c596c0c0e2f7c75428811f0f3d262ebc,
-        type: 3}
-      propertyPath: locationsParent
-      value: 
-      objectReference: {fileID: 1350547588}
     - target: {fileID: 8128845472949049963, guid: c596c0c0e2f7c75428811f0f3d262ebc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7656,6 +7646,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.4
       objectReference: {fileID: 0}
+    - target: {fileID: 2149381935911444041, guid: c596c0c0e2f7c75428811f0f3d262ebc,
+        type: 3}
+      propertyPath: locationsParent
+      value: 
+      objectReference: {fileID: 1706477669}
+    - target: {fileID: 6576239264414887967, guid: c596c0c0e2f7c75428811f0f3d262ebc,
+        type: 3}
+      propertyPath: locationsParent
+      value: 
+      objectReference: {fileID: 1350547588}
     - target: {fileID: 4142485986110898408, guid: c596c0c0e2f7c75428811f0f3d262ebc,
         type: 3}
       propertyPath: m_Sprite
@@ -7667,6 +7667,17 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 4.41
       objectReference: {fileID: 0}
+    - target: {fileID: 6112734903741970254, guid: c596c0c0e2f7c75428811f0f3d262ebc,
+        type: 3}
+      propertyPath: enemyName
+      value: Wisp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839020580187501277, guid: c596c0c0e2f7c75428811f0f3d262ebc,
+        type: 3}
+      propertyPath: bulletSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0dd73f71194f2964e9257743f29fe4f6,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c596c0c0e2f7c75428811f0f3d262ebc, type: 3}
 --- !u!1 &4797762520478025852

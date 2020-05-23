@@ -53,10 +53,10 @@ MonoBehaviour:
   bulletfrequency: 1
   spin: 10
   wave: 0
-  bulletSprite: {fileID: 0}
+  bulletSprite: {fileID: 21300000, guid: 0dd73f71194f2964e9257743f29fe4f6, type: 3}
   bulletTint: {r: 1, g: 1, b: 1, a: 1}
   rotation: {x: 0, y: 0, z: 0, w: 1}
-  scale: {x: 2, y: 2, z: 2}
+  scale: {x: 0.1, y: 0.1, z: 0.1}
   moveFunc: 3
   spawnFunc: 0
   SpawnFunctionParams: []
@@ -64,8 +64,11 @@ MonoBehaviour:
   colliderRadius: 0.1
   useOtherSpawnPoint: 0
   alternateSpawnLocation: {fileID: 0}
+  DontSpawnOnStart: 0
   enableHoming: 0
   enableCoupling: 1
+  enableBigBullet: 0
+  spawnedBigBullet: {fileID: 0}
 --- !u!114 &5019279166623701585
 MonoBehaviour:
   m_ObjectHideFlags: 0
