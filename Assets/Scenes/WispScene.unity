@@ -7667,6 +7667,16 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 4.41
       objectReference: {fileID: 0}
+    - target: {fileID: 8151650226234463911, guid: c596c0c0e2f7c75428811f0f3d262ebc,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8151650226234463911, guid: c596c0c0e2f7c75428811f0f3d262ebc,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6112734903741970254, guid: c596c0c0e2f7c75428811f0f3d262ebc,
         type: 3}
       propertyPath: enemyName
