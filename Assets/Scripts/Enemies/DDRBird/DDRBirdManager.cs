@@ -9,6 +9,15 @@ public class DDRBirdManager : MonoBehaviour
     private SpriteRenderer _ddrBird;
 
     [SerializeField]
+    private PlayerHealth _player;
+
+    [SerializeField]
+    private Text _comboText;
+
+    [SerializeField]
+    private int _comboCounter = 0;
+
+    [SerializeField]
     private Sprite[] _birdDances;
     private int _currentDanceIndex = 0;
 
@@ -24,5 +33,27 @@ public class DDRBirdManager : MonoBehaviour
 
         _currentDanceIndex = randomIndex;
         _ddrBird.sprite = _birdDances[_currentDanceIndex];
+        _comboCounter++;
+        UpdateUI();
+        AddHeart();
+    }
+
+    private void AddHeart()
+    {
+        if (_comboCounter % 10 == 0)
+        {
+            //add player life
+        }
+    }
+
+    private void UpdateUI()
+    {
+        _comboText.text = "x" + _comboCounter;
+    }
+
+    public void ResetCombo()
+    {
+        _comboCounter = 0;
+        UpdateUI();
     }
 }
