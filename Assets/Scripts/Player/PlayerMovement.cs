@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
         if(!freezeInPlace) CheckMovementInput();
         checkFaceMouse();
         flipSprite();
-    }
+	}
     public Vector2 overRideFacing = Vector2.zero;
     public Vector2 facing = Vector2.up;
     private Vector2 lastVel;
@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(inControl) velocity = direction * speed;
         // Update location of the player checking collisions
-        rb.MovePosition(rb.position + ((GetComponent<PlayerBasicShot>().charging)? velocity / 2 :velocity));
+        rb.MovePosition(rb.position+velocity);
 
         lastVel = velocity;
     }
