@@ -6,6 +6,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public static PlayerHealth singleton;
     public int lives;
+    private PlayerMovement pm;
     private IInputPlayer player;
     private int _maxHealth;
 
@@ -23,6 +24,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Start()
     {
+        pm = GetComponent<PlayerMovement>();
         player = GetComponent<IInputPlayer>();
         sp = GetComponent<SpriteRenderer>();
         HUDManager.singleton.setLiveCount(lives);
@@ -35,7 +37,12 @@ public class PlayerHealth : MonoBehaviour
             GainHealth();
         }
         if (lives > 0) HUDManager.singleton.setLiveCount(lives);
-        else Debug.Log("Go to gameover"); //example: SceneManager.LoadScene("GameOver"); 
+        else
+        {
+            pm.StopMovement();
+            pm.winWalk = false;
+            pm.mo.dead=true;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other) {
@@ -68,4 +75,5 @@ public class PlayerHealth : MonoBehaviour
     {
         if (lives < _maxHealth) lives++;
     }
+    
 }
