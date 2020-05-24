@@ -6,10 +6,8 @@ using UnityEngine.UI;
 public class HUDManager : MonoBehaviour
 {
     public static HUDManager singleton;
-    public List<Image> liveIcons=new List<Image>();
 
-    public Sprite activeLive;
-    public Sprite inactiveLive;
+    public Image healthBar;
     private void Awake()
     {
         if (singleton == null)
@@ -18,8 +16,8 @@ public class HUDManager : MonoBehaviour
             Destroy(gameObject);
     }
     
-    public void setLiveCount(int nextLives) {
-        for(int i = 0; i < liveIcons.Count; i++)
-            liveIcons[i].sprite = (i < nextLives) ? activeLive : inactiveLive;
+    public void setLiveCount(float nextLives) 
+    {
+        healthBar.fillAmount = nextLives / 10f;
     }
 }
