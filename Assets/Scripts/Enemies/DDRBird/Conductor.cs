@@ -48,7 +48,8 @@ public class Conductor : MonoBehaviour
         _distance = Vector3.Distance(new Vector3(-13.68f, 7.02f, -1f), LeftNoteDestroyPoint.transform.position);
 
         Speaker.Play();
-        Player.freezeInPlace = true;
+        Player.enabled = false;
+        Player.gameObject.GetComponent<PlayerBasicMelee>().enabled = false;
     }
 
     private void FixedUpdate()
