@@ -39,6 +39,7 @@ public class ChimeraA1 : BossAction
             yield return new WaitForEndOfFrame();
             //add an i
         }
+        PlaySoundEffect(0);
         GetComponent<SpriteRenderer>().color = new Color(255, 0, 0);
         for (int x = 0; x < 20; x++)
         {
@@ -55,6 +56,7 @@ public class ChimeraA1 : BossAction
             y++;
             yield return new WaitForEndOfFrame();
         }
+        PlaySoundEffect(1);
         box.enabled = false;
         collided = false;
         actionRunning = false;

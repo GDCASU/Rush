@@ -6,7 +6,17 @@ using System.Linq;
 
 public abstract class BossAction : MonoBehaviour
 {
+    [FMODUnity.EventRef]
+    public string[] soundEffects;
+    FMOD.Studio.EventInstance EffectAudio;
     public bool actionRunning = false;
+
+    public void PlaySoundEffect(int index)
+    {
+        EffectAudio = FMODUnity.RuntimeManager.CreateInstance(soundEffects[index]);
+        EffectAudio.start();
+        FMODUnity.RuntimeManager.PlayOneShotAttached(soundEffects[index], transform.gameObject);
+    }
 }
 [RequireComponent(typeof(EnemyHealth))]
 public class BossBehaviorController : MonoBehaviour
