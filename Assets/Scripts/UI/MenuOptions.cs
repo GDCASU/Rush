@@ -7,10 +7,15 @@ using UnityEngine.SceneManagement;
 public class MenuOptions : MonoBehaviour
 {
     IInputPlayer player;
+    public PlayerMovement pm;
     public bool isPaused;
+    public bool won;
+    public bool dead;
     private bool isTitle;
     public List<string> keyboardCodes;
     public List<string> xboxCodes;
+    public GameObject winUI;
+    public GameObject deathUI;
     public GameObject hud;
     public GameObject mainMenu;
     public GameObject bossSelect;
@@ -61,7 +66,15 @@ public class MenuOptions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (InputManager.GetButtonDown(PlayerInput.PlayerButton.Pause, player))
+        if (dead || won)
+        {
+            backToPause();
+            Resume();
+            if (won) winUI.SetActive(true);
+            else deathUI.SetActive(true);
+            pm.StopMovement();           
+        }
+        else if (InputManager.GetButtonDown(PlayerInput.PlayerButton.Pause, player))
         {
             if (current >= 4)
             {
@@ -75,8 +88,7 @@ public class MenuOptions : MonoBehaviour
                 else Pause();
             }
             else backToMain();
-            
-        }
+        } 
     }
     
     public void Play()
@@ -119,11 +131,15 @@ public class MenuOptions : MonoBehaviour
     {
         panels[current].SetActive(false);
         current = 0;
-        panels[3].SetActive(true);
-        panels[current].SetActive(true);
+        if (!dead)
+        {
+            panels[3].SetActive(true);
+            panels[current].SetActive(true);
+        } 
     }
     public void Pause()
     {
+        pm.StopMovement();
         isPaused = true;
         panels[3].SetActive(true);
         Time.timeScale = 0;
@@ -131,6 +147,7 @@ public class MenuOptions : MonoBehaviour
     }
     public void Resume()
     {
+        pm.RestoreMovement();
         isPaused = false;
         panels[3].SetActive(false);
         Time.timeScale = 1;
@@ -198,5 +215,9 @@ public class MenuOptions : MonoBehaviour
         panels[current].SetActive(false);
         current = 4;
         panels[current].SetActive(false);
+    }
+    public void Retry()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
