@@ -34,7 +34,7 @@ public class PlayerDash : MonoBehaviour {
     public IEnumerator dash()
     {
         if (sprites.Length != 0) foreach (SpriteRenderer sprite in sprites)sprite.color = new Color(0.5f, 0.5f, 0.5f, 1);
-
+        if (GetComponent<PlayerBasicShot>().charging) mov.speed = GetComponent<PlayerBasicShot>().originalSpeed;
         //sp.color = new Color(0.5f, 0.5f, 0.5f, 1);
         GetComponent<PlayerHealth>().inv = true;
         mov.velocity = Vector2.zero;

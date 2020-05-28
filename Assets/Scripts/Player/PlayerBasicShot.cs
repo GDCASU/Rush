@@ -15,7 +15,7 @@ public class PlayerBasicShot : MonoBehaviour
     private IInputPlayer player;
     private float charge = 0;
     private bool shot = false;
-    private float originalSpeed;
+    public float originalSpeed;
     public float chargingSpeed;
 
     private PlayerMovement pMovement;
@@ -29,6 +29,7 @@ public class PlayerBasicShot : MonoBehaviour
 
     public void Update()
     {
+        print(charging);
         if (charging) pMovement.anim.tryNewAnimation("Range_charging", true);
         if (InputManager.GetButtonUp(PlayerInput.PlayerButton.Shoot, player) && charging)
         {
@@ -45,10 +46,10 @@ public class PlayerBasicShot : MonoBehaviour
                 sp.transform.localScale = Vector3.one * scale;
                 shot = true;
             }
-            resetShot();
+            resetShot(false);
         }
-        if (GetComponent<PlayerHealth>().inv) resetShot();
-        if (InputManager.GetButtonDown(PlayerInput.PlayerButton.Shoot, player) && !charging)
+        if (GetComponent<PlayerHealth>().inv) resetShot(false);
+        if (InputManager.GetButtonDown(PlayerInput.PlayerButton.Shoot, player) && !charging && !GetComponent<PlayerBasicMelee>().inAttackStun)
         {
             pMovement.speed =chargingSpeed;
             pMovement.faceMouse();
@@ -69,11 +70,11 @@ public class PlayerBasicShot : MonoBehaviour
         }
         if (!charging && charge >= 1) charge = charge - decreaseRate;
     }
-    void resetShot()
+    public void resetShot(bool fromMelee)
     {
         pMovement.speed = originalSpeed;
         chargedLight.GetComponent<Light>().enabled = false;
-        charge = (!shot && !GetComponent<PlayerHealth>().inv) ? charge : 0;
+        charge = (!shot && !GetComponent<PlayerHealth>().inv && !fromMelee) ? charge : 0;
         shot = false;
         charging = false;
     }

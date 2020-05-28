@@ -43,7 +43,9 @@ public class PlayerBasicMelee : MonoBehaviour
         framesSinceAttack++;
         if ( attackBuffered || InputManager.GetButtonDown(PlayerInput.PlayerButton.Melee, player) )
         {
-            if(!inAttackStun) {
+            GetComponent<PlayerBasicShot>().resetShot(true);
+            if (!inAttackStun) 
+            {
                 if(combo >= comboData.Count || framesSinceAttack > comboData[combo].windowFrames) combo = 0; // reset combo counter
                 attackBuffered = false;
                 framesSinceAttack = 0;
