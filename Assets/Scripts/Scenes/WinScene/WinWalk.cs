@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class WinWalk : MonoBehaviour
 {
-    private PlayerMovement pm;
+    public PlayerMovement pm;
     private void Start()
     {
-        pm=GetComponent<PlayerMovement>();
         pm.winWalk = true;
     }
     private void Update()

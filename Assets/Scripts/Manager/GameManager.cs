@@ -18,24 +18,26 @@ using System.Runtime.Serialization;
 [RequireComponent(typeof(SoundManager))]
 public class GameManager : MonoBehaviour
 {
-    private static GameManager singleton;
+    public WaitForSeconds ws;
+    public float fps = 60;
+    public static GameManager singleton;
     public static int latestUnlocked;
     const string saveName = "Rush.dat";
     public const int totalLevels = 12; // This needs to be updated with total levels (not scenes) in build 
 
+    public void Start()=>ws = new WaitForSeconds(1f/fps);
+
     public bool disableSaves = false;
     void Awake()
     {
-        if(disableSaves)return;
         if (singleton == null)
             singleton = this;
-
-        else if(singleton != this)
+        else
         {
             Destroy(gameObject);
-            return;
-        }
 
+        }
+        if (disableSaves) return;
         DontDestroyOnLoad(gameObject);
 
         // Get the save file

@@ -9,7 +9,7 @@ public class PlayerHealth : MonoBehaviour
     private PlayerMovement pm;
     private IInputPlayer player;
     private int _maxHealth;
-
+    public SpriteRenderer[] sprites;
     public bool inv = false;
 
     //singleton
@@ -26,7 +26,7 @@ public class PlayerHealth : MonoBehaviour
     {
         pm = GetComponent<PlayerMovement>();
         player = GetComponent<IInputPlayer>();
-        sp = GetComponent<SpriteRenderer>();
+        //sp = GetComponent<SpriteRenderer>();
         HUDManager.singleton.setLiveCount(lives);
         _maxHealth = lives;
     }
@@ -59,10 +59,12 @@ public class PlayerHealth : MonoBehaviour
     const int iframes = 40;
     public IEnumerator flashingSprite () {
         for(int i = iframes; i>0; i--){
-            sp.enabled = i%2 == 0 ? !sp.enabled : sp.enabled;
-            yield return new WaitForEndOfFrame();
+            if (sprites.Length != 0) foreach (SpriteRenderer sprite in sprites)sprite.enabled = i % 2 == 0 ? !sprite.enabled : sprite.enabled;
+            //sp.enabled = i%2 == 0 ? !sp.enabled : sp.enabled;
+            yield return GameManager.singleton.ws;
         }
-        sp.enabled = true;
+        if (sprites.Length != 0) foreach (SpriteRenderer sprite in sprites)sprite.enabled = true;
+        //sp.enabled = true;
         inv = false;
     }
     public void takeDamage()

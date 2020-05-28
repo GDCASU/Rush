@@ -7,7 +7,7 @@ public class AnimationController : MonoBehaviour {
 	public bool animationLocked;
     private Animator anim;
     public void Start() {
-        anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
     }
     private bool breakCallback;
     public void tryNewAnimation (string animationName, bool loop, float frames = 0, bool force = false, Action onComplete = null){
