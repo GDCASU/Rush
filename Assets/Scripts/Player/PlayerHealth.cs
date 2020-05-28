@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class PlayerHealth : MonoBehaviour {
+public class PlayerHealth : MonoBehaviour
+{
     public static PlayerHealth singleton;
     public int lives;
+    private PlayerMovement pm;
     private IInputPlayer player;
-
+    private int _maxHealth;
+    public SpriteRenderer[] sprites;
     public bool inv = false;
 
     //singleton
@@ -21,18 +24,25 @@ public class PlayerHealth : MonoBehaviour {
 
     private void Start()
     {
+        pm = GetComponent<PlayerMovement>();
         player = GetComponent<IInputPlayer>();
-        sp = GetComponent<SpriteRenderer>();
+        //sp = GetComponent<SpriteRenderer>();
         HUDManager.singleton.setLiveCount(lives);
+        _maxHealth = lives;
     }
     void Update()
     {
         if (InputManager.GetButtonDown(PlayerInput.PlayerButton.Potion, player))
         {
-            lives++;
+            GainHealth();
         }
         if (lives > 0) HUDManager.singleton.setLiveCount(lives);
-        else Debug.Log("Go to gameover"); //example: SceneManager.LoadScene("GameOver"); 
+        else
+        {
+            pm.StopMovement();
+            pm.winWalk = false;
+            pm.mo.dead=true;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other) {
@@ -49,10 +59,12 @@ public class PlayerHealth : MonoBehaviour {
     const int iframes = 40;
     public IEnumerator flashingSprite () {
         for(int i = iframes; i>0; i--){
-            sp.enabled = i%2 == 0 ? !sp.enabled : sp.enabled;
-            yield return new WaitForEndOfFrame();
+            if (sprites.Length != 0) foreach (SpriteRenderer sprite in sprites)sprite.enabled = i % 2 == 0 ? !sprite.enabled : sprite.enabled;
+            //sp.enabled = i%2 == 0 ? !sp.enabled : sp.enabled;
+            yield return GameManager.singleton.ws;
         }
-        sp.enabled = true;
+        if (sprites.Length != 0) foreach (SpriteRenderer sprite in sprites)sprite.enabled = true;
+        //sp.enabled = true;
         inv = false;
     }
     public void takeDamage()
@@ -61,4 +73,9 @@ public class PlayerHealth : MonoBehaviour {
         StartCoroutine(flashingSprite());
         lives--;
     }
+    public void GainHealth()
+    {
+        if (lives < _maxHealth) lives++;
+    }
+    
 }
