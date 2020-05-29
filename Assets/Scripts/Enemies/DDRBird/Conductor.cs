@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static DDRBirdLoader;
 
 public class Conductor : MonoBehaviour
@@ -29,6 +31,8 @@ public class Conductor : MonoBehaviour
     public GameObject UpLightSpawn;
     public GameObject DownLightSpawn;
 
+    public MenuOptions menuOptions;
+
     [SerializeField]
     private float _distance;
 
@@ -48,8 +52,7 @@ public class Conductor : MonoBehaviour
         _distance = Vector3.Distance(new Vector3(-13.68f, 7.02f, -1f), LeftNoteDestroyPoint.transform.position);
 
         Speaker.Play();
-        Player.enabled = false;
-        Player.gameObject.GetComponent<PlayerBasicMelee>().enabled = false;
+        Player.StopMovement();
     }
 
     private void FixedUpdate()
@@ -74,6 +77,17 @@ public class Conductor : MonoBehaviour
 
             CurrentSongTime = Speaker.time;
         }
+
+        if (!Speaker.isPlaying && NoteTimeStamps.Count == 0)
+        {
+            SceneManager.LoadScene("WinScene");
+        }
+    }
+
+    private void Update()
+    {
+        if (menuOptions.isPaused) Speaker.Pause();
+        else if (!menuOptions.isPaused) Speaker.UnPause();
     }
 
     private void SpawnNote(Direction direction, out GameObject newNote)

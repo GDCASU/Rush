@@ -18,6 +18,8 @@ public class LightManager : MonoBehaviour
     public Light OnStageLight1;
     public Light OnStageLight2;
 
+    public Light[] OnStageLights;
+
     public Light LeftArrowLight;
     public Light RightArrowLight;
     public Light UpArrowLight;
@@ -39,8 +41,10 @@ public class LightManager : MonoBehaviour
 
     public void UpdateLightColors()
     {
-        OnStageLight1.color = ColorChoices[Random.Range(0, ColorChoices.Length)];
-        OnStageLight2.color = ColorChoices[Random.Range(0, ColorChoices.Length)];
+        foreach (Light light in OnStageLights)
+        {
+            light.color = ColorChoices[Random.Range(0, ColorChoices.Length)];
+        }
     }
 
     private void TurnOnHelpLights()
@@ -83,10 +87,13 @@ public class LightManager : MonoBehaviour
         if (turnOnStageLights)
         {
             float value = Time.deltaTime * 15;
-            OnStageLight1.intensity += value;
-            OnStageLight2.intensity += value;
 
-            if (OnStageLight1.intensity >= 9)
+            foreach (Light light in OnStageLights)
+            {
+                light.intensity += value;
+            }
+
+            if (OnStageLights[0].intensity >= 9)
             {
                 turnOnStageLights = false;
             }
@@ -108,8 +115,11 @@ public class LightManager : MonoBehaviour
 
     private void TurnOnStageLights()
     {
-        OnStageLight1.gameObject.SetActive(true);
-        OnStageLight2.gameObject.SetActive(true);
+        foreach (Light light in OnStageLights)
+        {
+            light.gameObject.SetActive(true);
+        }
+        UpdateLightColors();
         turnOnStageLights = true;
     }
 

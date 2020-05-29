@@ -13,8 +13,25 @@ public class LightSource : MonoBehaviour
     [SerializeField]
     private int _direction = 1;
 
+    [SerializeField]
+    private bool rotateX;
+
+    [SerializeField]
+    private bool rotateY;
+
+    [SerializeField]
+    private bool rotateZ;
+
     private void Update()
     {
-        transform.rotation = Quaternion.Euler(_maxRotation * Mathf.Sin(Time.time * _speed) * _direction, 0f, 0);
+        float xRotation = 0;
+        float yRotation = 0;
+        float zRotation = 0;
+
+        if (rotateX) xRotation = _maxRotation * Mathf.Sin(Time.time * _speed) * _direction;
+        if (rotateY) yRotation = _maxRotation * Mathf.Sin(Time.time * _speed) * _direction;
+        if (rotateZ) zRotation = _maxRotation * Mathf.Sin(Time.time * _speed) * _direction;
+
+        transform.rotation = Quaternion.Euler(xRotation, yRotation, zRotation);
     }
 }
