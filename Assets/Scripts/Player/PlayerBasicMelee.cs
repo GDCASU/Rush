@@ -17,6 +17,7 @@ public class PlayerBasicMelee : MonoBehaviour
         public float damage;
         public float pushMultiplier; // percent of run speed
         public string animationName;
+        public string chargeName;
         public Sprite effectSprite;
     }
     public List<attackData> comboData;
@@ -42,12 +43,14 @@ public class PlayerBasicMelee : MonoBehaviour
         framesSinceAttack++;
         if ( attackBuffered || InputManager.GetButtonDown(PlayerInput.PlayerButton.Melee, player) )
         {
-            if(!inAttackStun) {
+            GetComponent<PlayerBasicShot>().resetShot(true);
+            if (!inAttackStun) 
+            {
                 if(combo >= comboData.Count || framesSinceAttack > comboData[combo].windowFrames) combo = 0; // reset combo counter
                 attackBuffered = false;
                 framesSinceAttack = 0;
                 mov.faceMouse();
-                anim.tryNewAnimation("PlayerCharge", false, comboData[combo].startupFrames, false, () => applyAttack() );
+                anim.tryNewAnimation(comboData[combo].chargeName, false, comboData[combo].startupFrames, false, () => applyAttack());
                 curVel = mov.overRideFacing.normalized * mov.speed * comboData[combo].pushMultiplier;
                 mov.freezeInPlace=true;
                 combo++;
@@ -66,10 +69,11 @@ public class PlayerBasicMelee : MonoBehaviour
     public float overlapRange = 0.8f; // 1 means the player is on the edge of the hitbox, 0 means the center
     public SlashLazy slashEffect;
     void applyAttack() {
-        anim.tryNewAnimation(comboData[combo-1].animationName, false, comboData[combo-1].stunFrames, false, ()=> {anim.tryNewAnimation("PlayerIdle", true); mov.freezeInPlace=false;} );
-        
+        anim.tryNewAnimation(comboData[combo-1].animationName, false, comboData[combo-1].stunFrames, false, ()=> {anim.tryNewAnimation("Idle", true); mov.freezeInPlace=false;} );
+
         // Get the list of game objects in our hitbox
-        var hits=Physics2D.CircleCastAll((Vector2)transform.position+mov.overRideFacing*comboData[combo-1].radius*overlapRange, comboData[combo-1].radius, mov.overRideFacing, 0f);
+        
+        var hits=Physics2D.CircleCastAll((Vector2)transform.position + new Vector2(0f, -.5f) + mov.facing * comboData[(combo > 0) ? combo - 1 : combo].radius * overlapRange * 1.5f, comboData[(combo > 0) ? combo - 1 : combo].radius, mov.overRideFacing, 0f);
 
         // Damage all hit enemies
         var enemies = hits?.Where(x => x.transform.tag == "Enemy")?.Select(e => e.transform.GetComponent<EnemyHealth>());
@@ -83,9 +87,10 @@ public class PlayerBasicMelee : MonoBehaviour
 
         slashEffect.Enable(comboData[combo-1].effectSprite, this.transform.position, mov.facing);
     }
-    void OnDrawGizmos () {
+    void OnDrawGizmos ()
+    {
         // put code here for drawing hitboxes
-        if( Application.isPlaying ) Gizmos.DrawWireSphere((Vector2)transform.position+mov.facing*comboData[(combo>0) ? combo-1 : combo].radius*overlapRange,comboData[(combo>0)?combo-1 : combo].radius);  
+        if( Application.isPlaying ) Gizmos.DrawWireSphere((Vector2)transform.position +new Vector2(0f, -.5f) + mov.facing*comboData[(combo>0) ? combo-1 : combo].radius*overlapRange * 1.5f, comboData[(combo>0)?combo-1 : combo].radius);  
     }
 
     private void reflectBulletFromPlayer(Bullet bullet){
