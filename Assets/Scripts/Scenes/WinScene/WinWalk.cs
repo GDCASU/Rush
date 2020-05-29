@@ -12,6 +12,7 @@ public class WinWalk : MonoBehaviour
     private void Update()
     {
         if(pm.winWalk)pm.CheckMovementInput(true);
+        pm.anim.tryNewAnimation("Running", true);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
