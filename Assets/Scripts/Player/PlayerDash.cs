@@ -10,6 +10,7 @@ public class PlayerDash : MonoBehaviour {
     public int extraInvFrames;
     private PlayerMovement mov;
     private SpriteRenderer sp;
+    public SpriteRenderer[] sprites;
     public float dashSpeedMultiplier = 1.5f;
     public bool inDash = false;
     
@@ -18,7 +19,7 @@ public class PlayerDash : MonoBehaviour {
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
 		mov= GetComponent<PlayerMovement>();
-        sp = GetComponent<SpriteRenderer>();
+        //sp = GetComponent<SpriteRenderer>();
 	}
 	
 	void Update () {
@@ -29,20 +30,23 @@ public class PlayerDash : MonoBehaviour {
             StartCoroutine(dash());
         }
 	}
-    
+
     public IEnumerator dash()
     {
-        sp.color = new Color(0.5f, 0.5f, 0.5f, 1);
+        if (sprites.Length != 0) foreach (SpriteRenderer sprite in sprites)sprite.color = new Color(0.5f, 0.5f, 0.5f, 1);
+        if (GetComponent<PlayerBasicShot>().charging) mov.speed = GetComponent<PlayerBasicShot>().originalSpeed;
+        //sp.color = new Color(0.5f, 0.5f, 0.5f, 1);
         GetComponent<PlayerHealth>().inv = true;
         mov.velocity = Vector2.zero;
 
         var dashVel = mov.facing.normalized * mov.speed * dashSpeedMultiplier;
         var orgRot = transform.rotation;
+        mov.anim.tryNewAnimation("Dash", false,dashFrames);
         for (int i = dashFrames; i > 0; i--)
         {
             rb.MovePosition(rb.position+dashVel);
-            transform.Rotate(new Vector3(0,0,25));
-            yield return new WaitForEndOfFrame();
+            //transform.Rotate(new Vector3(0,0,25));
+            yield return GameManager.singleton.ws;
         }
         transform.rotation = orgRot;
         mov.inControl=true;
@@ -51,8 +55,9 @@ public class PlayerDash : MonoBehaviour {
 
     public IEnumerator endInv()
     {
-        for (int i = dashFrames; i > 0; i--) yield return new WaitForEndOfFrame();
-        sp.color = new Color(1,1, 1, 1);
+        for (int i = extraInvFrames; i > 0; i--) yield return GameManager.singleton.ws;
+        if (sprites.Length!=0)foreach (SpriteRenderer sprite in sprites)sprite.color = new Color(1,1,1,1);
+        //sp.color = new Color(1,1, 1, 1);
         GetComponent<PlayerHealth>().inv = false;
         inDash = false;
     }

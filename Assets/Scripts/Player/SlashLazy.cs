@@ -13,14 +13,14 @@ public class SlashLazy : MonoBehaviour {
         transform.position = pos;
         transform.rotation = Quaternion.identity;
         transform.Rotate ( 0, 0 , (float)(Vector2.SignedAngle(Vector2.right, dir)) );
-        transform.position += (Vector3)dir/2;
+        transform.position += (Vector3)dir*1.5f;
 
         StartCoroutine(disable());
     }
     public IEnumerator disable () {
         for(int i = 0; i < 5; i++) { 
             transform.position += transform.forward/20;
-            yield return new WaitForEndOfFrame();
+            yield return GameManager.singleton.ws;
         }
         rend.enabled = false;
         this.enabled = false;

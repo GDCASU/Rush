@@ -2,34 +2,80 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBasicShot : MonoBehaviour {
-	public float bulletSpeed = 1;
+public class PlayerBasicShot : MonoBehaviour 
+{
+    public bool charging = false;
+    public GameObject chargedLight;
+    public float decreaseRate;
+    public float chargeUpFrames;
+    public float bulletSpeed = 1;
     public Sprite bulletSprite;
     public float scale = 0.25f;
     public float shootFrameReset;
     private IInputPlayer player;
-    
+    private float charge = 0;
+    private bool shot = false;
+    public float originalSpeed;
+    public float chargingSpeed;
+
     private PlayerMovement pMovement;
 
      void Start()
     {
         player = GetComponent<IInputPlayer>();   
         pMovement = GetComponent<PlayerMovement>();
+        originalSpeed=pMovement.speed;
     }
-    private float timer = 0;
-    public void Update () {
-        if (InputManager.GetButton(PlayerInput.PlayerButton.Shoot, player) && timer < 0)
+
+    public void Update()
+    {
+        print(charging);
+        if (charging) pMovement.anim.tryNewAnimation("Range_charging", true);
+        if (InputManager.GetButtonUp(PlayerInput.PlayerButton.Shoot, player) && charging)
         {
-            pMovement.faceMouse();
-            Vector2 direction = pMovement.overRideFacing;
+            if (charge > chargeUpFrames)
+            {
+                pMovement.anim.tryNewAnimation("Range_release", false, 15, false);
+                pMovement.faceMouse();
+                Vector2 direction = pMovement.overRideFacing;
 
-            var sp = BulletPool.rent();
-            sp.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-            sp.GetComponent<Bullet>().Init(direction, 0, bulletSpeed, Bullet.MoveFunctions.Spin, Bullet.SpawnFunctions.None, bulletSprite, Color.white, false, 0.15f, null);
-
-            sp.transform.localScale = Vector3.one * scale;
-            timer = shootFrameReset;
+                var sp = BulletPool.rent();
+                sp.transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+                sp.GetComponent<Bullet>().Init(direction, 0, bulletSpeed, Bullet.MoveFunctions.None, Bullet.SpawnFunctions.None, bulletSprite, Color.green, false, 0.15f, null);
+                sp.transform.right = -direction;
+                sp.transform.localScale = Vector3.one * scale;
+                shot = true;
+            }
+            resetShot(false);
         }
-        timer--;
+        if (GetComponent<PlayerHealth>().inv) resetShot(false);
+        if (InputManager.GetButtonDown(PlayerInput.PlayerButton.Shoot, player) && !charging && !GetComponent<PlayerBasicMelee>().inAttackStun)
+        {
+            pMovement.speed =chargingSpeed;
+            pMovement.faceMouse();
+            charging = true;
+            if (charge < 0)
+            {
+                charge = 0;
+            } 
+        }
+        if (InputManager.GetButton(PlayerInput.PlayerButton.Shoot, player) && charging)
+        {
+            if (!shot) charge++;
+            if (charge > chargeUpFrames)
+            {
+                chargedLight.GetComponent<Light>().enabled = true;
+                chargedLight.GetComponent<Light>().color = Color.green;
+            }
+        }
+        if (!charging && charge >= 1) charge = charge - decreaseRate;
+    }
+    public void resetShot(bool fromMelee)
+    {
+        pMovement.speed = originalSpeed;
+        chargedLight.GetComponent<Light>().enabled = false;
+        charge = (!shot && !GetComponent<PlayerHealth>().inv && !fromMelee) ? charge : 0;
+        shot = false;
+        charging = false;
     }
 }
