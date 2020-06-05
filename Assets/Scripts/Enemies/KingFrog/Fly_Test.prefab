@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2880669955417826983}
   - component: {fileID: 2880669955417826982}
   - component: {fileID: 8075490167247265984}
+  - component: {fileID: 2208923685058056690}
   m_Layer: 0
   m_Name: Fly_Test
   m_TagString: Untagged
@@ -95,7 +96,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.5, y: 1}
+  m_Offset: {x: -1.4, y: 0.7}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.03811369, y: 0.49672493}
@@ -106,7 +107,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3, y: 4}
+  m_Size: {x: 3, y: 2.7}
   m_EdgeRadius: 0
 --- !u!114 &8075490167247265984
 MonoBehaviour:
@@ -126,3 +127,22 @@ MonoBehaviour:
   rotateSpeed: 12
   accel: 1
   deccel: 2
+--- !u!95 &2208923685058056690
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2880669955417826984}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7a0759abb662b294489b8163baabaa87, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
