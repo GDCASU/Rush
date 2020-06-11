@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 
+/// <summary>
+/// This class defines a moment behavior which can be used to interpolate an object between several nodes 
+/// In the future we may want to use a reorderable list for the nodes, I believe 2020 introduces a native ones but there are librarys for it already
+/// </summary>
 [System.Serializable]
 public struct MovementKeyframe {
     public Vector3 pos;
@@ -14,6 +18,7 @@ public struct MovementKeyframe {
     public MovementKeyframe(Vector3 p, Vector3 r, float time = 5f, Curves c = Curves.Lerp) {
         pos = p; rot = r; timeToReachMe = time; curve = c;
     }
+    // this override will have the camera face the same direction as the transform at that location
     public MovementKeyframe (Transform transform, float time)
         : this(transform.position, transform.forward, time) { }
     public void InterpTransform(MovementKeyframe next, float t, Transform transform) {
@@ -21,25 +26,22 @@ public struct MovementKeyframe {
         transform.position = Vector3.Lerp(pos, next.pos, t);
         transform.rotation = Quaternion.Lerp(Quaternion.Euler(rot),Quaternion.Euler(next.rot),t);
     }
-    static Vector3 CheckR(Vector3 r, Vector3 p1, Vector3 p2){
-        return (r.Equals(Vector3.zero) ? p2 -p1 : r);
-    }
 }
 
 public class TimedMovement : MonoBehaviour {
-    public bool loop=false;
+    public bool loop = false;
     public float totalMovementScaling = 1f;
     private bool moving;
     public List<MovementKeyframe> keyframes = new List<MovementKeyframe>();
     void Start () { 
-        if(loop) StartCoroutine( LoopingMovement() );
-        else StartCoroutine( Movement() );
+        StartCoroutine( loop ? LoopingMovement() : Movement() );
         moving = true; 
     }
     IEnumerator Movement() {
         keyframes.Insert(0, new MovementKeyframe(transform, 0));
         for(int i = 0; i < keyframes.Count-1; i++) {
-            var prev = keyframes[i]; var next = keyframes[i + 1];
+            var prev = keyframes[i]; 
+            var next = keyframes[i + 1];
             for (float t=0; t<1; t += next.timeToReachMe / totalMovementScaling) {
                 prev.InterpTransform(next, t, transform);
                 yield return null;
@@ -47,10 +49,12 @@ public class TimedMovement : MonoBehaviour {
         }
     }
     IEnumerator LoopingMovement() {
+        // We want to return to this exact rotation and position
         keyframes.Insert(0, new MovementKeyframe(transform.position, transform.rotation.eulerAngles, keyframes.Last().timeToReachMe,Curves.Lerp));
         while(true) {
             for(int i = 0; i < keyframes.Count; i++) {
-                var prev = keyframes[i % (keyframes.Count)]; var next = keyframes[ (i + 1) % (keyframes.Count) ];
+                var prev = keyframes[i % (keyframes.Count)]; 
+                var next = keyframes[ (i + 1) % (keyframes.Count) ];
                 for (float t=0; t<1; t += next.timeToReachMe / totalMovementScaling) {
                     prev.InterpTransform(next, t, transform);
                     yield return null;
@@ -58,7 +62,7 @@ public class TimedMovement : MonoBehaviour {
             }
         }
     }
-	void OnDrawGizmosSelected () {DrawPath();}
+	void OnDrawGizmosSelected () => DrawPath();
 	void DrawPath (float sphereRadius = 1) {
         if (keyframes == null || !(keyframes.Count > 1)) {
             Gizmos.color = Color.red;
@@ -76,7 +80,10 @@ public class TimedMovement : MonoBehaviour {
         Gizmos.DrawSphere(keyframes.Last().pos, sphereRadius);
 	}
 
-    void DrawSegment (Vector3 pos1, Vector3 pos2, float r) { Gizmos.DrawSphere(pos1, r);  Gizmos.DrawLine(pos1,pos2); }
+    void DrawSegment (Vector3 pos1, Vector3 pos2, float radius) { 
+        Gizmos.DrawSphere(pos1, radius);  
+        Gizmos.DrawLine(pos1,pos2);
+    }
 }
 
 
@@ -84,6 +91,9 @@ public enum Curves {
     Lerp, EaseIn, EaseOut, SmootherStep, StickToLowerBound, StickToUpperBound 
 }
 
+/// <summary>
+/// Defines a standard type for interpolation, to allow easy use of nonlinear functions
+/// </summary>
 public static class Interpolation {
     public delegate float Curve (float tIn);
     public static float Interpolate (float a, float b, float t, Curve c) {
