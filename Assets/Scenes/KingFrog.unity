@@ -402,12 +402,12 @@ PrefabInstance:
     - target: {fileID: 5710365205494932601, guid: 55e3418a6617b7b4ab2a8d4fa65fc50d,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5710365205494932601, guid: 55e3418a6617b7b4ab2a8d4fa65fc50d,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5710365205494932601, guid: 55e3418a6617b7b4ab2a8d4fa65fc50d,
         type: 3}
@@ -579,7 +579,7 @@ Transform:
   m_GameObject: {fileID: 641657715}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.1}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children:
   - {fileID: 342747080}
   - {fileID: 1849836827}
@@ -629,7 +629,6 @@ MonoBehaviour:
   maxTongueDistance: 15
   tongueSpeed: 15
   CoolDown: 1
-  hitPlayer: 0
 --- !u!114 &641657720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -649,7 +648,6 @@ MonoBehaviour:
   spawnNumber: 3
   maxToSpawn: 3
   CoolDown: 1
-  totalCount: 0
 --- !u!114 &641657721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -663,7 +661,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionRunning: 0
-  minionCount: 0
   frogObject: {fileID: 2425176852810834748, guid: e710b3e63742f444185f21fcdfa15a32,
     type: 3}
   maxMinionCount: 4
@@ -682,7 +679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossPhases:
-  - health: 25
+  - health: 10
     repeatingBehaviour: {fileID: 0}
     startBehaviour: {fileID: 0}
     endBehaviour: {fileID: 0}
@@ -696,7 +693,7 @@ MonoBehaviour:
       runFrames: 0
       cooldownFrames: 0
       behavior: {fileID: 641657720}
-  - health: 25
+  - health: 10
     repeatingBehaviour: {fileID: 0}
     startBehaviour: {fileID: 0}
     endBehaviour: {fileID: 0}
@@ -728,7 +725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c00e79e4f2ee7714f829792cbdbf6157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 20
 --- !u!114 &641657724
 MonoBehaviour:
   m_ObjectHideFlags: 0

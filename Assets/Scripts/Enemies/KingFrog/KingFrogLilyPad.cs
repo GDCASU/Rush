@@ -6,9 +6,9 @@ public class KingFrogLilyPad : MonoBehaviour
 {
     WaitForSeconds ws = new WaitForSeconds(1 / 60);
 
-    public bool collided = false;
+    private bool collided = false;
 
-    public float maxPadSize = 4.0f;
+    private float maxPadSize = 4.0f;
     private float scaleAmount = 0.5f;
     private float startSize;
 
@@ -16,7 +16,7 @@ public class KingFrogLilyPad : MonoBehaviour
     {
         if (collision.gameObject.tag == "KingFrogLilyPad") //checks for collision with other pads
         {
-            collided = true;
+            SetCollided(true);
         }
     }
 
@@ -33,7 +33,7 @@ public class KingFrogLilyPad : MonoBehaviour
     IEnumerator RiseCR()
     {
         startSize = transform.localScale.x; //save start scale
-        while (transform.localScale.x < maxPadSize) //while not max size
+        while (transform.localScale.x < GetMaxPadSize()) //while not max size
         {
             float step = scaleAmount * Time.deltaTime;
             transform.localScale += new Vector3(step, step, 0);
@@ -50,5 +50,25 @@ public class KingFrogLilyPad : MonoBehaviour
             yield return ws;
         }
         Destroy(this.gameObject);
+    }
+
+    public void SetCollided(bool _input)
+    {
+        collided = _input;
+    }
+
+    public bool GetCollided()
+    {
+        return collided;
+    }
+
+    public void SetMaxPadSize(float _input)
+    {
+        maxPadSize = _input;
+    }
+
+    public float GetMaxPadSize()
+    {
+        return maxPadSize;
     }
 }

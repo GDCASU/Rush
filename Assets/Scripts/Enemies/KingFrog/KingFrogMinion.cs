@@ -30,7 +30,7 @@ public class KingFrogMinion : KingFrogParent
         randomPos = new Vector3(0, 0, 1);
 
         //increase minion count
-        GameObject.Find("KingFrog").GetComponent<KingFrogMinionAttack>().minionCount++;
+        GameObject.Find("KingFrog").GetComponent<KingFrogMinionAttack>().AddMinionCount(1);
     }
 
     // Update is called once per frame
@@ -53,6 +53,7 @@ public class KingFrogMinion : KingFrogParent
         //while not at randomPos
         while (Vector3.Distance(transform.position, randomPos) > 0)
         {
+            //move towards position
             transform.position = Vector3.MoveTowards(transform.position, randomPos, jumpSpeed);
             yield return ws;
         }
@@ -113,7 +114,7 @@ public class KingFrogMinion : KingFrogParent
         //decrease minion count
         try
         {
-            GameObject.Find("KingFrog").GetComponent<KingFrogMinionAttack>().minionCount--;
+            GameObject.Find("KingFrog").GetComponent<KingFrogMinionAttack>().AddMinionCount(-1);
         }
         catch { }
     }

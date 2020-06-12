@@ -36,7 +36,7 @@ public class KingFrogInsect : KingFrogParent
 
         myPlayer = GameObject.FindGameObjectWithTag("Player");
 
-        GameObject.Find("KingFrog").GetComponent<KingFrogInsectAttack>().totalCount++;
+        GameObject.Find("KingFrog").GetComponent<KingFrogInsectAttack>().AddTotalCount(1);
 
         flySpeed = Vector3.zero;
         timer = 0;
@@ -210,7 +210,7 @@ public class KingFrogInsect : KingFrogParent
     {
         try
         {
-            GameObject.Find("KingFrog").GetComponent<KingFrogInsectAttack>().totalCount--;
+            GameObject.Find("KingFrog").GetComponent<KingFrogInsectAttack>().AddTotalCount(-1);
         }
         catch { }
         

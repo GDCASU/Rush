@@ -90,7 +90,7 @@ public class KingFrogLilyPadSpawner : MonoBehaviour
             yield return ws;
         }
 
-        padCollided = temp.GetComponent<KingFrogLilyPad>().collided; //check if pad collided with pad
+        padCollided = temp.GetComponent<KingFrogLilyPad>().GetCollided(); //check if pad with pad
 
         if(padCollided) //pad collided, destroy and try again
         {

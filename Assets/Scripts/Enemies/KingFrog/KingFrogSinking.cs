@@ -4,7 +4,7 @@ using UnityEngine;
 
 //********************************************************
 // MAKE SURE THIS SCRIPT IS ON EACH UPDATE OF PLAYER
-// GIVE EACH UPDATE OF PLAYER A "SinkingObject" AS CHILD
+// GIVE EACH UPDATE OF PLAYERDEFAULT A "SinkingObject" AS CHILD
 //********************************************************
 public class KingFrogSinking : MonoBehaviour
 {
@@ -35,7 +35,7 @@ public class KingFrogSinking : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("KingFrogLilyPad"))
         {
-            if(collision.transform.localScale.x >= collision.gameObject.GetComponent<KingFrogLilyPad>().maxPadSize)
+            if(collision.transform.localScale.x >= collision.gameObject.GetComponent<KingFrogLilyPad>().GetMaxPadSize())
             {
                 sinking = false;
                 sinkingObject.transform.localScale = startSize;

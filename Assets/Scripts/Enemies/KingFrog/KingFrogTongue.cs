@@ -13,7 +13,7 @@ public class KingFrogTongue : MonoBehaviour
         {
             try
             {
-                kingFrogObject.GetComponent<KingFrogTongueAttack>().hitPlayer = true;
+                kingFrogObject.GetComponent<KingFrogTongueAttack>().SetHitPlayer(true);
             }
             catch { }
             collision.gameObject.GetComponent<PlayerHealth>().takeDamage();

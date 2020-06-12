@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class KingFrogMinionAttack : KingFrogParent
 {
-    public int minionCount;
+    private int minionCount;
     WaitForSeconds ws = new WaitForSeconds(1 / 60);
 
     [SerializeField]
@@ -51,5 +51,15 @@ public class KingFrogMinionAttack : KingFrogParent
         {
             actionRunning = false;
         }
+    }
+
+    public void AddMinionCount(int _input)
+    {
+        minionCount += _input;
+    }
+
+    public int GetMinionCount()
+    {
+        return minionCount;
     }
 }

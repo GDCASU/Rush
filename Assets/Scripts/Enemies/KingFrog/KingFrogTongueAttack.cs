@@ -16,7 +16,7 @@ public class KingFrogTongueAttack : KingFrogParent
     [SerializeField]
     private float CoolDown = 1.0f;
 
-    public bool hitPlayer; //checks if player was hit
+    private bool hitPlayer; //checks if player was hit
 
     private float scaleX; //gets tongue's X scale
     private float startScaleX;
@@ -29,7 +29,7 @@ public class KingFrogTongueAttack : KingFrogParent
 
         myPlayer = GameObject.FindGameObjectWithTag("Player");
 
-        hitPlayer = false;
+        SetHitPlayer(false);
         startScaleX = transform.localScale.x;
 
         Invoke("StartAction", CoolDown);
@@ -44,7 +44,7 @@ public class KingFrogTongueAttack : KingFrogParent
     {
         AngleTongue();
 
-        while (scaleX < maxTongueDistance && !hitPlayer)
+        while (scaleX < maxTongueDistance && !GetHitPlayer())
         {
             Grow();
             yield return ws;
@@ -87,5 +87,15 @@ public class KingFrogTongueAttack : KingFrogParent
 
         //rotate object
         tongueObject.transform.rotation = Quaternion.Euler(0, 0, rotateAngle);
+    }
+
+    public void SetHitPlayer(bool _input)
+    {
+        hitPlayer = _input;
+    }
+
+    public bool GetHitPlayer()
+    {
+        return hitPlayer;
     }
 }

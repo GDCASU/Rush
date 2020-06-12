@@ -19,8 +19,7 @@ public class KingFrogInsectAttack : KingFrogParent
     [SerializeField]
     private float CoolDown = 1.0f;
 
-    [HideInInspector]
-    public int totalCount = 0; //total flies alive
+    private int totalCount = 0; //total flies alive
 
     private int insectCounter; //flies spawned this attack
 
@@ -49,5 +48,15 @@ public class KingFrogInsectAttack : KingFrogParent
         {
             actionRunning = false;
         }
+    }
+
+    public void AddTotalCount(int _input)
+    {
+        totalCount += _input;
+    }
+
+    public int GetTotalCount()
+    {
+        return totalCount;
     }
 }
