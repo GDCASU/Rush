@@ -5,6 +5,7 @@ using System;
 
 public class MoltendwarfA1 : BossAction
 {
+    WaitForSeconds ws = new WaitForSeconds(1f / 60f);
     public Sprite bulletSprite;
     public Color bulletTint = Color.white;
     public Vector3 scale = new Vector3(0.05F, 0.05F, 0.05F);
@@ -35,13 +36,13 @@ public class MoltendwarfA1 : BossAction
         {
             if (x < 40) transform.Rotate(new Vector3(0, 0, 1.125f), Space.Self);    //This makes the sprite rotate 45 degreees clokwise in 40 frames
             else transform.Rotate(new Vector3(0, 0, -2.25f), Space.Self);           //This makes the sprite rotate 45 degreees counter clockwse in 20 frames
-            yield return new WaitForEndOfFrame();
+            yield return ws;
         }
         col.enabled = true;                                                         //Makes the molten dwarf be able to take damage after it's done charging up and technically
         spawnHammer();                                                              //After the hammer has been thrown
         for (int x = 0; x < hammerIsOut; x++)
         {
-            yield return new WaitForEndOfFrame();
+            yield return ws;
         }
         StartCoroutine(HammerBack());
     }
@@ -83,7 +84,7 @@ public class MoltendwarfA1 : BossAction
             Vector2 m = MoveVector * Time.deltaTime;
             hammer.transform.localPosition = hammer.transform.localPosition + new Vector3(m.x, m.y, 0);
 
-            yield return new WaitForEndOfFrame();
+            yield return ws;
         }
         Destroy(hammer);
         //col.enabled = false;                                                                                 //Disables the dwarfs hitbox

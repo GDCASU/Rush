@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MoltendwarfA2 : BossAction
 {
+    WaitForSeconds ws = new WaitForSeconds(1f / 60f);
     public BulletSpawner spawner;
     public int yeetFrames;
     public int returnFrames;
@@ -22,7 +23,7 @@ public class MoltendwarfA2 : BossAction
                 spawner.enabled = true;
                 spawner.enabled = false;
             }
-            yield return new WaitForEndOfFrame();
+            yield return ws;
 
             //Alternate way for the bullets to spawn
             /*
@@ -39,7 +40,7 @@ public class MoltendwarfA2 : BossAction
         for (int x = 0; x < returnFrames; x++)  
         {
             transform.Rotate(new Vector3(0, 0, -4.5f), Space.Self);                             //This makes the sprite rotate 45 degreees counter clokwise in 10 frames
-            yield return new WaitForEndOfFrame();
+            yield return ws;
         }
     }
 }

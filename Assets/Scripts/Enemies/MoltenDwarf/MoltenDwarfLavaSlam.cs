@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 public class MoltenDwarfLavaSlam : MoltenDwarfParent
 {
+    WaitForSeconds ws = new WaitForSeconds(1f / 60f);
+
     [SerializeField]
     private float hitmarkerSpeed = 8f;
 
@@ -16,6 +19,8 @@ public class MoltenDwarfLavaSlam : MoltenDwarfParent
     [SerializeField]
     private LayerMask playerToHit; //checks for objects with a layers (dropdown menu)
 
+    [SerializeField]
+    private GameObject rangeSprite;
     private bool hitmarkerTrack; //does the hitmarker track player or not
     private float step;     //variable for Area of Effect movement speed
 
@@ -50,18 +55,22 @@ public class MoltenDwarfLavaSlam : MoltenDwarfParent
         if (attacking == 1)
         {
             dwarfAnim.SetBool("lavaSlam", true); // activates attack animation
+            rangeSprite.SetActive(true);
             HitmarkerTrackSet(1);
         }
 
         if (attacking == 0)
         {
             dwarfAnim.SetBool("lavaSlam", false);
+            rangeSprite.SetActive(false);
             actionRunning = false;
         }
     }
 
+    //hitmarker follows player
     IEnumerator HitmarkerFollow()
     {
+        //while it is following the player
         while(hitmarkerTrack)
         {
             playerPosition = myPlayer.transform.position;
@@ -70,7 +79,7 @@ public class MoltenDwarfLavaSlam : MoltenDwarfParent
 
             attackPOS.position = Vector2.MoveTowards(attackPOS.position, playerPosition, step);
 
-            yield return new WaitForEndOfFrame();
+            yield return ws;
         }
     }
 
@@ -86,6 +95,7 @@ public class MoltenDwarfLavaSlam : MoltenDwarfParent
         }
     }
 
+    //hitmarker
     private void OnDrawGizmosSelected() //for attack area of effect
     {
         Gizmos.color = Color.red;

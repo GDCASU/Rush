@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MoltenDwarfGeyser : BossAction
 {
+    WaitForSeconds ws = new WaitForSeconds(1f / 60f);
 
     GameObject dwarf;
     private float secondsPerWave;
@@ -22,18 +23,13 @@ public class MoltenDwarfGeyser : BossAction
         actionRunning = true;
     }
 
-    void Update()
-    {
-        
-    }
-
     IEnumerator shockwave()
     {
         timer = 0;
         waveCount = 0;
         for (int x = 0; x < windUpAnimation; x++)
         {
-            yield return new WaitForEndOfFrame();
+            yield return ws;
         }
         for (int x = 0; x < lengthOfWaves; x++)
         {
@@ -43,7 +39,7 @@ public class MoltenDwarfGeyser : BossAction
                 waveCount++;
             }
             timer++;
-            yield return new WaitForEndOfFrame();
+            yield return ws;
         }
         actionRunning = false;
     }

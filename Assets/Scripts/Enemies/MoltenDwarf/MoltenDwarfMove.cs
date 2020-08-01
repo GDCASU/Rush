@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MoltenDwarfMove : MoltenDwarfParent
 {
+    WaitForSeconds ws = new WaitForSeconds(1f / 60f);
+
     [SerializeField]
     private float speed = 3.0f;
     [SerializeField]
@@ -30,7 +32,7 @@ public class MoltenDwarfMove : MoltenDwarfParent
         {
             for (int x = 0; x < 60; x++)
             {
-                yield return new WaitForEndOfFrame();
+                yield return ws;
             }
             CheckFacing();
         }
@@ -44,7 +46,7 @@ public class MoltenDwarfMove : MoltenDwarfParent
                 step = speed * Time.deltaTime; //movement speed
 
                 transform.position = Vector2.MoveTowards(this.transform.position, playerPosition, step); //moves dwarf to player
-                yield return new WaitForEndOfFrame();
+                yield return ws;
             }
         }
         
