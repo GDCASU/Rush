@@ -5,11 +5,19 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     public GameObject player;
+
     public float tilt = 25;
-	// Use this for initialization
-	void Start ()
+
+    [Range(-10f, -40f)]
+    public float cameraDistance = -10f;
+
+    public bool isDDRBird = false;
+
+    // Use this for initialization
+    void Start ()
     {
         transform.rotation = Quaternion.Euler(-tilt, 0,0);
+        if (isDDRBird) tilt = 100f;
     }
 	
 	// Always handle rendering and camera movement in late updates to avoid visual errors
@@ -19,6 +27,6 @@ public class CameraMovement : MonoBehaviour
     }
     void moveCamera()
     {
-        transform.position = new Vector3(player.transform.position.x,player.transform.position.y - tilt/10, -10f);
+        transform.position = new Vector3(player.transform.position.x,player.transform.position.y - tilt/10, cameraDistance);
     }
 }

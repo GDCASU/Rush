@@ -3532,6 +3532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e498cf07f3f6b7246b1ae781da593e4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stayInPlace: 1
   winWalk: 0
   speed: 0.1
   sprite: {fileID: 659796143}
@@ -3632,6 +3633,7 @@ MonoBehaviour:
   bulletSprite: {fileID: 21300000, guid: f9ef3f558be928b4bbc00502df1f51b8, type: 3}
   scale: 0.25
   shootFrameReset: 5
+  originalSpeed: 0
   chargingSpeed: 0.05
 --- !u!114 &1395464614
 MonoBehaviour:
@@ -9158,7 +9160,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 107.5, y: -59.250008}
+  m_AnchoredPosition: {x: 107.5, y: -59.249996}
   m_SizeDelta: {x: -335, y: -218.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3997762633106316333
@@ -11582,7 +11584,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 107.5, y: -59.250008}
+  m_AnchoredPosition: {x: 107.5, y: -59.249996}
   m_SizeDelta: {x: -335, y: -218.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3997762634722877088
@@ -12666,6 +12668,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1395464607}
   tilt: 25
+  cameraDistance: -10
+  isDDRBird: 0
 --- !u!20 &5846215136937563755
 Camera:
   m_ObjectHideFlags: 0
@@ -12886,7 +12890,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 406, y: 100.00001}
+  m_AnchoredPosition: {x: 406, y: 100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5846215137833328955

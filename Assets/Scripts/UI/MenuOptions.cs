@@ -147,7 +147,7 @@ public class MenuOptions : MonoBehaviour
     }
     public void Resume()
     {
-        pm.RestoreMovement();
+        if(!pm.stayInPlace)pm.RestoreMovement();
         isPaused = false;
         panels[3].SetActive(false);
         Time.timeScale = 1;

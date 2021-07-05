@@ -11,6 +11,7 @@ using System.Linq;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public bool stayInPlace;
     public bool winWalk;
     public float speed;
     private float scaleX;

@@ -9,6 +9,7 @@ TagManager:
   - RatRacer
   - Wall
   - HorsemanApparition
+  - Note
   layers:
   - Default
   - TransparentFX
